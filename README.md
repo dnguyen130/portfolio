@@ -1,34 +1,141 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <!--<a href="https://github.com/dnguyen130/portfolio">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>!-->
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<h3 align="center">Portfolio Website</h3>
 
-## Learn More
+  <p align="center">
+    A Next.js website created to showcase my skills, experience, and personality.
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/dnguyen130/portfolio">View Demo</a>
+    ·
+    <a href="https://github.com/dnguyen130/portfolio/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/dnguyen130/portfolio/issues">Request Feature</a>
+  </p>
+</div>
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<!-- TABLE OF CONTENTS -->
+<!--<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>!-->
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+<!--[![Product Name Screen Shot][product-screenshot]](https://example.com)!-->
+
+As a web developer, it's important to create a website to show to other potential employers that you have the tools and knowledge for the industry. This is also a chance for me to apply the skills and technologies I've learned into a personal project without worrying about adhering to certain rules laid out in a team.
+
+The project will be based on the Next.js framework as its the one I have grown accustomed to. I hope to add animations, responsiveness, and a smooth user interface and experience. It is currently in development so stay tuned!
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+### Built With
+
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [ ] Base Layout
+- [ ] Responsiveness
+- [ ] Animations/Transitions
+- [ ] Light/Dark Mode
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Danny Nguyen - [LinkedIn](https://www.linkedin.com/in/dannytnguyen130/) - dt.ngu95@gmail.com
+
+Project Link: [https://github.com/dnguyen130/portfolio](https://github.com/dnguyen130/portfolio)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/dnguyen130/portfolio
+[contributors-url]: https://github.com/dnguyen130/portfolio/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dnguyen130/portfolio
+[forks-url]: https://github.com/dnguyen130/portfolio/network/members
+[stars-shield]: https://img.shields.io/github/stars/dnguyen130/portfolio
+[stars-url]: https://github.com/dnguyen130/portfolio/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dnguyen130/portfolio
+[issues-url]: https://github.com/dnguyen130/portfolio/issues
+[license-shield]: https://img.shields.io/github/license/dnguyen130/portfolio
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/dannytnguyen130/
+[product-screenshot]: images/screenshot.png
