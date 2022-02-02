@@ -12,7 +12,7 @@ export default function Home() {
             <h1>Danny Thai Nguyen</h1>
           </div>
           <h3>I’m a web developer with a desire to create interactive and accessible applications and experiences on the web.</h3>
-          <h3>Currently a digital design & development student at BCIT, learning modern web/mobile development, UI/UX and graphic design.</h3>
+          <h3>Currently a digital design &amp; development student at BCIT, learning modern web/mobile development, UI/UX and graphic design.</h3>
         </div>
       </Container>
       <Container>
