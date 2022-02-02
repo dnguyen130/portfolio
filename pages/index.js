@@ -8,7 +8,7 @@ export default function Home() {
         <NavBar />
         <div className="column intro">
           <div>
-            <h2>Ahoy, I'm</h2>
+            <h2>Ahoy, I&apos;m</h2>
             <h1>Danny Thai Nguyen</h1>
           </div>
           <h3>I&apos;m a web developer with a desire to create interactive and accessible applications and experiences on the web.</h3>
