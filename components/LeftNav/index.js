@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 import { MdHome } from "react-icons/md";
 
 const LeftNavCont = styled.div`
@@ -8,8 +7,12 @@ const LeftNavCont = styled.div`
   align-items: center;
   justify-content: center;
   width: 100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 20;
   border: 1px solid red;
-  overflow: hidden;
+  min-height: 720px;
 `
 
 const Logo = styled.img`
@@ -21,10 +24,6 @@ const Logo = styled.img`
 const IconCont = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 60%;
-  min-height: 300px;
-  border: 2px solid yellow;
 `
 
 const LeftNav = ({
@@ -34,10 +33,10 @@ const LeftNav = ({
     <LeftNavCont>
       <Logo src="/Logo.svg" height="100px" width="100px" />
       <IconCont>
-        <MdHome color="white" size="60px"/>
-        <MdHome color="white" size="60px"/>
-        <MdHome color="white" size="60px"/>
-        <MdHome color="white" size="60px"/>
+        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
+        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
+        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
+        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
         <MdHome color="white" size="60px"/>
       </IconCont>
     </LeftNavCont>

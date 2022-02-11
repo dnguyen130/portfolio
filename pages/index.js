@@ -10,7 +10,12 @@ const HomePageCont = styled.div`
   justify-content: space-between;
   border: 1px solid green;
   height: 100vh;
+  min-height: 720px;
   padding: 20px;
+`
+
+const FixedCont = styled.div`
+  position: fixed;
 `
 
 export default function Home() {
