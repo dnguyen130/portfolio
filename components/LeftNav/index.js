@@ -1,19 +1,18 @@
 import styled from "styled-components";
 import { site_theme } from "../../utils/variables";
-import { MdOutlineHome, MdPersonOutline, MdRotateLeft } from "react-icons/md";
-
+import { FaLaptopCode, FaRegUser, FaHome, FaRegFolderOpen, FaPhone } from "react-icons/fa";
 const LeftNavCont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 120px;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 20;
   border: 1px solid red;
-  min-height: 720px;
+  min-height: 800px;
 `
 
 const Logo = styled.img`
@@ -25,12 +24,17 @@ const Logo = styled.img`
 const IconCont = styled.div`
   border: 3px solid white;
   transform: rotate(45deg);
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
+  overflow: hidden;
+`
+
+const ReverseIconCont = styled.div`
+  transform: rotate(-45deg);
 `
 
 const LeftNav = ({
@@ -38,14 +42,32 @@ const LeftNav = ({
 }) => {
   return (
     <LeftNavCont>
-      <Logo src="/Logo.svg" height="100px" width="100px" />
+      <Logo src="/Logo.svg" height="120px" width="120px" />
       <IconCont>
-        <MdOutlineHome color="white" size="60px"/>
+        <ReverseIconCont>
+          <FaHome color="white" size="45px"/>
+        </ReverseIconCont>
       </IconCont>
-        <MdPersonOutline color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdOutlineHome color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdOutlineHome color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdOutlineHome color="white" size="60px"/>
+      <IconCont>
+        <ReverseIconCont>
+          <FaRegUser color="white" size="45px" />
+        </ReverseIconCont>
+      </IconCont>
+      <IconCont>
+        <ReverseIconCont>
+          <FaLaptopCode color="white" size="45px" />
+        </ReverseIconCont>
+      </IconCont>
+      <IconCont>
+        <ReverseIconCont>
+          <FaRegFolderOpen color="white" size="45px" />
+        </ReverseIconCont>
+      </IconCont>
+      <IconCont>
+        <ReverseIconCont>
+          <FaPhone color="white" size="45px"/>
+        </ReverseIconCont>
+      </IconCont>
     </LeftNavCont>
   )
 }
