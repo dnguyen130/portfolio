@@ -1,22 +1,27 @@
-import NavBar from "../components/NavBar"
-import Container from "../components/Container"
+import Image from "next/image"
+
+import TopNav from "../components/TopNav"
+import LeftNav from "../components/LeftNav"
+import styled from "styled-components"
+
+const HomePageCont = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid green;
+  height: 100vh;
+  min-height: 720px;
+  padding: 20px;
+`
+
+const FixedCont = styled.div`
+  position: fixed;
+`
 
 export default function Home() {
   return (
-    <div>
-      <Container>
-        <NavBar />
-        <div className="column intro">
-          <div>
-            <h2>Ahoy, I&apos;m</h2>
-            <h1>Danny Thai Nguyen</h1>
-          </div>
-          <h3>I&apos;m a web developer with a desire to create interactive and accessible applications and experiences on the web.</h3>
-          <h3>Currently a digital design &amp; development student at BCIT, learning modern web/mobile development, UI/UX and graphic design.</h3>
-        </div>
-      </Container>
-      <Container>
-      </Container>
-    </div>
+    <HomePageCont>
+      <LeftNav />
+    </HomePageCont>
   )
 }
