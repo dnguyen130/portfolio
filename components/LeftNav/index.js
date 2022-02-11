@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { MdHome } from "react-icons/md";
+import { site_theme } from "../../utils/variables";
+import { MdOutlineHome, MdPersonOutline, MdRotateLeft } from "react-icons/md";
 
 const LeftNavCont = styled.div`
   display: flex;
@@ -22,8 +23,14 @@ const Logo = styled.img`
 `
 
 const IconCont = styled.div`
+  border: 3px solid white;
+  transform: rotate(45deg);
+  width: 80px;
+  height: 80px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 `
 
 const LeftNav = ({
@@ -33,12 +40,12 @@ const LeftNav = ({
     <LeftNavCont>
       <Logo src="/Logo.svg" height="100px" width="100px" />
       <IconCont>
-        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdHome color="white" size="60px" style={{marginBottom: 40}}/>
-        <MdHome color="white" size="60px"/>
+        <MdOutlineHome color="white" size="60px"/>
       </IconCont>
+        <MdPersonOutline color="white" size="60px" style={{marginBottom: 40}}/>
+        <MdOutlineHome color="white" size="60px" style={{marginBottom: 40}}/>
+        <MdOutlineHome color="white" size="60px" style={{marginBottom: 40}}/>
+        <MdOutlineHome color="white" size="60px"/>
     </LeftNavCont>
   )
 }
