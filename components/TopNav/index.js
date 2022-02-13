@@ -22,18 +22,46 @@ const TopNavCont = styled.div`
 const TopNav = ({
 
   onChange = () => {},
-  checked = false
-
+  checked = false,
 }) => {
 
   const {theme} = useTheme();
 
   return (
     <TopNavCont>
-      <ReactSwitch
+      <ReactSwitch    
+        borderRadius = {10}
         onChange = {onChange}
         checked = {checked}
-        
+        offColor = {site_theme[theme].text}
+        offHandleColor = {site_theme[theme].background}
+        onColor = {site_theme[theme].text}
+        onHandleColor = {site_theme[theme].background}
+        uncheckedIcon = {false}
+        checkedIcon = {false}
+        uncheckedHandleIcon = {<div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            fontSize: 15
+          }}
+        >
+          ☀️
+        </div>}
+
+        checkedHandleIcon = {<div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            fontSize: 15
+          }}
+        >
+          🌙
+        </div>}
       />
       <ImgButton>
         <FaLinkedin size="40px" color={site_theme[theme].background} />
