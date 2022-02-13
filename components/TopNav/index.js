@@ -8,12 +8,12 @@ import ImgButton from "../ImgButton";
 const TopNavCont = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   align-self: flex-end;
-  width: 30%;
+  align-items: center;
+  width: 500px;
   height: 120px;
   font-family: Genos, sans-serif;
-  border: 1px solid red;
+  z-index: 99999;
 `
 
 const TopNav = ({
