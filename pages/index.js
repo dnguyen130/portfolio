@@ -1,24 +1,25 @@
 import styled from "styled-components"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
 import HeroText from "../components/HeroText";
+import LogoAnim from "../components/LogoAnim";
 
 import { useTheme } from "../utils/provider";
 
 const HomePageCont = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   max-width: 100vw;
   min-height: 720px;
   padding: 20px;
-  border: 1px solid green;
 `
 
 const CenterCont = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -34,19 +35,36 @@ export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 3000);
+  })
 
   const ThemeSwitcher = () => {
     setChecked(!checked);
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
-  return (
-    <HomePageCont>
-      <LeftNav />
-      <TopNav onChange={ThemeSwitcher } checked={checked}/>
-      <CenterCont>
-        <HeroText />
-      </CenterCont>
-    </HomePageCont>
-  )
+  if(loading === false) {
+    return(
+      <HomePageCont>
+        <CenterCont>
+          <LogoAnim />
+        </CenterCont>
+      </HomePageCont>
+    )
+  }
+
+  if(loading === true) {
+    return (
+      <HomePageCont>
+        <LeftNav />
+        <TopNav onChange={ThemeSwitcher} checked={checked}/>
+        <CenterCont>
+          <HeroText />
+        </CenterCont>
+      </HomePageCont>
+    )
+  }
 }

@@ -7,6 +7,7 @@ import ImgButton from "../ImgButton";
 
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
+import { motion } from "framer-motion";
 
 const TopNavCont = styled.div`
   display: flex;
@@ -19,6 +20,22 @@ const TopNavCont = styled.div`
   z-index: 99999;
 `
 
+const container = {
+  visible: {
+    opacity: 1, 
+    y: 0,
+    transition: {
+      ease: "easeOut", 
+      duration: 1,
+      delay: 2
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: -50
+  },
+}
+
 const TopNav = ({
 
   onChange = () => {},
@@ -29,6 +46,7 @@ const TopNav = ({
 
   return (
     <TopNavCont>
+      <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
       <ReactSwitch    
         borderRadius = {10}
         onChange = {onChange}
@@ -37,6 +55,7 @@ const TopNav = ({
         offHandleColor = {site_theme[theme].background}
         onColor = {site_theme[theme].text}
         onHandleColor = {site_theme[theme].background}
+        activeBoxShadow = {`0 0 2px 3px ${site_theme[theme].strong}`}
         uncheckedIcon = {false}
         checkedIcon = {false}
         uncheckedHandleIcon = {<div
@@ -71,6 +90,7 @@ const TopNav = ({
         <FaGithubSquare size="40px" color={site_theme[theme].background} />
       </ImgButton>
       <Button btnText="Resume" />
+      </motion.div>
     </TopNavCont>
   )
 }

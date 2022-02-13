@@ -3,6 +3,8 @@ import { FaLaptopCode, FaRegUser, FaHome, FaRegFolderOpen, FaPhone } from "react
 import { site_theme } from "../../utils/variables";
 import { useTheme } from "../../utils/provider";
 
+import { motion } from "framer-motion";
+
 const LeftNavCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,7 +32,7 @@ const IconCont = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40%;
+  margin-bottom: 90%;
   border-radius: 50px;
   cursor: pointer;
   box-sizing: border-box;
@@ -90,6 +92,22 @@ const ReverseIconCont = styled.div`
   transform: rotate(-45deg);
 `
 
+const container = {
+  visible: {
+    opacity: 1, 
+    x: 0,
+    transition: {
+      ease: "easeOut", 
+      duration: 1,
+      delay: 2
+    },
+  },
+  hidden: {
+    opacity: 0,
+    x: -50
+  },
+}
+
 const LeftNav = ({
 
 }) => {
@@ -98,6 +116,7 @@ const LeftNav = ({
 
   return (
     <LeftNavCont>
+      <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:'100%'}}>
       <Logo src="/logo.svg" height="120px" width="120px" />
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
@@ -124,6 +143,7 @@ const LeftNav = ({
           <FaPhone size="30px"/>
         </ReverseIconCont>
       </IconCont>
+      </motion.div>
     </LeftNavCont>
   )
 }
