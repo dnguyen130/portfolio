@@ -5,15 +5,18 @@ import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import Button from "../Button";
 import ImgButton from "../ImgButton";
 
+import { useTheme } from "../../utils/provider";
+import { site_theme } from "../../utils/variables";
+
 const TopNavCont = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   align-self: flex-end;
-  width: 30%;
+  align-items: center;
+  width: 500px;
   height: 120px;
   font-family: Genos, sans-serif;
-  border: 1px solid red;
+  z-index: 99999;
 `
 
 const TopNav = ({
@@ -22,6 +25,9 @@ const TopNav = ({
   checked = false
 
 }) => {
+
+  const {theme} = useTheme();
+
   return (
     <TopNavCont>
       <ReactSwitch
@@ -30,11 +36,11 @@ const TopNav = ({
         
       />
       <ImgButton>
-        <FaLinkedin size="40px" color="#030F22" />
+        <FaLinkedin size="40px" color={site_theme[theme].background} />
       </ImgButton>
       <ImgButton>
         {/* customize width, color of stroke stroke-width="10" stroke="white" */}
-        <FaGithubSquare size="40px" color="#030F22" />
+        <FaGithubSquare size="40px" color={site_theme[theme].background} />
       </ImgButton>
       <Button btnText="Resume" />
     </TopNavCont>

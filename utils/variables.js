@@ -8,10 +8,14 @@ const Colors = {
 
 export const site_theme = {
   light: {
-      body: "#d6ff79"
+      background: Colors.AliceBlue,
+      text: Colors.DarkBlue,
+      strong: Colors. Sapphire
   },
 
   dark: {
       background: Colors.DarkBlue,
+      text: Colors.AliceBlue,
+      strong: Colors.SkyBlue
   }
 }
