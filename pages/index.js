@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
