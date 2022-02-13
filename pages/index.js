@@ -5,6 +5,8 @@ import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
 import HeroText from "../components/HeroText";
 
+import { useTheme } from "../utils/provider";
+
 const HomePageCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,11 +33,17 @@ const CenterCont = styled.div`
 export default function Home() {
 
   const [checked, setChecked] = useState(false);
+  const {theme, setTheme} = useTheme();
+
+  const ThemeSwitcher = () => {
+    setChecked(!checked);
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
 
   return (
     <HomePageCont>
       <LeftNav />
-      <TopNav onChange={()=>setChecked(!checked)} checked={checked}/>
+      <TopNav onChange={ThemeSwitcher} checked={checked}/>
       <CenterCont>
         <HeroText />
       </CenterCont>
