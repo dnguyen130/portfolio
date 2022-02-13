@@ -3,7 +3,7 @@ import { site_theme } from './variables';
 
 //the variables you want to provide to all the pages/components wrapped around this provider
 const initialStates = {
-    theme: "dark",
+    theme: "light",
     setTheme: ()=>{},
 }
 

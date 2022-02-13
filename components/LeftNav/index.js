@@ -34,6 +34,7 @@ const IconCont = styled.div`
   border-radius: 50px;
   cursor: pointer;
   box-sizing: border-box;
+  color: ${props=>props.clr};
   
   vertical-align: middle;
   background: none;
@@ -64,20 +65,22 @@ const IconCont = styled.div`
 
   &:hover {
 
+    color: ${props=>props.hvrclr};
+
     &::before, &::after{
       width: 100%;
       height: 100%;
     }
 
     &::before {
-      border-top-color: #60daaa;
-      border-right-color: #60daaa;
+      border-top-color: ${props=>props.borderColor};
+      border-right-color: ${props=>props.borderColor};
       transition: width 0.1s ease-out, height 0.1s ease-out 0.1s;
     }
 
     &::after {
-      border-bottom-color: #60daaa;
-      border-left-color: #60daaa;
+      border-bottom-color: ${props=>props.borderColor};
+      border-left-color: ${props=>props.borderColor};
       transition: border-color 0s ease-out 0.2s, width 0.1s ease-out 0.2s, height 0.1s ease-out 0.3s;
     }
   }
@@ -96,29 +99,29 @@ const LeftNav = ({
   return (
     <LeftNavCont>
       <Logo src="/Logo.svg" height="120px" width="120px" />
-      <IconCont>
+      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaHome color="white" size="30px"/>
+          <FaHome size="30px" />
         </ReverseIconCont>
       </IconCont>
-      <IconCont>
+      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaRegUser color="white" size="30px" />
+          <FaRegUser size="30px" />
         </ReverseIconCont>
       </IconCont>
-      <IconCont>
+      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaLaptopCode size="30px" className="changeColor" />
+          <FaLaptopCode size="30px" />
         </ReverseIconCont>
       </IconCont>
-      <IconCont>
+      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaRegFolderOpen color="white" size="30px" />
+          <FaRegFolderOpen size="30px" />
         </ReverseIconCont>
       </IconCont>
-      <IconCont>
+      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaPhone color="white" size="30px"/>
+          <FaPhone size="30px"/>
         </ReverseIconCont>
       </IconCont>
     </LeftNavCont>

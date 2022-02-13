@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Genos:wght@600&family=Outfit:wght@200&display=swap');
+@import "./variables.scss";
 
 html,
 body {
@@ -14,13 +15,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.changeColor {
-  color: white;
-  transition: .2s;
-}
-
-.changeColor:hover{
-  color: green;
 }

@@ -7,6 +7,7 @@ const ButtonCont = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props=>props.bgcolor};
+  color: ${props=>props.clr};
   height: 80px;
   width: 180px;
   border-radius: 10px;
@@ -29,7 +30,7 @@ const Button = ({
   const {theme} = useTheme();
 
   return (
-    <ButtonCont bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong}>
+    <ButtonCont bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background}>
       {btnText}
     </ButtonCont>
   )
