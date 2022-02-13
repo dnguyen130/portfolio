@@ -98,7 +98,7 @@ const LeftNav = ({
 
   return (
     <LeftNavCont>
-      <Logo src="/Logo.svg" height="120px" width="120px" />
+      <Logo src="/logo.svg" height="120px" width="120px" />
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
           <FaHome size="30px" />
