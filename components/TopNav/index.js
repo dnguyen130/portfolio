@@ -37,6 +37,7 @@ const TopNav = ({
         offHandleColor = {site_theme[theme].background}
         onColor = {site_theme[theme].text}
         onHandleColor = {site_theme[theme].background}
+        activeBoxShadow = {`0 0 2px 3px ${site_theme[theme].strong}`}
         uncheckedIcon = {false}
         checkedIcon = {false}
         uncheckedHandleIcon = {<div
