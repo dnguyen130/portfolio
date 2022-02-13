@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <HomePageCont>
       <LeftNav />
-      <TopNav onChange={ThemeSwitcher} checked={checked}/>
+      <TopNav onChange={ThemeSwitcher } checked={checked}/>
       <CenterCont>
         <HeroText />
       </CenterCont>
