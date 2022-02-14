@@ -15,21 +15,33 @@ const ButtonCont = styled.div`
 
   transition: background-color 0.2s;
 
-&:hover {
-  background-color: ${props=>props.bghover};
-}
+  &:hover {
+    background-color: ${props=>props.bghover};
+  }
 `
+
+const ButtonLink = styled.a`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 
 const ImgButton = ({
   children,
-  onClick = () => {}
+  onClick = () => {},
+  imgLink = "https://www.linkedin.com/in/dannytnguyen130/"
 }) => {
 
   const {theme} = useTheme();
 
   return (
     <ButtonCont onClick={onClick} bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong}>
-      {children}
+      <ButtonLink href={imgLink} target="_blank" rel="noopener noreferrer">
+        {children}
+      </ButtonLink>
     </ButtonCont>
   )
 }

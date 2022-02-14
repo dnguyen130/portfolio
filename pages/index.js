@@ -35,10 +35,10 @@ export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
-  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 3000);
+    setTimeout(() => setLoaded(true), 3000);
   })
 
   const ThemeSwitcher = () => {
@@ -46,7 +46,7 @@ export default function Home() {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
-  if(loading === false) {
+  if(loaded === false) {
     return(
       <HomePageCont>
         <CenterCont>
@@ -56,7 +56,7 @@ export default function Home() {
     )
   }
 
-  if(loading === true) {
+  if(loaded === true) {
     return (
       <HomePageCont>
         <LeftNav />

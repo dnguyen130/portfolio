@@ -1,7 +1,7 @@
 const Colors = {
   AliceBlue: "#EDF3FD",
   SkyBlue: "#38DBFF",
-  Sapphire: "#166EFA",
+  Sapphire: "#0096C7",
   DarkBlue: "#030F22",
   Orange: "#FFC757"
 }

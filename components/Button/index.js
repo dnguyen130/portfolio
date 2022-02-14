@@ -23,15 +23,26 @@ const ButtonCont = styled.div`
   }
 `
 
+const ButtonLink = styled.a`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const Button = ({
   btnText = "Default",
+  btnLink = ""
 }) => {
 
   const {theme} = useTheme();
 
   return (
     <ButtonCont bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background}>
-      {btnText}
+      <ButtonLink>
+        {btnText}
+      </ButtonLink>
     </ButtonCont>
   )
 }
