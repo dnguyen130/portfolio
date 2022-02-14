@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Lottie from "lottie-react";
-import Logo from "../../public/data.json";
+import Logo from "../../public/logoanim.json";
 
 const LogoAnimCont = styled.div`
   width: 150px;
