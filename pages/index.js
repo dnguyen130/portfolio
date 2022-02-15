@@ -105,7 +105,7 @@ export default function Home() {
       </NonHomePageCont>
       <NonHomePageCont>
         <SectionCont>
-          <Header headertext="About Me"/>
+          <Header headertext="Technical Toolkit"/>
           <Toolkit />
         </SectionCont>
       </NonHomePageCont>
