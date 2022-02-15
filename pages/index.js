@@ -6,15 +6,34 @@ import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
 import HeroText from "../components/HeroText";
 import LogoAnim from "../components/LogoAnim";
+import Chevron from "../components/Chevron";
+
+import Header from "../components/Header";
 
 import { useTheme } from "../utils/provider";
+import AboutMe from "../components/AboutMe";
+
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`
 
 const HomePageCont = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 100vw;
+  height: 100vh;
   min-height: 720px;
-  padding: 20px;
+`
+
+const NonHomePageCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 const CenterCont = styled.div`
@@ -22,13 +41,15 @@ const CenterCont = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  min-width: 1400px;
+  width: 60%;
   min-height: 720px;
+`
+
+const SectionCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border: 1px solid red;
 `
 
 export default function Home() {
@@ -58,13 +79,22 @@ export default function Home() {
 
   if(loaded === true) {
     return (
+      <Page>
       <HomePageCont>
         <LeftNav />
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
         <CenterCont>
           <HeroText />
+          <Chevron />
         </CenterCont>
       </HomePageCont>
+      <NonHomePageCont>
+        <SectionCont>
+          <Header headertext="About Me"/>
+          <AboutMe />
+        </SectionCont>
+      </NonHomePageCont>
+      </Page>
     )
   }
 }

@@ -1,16 +1,16 @@
 const Colors = {
   AliceBlue: "#EDF3FD",
   SkyBlue: "#38DBFF",
-  Sapphire: "#0096C7",
+  Sapphire: "#00AEE8",
   DarkBlue: "#030F22",
-  Orange: "#FFC757"
+  Orange: "#FFC757",
 }
 
 export const site_theme = {
   light: {
       background: Colors.AliceBlue,
       text: Colors.DarkBlue,
-      strong: Colors. Sapphire
+      strong: Colors.Sapphire
   },
 
   dark: {

@@ -5,7 +5,6 @@ import { site_theme } from "../../utils/variables";
 import { motion } from "framer-motion";
 
 const HeroTextCont = styled.div`
-  width: 1000px;
 `
 
 const HeroTextHeading = styled.h1`

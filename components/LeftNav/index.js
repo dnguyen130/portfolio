@@ -12,11 +12,8 @@ const LeftNavCont = styled.div`
   justify-content: center;
   width: 120px;
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 20;
-  min-height: 800px;
-  z-index: 99999;
+  min-height: 500px;
+  align-self: flex-start;
 `
 
 const Logo = styled.img`

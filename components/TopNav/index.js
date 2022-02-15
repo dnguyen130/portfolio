@@ -18,6 +18,8 @@ const TopNavCont = styled.div`
   height: 120px;
   font-family: Genos, sans-serif;
   z-index: 99999;
+  position: absolute;
+  top: 0;
 `
 
 const container = {
