@@ -10,6 +10,11 @@ const HeaderCont = styled.h2`
   color: ${props=>props.color};
 `
 
+const Line = styled.div`
+  background: linear-gradient(90deg, ${props=>props.linecolor}, 30%, rgba(0,0,0,0));
+  height: 2px;
+`
+
 const Header = ({
 
   headertext = "Default"
@@ -21,6 +26,7 @@ const Header = ({
   return (
     <HeaderCont color={site_theme[theme].text} >
       {headertext}
+      <Line linecolor={site_theme[theme].strong}/>
     </HeaderCont>
   )
 }

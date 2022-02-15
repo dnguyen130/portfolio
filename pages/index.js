@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useTheme } from "../utils/provider";
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
@@ -9,9 +9,17 @@ import LogoAnim from "../components/LogoAnim";
 import Chevron from "../components/Chevron";
 
 import Header from "../components/Header";
-
-import { useTheme } from "../utils/provider";
 import AboutMe from "../components/AboutMe";
+import Toolkit from "../components/Toolkit";
+
+
+const Logo = styled.img`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 99999;
+  width: 120px;
+`
 
 const Page = styled.div`
   display: flex;
@@ -49,7 +57,7 @@ const SectionCont = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
-  border: 1px solid red;
+  margin-bottom: 150px;
 `
 
 export default function Home() {
@@ -81,6 +89,7 @@ export default function Home() {
     return (
       <Page>
       <HomePageCont>
+        <Logo src="/logo.svg" />
         <LeftNav />
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
         <CenterCont>
@@ -92,6 +101,12 @@ export default function Home() {
         <SectionCont>
           <Header headertext="About Me"/>
           <AboutMe />
+        </SectionCont>
+      </NonHomePageCont>
+      <NonHomePageCont>
+        <SectionCont>
+          <Header headertext="About Me"/>
+          <Toolkit />
         </SectionCont>
       </NonHomePageCont>
       </Page>

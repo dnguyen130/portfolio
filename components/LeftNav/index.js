@@ -16,12 +16,6 @@ const LeftNavCont = styled.div`
   align-self: flex-start;
 `
 
-const Logo = styled.img`
-  position: fixed;
-  top: 20px;
-  z-index: 99999;
-`
-
 const IconCont = styled.div`
   transform: rotate(45deg);
   width: 50px;
@@ -114,7 +108,6 @@ const LeftNav = ({
   return (
     <LeftNavCont>
       <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:'100%'}}>
-      <Logo src="/logo.svg" height="120px" width="120px" />
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
           <FaHome size="30px" />
