@@ -14,13 +14,24 @@ const AboutMeText = styled.p`
   color: ${props=>props.color};
   font-size: 22px;
   width: 70%;
+  font-weight: 400;
+`
+
+const ImgCont = styled.div`
+  box-shadow: inset 0 0 12px 12px ${props=>props.scolor}, inset 0 0 3px 2px ${props=>props.scolor};
+  background: linear-gradient(to right, #702c8c 40%, #e8248c 60%,  #e82424, #ffbc2c);
+  width: 320px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
 `
 
 const AboutMeImage = styled.img`
-  width: 300px;
+  width: 100%;
   border-radius: 10px;
-  box-shadow: 6px 3px 3px ${props=>props.shadowcolor};
-  border: 3px solid ${props=>props.shadowcolor};
 `
 
 const Link = styled.a`
@@ -50,7 +61,9 @@ const AboutMe = ({}) => {
         Currently, I am looking for a practicum as a student intern to attain credits required for graduation. Afterwards, I will be looking for a full-time job
         as a developer, creating web and/or mobile applications that users would enjoy!
       </AboutMeText>
-      <AboutMeImage src="/profile.png" shadowcolor={site_theme[theme].strong} />
+      <ImgCont scolor={site_theme[theme].background}>
+      <AboutMeImage src="/profile.png" />
+      </ImgCont>
     </AboutMeCont>
   )
 }
