@@ -18,6 +18,8 @@ const TopNavCont = styled.div`
   height: 120px;
   font-family: Genos, sans-serif;
   z-index: 99999;
+  position: absolute;
+  top: 0;
 `
 
 const container = {
@@ -85,7 +87,7 @@ const TopNav = ({
       <ImgButton>
         <FaLinkedin size="40px" color={site_theme[theme].background} />
       </ImgButton>
-      <ImgButton>
+      <ImgButton imgLink="https://github.com/dnguyen130">
         {/* customize width, color of stroke stroke-width="10" stroke="white" */}
         <FaGithubSquare size="40px" color={site_theme[theme].background} />
       </ImgButton>

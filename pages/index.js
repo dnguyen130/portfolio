@@ -1,20 +1,47 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useTheme } from "../utils/provider";
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
 import HeroText from "../components/HeroText";
 import LogoAnim from "../components/LogoAnim";
+import Chevron from "../components/Chevron";
 
-import { useTheme } from "../utils/provider";
+import Header from "../components/Header";
+import AboutMe from "../components/AboutMe";
+import Toolkit from "../components/Toolkit";
+
+
+const Logo = styled.img`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 99999;
+  width: 120px;
+`
+
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`
 
 const HomePageCont = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 100vw;
+  height: 100vh;
   min-height: 720px;
-  padding: 20px;
+`
+
+const NonHomePageCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 const CenterCont = styled.div`
@@ -22,23 +49,25 @@ const CenterCont = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  min-width: 1400px;
+  width: 60%;
   min-height: 720px;
+`
+
+const SectionCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 150px;
 `
 
 export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
-  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 3000);
+    setTimeout(() => setLoaded(true), 3000);
   })
 
   const ThemeSwitcher = () => {
@@ -46,7 +75,7 @@ export default function Home() {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
-  if(loading === false) {
+  if(loaded === false) {
     return(
       <HomePageCont>
         <CenterCont>
@@ -56,15 +85,31 @@ export default function Home() {
     )
   }
 
-  if(loading === true) {
+  if(loaded === true) {
     return (
+      <Page>
       <HomePageCont>
+        <Logo src="/logo.svg" />
         <LeftNav />
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
         <CenterCont>
           <HeroText />
+          <Chevron />
         </CenterCont>
       </HomePageCont>
+      <NonHomePageCont>
+        <SectionCont>
+          <Header headertext="About Me"/>
+          <AboutMe />
+        </SectionCont>
+      </NonHomePageCont>
+      <NonHomePageCont>
+        <SectionCont>
+          <Header headertext="Technical Toolkit"/>
+          <Toolkit />
+        </SectionCont>
+      </NonHomePageCont>
+      </Page>
     )
   }
 }
