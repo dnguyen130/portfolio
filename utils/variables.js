@@ -5,7 +5,8 @@ const Colors = {
   Sapphire: "#00AEE8",
   DarkBlue: "#030F22",
   Orange: "#FFC757",
-  DarkishBlue: "#08295E"
+  DarkGray: "#6D6E70",
+  LightGray: "#C7C8CA"
 }
 
 export const site_theme = {
@@ -13,13 +14,18 @@ export const site_theme = {
       background: Colors.AliceBlue,
       text: Colors.DarkBlue,
       strong: Colors.Sapphire,
+      gray: Colors.LightGray,
+      oppositeGray: Colors.DarkGray,
+      weak: Colors.SkyBlue
   },
 
   dark: {
       background: Colors.DarkBlue,
       text: Colors.AliceBlue,
       strong: Colors.SkyBlue,
-      weak: Colors.DarkerAlice
+      gray: Colors.DarkGray,
+      oppositeGray: Colors.LightGray,
+      weak: Colors.Sapphire
   }
 }
 

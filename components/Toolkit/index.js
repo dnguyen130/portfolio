@@ -5,7 +5,30 @@ import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
 
 import { CgFigma } from "react-icons/cg";
-import { SiAdobeaftereffects, SiAdobeillustrator, SiAdobeindesign, SiAdobephotoshop } from "react-icons/si"; 
+import { 
+  SiAdobeaftereffects, 
+  SiAdobeillustrator, 
+  SiAdobeindesign, 
+  SiAdobephotoshop, 
+  SiAdobepremierepro, 
+  SiJavascript, 
+  SiReact,
+  SiNextdotjs,
+  SiSass,
+  SiStyledcomponents,
+  SiJquery, 
+  SiNodedotjs,
+  SiExpo,
+  SiExpress,
+  SiMongodb,
+  SiFirebase,
+  SiPhp,
+  SiMysql,
+  SiGithub,
+  SiGnubash} from "react-icons/si";
+
+import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io"
+import {FaNodeJs} from "react-icons/fa"
 
 const ToolkitCont = styled.div`
   display: flex;
@@ -20,14 +43,26 @@ const Toolheader = styled.h3`
 `
 
 const Toolbar = styled.div`
-  height: 150px;
-  background: linear-gradient(to right, #702c8c 40%, #e8248c 60%,  #e82424, #ffbc2c);
+  height: 200px;
+  background: linear-gradient(135deg, ${props=>props.bargrad1}, 50%, ${props=>props.bargrad2});
   width: 100%;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 20px;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  box-shadow: 5px 5px 5px black;
+  margin-bottom: 50px;
+`
+
+const ToolRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-color: ${props=>props.scrollbarcolor} ${props=>props.scrollcontcolor};
+  scrollbar-width: thin;
 `
 
 const Tool = styled.div`
@@ -37,13 +72,18 @@ const Tool = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: #030F22;
+  background-color: ${props=>props.toolbg};
+  box-shadow: 5px 5px 5px black;
 `
 
 const ToolGroup = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 180px;
+  height: 170px;
+  flex: 0 0 auto;
 `
 
 const ToolLabel = styled.div`
@@ -51,7 +91,8 @@ const ToolLabel = styled.div`
   font-family: Genos, sans-serif;
   font-weight: 600;
   font-size: 1.7em;
-  color: #EDF3FD;
+  color: ${props=>props.labelcolor};
+  text-align: center;
 `
 
 const Toolkit = ({}) => {
@@ -61,37 +102,163 @@ const Toolkit = ({}) => {
   return (
     <ToolkitCont>
       <Toolheader headcolor={site_theme[theme].text}>Design</Toolheader>
-      <Toolbar>
+      <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
+        <ToolRow>
         <ToolGroup>
-          <Tool>
+          <Tool toolbg={site_theme[theme].background}>
             <CgFigma size="50px" color={site_theme[theme].text}/>
           </Tool>
-          <ToolLabel>Figma</ToolLabel>
+          <ToolLabel labelcolor={site_theme[theme].text}>Figma</ToolLabel>
         </ToolGroup>
         <ToolGroup>
-          <Tool>
+          <Tool toolbg={site_theme[theme].background}>
             <SiAdobeaftereffects size="50px" color={site_theme[theme].text}/>
           </Tool>
-          <ToolLabel>After Effects</ToolLabel>
+          <ToolLabel labelcolor={site_theme[theme].text}>After Effects</ToolLabel>
         </ToolGroup>
         <ToolGroup>
-          <Tool>
+          <Tool toolbg={site_theme[theme].background}>
             <SiAdobeillustrator size="50px" color={site_theme[theme].text}/>
           </Tool>
-          <ToolLabel>Illustrator</ToolLabel>
+          <ToolLabel labelcolor={site_theme[theme].text}>Illustrator</ToolLabel>
         </ToolGroup>
         <ToolGroup>
-          <Tool>
+          <Tool toolbg={site_theme[theme].background}>
             <SiAdobeindesign size="50px" color={site_theme[theme].text}/>
           </Tool>
-          <ToolLabel>Indesign</ToolLabel>
+          <ToolLabel labelcolor={site_theme[theme].text}>Indesign</ToolLabel>
         </ToolGroup>
         <ToolGroup>
-          <Tool>
+          <Tool toolbg={site_theme[theme].background}>
             <SiAdobephotoshop size="50px" color={site_theme[theme].text}/>
           </Tool>
-          <ToolLabel>Photoshop</ToolLabel>
+          <ToolLabel labelcolor={site_theme[theme].text}>Photoshop</ToolLabel>
         </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiAdobepremierepro size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Premiere Pro</ToolLabel>
+        </ToolGroup>
+        </ToolRow>
+      </Toolbar>
+      <Toolheader headcolor={site_theme[theme].text}>Front-End Development</Toolheader>
+      <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
+        <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <IoLogoHtml5 size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>HTML5</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <IoLogoCss3 size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>CSS3</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+          <SiSass size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Sass</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+          <SiStyledcomponents size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>styled</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiJavascript style={{borderRadius: 4}} size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Javascript</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiJquery size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>JQuery</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiNodedotjs size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Node.js</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiReact size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>React</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiNextdotjs size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Next.js</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+          <SiReact size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>React Native</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+          <SiExpo size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Expo</ToolLabel>
+        </ToolGroup>
+        </ToolRow>
+      </Toolbar>
+      <Toolheader headcolor={site_theme[theme].text}>Back-End Development / Other</Toolheader>
+      <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
+        <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiExpress size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Express</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiMongodb size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>MongoDB</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiFirebase size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Firebase</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiPhp size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>PHP</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+            <SiMysql size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>MySQL</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+          <SiGithub size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>GitHub</ToolLabel>
+        </ToolGroup>
+        <ToolGroup>
+          <Tool toolbg={site_theme[theme].background}>
+          <SiGnubash size="50px" color={site_theme[theme].text}/>
+          </Tool>
+          <ToolLabel labelcolor={site_theme[theme].text}>Bash</ToolLabel>
+        </ToolGroup>
+        </ToolRow>
       </Toolbar>
     </ToolkitCont>
   )
