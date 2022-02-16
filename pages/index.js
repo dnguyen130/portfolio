@@ -53,14 +53,14 @@ const CenterCont = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 70%;
   min-height: 720px;
 `
 
 const SectionCont = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 70%;
   margin-bottom: 150px;
 `
 

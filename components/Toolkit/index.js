@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
@@ -29,6 +29,9 @@ import {
 
 import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io"
 
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const ToolkitCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,7 +60,6 @@ const Toolbar = styled.div`
 const ToolRow = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: nowrap;
   overflow-x: auto;
 
@@ -107,15 +109,29 @@ const ToolLabel = styled.div`
   text-align: center;
 `
 
+const variants = {
+  visible: {opacity: 1, y: 0, transition: {ease: "easeOut", duration: 1.5}},
+  hidden: {opacity: 0, y: 50},
+}
+
 const Toolkit = ({}) => {
 
   const {theme} = useTheme();
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if(inView) {
+      controls.start("visible"); }
+  }, [controls, inView]
+  )
 
   return (
     <ToolkitCont>
+      <motion.div ref={ref} animate={controls} initial="hidden" variants={variants}>
       <Toolheader headcolor={site_theme[theme].text}>Design</Toolheader>
       <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
-        <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>>
+        <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
         <ToolGroup>
           <Tool toolbg={site_theme[theme].background}>
             <CgFigma size="50px" color={site_theme[theme].text}/>
@@ -154,6 +170,8 @@ const Toolkit = ({}) => {
         </ToolGroup>
         </ToolRow>
       </Toolbar>
+      </motion.div>
+      <motion.div ref={ref} animate={controls} initial="hidden" variants={variants}>
       <Toolheader headcolor={site_theme[theme].text}>Front-End Development</Toolheader>
       <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
         <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
@@ -225,6 +243,8 @@ const Toolkit = ({}) => {
         </ToolGroup>
         </ToolRow>
       </Toolbar>
+      </motion.div>
+      <motion.div ref={ref} animate={controls} initial="hidden" variants={variants}>
       <Toolheader headcolor={site_theme[theme].text}>Back-End Development / Other</Toolheader>
       <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
         <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
@@ -272,6 +292,7 @@ const Toolkit = ({}) => {
         </ToolGroup>
         </ToolRow>
       </Toolbar>
+      </motion.div>
     </ToolkitCont>
   )
 }

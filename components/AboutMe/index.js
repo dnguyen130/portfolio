@@ -1,8 +1,11 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
+
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const AboutMeCont = styled.div`
   display: flex;
@@ -14,14 +17,14 @@ const AboutMeCont = styled.div`
 const AboutMeText = styled.p`
   color: ${props=>props.color};
   font-size: 1.2rem;
-  width: 70%;
+  width: 100%;
   font-weight: 400;
 `
 
 const ImgCont = styled.div`
   box-shadow: inset 0 0 12px 10px ${props=>props.scolor}, inset 0 0 10px 3px ${props=>props.scolor};
   background-color: #20ace4;
-  width: 30%;
+  width: 100%;
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -44,12 +47,27 @@ const Link = styled.a`
   }
 `
 
+const variants = {
+  visible: {opacity: 1, x: 0, transition: {ease: "easeOut", duration: 1.5}},
+  lefthidden: {opacity: 0, x: -200},
+  righthidden: {opacity: 0, x: 200}
+}
+
 const AboutMe = ({}) => {
 
   const {theme} = useTheme();
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if(inView) {
+      controls.start("visible"); }
+  }, [controls, inView]
+  )
 
   return (
     <AboutMeCont>
+      <motion.div ref={ref} animate={controls} initial="lefthidden" variants={variants} style={{width: "70%"}}>
       <AboutMeText color={site_theme[theme].text}>
         Hey there! My name is Danny and I find designing and developing fun! <br/> <br/>
         My first experience with the web was back in 2003 when I created my first email account to play Neopets, a virtual pet website.
@@ -61,9 +79,12 @@ const AboutMe = ({}) => {
         Currently, I am looking for a practicum as a student intern to attain credits required for graduation. Afterwards, I will be looking for a full-time job
         as a developer, creating web and/or mobile applications that users would enjoy!
       </AboutMeText>
-      <ImgCont scolor={site_theme[theme].background}>
-      <AboutMeImage src="/profile.png" />
-      </ImgCont>
+      </motion.div>
+      <motion.div ref={ref} animate={controls} initial="righthidden" variants={variants} style={{width: "30%"}}>
+        <ImgCont scolor={site_theme[theme].background}>
+          <AboutMeImage src="/profile.png" />
+        </ImgCont>
+      </motion.div>
     </AboutMeCont>
   )
 }
