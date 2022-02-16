@@ -109,9 +109,24 @@ const ToolLabel = styled.div`
   text-align: center;
 `
 
-const variants = {
-  visible: {opacity: 1, y: 0, transition: {ease: "easeOut", duration: 1.5}},
-  hidden: {opacity: 0, y: 50},
+const container = {
+  visible: {
+    opacity: 1, 
+    transition: {
+      ease: "easeOut", 
+      duration: 1.5,
+      staggerChildren: 0.5
+    }
+  },
+  hidden: {
+    opacity: 0
+  }
+}
+
+const item = {
+  visible: {opacity: 1, y: 0, 
+  transition: { ease: "easeOut", duration: 1}},
+  hidden: {opacity: 0, y: 50}
 }
 
 const Toolkit = ({}) => {
@@ -128,9 +143,10 @@ const Toolkit = ({}) => {
 
   return (
     <ToolkitCont>
-      <motion.div ref={ref} animate={controls} initial="hidden" variants={variants}>
-      <Toolheader headcolor={site_theme[theme].text}>Design</Toolheader>
-      <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
+      <motion.div ref={ref} animate={controls} initial="hidden" variants={container}>
+        <motion.div variants={item}>
+          <Toolheader headcolor={site_theme[theme].text}>Design</Toolheader>
+          <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
         <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
         <ToolGroup>
           <Tool toolbg={site_theme[theme].background}>
@@ -169,12 +185,12 @@ const Toolkit = ({}) => {
           <ToolLabel labelcolor={site_theme[theme].text}>Premiere Pro</ToolLabel>
         </ToolGroup>
         </ToolRow>
-      </Toolbar>
-      </motion.div>
-      <motion.div ref={ref} animate={controls} initial="hidden" variants={variants}>
-      <Toolheader headcolor={site_theme[theme].text}>Front-End Development</Toolheader>
-      <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
-        <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
+          </Toolbar>
+        </motion.div>
+        <motion.div variants={item}>
+          <Toolheader headcolor={site_theme[theme].text}>Front-End Development</Toolheader>
+          <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
+            <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
         <ToolGroup>
           <Tool toolbg={site_theme[theme].background}>
             <IoLogoHtml5 size="50px" color={site_theme[theme].text}/>
@@ -241,12 +257,12 @@ const Toolkit = ({}) => {
           </Tool>
           <ToolLabel labelcolor={site_theme[theme].text}>Expo</ToolLabel>
         </ToolGroup>
-        </ToolRow>
-      </Toolbar>
-      </motion.div>
-      <motion.div ref={ref} animate={controls} initial="hidden" variants={variants}>
-      <Toolheader headcolor={site_theme[theme].text}>Back-End Development / Other</Toolheader>
-      <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
+            </ToolRow>
+          </Toolbar>
+        </motion.div>
+        <motion.div variants={item}>
+          <Toolheader headcolor={site_theme[theme].text}>Back-End Development / Other</Toolheader>
+          <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
         <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>
         <ToolGroup>
           <Tool toolbg={site_theme[theme].background}>
@@ -291,7 +307,8 @@ const Toolkit = ({}) => {
           <ToolLabel labelcolor={site_theme[theme].text}>Bash</ToolLabel>
         </ToolGroup>
         </ToolRow>
-      </Toolbar>
+          </Toolbar>
+        </motion.div>
       </motion.div>
     </ToolkitCont>
   )
