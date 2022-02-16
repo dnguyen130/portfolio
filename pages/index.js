@@ -67,7 +67,7 @@ export default function Home() {
   const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 3000);
+    setTimeout(() => setLoaded(true), 4000);
   })
 
   const ThemeSwitcher = () => {

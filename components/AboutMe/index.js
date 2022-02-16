@@ -18,14 +18,14 @@ const AboutMeText = styled.p`
 `
 
 const ImgCont = styled.div`
-  box-shadow: inset 0 0 12px 12px ${props=>props.scolor}, inset 0 0 3px 2px ${props=>props.scolor};
+  box-shadow: inset 0 0 12px 10px ${props=>props.scolor}, inset 0 0 10px 3px ${props=>props.scolor};
   background: linear-gradient(to right, #702c8c 40%, #e8248c 60%,  #e82424, #ffbc2c);
   width: 320px;
   padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: px;
   overflow: hidden;
 `
 

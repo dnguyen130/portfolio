@@ -24,11 +24,9 @@ const IconCont = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 90%;
-  border-radius: 50px;
   cursor: pointer;
   box-sizing: border-box;
-  color: ${props=>props.clr};
-  
+  color: ${props=>props.clr};  
   vertical-align: middle;
   background: none;
   border: 0;
@@ -43,6 +41,7 @@ const IconCont = styled.div`
     height: 0;
     box-sizing: inherit;
     z-index: -99999;
+
   }
 
   &::before {
