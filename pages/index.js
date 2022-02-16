@@ -134,6 +134,11 @@ export default function Home() {
           <Header headertext="Projects"/>
         </SectionCont>
       </NonHomePageCont>
+      <NonHomePageCont id="contact">
+        <SectionCont>
+          <Header headertext="Get in Touch"/>
+        </SectionCont>
+      </NonHomePageCont>
       </Page>
     )
   }
