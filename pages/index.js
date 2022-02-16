@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
 import { useTheme } from "../utils/provider";
-import { site_theme } from "../utils/variables";
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
@@ -12,6 +11,9 @@ import Chevron from "../components/Chevron";
 import Header from "../components/Header";
 import AboutMe from "../components/AboutMe";
 import Toolkit from "../components/Toolkit";
+
+// import { useAnimation, motion } from "framer-motion";
+// import { useInView } from "react-intersection-observer"; ANI STUFF
 
 
 const Logo = styled.img`
@@ -62,15 +64,31 @@ const SectionCont = styled.div`
   margin-bottom: 150px;
 `
 
+// const variants = {
+//   visible: {opacity: 1, x: 0, transition: {ease: "easeOut", duration: 1.5}},
+//   hidden: {opacity: 0, x: 200}
+// }
+
+// const verticalVariants = {
+//   visible: {opacity: 1, y: 0, transition: {ease: "easeOut", duration: 1}},
+//   hidden: {opacity: 0, y: 200}
+// } ANI STUFF
+
 export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
   const [loaded, setLoaded] = useState(false);
+  // const controls = useAnimation();
+  // const [ref, inView] = useInView(); ANI STUFF
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 4000);
-  })
+    // if(inView) {
+    //   controls.start("visible"); } ANI STUFF
+  }
+  // ,[controls, inView]
+  )
 
   const ThemeSwitcher = () => {
     setChecked(!checked);

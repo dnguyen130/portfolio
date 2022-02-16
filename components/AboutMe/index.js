@@ -8,6 +8,7 @@ const AboutMeCont = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: 1000px;
 `
 
 const AboutMeText = styled.p`
