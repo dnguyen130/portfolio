@@ -38,7 +38,7 @@ const ToolkitCont = styled.div`
 const Toolheader = styled.h3`
   color: ${props=>props.headcolor};
   font-family: Genos, sans-serif;
-  font-size: 24pt;
+  font-size: 2rem;
   margin: 10px 0;
 `
 

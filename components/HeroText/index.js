@@ -10,13 +10,13 @@ const HeroTextCont = styled.div`
 const HeroTextHeading = styled.h1`
   margin: 0;
   font-family: Genos, sans-serif;
-  font-size: 72pt;
+  font-size: 6rem;
   color: ${props=>props.hcolor};
 `
 
 const HeroTextBody = styled.p`
   margin: 0;
-  font-size: 18pt;
+  font-size: 1.5rem;
   color: ${props=>props.bcolor};
   margin-top: 20px;
 `

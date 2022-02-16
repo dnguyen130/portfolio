@@ -6,7 +6,7 @@ import { site_theme } from "../../utils/variables";
 const HeaderCont = styled.h2`
   margin: 0;
   font-family: Genos, sans-serif;
-  font-size: 72pt;
+  font-size: 6rem;
   color: ${props=>props.color};
 `
 
