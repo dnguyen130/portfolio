@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: Outfit, sans-serif;
   transition: 0.5s;
+  scroll-behavior: smooth;
 }
 
 a {

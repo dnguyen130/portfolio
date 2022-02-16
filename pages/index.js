@@ -108,7 +108,7 @@ export default function Home() {
   if(loaded === true) {
     return (
       <Page>
-      <HomePageCont>
+      <HomePageCont id="home">
         <Logo src="/logo.svg" />
         <LeftNav />
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
@@ -117,19 +117,19 @@ export default function Home() {
           <Chevron />
         </CenterCont>
       </HomePageCont>
-      <NonHomePageCont>
+      <NonHomePageCont id="about">
         <SectionCont>
           <Header headertext="About Me"/>
           <AboutMe />
         </SectionCont>
       </NonHomePageCont>
-      <NonHomePageCont>
+      <NonHomePageCont id="toolkit">
         <SectionCont>
           <Header headertext="Technical Toolkit"/>
           <Toolkit />
         </SectionCont>
       </NonHomePageCont>
-      <NonHomePageCont>
+      <NonHomePageCont id="projects">
         <SectionCont>
           <Header headertext="Projects"/>
         </SectionCont>

@@ -109,27 +109,37 @@ const LeftNav = ({
       <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:'100%'}}>
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaHome size="30px" />
+          <a href="#home" >
+            <FaHome size="30px" />
+          </a>
         </ReverseIconCont>
       </IconCont>
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaRegUser size="30px" />
+          <a href="#about">
+            <FaRegUser size="30px" />
+          </a>
         </ReverseIconCont>
       </IconCont>
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaLaptopCode size="30px" />
+          <a href="#toolkit">
+            <FaLaptopCode size="30px" />
+          </a>
         </ReverseIconCont>
       </IconCont>
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaRegFolderOpen size="30px" />
+          <a href="#projects">
+            <FaRegFolderOpen size="30px" />
+          </a>
         </ReverseIconCont>
       </IconCont>
       <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
         <ReverseIconCont>
-          <FaPhone size="30px"/>
+          <a href="#contact">
+            <FaPhone size="30px"/>
+          </a>
         </ReverseIconCont>
       </IconCont>
       </motion.div>
