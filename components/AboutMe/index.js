@@ -13,7 +13,7 @@ const AboutMeCont = styled.div`
 
 const AboutMeText = styled.p`
   color: ${props=>props.color};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   width: 70%;
   font-weight: 400;
 `
@@ -21,7 +21,7 @@ const AboutMeText = styled.p`
 const ImgCont = styled.div`
   box-shadow: inset 0 0 12px 10px ${props=>props.scolor}, inset 0 0 10px 3px ${props=>props.scolor};
   background-color: #20ace4;
-  width: 320px;
+  width: 30%;
   padding: 15px;
   display: flex;
   justify-content: center;

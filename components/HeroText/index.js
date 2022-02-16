@@ -53,7 +53,7 @@ const HeroText = ({
           <HeroTextHeading hcolor={site_theme[theme].text}>Ahoy, I am</HeroTextHeading>
         </motion.div>
         <motion.div variants={item}>
-          <HeroTextHeading hcolor={site_theme[theme].strong}>&lt;Danny Thai Nguyen /&gt;</HeroTextHeading>
+          <HeroTextHeading hcolor={site_theme[theme].strong}>Danny Nguyen</HeroTextHeading>
         </motion.div>
         <motion.div variants={item}>
           <HeroTextBody bcolor={site_theme[theme].text}>

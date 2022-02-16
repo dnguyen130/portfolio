@@ -28,7 +28,6 @@ import {
   SiGnubash} from "react-icons/si";
 
 import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io"
-import {FaNodeJs} from "react-icons/fa"
 
 const ToolkitCont = styled.div`
   display: flex;
@@ -61,8 +60,21 @@ const ToolRow = styled.div`
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow-x: auto;
+
+  //firefox
   scrollbar-color: ${props=>props.scrollbarcolor} ${props=>props.scrollcontcolor};
   scrollbar-width: thin;
+
+  //chromium
+  &::-webkit-scrollbar {
+    height: 10px;
+    width: 100%;
+    background-color: ${props=>props.scrollcontcolor}
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props=>props.scrollbarcolor}
+  }
 `
 
 const Tool = styled.div`
@@ -103,7 +115,7 @@ const Toolkit = ({}) => {
     <ToolkitCont>
       <Toolheader headcolor={site_theme[theme].text}>Design</Toolheader>
       <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
-        <ToolRow>
+        <ToolRow scrollcontcolor={site_theme[theme].oppositeGray} scrollbarcolor={site_theme[theme].weak}>>
         <ToolGroup>
           <Tool toolbg={site_theme[theme].background}>
             <CgFigma size="50px" color={site_theme[theme].text}/>
