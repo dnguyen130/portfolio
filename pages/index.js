@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
 import { useTheme } from "../utils/provider";
+import { site_theme } from "../utils/variables";
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
@@ -25,6 +26,7 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  overflow: auto;
 `
 
 const HomePageCont = styled.div`
@@ -107,6 +109,11 @@ export default function Home() {
         <SectionCont>
           <Header headertext="Technical Toolkit"/>
           <Toolkit />
+        </SectionCont>
+      </NonHomePageCont>
+      <NonHomePageCont>
+        <SectionCont>
+          <Header headertext="Projects"/>
         </SectionCont>
       </NonHomePageCont>
       </Page>
