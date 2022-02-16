@@ -10,13 +10,13 @@ const HeroTextCont = styled.div`
 const HeroTextHeading = styled.h1`
   margin: 0;
   font-family: Genos, sans-serif;
-  font-size: 72pt;
+  font-size: 6rem;
   color: ${props=>props.hcolor};
 `
 
 const HeroTextBody = styled.p`
   margin: 0;
-  font-size: 18pt;
+  font-size: 1.5rem;
   color: ${props=>props.bcolor};
   margin-top: 20px;
 `
@@ -53,7 +53,7 @@ const HeroText = ({
           <HeroTextHeading hcolor={site_theme[theme].text}>Ahoy, I am</HeroTextHeading>
         </motion.div>
         <motion.div variants={item}>
-          <HeroTextHeading hcolor={site_theme[theme].strong}>Danny Thai Nguyen</HeroTextHeading>
+          <HeroTextHeading hcolor={site_theme[theme].strong}>&lt;Danny Thai Nguyen /&gt;</HeroTextHeading>
         </motion.div>
         <motion.div variants={item}>
           <HeroTextBody bcolor={site_theme[theme].text}>

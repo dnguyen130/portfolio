@@ -12,20 +12,19 @@ const AboutMeCont = styled.div`
 
 const AboutMeText = styled.p`
   color: ${props=>props.color};
-  font-size: 22px;
+  font-size: 1.4rem;
   width: 70%;
   font-weight: 400;
 `
 
 const ImgCont = styled.div`
-  box-shadow: inset 0 0 12px 12px ${props=>props.scolor}, inset 0 0 3px 2px ${props=>props.scolor};
-  background: linear-gradient(to right, #702c8c 40%, #e8248c 60%,  #e82424, #ffbc2c);
+  box-shadow: inset 0 0 12px 10px ${props=>props.scolor}, inset 0 0 10px 3px ${props=>props.scolor};
+  background-color: #20ace4;
   width: 320px;
   padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
   overflow: hidden;
 `
 
@@ -57,7 +56,7 @@ const AboutMe = ({}) => {
         After experiencing a few different disciplines in the workforce, I fell in love with web and mobile development.
         I got to experience a fast-paced, cooperative school environment at the&nbsp;
         <Link href="https://www.bcit.ca/" linkcolor={site_theme[theme].strong} undercolor={site_theme[theme].strong}>British Columbia Instiute of Technology</Link>
-        , where I would work in a team of designers and developers, creating web and mobile applications from scratch! <br/> <br/>
+        , where I would work in teams of designers and developers, creating web and mobile applications from scratch! <br/> <br/>
         Currently, I am looking for a practicum as a student intern to attain credits required for graduation. Afterwards, I will be looking for a full-time job
         as a developer, creating web and/or mobile applications that users would enjoy!
       </AboutMeText>

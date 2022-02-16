@@ -4,8 +4,8 @@ import Lottie from "lottie-react";
 import Logo from "../../public/logoanim.json";
 
 const LogoAnimCont = styled.div`
-  width: 150px;
-  height:150px;
+  width: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ const LogoAnim = () => {
     <LogoAnimCont>
     <Lottie 
     animationData={Logo}
-    loop={false}
+    loop={1}
     />
     </LogoAnimCont>
   )

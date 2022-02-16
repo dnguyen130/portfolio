@@ -69,7 +69,7 @@ const TopNav = ({
             fontSize: 15
           }}
         >
-          ☀️
+          🌙
         </div>}
 
         checkedHandleIcon = {<div
@@ -81,7 +81,7 @@ const TopNav = ({
             fontSize: 15
           }}
         >
-          🌙
+          ☀️
         </div>}
       />
       <ImgButton>
