@@ -8,13 +8,14 @@ const ButtonCont = styled.div`
   align-items: center;
   background-color: ${props=>props.bgcolor};
   color: ${props=>props.clr};
-  height: 80px;
-  width: 180px;
+  height: ${props=>props.height};
+  width: ${props=>props.width};
   border-radius: 10px;
   font-weight: 600;
-  font-size: 24pt;
+  font-size: ${props=>props.fsize};
   cursor: pointer;
   user-select: none;
+  font-family: Genos, sans-serif;
 
   transition: background-color 0.2s;
 
@@ -33,14 +34,20 @@ const ButtonLink = styled.a`
 
 const Button = ({
   btnText = "Default",
-  btnLink = ""
+  btnLink = "",
+  bgcolor = "black",
+  bghover = "white",
+  clr = "gray",
+  height = "80px",
+  width = "180px",
+  fsize = "2em"
 }) => {
 
   const {theme} = useTheme();
 
   return (
-    <ButtonCont bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background}>
-      <ButtonLink>
+    <ButtonCont bgcolor={bgcolor} bghover={bghover} clr={clr} height={height} width={width} fsize={fsize}>
+      <ButtonLink href={btnLink}>
         {btnText}
       </ButtonLink>
     </ButtonCont>
