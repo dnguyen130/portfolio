@@ -16,6 +16,7 @@ const ButtonCont = styled.div`
   cursor: pointer;
   user-select: none;
   font-family: Genos, sans-serif;
+  margin: 0 20px;
 
   transition: background-color 0.2s;
 
@@ -47,7 +48,7 @@ const Button = ({
 
   return (
     <ButtonCont bgcolor={bgcolor} bghover={bghover} clr={clr} height={height} width={width} fsize={fsize}>
-      <ButtonLink href={btnLink}>
+      <ButtonLink target="_blank" href={btnLink}>
         {btnText}
       </ButtonLink>
     </ButtonCont>

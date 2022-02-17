@@ -13,7 +13,8 @@ const ProjectsWrapper = styled.div`
 
 const ProjectsCont = styled.div`
   display: flex;
-  padding: 0 0 100px;
+  margin: 0 0 100px;
+  position: relative;
 `
 
 const ProjectsCont2 = styled.div`
@@ -63,7 +64,7 @@ const ProjectList = styled.ul`
 `
 
 const ProjectListItem = styled.li`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `
 
 const ProjectTechCont = styled.div`
@@ -109,12 +110,14 @@ const Projects = () => {
           </ProjectTechCont>
           <StrongSpan strongcolor={site_theme[theme].text}><q>Create a connection with a little liquid courage.</q></StrongSpan>
           <ProjectList>
-            <ProjectListItem>Go to a restaurant, pick a drink, and send it to any recipient within the restaurant to start a conversation!</ProjectListItem>
-            <ProjectListItem>The restaurant will receive your order, deliver the selected drink to the recipient according to seat number and leave a message!</ProjectListItem>
-            <ProjectListItem>This project was designed and developed from scratch by my exceptional team of developers and designers in 12 weeks, which we then presented to over 100 people, including students, faculty, and industry experts.</ProjectListItem>
+            <ProjectListItem>Send a drink or food item to any person within a restaurant with OnMe.</ProjectListItem>
+            <ProjectListItem>The restaurant will receive the order and deliver the item to the recipient with your own custom message. </ProjectListItem>
+            <ProjectListItem>This project was designed and developed by a team of students in 12 weeks.</ProjectListItem>
+            <ProjectListItem>Proof of concept presented to over 100 people, including students, faculty, and industry professionals.</ProjectListItem>
           </ProjectList>
           <ButtonCont>
-            <Button btnText="GitHub" btnLink="https://github.com/dnguyen130/onme" height="40px" width="140px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
+            <Button btnText="Client Repo" btnLink="https://github.com/dnguyen130/onme" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
+            <Button btnText="Server Repo" btnLink="https://github.com/dnguyen130/OnMe-Serverside" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
           </ButtonCont>
         </ProjectDescription>
         </ProjectDescriptionCont>
@@ -136,7 +139,7 @@ const Projects = () => {
             <ProjectListItem>This was one of the first major projects given to us to apply our new knowledge of web development to create a no-database application, using local storage to store answers and give matching advice at the end. </ProjectListItem>
           </ProjectList>
           <ButtonCont2>
-            <Button btnText="GitHub" btnLink="https://github.com/wilyyy/Steady" height="40px" width="140px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
+            <Button btnText="Client Repo" btnLink="https://github.com/wilyyy/Steady" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
           </ButtonCont2>
         </ProjectDescription>
         </ProjectDescriptionCont>
