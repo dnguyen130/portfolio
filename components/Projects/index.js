@@ -107,7 +107,7 @@ const Projects = () => {
             <ProjectTech>styled-components</ProjectTech>
             <ProjectTech>PHP/SQL</ProjectTech>
           </ProjectTechCont>
-          <StrongSpan strongcolor={site_theme[theme].text}>"Create a connection with a little liquid courage."</StrongSpan>
+          <StrongSpan strongcolor={site_theme[theme].text}><q>Create a connection with a little liquid courage.</q></StrongSpan>
           <ProjectList>
             <ProjectListItem>Go to a restaurant, pick a drink, and send it to any recipient within the restaurant to start a conversation!</ProjectListItem>
             <ProjectListItem>The restaurant will receive your order, deliver the selected drink to the recipient according to seat number and leave a message!</ProjectListItem>
@@ -129,7 +129,7 @@ const Projects = () => {
             <ProjectTech>Next.js</ProjectTech>
             <ProjectTech>styled-components</ProjectTech>
           </ProjectTechCont>
-          <StrongSpan strongcolor={site_theme[theme].text}>"Get back on track to a happy life."</StrongSpan>
+          <StrongSpan strongcolor={site_theme[theme].text}><q>Get back on track to a happy life.</q></StrongSpan>
           <ProjectList>
             <ProjectListItem>At the end of the day, check in with Steady to self-assess your own mood and habits!</ProjectListItem>
             <ProjectListItem>Go through each category, answer the questions as truthfully as you can, and get some helpful advice at the end.</ProjectListItem>
