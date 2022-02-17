@@ -8,6 +8,13 @@ import Image from "next/image";
 
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
+import welcome from '../../public/steady/Steady_Welcome_Crop.png';
+import about from '../../public/steady/Steady_About_Crop.png';
+import instructions from '../../public/steady/Steady_Instructions_Crop.png';
+import menu from '../../public/steady/Steady_Menu_Crop.png';
+import meals from '../../public/steady/Steady_Meals_Crop.png';
+import results from '../../public/steady/Steady_Results_Crop.png';
+
 const Row = styled.div`
   display: flex;
   width: 100%;
@@ -32,22 +39,22 @@ const Carousel = () => {
   >
     <Slider className="Carousel2" style={{borderColor: site_theme[theme].text}}>
       <Slide index={0}>
-        <Image src="/steady/Steady_Welcome_Crop.png" width="285px" height="440px" />
+        <Image src={welcome} width="285px" height="440px" />
       </Slide>
       <Slide index={1}>
-        <Image src="/steady/Steady_About_Crop.png" width="285px" height="440px" />
+        <Image src={about} width="285px" height="440px" />
       </Slide>
       <Slide index={2}>
-        <Image src="/steady/Steady_Instructions_Crop.png" width="285px" height="440px" />
+        <Image src={instructions} width="285px" height="440px" />
       </Slide>
       <Slide index={3}>
-        <Image src="/steady/Steady_Menu_Crop.png"width="285px" height="440px" />
+        <Image src={menu} width="285px" height="440px" />
       </Slide>
       <Slide index={4}>
-        <Image src="/steady/Steady_Meals_Crop.png" width="285px" height="440px" />
+        <Image src={meals} width="285px" height="440px" />
       </Slide>
       <Slide index={5}>
-        <Image src="/steady/Steady_Results_Crop.png" width="285px" height="440px" />
+        <Image src={results} width="285px" height="440px" />
       </Slide>
     </Slider>
     <Row>
