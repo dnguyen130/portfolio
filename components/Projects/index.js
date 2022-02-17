@@ -53,7 +53,7 @@ const ProjectDescription = styled.div`
 
 const StrongSpan = styled.span`
   color: ${props=>props.strongcolor};
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin: 15px 0;
   text-align: center;
 `
@@ -110,9 +110,9 @@ const Projects = () => {
           </ProjectTechCont>
           <StrongSpan strongcolor={site_theme[theme].text}><q>Create a connection with a little liquid courage.</q></StrongSpan>
           <ProjectList>
-            <ProjectListItem>Send a drink or food item to any person within a restaurant with OnMe.</ProjectListItem>
-            <ProjectListItem>The restaurant will receive the order and deliver the item to the recipient with your own custom message. </ProjectListItem>
-            <ProjectListItem>This project was designed and developed by a team of students in 12 weeks.</ProjectListItem>
+            <ProjectListItem>Cross-platform mobile application designed to combat loneliness in Vancouver.</ProjectListItem>
+            <ProjectListItem>Send a drink with a custom message and spark a conversation!</ProjectListItem>
+            <ProjectListItem>Designed and developed in 12 weeks by student designers and developers.</ProjectListItem>
             <ProjectListItem>Proof of concept presented to over 100 people, including students, faculty, and industry professionals.</ProjectListItem>
           </ProjectList>
           <ButtonCont>
@@ -134,11 +134,13 @@ const Projects = () => {
           </ProjectTechCont>
           <StrongSpan strongcolor={site_theme[theme].text}><q>Get back on track to a happy life.</q></StrongSpan>
           <ProjectList>
-            <ProjectListItem>At the end of the day, check in with Steady to self-assess your own mood and habits!</ProjectListItem>
-            <ProjectListItem>Go through each category, answer the questions as truthfully as you can, and get some helpful advice at the end.</ProjectListItem>
-            <ProjectListItem>This was one of the first major projects given to us to apply our new knowledge of web development to create a no-database application, using local storage to store answers and give matching advice at the end. </ProjectListItem>
+            <ProjectListItem>Web-based self-therapy application</ProjectListItem>
+            <ProjectListItem>Answer questions based on eating, sleeping, and exercise habits.</ProjectListItem>
+            <ProjectListItem>Receive results with tips to balance your lifestyle.</ProjectListItem>
+            <ProjectListItem>Researched, designed, prototyped, tested, and developed by first year D3 students.</ProjectListItem>
           </ProjectList>
           <ButtonCont2>
+          <Button btnText="Live Site" btnLink="https://steadyofficial.vercel.app/" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
             <Button btnText="Client Repo" btnLink="https://github.com/wilyyy/Steady" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
           </ButtonCont2>
         </ProjectDescription>
