@@ -8,6 +8,7 @@ const HeaderCont = styled.h2`
   font-family: Genos, sans-serif;
   font-size: 6rem;
   color: ${props=>props.color};
+  margin-bottom: 20px;
 `
 
 const Line = styled.div`
