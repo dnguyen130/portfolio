@@ -13,12 +13,11 @@ const ProjectsWrapper = styled.div`
 
 const ProjectsCont = styled.div`
   display: flex;
-  padding: 0 10% 100px;
+  padding: 0 0 100px;
 `
 
 const ProjectsCont2 = styled.div`
   display: flex;
-  padding: 0 10%;
   justify-content: flex-end;
   flex-direction: row-reverse;
 `
@@ -27,20 +26,21 @@ const ProjectHeader = styled.h1`
   color: ${props=>props.headercolor};
   margin: 0;
   font-family: Genos, sans-serif;
-  font-size: 64px;
+  font-size: 3em;
 `
 
 const ProjectHeader2 = styled.h1`
   color: ${props=>props.headercolor};
   margin: 0;
   font-family: Genos, sans-serif;
-  font-size: 64px;
+  font-size: 3em;
   text-align: right;
 `
 
 const ProjectDescriptionCont = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0 20px;
 `
 
 const ProjectDescription = styled.div`
@@ -52,8 +52,8 @@ const ProjectDescription = styled.div`
 
 const StrongSpan = styled.span`
   color: ${props=>props.strongcolor};
-  font-size: 1.5em;
-  margin: 5px 0;
+  font-size: 1.2em;
+  margin: 15px 0;
   text-align: center;
 `
 
@@ -63,16 +63,16 @@ const ProjectList = styled.ul`
 `
 
 const ProjectListItem = styled.li`
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 `
 
 const ProjectTechCont = styled.div`
   display: flex;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: ${props=>props.techcolor};
   width: 100%;
   justify-content: space-around;
-  margin: 10px 0;
+  margin: 15px 0;
 `
 
 const ProjectTech = styled.div`
@@ -133,7 +133,7 @@ const Projects = () => {
           <ProjectList>
             <ProjectListItem>At the end of the day, check in with Steady to self-assess your own mood and habits!</ProjectListItem>
             <ProjectListItem>Go through each category, answer the questions as truthfully as you can, and get some helpful advice at the end.</ProjectListItem>
-            <ProjectListItem>This was one of the first major projects given to us to apply our new knowledge of web development to create a database-less application, using local storage to store answers and give matching advice at the end. </ProjectListItem>
+            <ProjectListItem>This was one of the first major projects given to us to apply our new knowledge of web development to create a no-database application, using local storage to store answers and give matching advice at the end. </ProjectListItem>
           </ProjectList>
           <ButtonCont2>
             <Button btnText="GitHub" btnLink="https://github.com/wilyyy/Steady" height="40px" width="140px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
