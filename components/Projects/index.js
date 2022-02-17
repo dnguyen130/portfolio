@@ -6,6 +6,10 @@ import PhoneCarousel from "../PhoneCarousel";
 import Carousel from "../Carousel";
 import Button from "../Button";
 
+import { useEffect } from "react";
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const ProjectsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -91,14 +95,46 @@ const ButtonCont2 = styled.div`
   display: flex;
 `
 
+const container = {
+  visible: {
+    opacity: 1, 
+    transition: {
+      ease: "easeOut", 
+      duration: 1.5,
+      staggerChildren: 0.5
+    }
+  },
+  hidden: {
+    opacity: 0
+  }
+}
+
+const item = {
+  visible: {opacity: 1, y: 0, 
+  transition: { ease: "easeOut", duration: 1}},
+  hidden: {opacity: 0, y: 50}
+}
+
 const Projects = () => {
 
   const {theme} = useTheme();
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if(inView) {
+      controls.start("visible"); }
+  }, [controls, inView]
+  )
 
   return(
     <ProjectsWrapper>
+      <motion.div ref={ref} animate={controls} initial="hidden" variants={container}>
       <ProjectsCont>
+        <motion.div variants={item}>
         <PhoneCarousel />
+        </motion.div>
+        <motion.div variants={item}>
         <ProjectDescriptionCont>
         <ProjectHeader headercolor={site_theme[theme].onme}>OnMe</ProjectHeader>
         <ProjectDescription desccolor={site_theme[theme].text}>
@@ -121,9 +157,13 @@ const Projects = () => {
           </ButtonCont>
         </ProjectDescription>
         </ProjectDescriptionCont>
+        </motion.div>
       </ProjectsCont>
       <ProjectsCont2>
+      <motion.div variants={item}>
         <Carousel />
+      </motion.div>
+      <motion.div variants={item}>
         <ProjectDescriptionCont>
         <ProjectHeader2 headercolor={site_theme[theme].steady}>Steady</ProjectHeader2>
         <ProjectDescription desccolor={site_theme[theme].text}>
@@ -145,7 +185,9 @@ const Projects = () => {
           </ButtonCont2>
         </ProjectDescription>
         </ProjectDescriptionCont>
+        </motion.div>
       </ProjectsCont2>
+      </motion.div>
     </ProjectsWrapper>
   )
 }
