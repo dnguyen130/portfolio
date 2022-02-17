@@ -82,7 +82,7 @@ const AboutMe = ({}) => {
       </motion.div>
       <motion.div ref={ref} animate={controls} initial="righthidden" variants={variants} style={{width: "30%"}}>
         <ImgCont scolor={site_theme[theme].background}>
-          <AboutMeImage src="/profile.png" />
+          <AboutMeImage src="/profile.png" alt="Profile Picture" />
         </ImgCont>
       </motion.div>
     </AboutMeCont>

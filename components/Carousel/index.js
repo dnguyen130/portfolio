@@ -39,22 +39,22 @@ const Carousel = () => {
   >
     <Slider className="Carousel2" style={{borderColor: site_theme[theme].text}}>
       <Slide index={0}>
-        <Image src={welcome} width="285px" height="440px" />
+        <Image src={welcome} alt="Steady Welcome Page" width="285px" height="440px" />
       </Slide>
       <Slide index={1}>
-        <Image src={about} width="285px" height="440px" />
+        <Image src={about} alt="Steady About Page" width="285px" height="440px" />
       </Slide>
       <Slide index={2}>
-        <Image src={instructions} width="285px" height="440px" />
+        <Image src={instructions} alt="Steady Instructions Page" width="285px" height="440px" />
       </Slide>
       <Slide index={3}>
-        <Image src={menu} width="285px" height="440px" />
+        <Image src={menu} alt="Steady Menu Page" width="285px" height="440px" />
       </Slide>
       <Slide index={4}>
-        <Image src={meals} width="285px" height="440px" />
+        <Image src={meals} alt="Steady Meal Question Page" width="285px" height="440px" />
       </Slide>
       <Slide index={5}>
-        <Image src={results} width="285px" height="440px" />
+        <Image src={results} alt="Steady Results Page" width="285px" height="440px" />
       </Slide>
     </Slider>
     <Row>
