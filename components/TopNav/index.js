@@ -91,7 +91,7 @@ const TopNav = ({
         {/* customize width, color of stroke stroke-width="10" stroke="white" */}
         <FaGithubSquare size="40px" color={site_theme[theme].background} />
       </ImgButton>
-      <Button btnText="Resume" />
+      <Button btnText="Resume" bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background} />
       </motion.div>
     </TopNavCont>
   )

@@ -6,7 +6,11 @@ const Colors = {
   DarkBlue: "#030F22",
   Orange: "#FFC757",
   DarkGray: "#6D6E70",
-  LightGray: "#C7C8CA"
+  LightGray: "#C7C8CA",
+  OnMePink: "#FE4370",
+  OnMeGold: "#A57760",
+  SteadyOrange: "#F57C33",
+  SteadyBlue: "#2C2C80"
 }
 
 export const site_theme = {
@@ -16,7 +20,9 @@ export const site_theme = {
       strong: Colors.Sapphire,
       gray: Colors.LightGray,
       oppositeGray: Colors.DarkGray,
-      weak: Colors.SkyBlue
+      weak: Colors.SkyBlue,
+      onme: Colors.OnMeGold,
+      steady: Colors.SteadyBlue
   },
 
   dark: {
@@ -25,7 +31,9 @@ export const site_theme = {
       strong: Colors.SkyBlue,
       gray: Colors.DarkGray,
       oppositeGray: Colors.LightGray,
-      weak: Colors.Sapphire
+      weak: Colors.Sapphire,
+      onme: Colors.OnMePink,
+      steady: Colors.SteadyOrange
   }
 }
 
