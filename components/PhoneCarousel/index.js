@@ -75,19 +75,19 @@ const PhoneCarousel = () => {
     <PhoneInnerCont>
     <Slider className="Carousel">
       <Slide index={0}>
-        <Image src={dashboard} width="190px" height="410px" />
+        <Image src={dashboard} alt="OnMe Dashboard Page" width="190px" height="410px" />
       </Slide>
       <Slide index={1}>
-        <Image src={restaurant} width="190px" height="410px" />
+        <Image src={restaurant} alt="OnMe Restaurant Selection Page" width="190px" height="410px" />
       </Slide>
       <Slide index={2}>
-        <Image src={menu} width="190px" height="410px" />
+        <Image src={menu} alt="OnMe Restaurant Menu Page" width="190px" height="410px" />
       </Slide>
       <Slide index={3}>
-        <Image src={seat} width="190px" height="410px" />
+        <Image src={seat} alt="OnMe Seat Selection Page" width="190px" height="410px" />
       </Slide>
       <Slide index={4}>
-        <Image src={order} width="190px" height="410px" />
+        <Image src={order} alt="OnMe Order Summary Page" width="190px" height="410px" />
       </Slide>
     </Slider>
     </PhoneInnerCont>
