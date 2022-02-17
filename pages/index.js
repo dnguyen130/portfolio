@@ -11,6 +11,7 @@ import Chevron from "../components/Chevron";
 import Header from "../components/Header";
 import AboutMe from "../components/AboutMe";
 import Toolkit from "../components/Toolkit";
+import Projects from "../components/Projects";
 
 // import { useAnimation, motion } from "framer-motion";
 // import { useInView } from "react-intersection-observer"; ANI STUFF
@@ -132,6 +133,12 @@ export default function Home() {
       <NonHomePageCont id="projects">
         <SectionCont>
           <Header headertext="Projects"/>
+          <Projects />
+        </SectionCont>
+      </NonHomePageCont>
+      <NonHomePageCont id="contact">
+        <SectionCont>
+          <Header headertext="Get in Touch"/>
         </SectionCont>
       </NonHomePageCont>
       </Page>
