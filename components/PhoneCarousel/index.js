@@ -8,6 +8,12 @@ import Image from "next/image";
 
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 
+import dashboard from '../../public/onme/OnMe_Dashboard.png'
+import restaurant from '../../public/onme/OnMe_RestaurantSelection.png'
+import menu from '../../public/onme/OnMe_RestaurantMenu.png'
+import seat from '../../public/onme/OnMe_SeatSelection.png'
+import order from '../../public/onme/OnMe_OrderSummary.png'
+
 const PhoneCont = styled.div`
   width: 211px;
   height: 428px;
@@ -69,19 +75,19 @@ const PhoneCarousel = () => {
     <PhoneInnerCont>
     <Slider className="Carousel">
       <Slide index={0}>
-        <Image src="/onme/OnMe_Dashboard.png" width="190px" height="410px" />
+        <Image src={dashboard} width="190px" height="410px" />
       </Slide>
       <Slide index={1}>
-        <Image src="/onme/OnMe_RestaurantSelection.png"width="190px" height="410px" />
+        <Image src={restaurant} width="190px" height="410px" />
       </Slide>
       <Slide index={2}>
-        <Image src="/onme/OnMe_RestaurantMenu.png" width="190px" height="410px" />
+        <Image src={menu} width="190px" height="410px" />
       </Slide>
       <Slide index={3}>
-        <Image src="/onme/OnMe_SeatSelection.png" width="190px" height="410px" />
+        <Image src={seat} width="190px" height="410px" />
       </Slide>
       <Slide index={4}>
-        <Image src="/onme/OnMe_OrderSummary.png" width="190px" height="410px" />
+        <Image src={order} width="190px" height="410px" />
       </Slide>
     </Slider>
     </PhoneInnerCont>
