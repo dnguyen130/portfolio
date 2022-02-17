@@ -75,7 +75,8 @@ const AboutMe = ({}) => {
         After experiencing a few different disciplines in the workforce, I fell in love with web and mobile development.
         I got to experience a fast-paced, cooperative school environment at the&nbsp;
         <Link href="https://www.bcit.ca/" linkcolor={site_theme[theme].strong} undercolor={site_theme[theme].strong}>British Columbia Instiute of Technology</Link>
-        , where I would work in teams of designers and developers, creating web and mobile applications from scratch! <br/> <br/>
+        , where I would work in teams of designers and developers, creating web and mobile applications from scratch in the&nbsp; 
+        <Link href="https://www.bcit.ca/programs/digital-design-and-development-diploma-full-time-6405dipma/" linkcolor={site_theme[theme].strong} undercolor={site_theme[theme].strong}>Digital Design and Development Program!</Link> <br/> <br/>
         Currently, I am looking for a practicum as a student intern to attain credits required for graduation. Afterwards, I will be looking for a full-time job
         as a developer, creating web and/or mobile applications that users would enjoy!
       </AboutMeText>

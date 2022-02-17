@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
 import { useTheme } from "../utils/provider";
+import { Helmet } from 'react-helmet';
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
@@ -109,6 +110,11 @@ export default function Home() {
   if(loaded === true) {
     return (
       <Page>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Danny Nguyen</title>
+          <meta name="description" content="Yo" />
+        </Helmet>
       <HomePageCont id="home">
         <Logo src="/logo.svg" />
         <LeftNav />
