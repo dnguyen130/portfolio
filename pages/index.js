@@ -75,7 +75,7 @@ export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   // const controls = useAnimation();
   // const [ref, inView] = useInView(); ANI STUFF
 

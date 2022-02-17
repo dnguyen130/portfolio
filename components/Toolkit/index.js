@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
@@ -29,8 +28,7 @@ import {
 
 import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io"
 
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 const ToolkitCont = styled.div`
   display: flex;
@@ -132,18 +130,10 @@ const item = {
 const Toolkit = ({}) => {
 
   const {theme} = useTheme();
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
-  useEffect(() => {
-    if(inView) {
-      controls.start("visible"); }
-  }, [controls, inView]
-  )
 
   return (
     <ToolkitCont>
-      <motion.div ref={ref} animate={controls} initial="hidden" variants={container}>
+      <motion.div whileInView="visible" viewport={{once: true}} initial="hidden" variants={container}>
         <motion.div variants={item}>
           <Toolheader headcolor={site_theme[theme].text}>Design</Toolheader>
           <Toolbar bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
