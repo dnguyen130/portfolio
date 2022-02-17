@@ -25,12 +25,29 @@ a {
   pointer-events: all;
 }
 
+.Carousel2 {
+  width: 290px;
+  height: 440px;
+  z-index: 5;
+  pointer-events: all;
+  border: 5px solid;
+  border-radius: 20px;
+}
+
 .CaroCont {
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 6;
   padding-right: 20px;
+}
+
+.CaroCont2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 6;
+  padding-left: 20px;
 }
 
 .CaroButton {

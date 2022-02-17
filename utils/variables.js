@@ -8,7 +8,9 @@ const Colors = {
   DarkGray: "#6D6E70",
   LightGray: "#C7C8CA",
   OnMePink: "#FE4370",
-  OnMeGold: "#A57760"
+  OnMeGold: "#A57760",
+  SteadyOrange: "#F57C33",
+  SteadyBlue: "#2C2C80"
 }
 
 export const site_theme = {
@@ -19,7 +21,8 @@ export const site_theme = {
       gray: Colors.LightGray,
       oppositeGray: Colors.DarkGray,
       weak: Colors.SkyBlue,
-      onme: Colors.OnMeGold
+      onme: Colors.OnMeGold,
+      steady: Colors.SteadyBlue
   },
 
   dark: {
@@ -29,7 +32,8 @@ export const site_theme = {
       gray: Colors.DarkGray,
       oppositeGray: Colors.LightGray,
       weak: Colors.Sapphire,
-      onme: Colors.OnMePink
+      onme: Colors.OnMePink,
+      steady: Colors.SteadyOrange
   }
 }
 
