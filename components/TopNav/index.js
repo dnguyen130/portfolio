@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import ReactSwitch from "react-switch";
-import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 
 import Button from "../Button";
-import ImgButton from "../ImgButton";
 
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
@@ -11,10 +9,10 @@ import { motion } from "framer-motion";
 
 const TopNavCont = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-self: flex-end;
   align-items: center;
-  width: 500px;
+  width: 300px;
   height: 120px;
   font-family: 'Maven Pro', sans-serif;
   z-index: 99999;
@@ -66,7 +64,7 @@ const TopNav = ({
             justifyContent: "center",
             alignItems: "center",
             height: "100%",
-            fontSize: 15
+            fontSize: 15,
           }}
         >
           🌙
@@ -84,13 +82,6 @@ const TopNav = ({
           ☀️
         </div>}
       />
-      <ImgButton>
-        <FaLinkedin size="40px" color={site_theme[theme].background} />
-      </ImgButton>
-      <ImgButton imgLink="https://github.com/dnguyen130">
-        {/* customize width, color of stroke stroke-width="10" stroke="white" */}
-        <FaGithubSquare size="40px" color={site_theme[theme].background} />
-      </ImgButton>
       <Button btnLink="/resume.pdf" btnText="Resume" width="150px" height="50px" fsize="1.5em" bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background} />
       </motion.div>
     </TopNavCont>

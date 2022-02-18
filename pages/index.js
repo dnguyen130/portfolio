@@ -93,7 +93,9 @@ export default function Home() {
     return (
       <Page>
       <HomePageCont id="home">
-        <Logo src="/logo.svg" />
+        <a href="#home">
+          <Logo src="/logo.svg" />
+        </a>
         <LeftNav />
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
         <CenterCont>
