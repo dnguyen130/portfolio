@@ -27,7 +27,9 @@ const Chevron = ({
   return(
     <ChevronCont clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
       <motion.div animate={{y:-15}} transition={{repeat: Infinity, duration: 1, repeatType: "mirror"}}>
-      <FaAngleDoubleDown size="40px" />
+        <a href="#about">
+          <FaAngleDoubleDown size="40px" />
+        </a>
       </motion.div>
     </ChevronCont>
   )

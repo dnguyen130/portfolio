@@ -49,7 +49,7 @@ const HeroText = ({
 
   return (
     <HeroTextCont>
-      <motion.div animate="visible" variants={container} initial="hidden">
+      <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{once:true}}>
         <motion.div variants={item}>
           <HeroTextHeading hcolor={site_theme[theme].text}>Ahoy, I am</HeroTextHeading>
         </motion.div>

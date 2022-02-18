@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
 
-import { CarouselProvider, Slider, Slide, ButtonNext, ButtonBack, DotGroup, Dot } from "pure-react-carousel";
+import { CarouselProvider, Slider, Slide, ButtonNext, ButtonBack, Dot } from "pure-react-carousel";
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import Image from "next/image";
 

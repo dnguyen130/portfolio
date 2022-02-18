@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react";
 import { useTheme } from "../utils/provider";
-import { Helmet } from 'react-helmet';
 
 import LeftNav from "../components/LeftNav"
 import TopNav from "../components/TopNav"
@@ -13,10 +12,6 @@ import Header from "../components/Header";
 import AboutMe from "../components/AboutMe";
 import Toolkit from "../components/Toolkit";
 import Projects from "../components/Projects";
-
-// import { useAnimation, motion } from "framer-motion";
-// import { useInView } from "react-intersection-observer"; ANI STUFF
-
 
 const Logo = styled.img`
   position: fixed;
@@ -80,7 +75,7 @@ export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   // const controls = useAnimation();
   // const [ref, inView] = useInView(); ANI STUFF
 
@@ -110,11 +105,6 @@ export default function Home() {
   if(loaded === true) {
     return (
       <Page>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>Danny Nguyen</title>
-          <meta name="description" content="Yo" />
-        </Helmet>
       <HomePageCont id="home">
         <Logo src="/logo.svg" />
         <LeftNav />

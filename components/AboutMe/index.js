@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
 
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 const AboutMeCont = styled.div`
   display: flex;
@@ -56,18 +55,10 @@ const variants = {
 const AboutMe = ({}) => {
 
   const {theme} = useTheme();
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
-  useEffect(() => {
-    if(inView) {
-      controls.start("visible"); }
-  }, [controls, inView]
-  )
 
   return (
     <AboutMeCont>
-      <motion.div ref={ref} animate={controls} initial="lefthidden" variants={variants} style={{width: "70%"}}>
+      <motion.div viewport={{once: true}} whileInView="visible" initial="lefthidden" variants={variants} style={{width: "70%"}}>
       <AboutMeText color={site_theme[theme].text}>
         Hey there! My name is Danny and I find designing and developing fun! <br/> <br/>
         My first experience with the web was back in 2003 when I created my first email account to play Neopets, a virtual pet website.
@@ -81,7 +72,7 @@ const AboutMe = ({}) => {
         as a developer, creating web and/or mobile applications that users would enjoy!
       </AboutMeText>
       </motion.div>
-      <motion.div ref={ref} animate={controls} initial="righthidden" variants={variants} style={{width: "30%"}}>
+      <motion.div viewport={{once: true}} whileInView="visible" initial="righthidden" variants={variants} style={{width: "30%"}}>
         <ImgCont scolor={site_theme[theme].background}>
           <AboutMeImage src="/profile.png" alt="Profile Picture" />
         </ImgCont>
