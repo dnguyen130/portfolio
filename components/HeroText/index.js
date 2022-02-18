@@ -5,24 +5,27 @@ import { site_theme } from "../../utils/variables";
 import { motion } from "framer-motion";
 
 const HeroTextCont = styled.div`
+  width: 100%;
 `
 
 const HeroTextHeading = styled.h1`
   margin: 0;
-  font-family: Genos, sans-serif;
-  font-size: 6rem;
+  font-family: 'Maven Pro', sans-serif;
+  font-size: ${props=>props.fsize};
   color: ${props=>props.hcolor};
+  font-weight: ${props=>props.fweight};
 `
 
 const HeroTextBody = styled.p`
   margin: 0;
-  font-size: 1.5rem;
+  font-weight: 200;
+  font-size: 1.3rem;
   color: ${props=>props.bcolor};
   margin-top: 20px;
 `
 
 const HeroText = ({
-  
+
 }) => {
   
   const {theme} = useTheme();
@@ -51,15 +54,15 @@ const HeroText = ({
     <HeroTextCont>
       <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{once:true}}>
         <motion.div variants={item}>
-          <HeroTextHeading hcolor={site_theme[theme].text}>Ahoy, I am</HeroTextHeading>
+          <HeroTextHeading hcolor={site_theme[theme].text} fsize="4rem" fweight="500">Ahoy, I am</HeroTextHeading>
         </motion.div>
         <motion.div variants={item}>
-          <HeroTextHeading hcolor={site_theme[theme].strong}>Danny Nguyen</HeroTextHeading>
+          <HeroTextHeading hcolor={site_theme[theme].strong} fsize="5rem">Danny Nguyen</HeroTextHeading>
         </motion.div>
         <motion.div variants={item}>
           <HeroTextBody bcolor={site_theme[theme].text}>
             I am a web developer with a desire to create interactive 
-            and accessible applications and experiences on the web.
+            and accessible applications on the web.
           </HeroTextBody>
         </motion.div>
         <motion.div variants={item}>

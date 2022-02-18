@@ -8,16 +8,16 @@ import { motion } from "framer-motion";
 
 const AboutMeCont = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   min-width: 1000px;
 `
 
 const AboutMeText = styled.p`
   color: ${props=>props.color};
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   width: 100%;
-  font-weight: 400;
+  font-weight: 200;
 `
 
 const ImgCont = styled.div`

@@ -15,7 +15,7 @@ const ButtonCont = styled.div`
   font-size: ${props=>props.fsize};
   cursor: pointer;
   user-select: none;
-  font-family: Genos, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   margin: 0 20px;
 
   transition: background-color 0.2s;
