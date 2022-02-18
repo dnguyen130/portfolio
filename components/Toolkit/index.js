@@ -37,9 +37,10 @@ const ToolkitCont = styled.div`
 
 const Toolheader = styled.h3`
   color: ${props=>props.headcolor};
-  font-family: Genos, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   font-size: 2rem;
   margin: 10px 0;
+  font-weight: 500;
 `
 
 const Toolbar = styled.div`
@@ -100,9 +101,9 @@ const ToolGroup = styled.div`
 
 const ToolLabel = styled.div`
   margin: 5px 0 0 0 ;
-  font-family: Genos, sans-serif;
-  font-weight: 600;
-  font-size: 1.7em;
+  font-family: 'Maven Pro', sans-serif;
+  font-weight: 500;
+  font-size: 1.2em;
   color: ${props=>props.labelcolor};
   text-align: center;
 `

@@ -28,14 +28,15 @@ const ProjectsCont2 = styled.div`
 const ProjectHeader = styled.h1`
   color: ${props=>props.headercolor};
   margin: 0;
-  font-family: Genos, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   font-size: 3em;
+  font-weight: 700;
 `
 
 const ProjectHeader2 = styled.h1`
   color: ${props=>props.headercolor};
   margin: 0;
-  font-family: Genos, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   font-size: 3em;
   text-align: right;
 `
@@ -63,6 +64,7 @@ const StrongSpan = styled.span`
 const ProjectList = styled.ul`
   color: ${props=>props.desccolor};
   font-size: 1em;
+  font-weight: 300;
 `
 
 const ProjectListItem = styled.li`
@@ -72,6 +74,7 @@ const ProjectListItem = styled.li`
 const ProjectTechCont = styled.div`
   display: flex;
   font-size: 1.2em;
+  font-weight: 500;
   color: ${props=>props.techcolor};
   width: 100%;
   justify-content: space-around;
@@ -79,7 +82,7 @@ const ProjectTechCont = styled.div`
 `
 
 const ProjectTech = styled.div`
-  font-family: Genos, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 `
 
 const ButtonCont = styled.div`
@@ -127,8 +130,8 @@ const Projects = () => {
             <ProjectListItem>Proof of concept presented to over 100 people, including students, faculty, and industry professionals.</ProjectListItem>
           </ProjectList>
           <ButtonCont>
-            <Button btnText="Client Repo" btnLink="https://github.com/dnguyen130/onme" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
-            <Button btnText="Server Repo" btnLink="https://github.com/dnguyen130/OnMe-Serverside" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
+            <Button btnText="Client Repo" btnLink="https://github.com/dnguyen130/onme" height="50px" width="250px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
+            <Button btnText="Server Repo" btnLink="https://github.com/dnguyen130/OnMe-Serverside" height="50px" width="250px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].onme} clr={site_theme[theme].background} />
           </ButtonCont>
         </ProjectDescription>
         </ProjectDescriptionCont>
@@ -155,8 +158,8 @@ const Projects = () => {
             <ProjectListItem>Researched, designed, prototyped, tested, and developed by first year D3 students.</ProjectListItem>
           </ProjectList>
           <ButtonCont2>
-          <Button btnText="Live Site" btnLink="https://steadyofficial.vercel.app/" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
-            <Button btnText="Client Repo" btnLink="https://github.com/wilyyy/Steady" height="40px" width="220px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
+          <Button btnText="Live Site" btnLink="https://steadyofficial.vercel.app/" height="50px" width="250px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
+            <Button btnText="Client Repo" btnLink="https://github.com/wilyyy/Steady" height="50px" width="250px" bgcolor={site_theme[theme].text} bghover={site_theme[theme].steady} clr={site_theme[theme].background} />
           </ButtonCont2>
         </ProjectDescription>
         </ProjectDescriptionCont>

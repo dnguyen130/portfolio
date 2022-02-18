@@ -16,7 +16,7 @@ const TopNavCont = styled.div`
   align-items: center;
   width: 500px;
   height: 120px;
-  font-family: Genos, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   z-index: 99999;
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@ const TopNav = ({
     <TopNavCont>
       <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
       <ReactSwitch    
-        borderRadius = {10}
+        borderRadius = {20}
         onChange = {onChange}
         checked = {checked}
         offColor = {site_theme[theme].text}
@@ -91,7 +91,7 @@ const TopNav = ({
         {/* customize width, color of stroke stroke-width="10" stroke="white" */}
         <FaGithubSquare size="40px" color={site_theme[theme].background} />
       </ImgButton>
-      <Button btnText="Resume" bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background} />
+      <Button btnLink="/resume.pdf" btnText="Resume" width="150px" height="50px" fsize="1.5em" bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background} />
       </motion.div>
     </TopNavCont>
   )
