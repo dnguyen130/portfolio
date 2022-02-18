@@ -9,6 +9,8 @@ import emailjs, { init } from '@emailjs/browser';
 
 import ImgButton from '../ImgButton';
 
+import { motion } from 'framer-motion';
+
 init("user_NBrl3xmy2qTPZHQYDw16x");
 
 const ContactCont = styled.div`
@@ -125,6 +127,11 @@ const OrCont = styled.h1`
   color: ${props=>props.textcolor};
 `
 
+const variants = {
+  visible: {opacity: 1, y: 0, transition: {ease: "easeOut", duration: 1.5}},
+  hidden: {opacity: 0, y: 100},
+}
+
 const Contact = () => {
   
   const {theme} = useTheme();
@@ -143,6 +150,7 @@ const Contact = () => {
     }
 
   return (
+    <motion.div viewport={{once: true}} whileInView="visible" initial="hidden" variants={variants}>
     <ContactCont bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
       <SocialCont>
         <SocialHeader hcolor={site_theme[theme].text}>Social Platforms</SocialHeader>
@@ -227,6 +235,7 @@ const Contact = () => {
         </FormRow>
       </FormCont>
     </ContactCont>
+    </motion.div>
   )
 }
 
