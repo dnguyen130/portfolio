@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { useState } from 'react';
 import { useTheme } from "../../utils/provider"
 import { site_theme } from "../../utils/variables"
 import { SiFacebook, SiTwitter, SiLinkedin, SiGithub } from 'react-icons/si'
@@ -11,7 +12,7 @@ import ImgButton from '../ImgButton';
 init("user_NBrl3xmy2qTPZHQYDw16x");
 
 const ContactCont = styled.div`
-  height: 300px;
+  height: 400px;
   background: linear-gradient(135deg, ${props=>props.bargrad1}, 50%, ${props=>props.bargrad2});
   width: 100%;
   border-radius: 10px;
@@ -28,7 +29,6 @@ const SocialCont = styled.div`
   justify-content: center;
   width: 30%;
   height: 100%;
-  border: 1px solid red;
 `
 
 const SocialHeader = styled.h1`
@@ -36,6 +36,7 @@ const SocialHeader = styled.h1`
   width: 100%;
   display: flex;
   justify-content: center;
+  color: ${props=>props.hcolor};
 `
 
 const ButtonRow = styled.div`
@@ -54,60 +55,176 @@ const FormCont = styled.form`
 `
 
 const FormInput = styled.input`
-  font-size: 2em;
+  font-size: 1.5em;
+  font-family: Outfit, sans-serif;
+  border-radius: 5px;
+  background-color: ${props=>props.inputcolor};
+  color: ${props=>props.textcolor};
+  transition: 0.1s;
+
+  &:focus {
+    outline: 3px solid ${props=>props.focuscolor};
+  }
+`
+
+const FormInputHalf = styled.input`
+  font-size: 1.5em;
+  font-family: Outfit, sans-serif;
+  border-radius: 5px;
+  width: 49%;
+  background-color: ${props=>props.inputcolor};
+  color: ${props=>props.textcolor};
+  transition: 0.1s;
+
+  &:focus {
+    outline: 3px solid ${props=>props.focuscolor};
+  }
 `
 
 const FormTextArea = styled.textarea`
+  font-size: 1.5em;
+  font-family: Outfit, sans-serif;
+  border-radius: 5px;
+  height: 40%;
+  background-color: ${props=>props.inputcolor};
+  color: ${props=>props.textcolor};
+  resize: none;
+  transition: 0.1s;
 
+  &:focus {
+    outline: 3px solid ${props=>props.focuscolor};
+  }
+`
+
+const FormButton = styled.input`
+  font-size: 1.5em;
+  width: 200px;
+  font-family: Outfit, sans-serif;
+  font-weight: 500;
+  background-color: ${props=>props.buttoncolor};
+  color: ${props=>props.textcolor};
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.25s ease-out;
+
+  &:hover {
+    background-color: ${props=>props.buttonhover};
+  }
+`
+
+const FormRow = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const OrCont = styled.h1`
+  color: ${props=>props.orColor};
+  color: ${props=>props.textcolor};
 `
 
 const Contact = () => {
   
   const {theme} = useTheme();
+  const [sent, setSent] = useState(false);
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_0ywqtim', 'template_v98mzdk', form.current, 'user_NBrl3xmy2qTPZHQYDw16x')
       .then((result) => {
         console.log(result.text);
+        setSent(true);
+        e.target.reset();
       }, (err) => {
         console.log(err.text);
-      })
+      });
     }
 
   return (
     <ContactCont bargrad1={site_theme[theme].gray} bargrad2={site_theme[theme].background}>
       <SocialCont>
-        <SocialHeader>Social Platforms</SocialHeader>
+        <SocialHeader hcolor={site_theme[theme].text}>Social Platforms</SocialHeader>
         <ButtonRow>
-          <ImgButton>
-            <SiFacebook size="40px"/>
+          {/* direct message links, could be useful later */}
+          {/* <ImgButton imgLink="https://m.me/dtnguyen95">
+            <SiFacebook color={site_theme[theme].background} size="40px"/>
+          </ImgButton>
+          <ImgButton imgLink="https://twitter.com/messages/compose?recipient_id=959383603">
+            <SiTwitter color={site_theme[theme].background} size="40px" />
+          </ImgButton> */}
+          <ImgButton imgLink="https://www.facebook.com/dtnguyen95">
+            <SiFacebook color={site_theme[theme].background} size="40px"/>
+          </ImgButton>
+          <ImgButton imgLink="https://twitter.com/dtnguyen95">
+            <SiTwitter color={site_theme[theme].background} size="40px" />
           </ImgButton>
           <ImgButton>
-            <SiTwitter size="40px" />
+            <SiLinkedin color={site_theme[theme].background} size="40px" />
           </ImgButton>
-          <ImgButton>
-            <SiLinkedin size="40px" />
-          </ImgButton>
-          <ImgButton>
-            <SiGithub size="40px" />
+          <ImgButton imgLink="https://github.com/dnguyen130">
+            <SiGithub color={site_theme[theme].background} size="40px" />
           </ImgButton>
         </ButtonRow>
       </SocialCont>
+      <OrCont orColor={site_theme[theme].text}>Or</OrCont>
       <FormCont ref={form} onSubmit={sendEmail}>
-        <FormInput 
-          type="text" 
-          name="user_name" 
-        />
+        <FormRow>
+          <FormInputHalf 
+            type="text" 
+            name="user_name" 
+            placeholder="Name (required)"
+            required
+            inputcolor={site_theme[theme].background}
+            textcolor={site_theme[theme].text}
+            focuscolor={site_theme[theme].strong}
+          />
+          <FormInputHalf
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          inputcolor={site_theme[theme].background}
+          textcolor={site_theme[theme].text}
+          focuscolor={site_theme[theme].strong}
+          />
+        </FormRow>
         <FormInput 
           type="email" 
-          name="user_email" 
+          name="user_email"
+          placeholder="Email (required)"
+          required
+          inputcolor={site_theme[theme].background}
+          textcolor={site_theme[theme].text}
+          focuscolor={site_theme[theme].strong}
         />
-        <FormTextArea name="message" />
-        <FormInput
-          type="submit"
-          value="Send" 
-        />
+        <FormTextArea 
+          name="message" 
+          placeholder="Message (required)"
+          inputcolor={site_theme[theme].background}
+          textcolor={site_theme[theme].text}
+          focuscolor={site_theme[theme].strong}
+          />
+        <FormRow>
+          {
+            sent && 
+            <div style={{color: site_theme[theme].strong, fontSize: '1.5em', fontWeight:600}}>
+              Message Received!
+            </div>
+          }
+          {
+            sent===false &&
+            <div />
+          }
+          <FormButton
+            type="submit"
+            value="Send" 
+            required
+            buttoncolor={site_theme[theme].text}
+            buttonhover={site_theme[theme].strong}
+            textcolor={site_theme[theme].background}
+          />
+        </FormRow>
       </FormCont>
     </ContactCont>
   )
