@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import AboutMe from "../components/AboutMe";
 import Toolkit from "../components/Toolkit";
 import Projects from "../components/Projects";
+import Contact from "../components/Contact";
 
 const Logo = styled.img`
   position: fixed;
@@ -61,30 +62,16 @@ const SectionCont = styled.div`
   margin-bottom: 150px;
 `
 
-// const variants = {
-//   visible: {opacity: 1, x: 0, transition: {ease: "easeOut", duration: 1.5}},
-//   hidden: {opacity: 0, x: 200}
-// }
-
-// const verticalVariants = {
-//   visible: {opacity: 1, y: 0, transition: {ease: "easeOut", duration: 1}},
-//   hidden: {opacity: 0, y: 200}
-// } ANI STUFF
-
 export default function Home() {
 
   const [checked, setChecked] = useState(false);
   const {theme, setTheme} = useTheme();
   const [loaded, setLoaded] = useState(true);
-  // const controls = useAnimation();
-  // const [ref, inView] = useInView(); ANI STUFF
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 4000);
-    // if(inView) {
-    //   controls.start("visible"); } ANI STUFF
-  }
-  // ,[controls, inView]
+    
+    }
   )
 
   const ThemeSwitcher = () => {
@@ -135,6 +122,7 @@ export default function Home() {
       <NonHomePageCont id="contact">
         <SectionCont>
           <Header headertext="Get in Touch"/>
+          <Contact />
         </SectionCont>
       </NonHomePageCont>
       </Page>
