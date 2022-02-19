@@ -21,6 +21,14 @@ export default function AppProvider({children}){
                     body {
                         background-color: ${site_theme[theme].background};
                     }
+
+                    ::selection {
+                        background: ${site_theme[theme].weak}; /* WebKit/Blink Browsers */
+                    }
+
+                    ::-moz-selection {
+                        background: ${site_theme[theme].weak}; /* Gecko Browsers */
+                    }
                 `
             }
         </style>
