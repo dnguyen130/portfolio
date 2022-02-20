@@ -1,12 +1,22 @@
 const Colors = {
   AliceBlue: "#EDF3FD",
-  DarkerAlice: "#303133",
+  DarkBlue: "#030F22",
   SkyBlue: "#38DBFF",
   Sapphire: "#00AEE8",
-  DarkBlue: "#030F22",
-  Orange: "#FFC757",
   DarkGray: "#6D6E70",
   LightGray: "#C7C8CA",
+  
+  //Scrollbar
+  DarkerAlice: "#CED3DB",
+  LighterDarkBlue: "#051A3B",
+
+  //Webkit States
+  LightScrollBarHover: "#17B2D1",
+  LightScrollBarActive: "#006A81",
+  DarkScrollBarHover: "#008DC0",
+  DarkScrollBarActive: "#00537B",
+  
+  //Project Colours
   OnMePink: "#FE4370",
   OnMeGold: "#A57760",
   SteadyOrange: "#F57C33",
@@ -22,7 +32,11 @@ export const site_theme = {
       oppositeGray: Colors.DarkGray,
       weak: Colors.SkyBlue,
       onme: Colors.OnMeGold,
-      steady: Colors.SteadyBlue
+      steady: Colors.SteadyBlue,
+
+      scrollbar: Colors.DarkerAlice,
+      hoverscroll: Colors.LightScrollBarHover,
+      activescroll: Colors.LightScrollBarActive,
   },
 
   dark: {
@@ -33,7 +47,10 @@ export const site_theme = {
       oppositeGray: Colors.LightGray,
       weak: Colors.Sapphire,
       onme: Colors.OnMePink,
-      steady: Colors.SteadyOrange
+      steady: Colors.SteadyOrange,
+      scrollbar: Colors.LighterDarkBlue,
+      hoverscroll: Colors.DarkScrollBarHover,
+      activescroll: Colors.DarkScrollBarActive
   }
 }
 
