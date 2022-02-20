@@ -7,8 +7,14 @@ const Colors = {
   LightGray: "#C7C8CA",
   
   //Scrollbar
-  DarkerAlice: "#ced3db",
-  LighterDarkBlue: "#051a3b",
+  DarkerAlice: "#CED3DB",
+  LighterDarkBlue: "#051A3B",
+
+  //Webkit States
+  LightScrollBarHover: "#17B2D1",
+  LightScrollBarActive: "#006A81",
+  DarkScrollBarHover: "#008DC0",
+  DarkScrollBarActive: "#00537B",
   
   //Project Colours
   OnMePink: "#FE4370",
@@ -27,7 +33,10 @@ export const site_theme = {
       weak: Colors.SkyBlue,
       onme: Colors.OnMeGold,
       steady: Colors.SteadyBlue,
-      scrollbar: Colors.DarkerAlice
+
+      scrollbar: Colors.DarkerAlice,
+      hoverscroll: Colors.LightScrollBarHover,
+      activescroll: Colors.LightScrollBarActive,
   },
 
   dark: {
@@ -39,7 +48,9 @@ export const site_theme = {
       weak: Colors.Sapphire,
       onme: Colors.OnMePink,
       steady: Colors.SteadyOrange,
-      scrollbar: Colors.LighterDarkBlue
+      scrollbar: Colors.LighterDarkBlue,
+      hoverscroll: Colors.DarkScrollBarHover,
+      activescroll: Colors.DarkScrollBarActive
   }
 }
 
