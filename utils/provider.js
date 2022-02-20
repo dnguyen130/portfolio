@@ -18,6 +18,10 @@ export default function AppProvider({children}){
         <style jsx global>
             {
                 `
+                    html {
+                        scrollbar-color: ${site_theme[theme].weak} ${site_theme[theme].scrollbar};
+                    }
+
                     body {
                         background-color: ${site_theme[theme].background};
                     }

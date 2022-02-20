@@ -13,6 +13,7 @@ import AboutMe from "../components/AboutMe";
 import Toolkit from "../components/Toolkit";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const Logo = styled.img`
   position: fixed;
@@ -25,8 +26,11 @@ const Logo = styled.img`
 const Page = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
   overflow: auto;
+`
+
+const PageCont = styled.div`
+  padding: 20px;
 `
 
 const HomePageCont = styled.div`
@@ -91,8 +95,9 @@ export default function Home() {
 
   if(loaded === true) {
     return (
-      <Page>
-      <HomePageCont id="home">
+      <Page id="home">
+        <PageCont>
+      <HomePageCont>
         <a href="#home">
           <Logo src="/logo.svg" />
         </a>
@@ -127,6 +132,8 @@ export default function Home() {
           <Contact />
         </SectionCont>
       </NonHomePageCont>
+      </PageCont>
+      <Footer />
       </Page>
     )
   }
