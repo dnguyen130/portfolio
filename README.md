@@ -96,6 +96,12 @@ The project will be based on the Next.js framework as its the one I have grown a
 * [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
 
+<br>
+
+* [styled-components](https://styled-components.com/)
+* [EmailJS](https://www.emailjs.com/)
+* [Framer](https://www.framer.com/)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -103,15 +109,24 @@ The project will be based on the Next.js framework as its the one I have grown a
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Base Layout
+- [x] Base Layout
 - [ ] Responsiveness
-- [ ] Animations/Transitions
-- [ ] Light/Dark Mode
+- [x] Animations/Transitions
+- [x] Light/Dark Mode
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Dream Features / Plan to Add
+
+ - [ ] Glass / Aurora UI to toolkit section
+ - [ ] Additional projects (design and UI/UX related)
+ - [ ] Tab-style project section once other projects added
+ - [ ] Responsiveness for tablets, phones, and other small devices
+ - [ ] Dynamic background with floating shapes (if it's not too busy)
+ - [ ] Modal and animation on sending an email?
 
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
