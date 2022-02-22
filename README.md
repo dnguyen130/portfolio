@@ -124,6 +124,10 @@ The project will be based on the Next.js framework as its the one I have grown a
  - [ ] Responsiveness for tablets, phones, and other small devices
  - [ ] Dynamic background with floating shapes (if it's not too busy)
  - [ ] Modal and animation on sending an email?
+ - [ ] Left navigation icons light up when that area is scrolled on (something to do with inView?)
+
+## Known Bugs
+- [ ] OnMe carousel drag click is broken, might look into either disabling or fixing, depending on which is better for usability.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
