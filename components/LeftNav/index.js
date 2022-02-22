@@ -16,14 +16,26 @@ const LeftNavCont = styled.div`
   align-self: flex-start;
 `
 
-const IconCont = styled.div`
+const LinkCont = styled.a`
+  width:50px;
+  height: 50px;
+  margin-bottom: 90%;
   transform: rotate(45deg);
+
+`
+
+const LinkContLast = styled.a`
+  width:50px;
+  height: 50px;
+  transform: rotate(45deg);
+`
+
+const IconCont = styled.div`
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 90%;
   cursor: pointer;
   box-sizing: border-box;
   color: ${props=>props.clr};  
@@ -107,41 +119,41 @@ const LeftNav = ({
   return (
     <LeftNavCont>
       <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', height:'100%'}}>
-      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
-        <ReverseIconCont>
-          <a href="#home" >
-            <FaHome size="30px" />
-          </a>
-        </ReverseIconCont>
-      </IconCont>
-      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
-        <ReverseIconCont>
-          <a href="#about">
-            <FaRegUser size="30px" />
-          </a>
-        </ReverseIconCont>
-      </IconCont>
-      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
-        <ReverseIconCont>
-          <a href="#toolkit">
-            <FaLaptopCode size="30px" />
-          </a>
-        </ReverseIconCont>
-      </IconCont>
-      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
-        <ReverseIconCont>
-          <a href="#projects">
-            <FaRegFolderOpen size="30px" />
-          </a>
-        </ReverseIconCont>
-      </IconCont>
-      <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
-        <ReverseIconCont>
-          <a href="#contact">
-            <FaPhone size="30px"/>
-          </a>
-        </ReverseIconCont>
-      </IconCont>
+      <LinkCont href="#home" >
+        <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
+          <ReverseIconCont>
+              <FaHome size="30px" />
+          </ReverseIconCont>
+        </IconCont>
+      </LinkCont>
+      <LinkCont href="#about">
+        <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
+          <ReverseIconCont>
+              <FaRegUser size="30px" />
+          </ReverseIconCont>
+        </IconCont>
+      </LinkCont>
+      <LinkCont href="#toolkit">
+        <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
+          <ReverseIconCont>
+              <FaLaptopCode size="30px" />
+          </ReverseIconCont>
+        </IconCont>
+      </LinkCont>
+      <LinkCont href="#projects">
+        <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
+          <ReverseIconCont>
+              <FaRegFolderOpen size="30px" />
+          </ReverseIconCont>
+        </IconCont>
+      </LinkCont>
+      <LinkContLast href="#contact">
+        <IconCont borderColor={site_theme[theme].strong} clr={site_theme[theme].text} hvrclr={site_theme[theme].strong}>
+          <ReverseIconCont>
+              <FaPhone size="30px"/>
+          </ReverseIconCont>
+        </IconCont>
+      </LinkContLast>
       </motion.div>
     </LeftNavCont>
   )
