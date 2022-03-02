@@ -18,7 +18,7 @@ const ButtonCont = styled.div`
   font-family: 'Maven Pro', sans-serif;
   margin: 0 20px;
 
-  transition: background-color 0.2s;
+  transition: 0.2s;
 
   &:hover {
     background-color: ${props=>props.bghover};
