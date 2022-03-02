@@ -122,6 +122,7 @@ The project will be based on the Next.js framework as its the one I have grown a
  - [ ] Additional projects (design and UI/UX related)
  - [ ] Tab-style project section once other projects added
  - [ ] Separate pages for project case studies / in-depth deescriptions
+ - [ ] Add transitions between pages once additional pages are done
  - [ ] Expanded top navigation to projects
  - [ ] Responsiveness for tablets, phones, and other small devices
  - [ ] Dynamic background with floating shapes (if it's not too busy)
