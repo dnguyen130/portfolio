@@ -121,6 +121,8 @@ The project will be based on the Next.js framework as its the one I have grown a
  - [ ] Glass / Aurora UI to toolkit section
  - [ ] Additional projects (design and UI/UX related)
  - [ ] Tab-style project section once other projects added
+ - [ ] Separate pages for project case studies / in-depth deescriptions
+ - [ ] Expanded top navigation to projects
  - [ ] Responsiveness for tablets, phones, and other small devices
  - [ ] Dynamic background with floating shapes (if it's not too busy)
  - [ ] Modal and animation on sending an email?
