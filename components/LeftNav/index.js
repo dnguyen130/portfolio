@@ -95,19 +95,19 @@ const ReverseIconCont = styled.div`
 `
 
 const container = {
-  visible: {
-    opacity: 1, 
-    x: 0,
-    transition: {
-      ease: "easeOut", 
-      duration: 1,
-      delay: 2
-    },
-  },
-  hidden: {
-    opacity: 0,
-    x: -50
-  },
+  // visible: {
+  //   opacity: 1, 
+  //   x: 0,
+  //   transition: {
+  //     ease: "easeOut", 
+  //     duration: 1,
+  //     delay: 2
+  //   },
+  // },
+  // hidden: {
+  //   opacity: 0,
+  //   x: -50
+  // },
 }
 
 const LeftNav = ({

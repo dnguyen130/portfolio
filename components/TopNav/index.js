@@ -21,19 +21,19 @@ const TopNavCont = styled.div`
 `
 
 const container = {
-  visible: {
-    opacity: 1, 
-    y: 0,
-    transition: {
-      ease: "easeOut", 
-      duration: 1,
-      delay: 2
-    },
-  },
-  hidden: {
-    opacity: 0,
-    y: -50
-  },
+  // visible: {
+  //   opacity: 1, 
+  //   y: 0,
+  //   transition: {
+  //     ease: "easeOut", 
+  //     duration: 1,
+  //     delay: 2
+  //   },
+  // },
+  // hidden: {
+  //   opacity: 0,
+  //   y: -50
+  // },
 }
 
 const TopNav = ({
