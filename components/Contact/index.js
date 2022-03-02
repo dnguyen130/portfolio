@@ -57,8 +57,9 @@ const FormCont = styled.form`
 `
 
 const FormInput = styled.input`
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-family: Outfit, sans-serif;
+  padding: 5px;
   border-radius: 5px;
   background-color: ${props=>props.inputcolor};
   color: ${props=>props.textcolor};
@@ -67,11 +68,16 @@ const FormInput = styled.input`
   &:focus {
     outline: 3px solid ${props=>props.focuscolor};
   }
+
+  ::placeholder {
+  opacity: 0.5;
+}
 `
 
 const FormInputHalf = styled.input`
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-family: Outfit, sans-serif;
+  padding: 5px;
   border-radius: 5px;
   width: 49%;
   background-color: ${props=>props.inputcolor};
@@ -81,13 +87,18 @@ const FormInputHalf = styled.input`
   &:focus {
     outline: 3px solid ${props=>props.focuscolor};
   }
+
+  ::placeholder {
+  opacity: 0.5;
+}
 `
 
 const FormTextArea = styled.textarea`
-  font-size: 1.5em;
+  font-size: 1em;
   font-family: Outfit, sans-serif;
   border-radius: 5px;
   height: 40%;
+  padding: 5px;
   background-color: ${props=>props.inputcolor};
   color: ${props=>props.textcolor};
   resize: none;
@@ -96,6 +107,10 @@ const FormTextArea = styled.textarea`
   &:focus {
     outline: 3px solid ${props=>props.focuscolor};
   }
+
+  ::placeholder {
+  opacity: 0.5;
+}
 `
 
 const FormButton = styled.input`
@@ -124,7 +139,6 @@ const FormRow = styled.div`
 
 const OrCont = styled.h1`
   color: ${props=>props.orColor};
-  color: ${props=>props.textcolor};
 `
 
 const variants = {
@@ -162,12 +176,12 @@ const Contact = () => {
           <ImgButton imgLink="https://twitter.com/messages/compose?recipient_id=959383603">
             <SiTwitter color={site_theme[theme].background} size="40px" />
           </ImgButton> */}
-          <ImgButton imgLink="https://www.facebook.com/dtnguyen95">
+          {/* <ImgButton imgLink="https://www.facebook.com/dtnguyen95">
             <SiFacebook color={site_theme[theme].background} size="40px"/>
           </ImgButton>
           <ImgButton imgLink="https://twitter.com/dtnguyen95">
             <SiTwitter color={site_theme[theme].background} size="40px" />
-          </ImgButton>
+          </ImgButton> */}
           <ImgButton>
             <SiLinkedin color={site_theme[theme].background} size="40px" />
           </ImgButton>
@@ -212,6 +226,7 @@ const Contact = () => {
           inputcolor={site_theme[theme].background}
           textcolor={site_theme[theme].text}
           focuscolor={site_theme[theme].strong}
+          required
           />
         <FormRow>
           {
