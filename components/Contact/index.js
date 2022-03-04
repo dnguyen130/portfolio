@@ -169,19 +169,6 @@ const Contact = () => {
       <SocialCont>
         <SocialHeader hcolor={site_theme[theme].text}>Social Platforms</SocialHeader>
         <ButtonRow>
-          {/* direct message links, could be useful later */}
-          {/* <ImgButton imgLink="https://m.me/dtnguyen95">
-            <SiFacebook color={site_theme[theme].background} size="40px"/>
-          </ImgButton>
-          <ImgButton imgLink="https://twitter.com/messages/compose?recipient_id=959383603">
-            <SiTwitter color={site_theme[theme].background} size="40px" />
-          </ImgButton> */}
-          {/* <ImgButton imgLink="https://www.facebook.com/dtnguyen95">
-            <SiFacebook color={site_theme[theme].background} size="40px"/>
-          </ImgButton>
-          <ImgButton imgLink="https://twitter.com/dtnguyen95">
-            <SiTwitter color={site_theme[theme].background} size="40px" />
-          </ImgButton> */}
           <ImgButton>
             <SiLinkedin color={site_theme[theme].background} size="40px" />
           </ImgButton>
