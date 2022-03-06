@@ -31,7 +31,7 @@ const Page = styled.div`
 `
 
 const PageCont = styled.div`
-  padding: 20px;
+  max-width:100% ;
 `
 
 const HomePageCont = styled.div`
@@ -39,7 +39,7 @@ const HomePageCont = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100vw;
+  max-width: 100%;
   height: 100vh;
   min-height: 720px;
 `
@@ -162,7 +162,6 @@ export default function Home() {
         <a href="#home">
           <Logo src="/logo.svg" />
         </a>
-        <LeftNav />
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
         <CenterCont>
           <HeroText />

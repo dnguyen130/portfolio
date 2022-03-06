@@ -16,7 +16,6 @@ const LogoAnim = () => {
     <LogoAnimCont>
     <Lottie 
     animationData={Logo}
-    loop={1}
     />
     </LogoAnimCont>
   )

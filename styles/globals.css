@@ -1,12 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+
 html,
 body {
   padding: 0;
   margin: 0;
+}
+
+html {
+  max-width: 100vw;
   font-family: Outfit, sans-serif;
-  transition: 0.5s;
   scroll-behavior: smooth;
+  display: flex;
+}
+
+body {
+  width: 100%;
+  transition: 0.5s;
+
 }
 
 a {
@@ -70,4 +81,8 @@ a {
 
 .carousel__dot--selected {
   background-color: black;
+}
+
+#__next{
+  max-width: 100%;
 }
