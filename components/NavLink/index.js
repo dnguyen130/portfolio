@@ -1,11 +1,45 @@
 import styled from "styled-components";
-import Link from "next/link";
-import { site_theme } from "../../utils/variables";
+import DiamondIcon from "../DiamondIcon";
+
+import { FaRegUser } from "react-icons/fa";
+
 import { useTheme } from "../../utils/provider";
+import { site_theme } from "../../utils/variables";
+
+const NavLinkCont = styled.div`
+	width: 200px;
+	height: 70px;
+	transform: skew(-45deg);
+	padding: 0 20px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.41);
+	}
+`;
+
+const UnskewCont = styled.div`
+	transform: skew(45deg);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height: 100%;
+	width: 80%;
+`;
+
+const TextCont = styled.p`
+	margin: 0;
+	color: ${(props) => props.txtcolor};
+	font-size: 1.2em;
+`;
 
 const IconCont = styled.div`
-	width: 50px;
-	height: 50px;
+	width: 35px;
+	height: 35px;
+	margin-right: 15px;
 	transform: rotate(45deg);
 	display: flex;
 	justify-content: center;
@@ -38,7 +72,7 @@ const IconCont = styled.div`
 		right: 0;
 	}
 
-	&:hover {
+	${NavLinkCont}:hover & {
 		color: ${(props) => props.hvrclr};
 
 		&::before,
@@ -66,19 +100,25 @@ const ReverseIconCont = styled.div`
 	transform: rotate(-45deg);
 `;
 
-const DiamondIcon = ({ children }) => {
+const NavLink = ({ linkText = "default" }) => {
 	const { theme } = useTheme();
 
 	return (
-		<IconCont
-			IconCont
-			borderColor={site_theme[theme].strong}
-			clr={site_theme[theme].text}
-			hvrclr={site_theme[theme].strong}
-		>
-			<ReverseIconCont>{children}</ReverseIconCont>
-		</IconCont>
+		<NavLinkCont>
+			<UnskewCont>
+				<IconCont
+					borderColor={site_theme[theme].strong}
+					clr={site_theme[theme].text}
+					hvrclr={site_theme[theme].strong}
+				>
+					<ReverseIconCont>
+						<FaRegUser size={25} />
+					</ReverseIconCont>
+				</IconCont>
+				<TextCont txtcolor={site_theme[theme].text}>{linkText}</TextCont>
+			</UnskewCont>
+		</NavLinkCont>
 	);
 };
 
-export default DiamondIcon;
+export default NavLink;

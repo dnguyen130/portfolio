@@ -163,6 +163,7 @@ export default function Home() {
           <Logo src="/logo.svg" />
         </a>
         <TopNav onChange={ThemeSwitcher} checked={checked}/>
+        <LeftNav />
         <CenterCont>
           <HeroText />
           <Chevron />
