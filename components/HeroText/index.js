@@ -16,7 +16,7 @@ const HeroTextHeading = styled.h1`
 	font-weight: ${(props) => props.fweight};
 `;
 
-const HeroTextBody = styled.p`
+const HeroTextBody = styled.h2`
 	margin: 0;
 	font-weight: 200;
 	font-size: 1.3rem;

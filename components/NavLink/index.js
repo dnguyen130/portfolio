@@ -15,9 +15,10 @@ const NavLinkCont = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: 0.25s;
 
 	&:hover {
-		background-color: rgba(255, 255, 255, 0.41);
+		background-color: rgba(0, 0, 0, 0.4);
 	}
 `;
 
@@ -34,6 +35,11 @@ const TextCont = styled.p`
 	margin: 0;
 	color: ${(props) => props.txtcolor};
 	font-size: 1.2em;
+	transition: 0.25s;
+
+	${NavLinkCont}:hover & {
+		color: ${(props) => props.txthvrclr};
+	}
 `;
 
 const IconCont = styled.div`
@@ -100,7 +106,7 @@ const ReverseIconCont = styled.div`
 	transform: rotate(-45deg);
 `;
 
-const NavLink = ({ linkText = "default" }) => {
+const NavLink = ({ linkText = "default", children }) => {
 	const { theme } = useTheme();
 
 	return (
@@ -111,11 +117,14 @@ const NavLink = ({ linkText = "default" }) => {
 					clr={site_theme[theme].text}
 					hvrclr={site_theme[theme].strong}
 				>
-					<ReverseIconCont>
-						<FaRegUser size={25} />
-					</ReverseIconCont>
+					<ReverseIconCont>{children}</ReverseIconCont>
 				</IconCont>
-				<TextCont txtcolor={site_theme[theme].text}>{linkText}</TextCont>
+				<TextCont
+					txtcolor={site_theme[theme].text}
+					txthvrclr={site_theme[theme].strong}
+				>
+					{linkText}
+				</TextCont>
 			</UnskewCont>
 		</NavLinkCont>
 	);

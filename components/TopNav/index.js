@@ -16,17 +16,33 @@ import NavLink from "../NavLink";
 
 const TopNavCont = styled.div`
 	display: flex;
-	justify-content: flex-end;
-	align-self: flex-end;
+	justify-content: space-between;
 	align-items: center;
-	width: 1200px;
-	height: 120px;
+	height: 70px;
+	width: 100%;
 	font-family: "Maven Pro", sans-serif;
-	z-index: 99999;
-	position: absolute;
-	top: 0;
-	margin: 20px 0 20px 20px;
-	background: linear-gradient(90deg, #000, #fff);
+	position: relative;
+	padding: 0 20px;
+	margin: 20px 0 0 0;
+	border: 3px solid purple;
+`;
+
+const TopNavBackground = styled.div`
+	display: flex;
+	align-items: center;
+	width: 1000px;
+	height: 100%;
+	font-family: "Maven Pro", sans-serif;
+	background: linear-gradient(
+		135deg,
+		transparent 10%,
+		${(props) => props.navgrad2} 40% 60%,
+		transparent 85%
+	);
+`;
+
+const Logo = styled.img`
+	width: 70px;
 `;
 
 const container = {
@@ -65,34 +81,49 @@ const TopNav = ({ onChange = () => {}, checked = false }) => {
 
 	return (
 		<TopNavCont>
-			<motion.div
-				variants={container}
-				animate="visible"
-				initial="hidden"
-				style={motionStyle}
-			>
-				<NavLink linkText="Home" />
-				<NavLink linkText="About" />
-				<NavLink linkText="Portfolio" />
-				<NavLink linkText="Contact" />
-				<label htmlFor="darkmode-switch">
-					<ReactSwitch
-						borderRadius={20}
-						onChange={onChange}
-						checked={checked}
-						offColor={site_theme[theme].text}
-						offHandleColor={site_theme[theme].background}
-						onColor={site_theme[theme].text}
-						onHandleColor={site_theme[theme].background}
-						activeBoxShadow={`0 0 2px 3px ${site_theme[theme].strong}`}
-						uncheckedIcon={false}
-						checkedIcon={false}
-						uncheckedHandleIcon={<div style={switchStyle}>🌙</div>}
-						checkedHandleIcon={<div style={switchStyle}>☀️</div>}
-						id="darkmode-switch"
-					/>
-				</label>
-			</motion.div>
+			<Logo src="/logo.svg" />
+			<TopNavBackground navgrad2={site_theme[theme].gray}>
+				<motion.div
+					variants={container}
+					animate="visible"
+					initial="hidden"
+					style={motionStyle}
+				>
+					<a href="#home"></a>
+					<NavLink linkText="Home">
+						<FaHome size={25} />
+					</NavLink>
+					<NavLink linkText="About">
+						<FaRegUser size={25} />
+					</NavLink>
+					<NavLink linkText="Portfolio">
+						<FaRegFolderOpen size={25} />
+					</NavLink>
+					<NavLink linkText="Contact">
+						<FaPhone size={20} />
+					</NavLink>
+					<label
+						htmlFor="darkmode-switch"
+						style={{ position: "relative", left: 30 }}
+					>
+						<ReactSwitch
+							borderRadius={20}
+							onChange={onChange}
+							checked={checked}
+							offColor={site_theme[theme].text}
+							offHandleColor={site_theme[theme].background}
+							onColor={site_theme[theme].text}
+							onHandleColor={site_theme[theme].background}
+							activeBoxShadow={`0 0 2px 3px ${site_theme[theme].strong}`}
+							uncheckedIcon={false}
+							checkedIcon={false}
+							uncheckedHandleIcon={<div style={switchStyle}>🌙</div>}
+							checkedHandleIcon={<div style={switchStyle}>☀️</div>}
+							id="darkmode-switch"
+						/>
+					</label>
+				</motion.div>
+			</TopNavBackground>
 		</TopNavCont>
 	);
 };

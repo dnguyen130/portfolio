@@ -5,6 +5,9 @@ import { site_theme } from "./variables";
 const initialStates = {
 	theme: "dark",
 	setTheme: () => {},
+
+	activePage: "home",
+	setActivePage: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -12,10 +15,11 @@ const MyContext = createContext(initialStates);
 export default function AppProvider({ children }) {
 	//children all the pages/components insider this provider
 	const [theme, setTheme] = useState(initialStates.theme);
+	const [activePage, setActivePage] = useState(initialStates.activePage);
 
 	//put in the variables you want to share
 	return (
-		<MyContext.Provider value={{ theme, setTheme }}>
+		<MyContext.Provider value={{ theme, setTheme, activePage, setActivePage }}>
 			<style jsx global>
 				{`
 					html {
@@ -40,25 +44,40 @@ export default function AppProvider({ children }) {
 					}
 
 					html::-webkit-scrollbar-button {
-						background-color: ${site_theme[theme].scrolbar};
+						background-color: ${site_theme[theme].scrollbar};
 						background-size: 10px 10px;
 						background-position: center center;
 						background-repeat: no-repeat;
-						height: 16px;
+						height: 20px;
 						width: 1em;
 						-webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
 					}
 
-					html::-webkit-scrollbar-button:horizontal:increment {
-						background-image: url(https://dl.dropboxusercontent.com/u/55165267/icon2.png);
+					html::-webkit-scrollbar-button:start:decrement {
+						background-image: url("/angle_up_${theme}.svg");
+					}
+
+					html::-webkit-scrollbar-button:start:decrement:active {
+						background-image: url("/angle_up_${theme === "dark"
+							? "light"
+							: "dark"}.svg");
+						background-color: ${site_theme[theme].strong};
 					}
 
 					html::-webkit-scrollbar-button:end:increment {
 						background-image: url("/angle_down_${theme}.svg");
 					}
 
-					html::-webkit-scrollbar-button:start:decrement {
-						background-image: url("/angle_up_${theme}.svg");
+					html::-webkit-scrollbar-button:end:increment:active {
+						background-image: url("/angle_down_${theme === "dark"
+							? "light"
+							: "dark"}.svg");
+						background-color: ${site_theme[theme].strong};
+					}
+
+					html::-webkit-scrollbar-button:start:increment,
+					html::-webkit-scrollbar-button:end:decrement {
+						display: none;
 					}
 
 					body {
@@ -84,4 +103,9 @@ export default function AppProvider({ children }) {
 export function useTheme() {
 	const { theme, setTheme } = useContext(MyContext);
 	return { theme, setTheme };
+}
+
+export function useActivePage() {
+	const { activePage, setActivePage } = useContext(MyContext);
+	return { activePage, setActivePage };
 }
