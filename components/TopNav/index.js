@@ -8,84 +8,101 @@ import { site_theme } from "../../utils/variables";
 import { motion } from "framer-motion";
 
 const TopNavCont = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-self: flex-end;
-  align-items: center;
-  width: 300px;
-  height: 120px;
-  font-family: 'Maven Pro', sans-serif;
-  z-index: 99999;
-  position: absolute;
-  top: 0;
-`
+	display: flex;
+	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: center;
+	width: 300px;
+	height: 120px;
+	font-family: "Maven Pro", sans-serif;
+	z-index: 99999;
+	position: absolute;
+	top: 0;
+`;
 
 const container = {
-  // visible: {
-  //   opacity: 1, 
-  //   y: 0,
-  //   transition: {
-  //     ease: "easeOut", 
-  //     duration: 1,
-  //     delay: 2
-  //   },
-  // },
-  // hidden: {
-  //   opacity: 0,
-  //   y: -50
-  // },
-}
+	// visible: {
+	//   opacity: 1,
+	//   y: 0,
+	//   transition: {
+	//     ease: "easeOut",
+	//     duration: 1,
+	//     delay: 2
+	//   },
+	// },
+	// hidden: {
+	//   opacity: 0,
+	//   y: -50
+	// },
+};
 
-const TopNav = ({
+const TopNav = ({ onChange = () => {}, checked = false }) => {
+	const { theme } = useTheme();
 
-  onChange = () => {},
-  checked = false,
-}) => {
-
-  const {theme} = useTheme();
-
-  return (
-    <TopNavCont>
-      <motion.div variants={container} animate="visible" initial="hidden" style={{display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-      <ReactSwitch    
-        borderRadius = {20}
-        onChange = {onChange}
-        checked = {checked}
-        offColor = {site_theme[theme].text}
-        offHandleColor = {site_theme[theme].background}
-        onColor = {site_theme[theme].text}
-        onHandleColor = {site_theme[theme].background}
-        activeBoxShadow = {`0 0 2px 3px ${site_theme[theme].strong}`}
-        uncheckedIcon = {false}
-        checkedIcon = {false}
-        uncheckedHandleIcon = {<div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-            fontSize: 15,
-          }}
-        >
-          🌙
-        </div>}
-
-        checkedHandleIcon = {<div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-            fontSize: 15
-          }}
-        >
-          ☀️
-        </div>}
-      />
-      <Button btnLink="/resume.pdf" btnText="Resume" width="150px" height="50px" fsize="1.5em" bgcolor={site_theme[theme].text} bghover={site_theme[theme].strong} clr={site_theme[theme].background} />
-      </motion.div>
-    </TopNavCont>
-  )
-}
+	return (
+		<TopNavCont>
+			<motion.div
+				variants={container}
+				animate="visible"
+				initial="hidden"
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+					width: "100%",
+					alignItems: "center",
+				}}
+			>
+				<ReactSwitch
+					borderRadius={20}
+					onChange={onChange}
+					checked={checked}
+					offColor={site_theme[theme].text}
+					offHandleColor={site_theme[theme].background}
+					onColor={site_theme[theme].text}
+					onHandleColor={site_theme[theme].background}
+					activeBoxShadow={`0 0 2px 3px ${site_theme[theme].strong}`}
+					uncheckedIcon={false}
+					checkedIcon={false}
+					uncheckedHandleIcon={
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "100%",
+								fontSize: 15,
+							}}
+						>
+							🌙
+						</div>
+					}
+					checkedHandleIcon={
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								height: "100%",
+								fontSize: 15,
+							}}
+						>
+							☀️
+						</div>
+					}
+				/>
+				<Button
+					btnLink="/resume.pdf"
+					btnText="Resume"
+					width="150px"
+					height="50px"
+					fsize="1.5em"
+					bgcolor={site_theme[theme].text}
+					bghover={site_theme[theme].strong}
+					clr={site_theme[theme].background}
+				/>
+			</motion.div>
+		</TopNavCont>
+	);
+};
 
 export default TopNav;
