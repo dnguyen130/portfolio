@@ -45,7 +45,7 @@ const Toolheader = styled.h3`
 `;
 
 const Toolbar = styled.div`
-	height: 200px;
+	height: 140px;
 	background: linear-gradient(
 		135deg,
 		${(props) => props.bargrad1},
@@ -101,7 +101,7 @@ const ToolGroup = styled.div`
 	justify-content: center;
 	align-items: center;
 	width: 180px;
-	height: 170px;
+	height: 120px;
 	flex: 0 0 auto;
 `;
 
