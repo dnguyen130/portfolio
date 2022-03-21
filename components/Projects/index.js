@@ -17,6 +17,7 @@ const ProjectsCont = styled.div`
 	display: flex;
 	margin: 0 0 100px;
 	position: relative;
+	justify-content: space-between;
 `;
 
 const ProjectsCont2 = styled.div`
@@ -45,6 +46,7 @@ const ProjectDescriptionCont = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 0 20px;
+	width: 900px;
 `;
 
 const ProjectDescription = styled.div`
@@ -174,7 +176,7 @@ const Projects = () => {
 					</ProjectDescriptionCont>
 				</motion.div>
 			</ProjectsCont>
-			<ProjectsCont2>
+			<ProjectsCont>
 				<motion.div
 					variants={variants}
 					initial="righthidden"
@@ -190,7 +192,7 @@ const Projects = () => {
 					viewport={{ once: true }}
 				>
 					<ProjectDescriptionCont>
-						<ProjectHeader2 headercolor={site_theme[theme].steady}>Steady</ProjectHeader2>
+						<ProjectHeader headercolor={site_theme[theme].steady}>Steady</ProjectHeader>
 						<ProjectDescription desccolor={site_theme[theme].text}>
 							<ProjectTechCont techcolor={site_theme[theme].steady}>
 								<ProjectTech>React</ProjectTech>
@@ -213,16 +215,7 @@ const Projects = () => {
 									students.
 								</ProjectListItem>
 							</ProjectList>
-							<ButtonCont2>
-								<Button
-									btnText="Live Site"
-									btnLink="https://steadyofficial.vercel.app/"
-									height="50px"
-									width="250px"
-									bgcolor={site_theme[theme].text}
-									bghover={site_theme[theme].steady}
-									clr={site_theme[theme].background}
-								/>
+							<ButtonCont>
 								<Button
 									btnText="Client Repo"
 									btnLink="https://github.com/wilyyy/Steady"
@@ -232,11 +225,20 @@ const Projects = () => {
 									bghover={site_theme[theme].steady}
 									clr={site_theme[theme].background}
 								/>
-							</ButtonCont2>
+								<Button
+									btnText="Live Site"
+									btnLink="https://steadyofficial.vercel.app/"
+									height="50px"
+									width="250px"
+									bgcolor={site_theme[theme].text}
+									bghover={site_theme[theme].steady}
+									clr={site_theme[theme].background}
+								/>
+							</ButtonCont>
 						</ProjectDescription>
 					</ProjectDescriptionCont>
 				</motion.div>
-			</ProjectsCont2>
+			</ProjectsCont>
 		</ProjectsWrapper>
 	);
 };
