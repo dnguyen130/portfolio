@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 
 import { useTheme } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
+import Link from "next/link";
 
 const NavLinkCont = styled.div`
 	width: 200px;
@@ -106,27 +107,26 @@ const ReverseIconCont = styled.div`
 	transform: rotate(-45deg);
 `;
 
-const NavLink = ({ linkText = "default", children }) => {
+const NavLink = ({ linkText = "default", children, pageLink = "/" }) => {
 	const { theme } = useTheme();
 
 	return (
-		<NavLinkCont>
-			<UnskewCont>
-				<IconCont
-					borderColor={site_theme[theme].strong}
-					clr={site_theme[theme].text}
-					hvrclr={site_theme[theme].strong}
-				>
-					<ReverseIconCont>{children}</ReverseIconCont>
-				</IconCont>
-				<TextCont
-					txtcolor={site_theme[theme].text}
-					txthvrclr={site_theme[theme].strong}
-				>
-					{linkText}
-				</TextCont>
-			</UnskewCont>
-		</NavLinkCont>
+		<Link href={pageLink}>
+			<NavLinkCont>
+				<UnskewCont>
+					<IconCont
+						borderColor={site_theme[theme].strong}
+						clr={site_theme[theme].text}
+						hvrclr={site_theme[theme].strong}
+					>
+						<ReverseIconCont>{children}</ReverseIconCont>
+					</IconCont>
+					<TextCont txtcolor={site_theme[theme].text} txthvrclr={site_theme[theme].strong}>
+						{linkText}
+					</TextCont>
+				</UnskewCont>
+			</NavLinkCont>
+		</Link>
 	);
 };
 

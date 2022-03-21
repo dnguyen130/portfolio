@@ -29,6 +29,7 @@ const ImgCont = styled.div`
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	transition: box-shadow 0.5s;
 `;
 
 const AboutMeImage = styled.img`
@@ -65,15 +66,14 @@ const AboutMe = ({}) => {
 				style={{ width: "70%" }}
 			>
 				<AboutMeText color={site_theme[theme].text}>
-					Hey there! My name is Danny and I find designing and developing fun!{" "}
+					Hey there! My name is Danny and I find designing and developing fun! <br /> <br />
+					My first experience with the web was back in 2003 when I created my first email
+					account to play Neopets, a virtual pet website. Since then, my whole life, like many
+					others, has revolved around using the web to communicate and learn from others.{" "}
 					<br /> <br />
-					My first experience with the web was back in 2003 when I created my
-					first email account to play Neopets, a virtual pet website. Since
-					then, my whole life, like many others, has revolved around using the
-					web to communicate and learn from others. <br /> <br />
-					After experiencing a few different disciplines in the workforce, I
-					fell in love with web and mobile development. I got to experience a
-					fast-paced, cooperative school environment at the&nbsp;
+					After experiencing a few different disciplines in the workforce, I fell in love with
+					web and mobile development. I got to experience a fast-paced, cooperative school
+					environment at the&nbsp;
 					<Link
 						href="https://www.bcit.ca/"
 						linkcolor={site_theme[theme].strong}
@@ -81,8 +81,8 @@ const AboutMe = ({}) => {
 					>
 						British Columbia Instiute of Technology
 					</Link>
-					, where I would work in teams of designers and developers, creating
-					web and mobile applications from scratch in the&nbsp;
+					, where I would work in teams of designers and developers, creating web and mobile
+					applications from scratch in the&nbsp;
 					<Link
 						href="https://www.bcit.ca/programs/digital-design-and-development-diploma-full-time-6405dipma/"
 						linkcolor={site_theme[theme].strong}
@@ -91,10 +91,9 @@ const AboutMe = ({}) => {
 						Digital Design and Development Program!
 					</Link>{" "}
 					<br /> <br />
-					Currently, I am looking for a practicum as a student intern to attain
-					credits required for graduation. Afterwards, I will be looking for a
-					full-time job as a developer, creating web and/or mobile applications
-					that users would enjoy!
+					Currently, I am looking for a practicum as a student intern to attain credits
+					required for graduation. Afterwards, I will be looking for a full-time job as a
+					developer, creating web and/or mobile applications that users would enjoy!
 				</AboutMeText>
 			</motion.div>
 			<motion.div

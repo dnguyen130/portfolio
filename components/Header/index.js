@@ -13,12 +13,7 @@ const HeaderCont = styled.h2`
 `;
 
 const Line = styled.div`
-	background: linear-gradient(
-		90deg,
-		${(props) => props.linecolor},
-		30%,
-		rgba(0, 0, 0, 0)
-	);
+	background: linear-gradient(90deg, ${(props) => props.linecolor}, 30%, rgba(0, 0, 0, 0));
 	height: 2px;
 `;
 

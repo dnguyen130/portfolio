@@ -7,7 +7,6 @@ const PolicyCont = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	width: 80%;
-	border: 2px solid green;
 	color: ${(props) => props.txtcolor};
 `;
 

@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import ReactSwitch from "react-switch";
 import { useTheme } from "../../utils/provider";
+import { useActivePage } from "../../utils/provider";
 import { site_theme } from "../../utils/variables";
 import { motion } from "framer-motion";
-import {
-	FaLaptopCode,
-	FaRegUser,
-	FaHome,
-	FaRegFolderOpen,
-	FaPhone,
-} from "react-icons/fa";
+import { useState } from "react";
+import { FaLaptopCode, FaRegUser, FaHome, FaRegFolderOpen, FaPhone } from "react-icons/fa";
 
 import DiamondIcon from "../DiamondIcon";
 import NavLink from "../NavLink";
@@ -18,13 +14,16 @@ const TopNavCont = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 70px;
+	height: 90px;
 	width: 100%;
 	font-family: "Maven Pro", sans-serif;
 	position: relative;
 	padding: 0 20px;
-	margin: 20px 0 0 0;
-	border: 3px solid purple;
+	padding-top: 20px;
+	position: fixed;
+	top: 0;
+	background-color: ${(props) => props.bgcolor};
+	transition: background-color 0.5s;
 `;
 
 const TopNavBackground = styled.div`
@@ -35,9 +34,9 @@ const TopNavBackground = styled.div`
 	font-family: "Maven Pro", sans-serif;
 	background: linear-gradient(
 		135deg,
-		transparent 10%,
+		transparent 20%,
 		${(props) => props.navgrad2} 40% 60%,
-		transparent 85%
+		transparent 87%
 	);
 `;
 
@@ -76,39 +75,34 @@ const motionStyle = {
 	alignItems: "center",
 };
 
-const TopNav = ({ onChange = () => {}, checked = false }) => {
-	const { theme } = useTheme();
+const TopNav = ({}) => {
+	const { theme, setTheme } = useTheme();
+	const { activePage, setActivePage } = useActivePage();
+	const [checked, setChecked] = useState(false);
+
+	const ThemeSwitcher = () => {
+		setChecked(!checked);
+		setTheme(theme === "dark" ? "light" : "dark");
+	};
 
 	return (
-		<TopNavCont>
+		<TopNavCont bgcolor={site_theme[theme].background}>
 			<Logo src="/logo.svg" />
 			<TopNavBackground navgrad2={site_theme[theme].gray}>
-				<motion.div
-					variants={container}
-					animate="visible"
-					initial="hidden"
-					style={motionStyle}
-				>
-					<a href="#home"></a>
-					<NavLink linkText="Home">
+				<motion.div variants={container} animate="visible" initial="hidden" style={motionStyle}>
+					<NavLink linkText="Home" pageLink="/">
 						<FaHome size={25} />
 					</NavLink>
-					<NavLink linkText="About">
+					<NavLink linkText="About" pageLink="about">
 						<FaRegUser size={25} />
 					</NavLink>
-					<NavLink linkText="Portfolio">
+					<NavLink linkText="Development">
 						<FaRegFolderOpen size={25} />
 					</NavLink>
-					<NavLink linkText="Contact">
-						<FaPhone size={20} />
-					</NavLink>
-					<label
-						htmlFor="darkmode-switch"
-						style={{ position: "relative", left: 30 }}
-					>
+					<label htmlFor="darkmode-switch" style={{ position: "relative", left: 30 }}>
 						<ReactSwitch
 							borderRadius={20}
-							onChange={onChange}
+							onChange={ThemeSwitcher}
 							checked={checked}
 							offColor={site_theme[theme].text}
 							offHandleColor={site_theme[theme].background}
