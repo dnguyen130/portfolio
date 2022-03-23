@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { site_theme } from "../../utils/variables";
 import { useTheme } from "../../utils/provider";
 
 const ButtonCont = styled.div`
@@ -18,7 +17,7 @@ const ButtonCont = styled.div`
 	font-family: "Maven Pro", sans-serif;
 	margin: 0 20px;
 
-	transition: 0.2s;
+	transition: background-color 0.5s;
 
 	&:hover {
 		background-color: ${(props) => props.bghover};
@@ -36,9 +35,9 @@ const ButtonLink = styled.a`
 const Button = ({
 	btnText = "Default",
 	btnLink = "",
-	bgcolor = "black",
-	bghover = "white",
-	clr = "gray",
+	bgcolor,
+	bghover,
+	clr,
 	height = "80px",
 	width = "180px",
 	fsize = "2em",

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useTheme } from "../utils/provider";
+import { site_theme } from "../utils/variables";
 import Head from "next/head";
 
 import LeftNav from "../components/LeftNav";
