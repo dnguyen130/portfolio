@@ -17,13 +17,7 @@ const ProjectsCont = styled.div`
 	display: flex;
 	margin: 0 0 100px;
 	position: relative;
-	justify-content: space-between;
-`;
-
-const ProjectsCont2 = styled.div`
-	display: flex;
-	justify-content: flex-end;
-	flex-direction: row-reverse;
+	justify-content: flex-start;
 `;
 
 const ProjectHeader = styled.h1`
@@ -34,19 +28,12 @@ const ProjectHeader = styled.h1`
 	font-weight: 700;
 `;
 
-const ProjectHeader2 = styled.h1`
-	color: ${(props) => props.headercolor};
-	margin: 0;
-	font-family: "Maven Pro", sans-serif;
-	font-size: 3em;
-	text-align: right;
-`;
-
 const ProjectDescriptionCont = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 0 20px;
-	width: 900px;
+	min-width: 700px;
+	flex: 1;
 `;
 
 const ProjectDescription = styled.div`
