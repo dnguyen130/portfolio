@@ -166,7 +166,7 @@ const Projects = () => {
 			<ProjectsCont>
 				<motion.div
 					variants={variants}
-					initial="righthidden"
+					initial="lefthidden"
 					whileInView="visible"
 					viewport={{ once: true }}
 				>
@@ -174,7 +174,7 @@ const Projects = () => {
 				</motion.div>
 				<motion.div
 					variants={variants}
-					initial="lefthidden"
+					initial="righthidden"
 					whileInView="visible"
 					viewport={{ once: true }}
 				>
