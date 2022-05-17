@@ -1,0 +1,71 @@
+.iconJavascript {
+  width: 35px;
+  height: 35px;
+  transition: color 0.25s;
+}
+
+.iconJavascript:hover {
+  color: #f8dc2c;
+}
+
+.iconReact {
+  width: 35px;
+  height: 35px;
+  transition: color 0.25s;
+}
+
+.iconReact:hover {
+  color: #06d7fe;
+  animation-name: spin;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iconNextdotjs {
+  width: 35px;
+  height: 35px;
+}
+
+@media (min-width: 350px) {
+  .iconJavascript {
+    width: 45px;
+    height: 45px;
+  }
+
+  .iconReact {
+    width: 45px;
+    height: 45px;
+  }
+
+  .iconNextdotjs {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (min-width: 768px) {
+  .iconJavascript {
+    width: 60px;
+    height: 60px;
+  }
+
+  .iconReact {
+    width: 60px;
+    height: 60px;
+  }
+
+  .iconNextdotjs {
+    width: 60px;
+    height: 60px;
+  }
+}

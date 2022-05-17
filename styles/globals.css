@@ -8,6 +8,7 @@ body {
   transition: 0.5s;
   scroll-behavior: smooth;
   width: 100vw;
+  min-width: 280px;
 }
 
 a {

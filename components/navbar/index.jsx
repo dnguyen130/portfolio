@@ -4,7 +4,7 @@ import { HiMenu } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
 import { useTheme } from "../../utils/provider";
-import { SITE_THEME, DEVICES } from "../../utils/variables";
+import { SITE_THEME, DEVICES, LINKS } from "../../utils/variables";
 import styles from "./navbar.module.css";
 
 const NavBarCont = styled.header`
@@ -18,7 +18,7 @@ const NavBarCont = styled.header`
   padding: 10px 20px;
 
   @media (min-width: ${DEVICES.tablet}) {
-    padding: 10px 50px;
+    padding: 10px 10%;
     height: 120px;
   }
 `;
@@ -35,7 +35,8 @@ const LogoCont = styled.img`
 
 const NavLinkCont = styled.div`
   color: ${(props) => props.color};
-  font-size: 2rem;
+  font-size: 1.5rem;
+  // hides links on mobile
   display: none;
 
   @media (min-width: ${DEVICES.tablet}) {
@@ -44,7 +45,7 @@ const NavLinkCont = styled.div`
 `;
 
 const NavLink = styled.a`
-  margin: 0 25px;
+  margin: 0 30px;
   transition: color 0.25s;
   &:hover {
     color: ${(props) => props.hoverColor};
@@ -67,20 +68,16 @@ export default function NavBar() {
           color: SITE_THEME[theme].text,
         }}
       >
-        <div>
-          <HiMenu />
-        </div>
+        <HiMenu />
       </IconContext.Provider>
       <NavLinkCont color={SITE_THEME[theme].text}>
-        <Link href="#" passHref>
-          <NavLink hoverColor={SITE_THEME[theme].strong}>Home</NavLink>
-        </Link>
-        <Link href="#" passHref>
-          <NavLink hoverColor={SITE_THEME[theme].strong}>About</NavLink>
-        </Link>
-        <Link href="#" passHref>
-          <NavLink hoverColor={SITE_THEME[theme].strong}>Contact</NavLink>
-        </Link>
+        {LINKS.map((o, i) => {
+          return (
+            <Link key={i} href={o.url} passHref>
+              <NavLink hoverColor={SITE_THEME[theme].strong}>{o.name}</NavLink>
+            </Link>
+          );
+        })}
       </NavLinkCont>
     </NavBarCont>
   );

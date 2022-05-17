@@ -61,7 +61,23 @@ export const SITE_THEME = {
 };
 
 export const DEVICES = {
+  mobileS: "350px",
   mobile: "600px",
   tablet: "768px",
   desktop: "1200px",
 };
+
+export const LINKS = [
+  {
+    name: "Home",
+    url: "#",
+  },
+  {
+    name: "About",
+    url: "#",
+  },
+  {
+    name: "Contact",
+    url: "#",
+  },
+];
