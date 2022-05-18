@@ -17,11 +17,15 @@ const FirstLine = styled.h2`
   margin: 0;
   color: ${(props) => props.firstColor};
 
-  @media (min-width: ${DEVICES.mobileS}) {
+  @media (min-width: ${DEVICES.mobile}) {
     font-size: 2rem;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
     font-size: 3rem;
   }
 `;
@@ -31,11 +35,15 @@ const SecondLine = styled.h1`
   margin: 10px 0;
   color: ${(props) => props.secondColor};
 
-  @media (min-width: ${DEVICES.mobileS}) {
+  @media (min-width: ${DEVICES.mobile}) {
     font-size: 2.5rem;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
+    font-size: 3.5rem;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
     font-size: 4rem;
   }
 `;
@@ -66,11 +74,15 @@ const Description = styled.p`
   margin: 0;
   color: ${(props) => props.descriptionColor};
 
-  @media (min-width: ${DEVICES.mobileS}) {
+  @media (min-width: ${DEVICES.mobile}) {
     font-size: 1.5rem;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
     font-size: 2rem;
   }
 `;
