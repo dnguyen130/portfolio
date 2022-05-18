@@ -4,7 +4,6 @@ import styled from "styled-components";
 import NavBar from "../components/NavBar";
 import HeroText from "../components/HeroText";
 import Projects from "../components/Projects";
-import Footer from "../components/Footer";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -26,7 +25,6 @@ export default function Home() {
       <MainContainer>
         <HeroText />
         <Projects />
-        <Footer />
       </MainContainer>
     </PageContainer>
   );
