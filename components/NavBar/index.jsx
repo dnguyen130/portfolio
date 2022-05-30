@@ -9,34 +9,29 @@ import styles from "./navbar.module.css";
 
 const NavBarCont = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 100px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
   background-color: ${(props) => props.bgColor};
   padding: 10px 20px;
+  z-index: 999;
 
   @media (min-width: ${DEVICES.tablet}) {
-    padding: 10px 10%;
-    height: 120px;
+    justify-content: center;
   }
 `;
 
 const LogoCont = styled.img`
-  width: 50px;
-  height: 50px;
-
-  @media (min-width: ${DEVICES.tablet}) {
-    width: 80px;
-    height: 80px;
-  }
+  width: 70px;
+  height: 70px;
 `;
 
 const NavLinkCont = styled.div`
   color: ${(props) => props.color};
   font-size: 1.5rem;
-  // hides links on mobile
+  // hides links on mobileL
   display: none;
 
   @media (min-width: ${DEVICES.tablet}) {
@@ -51,6 +46,10 @@ const NavLink = styled.a`
     color: ${(props) => props.hoverColor};
   }
 
+  &:first-child {
+    margin-left: 0;
+  }
+
   &:last-child {
     margin-right: 0;
   }
@@ -61,7 +60,6 @@ export default function NavBar() {
 
   return (
     <NavBarCont bgColor={SITE_THEME[theme].navbar}>
-      <LogoCont src="/logo.svg" />
       <IconContext.Provider
         value={{
           className: styles.hamburgerMenu,

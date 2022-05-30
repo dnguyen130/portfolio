@@ -1,9 +1,9 @@
 const Colors = {
-  AliceBlue: "#EDF3FD",
-  DarkBlue: "#030F22",
-  SkyBlue: "#38DBFF",
-  Sapphire: "#00AEE8",
-  DarkGray: "#6D6E70",
+  White: "#ecf9fd",
+  Black: "#050610",
+  SkyBlue: "#15ade4",
+  Blue: "#2B388F",
+  Silver: "#78797A",
   LightGray: "#C7C8CA",
 
   //Scrollbar
@@ -16,26 +16,18 @@ const Colors = {
   DarkScrollBarHover: "#008DC0",
   DarkScrollBarActive: "#00537B",
 
-  //Project Colours
-  OnMePink: "#FE4370",
-  OnMeGold: "#A57760",
-  SteadyOrange: "#F57C33",
-  SteadyBlue: "#2C2C80",
-
   //Navigation Bar
-  NavBar: "#04152F",
+  Indigo: "#0A0C1F",
 };
 
 export const SITE_THEME = {
   light: {
-    background: Colors.AliceBlue,
-    text: Colors.DarkBlue,
-    strong: Colors.Sapphire,
+    background: Colors.White,
+    text: Colors.Black,
+    strong: Colors.Blue,
     gray: Colors.LightGray,
-    oppositeGray: Colors.DarkGray,
+    oppositeGray: Colors.Silver,
     weak: Colors.SkyBlue,
-    onme: Colors.OnMeGold,
-    steady: Colors.SteadyBlue,
 
     scrollbar: Colors.DarkerAlice,
     hoverscroll: Colors.LightScrollBarHover,
@@ -43,27 +35,25 @@ export const SITE_THEME = {
   },
 
   dark: {
-    background: Colors.DarkBlue,
-    text: Colors.AliceBlue,
+    background: Colors.Black,
+    text: Colors.White,
     strong: Colors.SkyBlue,
-    gray: Colors.DarkGray,
+    gray: Colors.Silver,
     oppositeGray: Colors.LightGray,
-    weak: Colors.Sapphire,
-    onme: Colors.OnMePink,
-    steady: Colors.SteadyOrange,
+    weak: Colors.SkyBlue,
 
-    scrollbar: Colors.LighterDarkBlue,
+    scrollbar: Colors.SkyBlue,
     hoverscroll: Colors.DarkScrollBarHover,
     activescroll: Colors.DarkScrollBarActive,
 
-    navbar: Colors.NavBar,
+    navbar: Colors.Indigo,
   },
 };
 
 export const DEVICES = {
-  mobileS: "350px",
   mobile: "600px",
   tablet: "768px",
+  laptop: "992px",
   desktop: "1200px",
 };
 

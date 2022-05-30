@@ -6,7 +6,7 @@ import HeroText from "../components/HeroText";
 import Projects from "../components/Projects";
 
 const PageContainer = styled.div`
-  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,9 @@ const PageContainer = styled.div`
 `;
 
 const MainContainer = styled.main`
-  width: 80%;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
 `;
 
 export default function Home() {

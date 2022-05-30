@@ -1,6 +1,6 @@
 .iconJavascript {
-  width: 35px;
-  height: 35px;
+  width: clamp(30px, 7vw, 70px);
+  height: clamp(30px, 7vw, 70px);
   transition: color 0.25s;
 }
 
@@ -9,8 +9,8 @@
 }
 
 .iconReact {
-  width: 35px;
-  height: 35px;
+  width: clamp(30px, 7vw, 70px);
+  height: clamp(30px, 7vw, 70px);
   transition: color 0.25s;
 }
 
@@ -32,28 +32,11 @@
 }
 
 .iconNextdotjs {
-  width: 35px;
-  height: 35px;
+  width: clamp(30px, 7vw, 70px);
+  height: clamp(30px, 7vw, 70px);
 }
 
-@media (min-width: 350px) {
-  .iconJavascript {
-    width: 45px;
-    height: 45px;
-  }
-
-  .iconReact {
-    width: 45px;
-    height: 45px;
-  }
-
-  .iconNextdotjs {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .iconJavascript {
     width: 60px;
     height: 60px;
@@ -68,4 +51,4 @@
     width: 60px;
     height: 60px;
   }
-}
+} */

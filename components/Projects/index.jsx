@@ -5,32 +5,40 @@ import { SITE_THEME, DEVICES } from "../../utils/variables";
 
 const ProjectsCont = styled.div`
   width: 100%;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Title = styled.h2`
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.3rem;
+  margin: 0;
   color: ${(props) => props.titleColor};
   align-self: flex-start;
 
-  @media (min-width: ${DEVICES.mobileS}) {
-    font-size: 2rem;
+  @media (min-width: ${DEVICES.mobileL}) {
+    font-size: 1.8rem;
   }
+`;
+
+const Underline = styled.div`
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    ${(props) => props.gradient1},
+    transparent
+  );
+  border-radius: 1px;
+  margin: 0 0 20px;
 `;
 
 const ProjectCard = styled.div`
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 3/2;
   background-color: white;
   border-radius: 10px;
-
-  @media (min-width: ${DEVICES.tablet}) {
-    aspect-ratio: 3/2;
-  }
 `;
 
 const ProjectCardWrapper = styled.div`
@@ -42,12 +50,12 @@ const ProjectCardWrapper = styled.div`
 
   @media (min-width: ${DEVICES.mobile}) {
     grid-template-columns: auto auto;
-    max-width: 550px;
+    max-width: 600px;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
-    grid-template-columns: auto auto auto;
-    max-width: 800px;
+    grid-template-columns: auto auto;
+    max-width: 700px;
   }
 
   @media (min-width: ${DEVICES.desktop}) {
@@ -62,8 +70,8 @@ export default function Projects() {
   return (
     <ProjectsCont>
       <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
+      <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
-        <ProjectCard />
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />

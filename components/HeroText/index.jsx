@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SiJavascript, SiReact, SiNextdotjs, SiJava } from "react-icons/si";
+import { SiJavascript, SiReact, SiNextdotjs } from "react-icons/si";
 import { IconContext } from "react-icons/lib";
 
 import { useTheme } from "../../utils/provider";
@@ -8,57 +8,60 @@ import styles from "./herotext.module.css";
 
 const HeroTextCont = styled.div`
   width: 100%;
-  margin-top: 100px;
+  max-width: 100vw;
+  font-size: 3vw;
+  height: calc(100vh - 100px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @media (min-width: ${DEVICES.tablet}) {
+    text-align: left;
+    align-items: flex-start;
+  }
+`;
+
+const LogoCont = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 100px;
+  z-index: -999;
+  opacity: 0.1;
+  overflow: hidden;
+`;
+
+const Logo = styled.img`
+  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 const FirstLine = styled.h2`
-  font-size: 1.5rem;
+  font-size: clamp(30px, 2em, 70px);
   font-weight: 400;
   margin: 0;
   color: ${(props) => props.firstColor};
-
-  @media (min-width: ${DEVICES.mobile}) {
-    font-size: 2rem;
-  }
-
-  @media (min-width: ${DEVICES.tablet}) {
-    font-size: 2.5rem;
-  }
-
-  @media (min-width: ${DEVICES.desktop}) {
-    font-size: 3rem;
-  }
 `;
 
 const SecondLine = styled.h1`
-  font-size: 2.25rem;
+  font-size: clamp(40px, 3em, 100px);
   margin: 10px 0;
   color: ${(props) => props.secondColor};
-
-  @media (min-width: ${DEVICES.mobile}) {
-    font-size: 2.5rem;
-  }
-
-  @media (min-width: ${DEVICES.tablet}) {
-    font-size: 3.5rem;
-  }
-
-  @media (min-width: ${DEVICES.desktop}) {
-    font-size: 4rem;
-  }
 `;
 
 const IconCont = styled.div`
-  width: 60%;
-  max-width: 250px;
-  min-width: 200px;
+  width: 40%;
+  min-width: 150px;
+  max-width: 350px;
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
-
-  @media (min-width: ${DEVICES.tablet}) {
-    max-width: 350px;
-  }
 `;
 
 const IconWrapper = styled.div`
@@ -70,21 +73,9 @@ const IconWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: 1rem;
+  font-size: clamp(18px, 1.5em, 24px);
   margin: 0;
   color: ${(props) => props.descriptionColor};
-
-  @media (min-width: ${DEVICES.mobile}) {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: ${DEVICES.tablet}) {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: ${DEVICES.desktop}) {
-    font-size: 2rem;
-  }
 `;
 
 const ICONS = [
@@ -110,7 +101,10 @@ export default function HeroText() {
 
   return (
     <HeroTextCont>
-      <FirstLine firstColor={SITE_THEME[theme].text}>Ahoy I am</FirstLine>
+      <LogoCont>
+        <Logo src="./logo.svg" alt="logo" />
+      </LogoCont>
+      <FirstLine firstColor={SITE_THEME[theme].text}>Ahoy, I am</FirstLine>
       <SecondLine secondColor={SITE_THEME[theme].strong}>
         Danny Nguyen
       </SecondLine>
