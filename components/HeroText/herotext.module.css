@@ -1,6 +1,6 @@
 .iconJavascript {
-  width: clamp(30px, 7vw, 70px);
-  height: clamp(30px, 7vw, 70px);
+  width: clamp(30px, 9vw, 60px);
+  height: clamp(30px, 9vw, 60px);
   transition: color 0.25s;
 }
 
@@ -9,8 +9,8 @@
 }
 
 .iconReact {
-  width: clamp(30px, 7vw, 70px);
-  height: clamp(30px, 7vw, 70px);
+  width: clamp(30px, 9vw, 70px);
+  height: clamp(30px, 9vw, 70px);
   transition: color 0.25s;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .iconNextdotjs {
-  width: clamp(30px, 7vw, 70px);
-  height: clamp(30px, 7vw, 70px);
+  width: clamp(30px, 9vw, 70px);
+  height: clamp(30px, 9vw, 70px);
 }
 
 /* @media (min-width: 768px) {

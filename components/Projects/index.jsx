@@ -17,7 +17,7 @@ const Title = styled.h2`
   color: ${(props) => props.titleColor};
   align-self: flex-start;
 
-  @media (min-width: ${DEVICES.mobileL}) {
+  @media (min-width: ${DEVICES.mobile}) {
     font-size: 1.8rem;
   }
 `;

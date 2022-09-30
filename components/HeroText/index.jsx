@@ -16,24 +16,30 @@ const HeroTextCont = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  justify-content: center;
   align-items: center;
   overflow: hidden;
 
-  @media (min-width: ${DEVICES.tablet}) {
+  @media (min-width: ${DEVICES.laptop}) {
     text-align: left;
     align-items: flex-start;
   }
 `;
 
 const LogoCont = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 100px;
-  z-index: -999;
-  opacity: 0.1;
-  overflow: hidden;
+  width: 30vw;
+  height: 30vw;
+  position: relative;
+  top: -10vh;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    position: absolute;
+    width: 30vw;
+    height: 30vw;
+    top: 100px;
+    right: 0;
+    z-index: -999;
+    opacity: 0.3;
+  }
 `;
 
 const Logo = styled.img`
@@ -56,7 +62,7 @@ const SecondLine = styled.h1`
 `;
 
 const IconCont = styled.div`
-  width: 40%;
+  width: 60%;
   min-width: 150px;
   max-width: 350px;
   display: flex;

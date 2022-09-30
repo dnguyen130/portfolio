@@ -60,11 +60,11 @@ export const DEVICES = {
 export const LINKS = [
   {
     name: "Home",
-    url: "#",
+    url: "/",
   },
   {
     name: "About",
-    url: "#",
+    url: "/about",
   },
   {
     name: "Contact",
