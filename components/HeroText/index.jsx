@@ -14,10 +14,37 @@ const HeroTextCont = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  align-items: center;
+  overflow: hidden;
 
-  @media (min-width: ${DEVICES.mobile}) {
-    min-height: 720px;
+  @media (min-width: ${DEVICES.laptop}) {
+    text-align: left;
+    align-items: flex-start;
   }
+`;
+
+const LogoCont = styled.div`
+  width: 30vw;
+  height: 30vw;
+  position: relative;
+  top: -10vh;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    position: absolute;
+    width: 30vw;
+    height: 30vw;
+    top: 100px;
+    right: 0;
+    z-index: -999;
+    opacity: 0.3;
+  }
+`;
+
+const Logo = styled.img`
+  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 const FirstLine = styled.h2`
@@ -34,8 +61,8 @@ const SecondLine = styled.h1`
 `;
 
 const IconCont = styled.div`
-  width: 40%;
-  min-width: 175px;
+  width: 60%;
+  min-width: 150px;
   max-width: 350px;
   display: flex;
   justify-content: space-between;
@@ -56,31 +83,31 @@ const Description = styled.p`
   color: ${(props) => props.descriptionColor};
 `;
 
-const LogoCont = styled.img`
-  width: 150px;
-  height: 150px;
-  align-self: center;
-  margin-bottom: 20px;
+// const LogoCont = styled.img`
+//   width: 150px;
+//   height: 150px;
+//   align-self: center;
+//   margin-bottom: 20px;
 
-  @media (min-width: ${DEVICES.mobile}) {
-    width: 200px;
-    height: 200px;
-  }
+//   @media (min-width: ${DEVICES.mobile}) {
+//     width: 200px;
+//     height: 200px;
+//   }
 
-  @media (min-width: ${DEVICES.mobile}) {
-    width: 250px;
-    height: 250px;
-  }
+//   @media (min-width: ${DEVICES.mobile}) {
+//     width: 250px;
+//     height: 250px;
+//   }
 
-  @media (min-width: ${DEVICES.desktop}) {
-    position: absolute;
-    right: 20px;
-    top: 120px;
-    width: 400px;
-    height: 400px;
-    opacity: 0.3;
-  }
-`;
+//   @media (min-width: ${DEVICES.desktop}) {
+//     position: absolute;
+//     right: 20px;
+//     top: 120px;
+//     width: 400px;
+//     height: 400px;
+//     opacity: 0.3;
+//   }
+// `;
 
 const ICONS = [
   {
