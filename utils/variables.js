@@ -71,3 +71,30 @@ export const LINKS = [
     url: "#",
   },
 ];
+
+export const PROJECTLIST = [
+  {
+    name: "Test 1",
+    url: "Test",
+  },
+  {
+    name: "Test 2",
+    url: "Test",
+  },
+  {
+    name: "Test 3",
+    url: "Test",
+  },
+  {
+    name: "Test 4",
+    url: "Test",
+  },
+  {
+    name: "Test 5",
+    url: "Test",
+  },
+  {
+    name: "Test 6",
+    url: "Test",
+  },
+];

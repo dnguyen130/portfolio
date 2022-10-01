@@ -8,38 +8,16 @@ import styles from "./herotext.module.css";
 
 const HeroTextCont = styled.div`
   width: 100%;
-  max-width: 100vw;
   font-size: 3vw;
   height: calc(100vh - 100px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
 
-  @media (min-width: ${DEVICES.tablet}) {
-    text-align: left;
-    align-items: flex-start;
+  @media (min-width: ${DEVICES.mobile}) {
+    min-height: 720px;
   }
-`;
-
-const LogoCont = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 100px;
-  z-index: -999;
-  opacity: 0.1;
-  overflow: hidden;
-`;
-
-const Logo = styled.img`
-  position: relative;
-  width: 100%;
-  height: 100%;
 `;
 
 const FirstLine = styled.h2`
@@ -57,7 +35,7 @@ const SecondLine = styled.h1`
 
 const IconCont = styled.div`
   width: 40%;
-  min-width: 150px;
+  min-width: 175px;
   max-width: 350px;
   display: flex;
   justify-content: space-between;
@@ -73,9 +51,35 @@ const IconWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: clamp(18px, 1.5em, 24px);
-  margin: 0;
+  font-size: clamp(14px, 1.5em, 24px);
+  margin: 0 0 20px 0;
   color: ${(props) => props.descriptionColor};
+`;
+
+const LogoCont = styled.img`
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  margin-bottom: 20px;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (min-width: ${DEVICES.mobile}) {
+    width: 250px;
+    height: 250px;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
+    position: absolute;
+    right: 20px;
+    top: 120px;
+    width: 400px;
+    height: 400px;
+    opacity: 0.3;
+  }
 `;
 
 const ICONS = [
@@ -101,9 +105,7 @@ export default function HeroText() {
 
   return (
     <HeroTextCont>
-      <LogoCont>
-        <Logo src="./logo.svg" alt="logo" />
-      </LogoCont>
+      <LogoCont src="/logo.svg" alt="Logo" />
       <FirstLine firstColor={SITE_THEME[theme].text}>Ahoy, I am</FirstLine>
       <SecondLine secondColor={SITE_THEME[theme].strong}>
         Danny Nguyen
@@ -125,6 +127,10 @@ export default function HeroText() {
       <Description descriptionColor={SITE_THEME[theme].text}>
         A front-end developer with a passion for bringing great designs and
         ideas to life.
+      </Description>
+      <Description descriptionColor={SITE_THEME[theme].text}>
+        Currently working on personal projects while looking for job
+        opportunities.
       </Description>
     </HeroTextCont>
   );

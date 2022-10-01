@@ -64,14 +64,6 @@ export default function AppProvider({ children }) {
           body {
             background-color: ${SITE_THEME[theme].background};
           }
-
-          ::selection {
-            background: ${SITE_THEME[theme].weak}; /* WebKit/Blink Browsers */
-          }
-
-          ::-moz-selection {
-            background: ${SITE_THEME[theme].weak}; /* Gecko Browsers */
-          }
         `}
       </style>
 
@@ -85,3 +77,11 @@ export function useTheme() {
   const { theme, setTheme } = useContext(MyContext);
   return { theme, setTheme };
 }
+
+// ::selection {
+//   background: ${SITE_THEME[theme].weak}; /* WebKit/Blink Browsers */
+// }
+
+// ::-moz-selection {
+//   background: ${SITE_THEME[theme].weak}; /* Gecko Browsers */
+// }

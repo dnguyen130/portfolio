@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 import { useTheme } from "../../utils/provider";
-import { SITE_THEME, DEVICES } from "../../utils/variables";
+import { SITE_THEME, DEVICES, PROJECTLIST } from "../../utils/variables";
+
+import ProjectCard from "../ProjectCard";
 
 const ProjectsCont = styled.div`
   width: 100%;
@@ -20,6 +22,14 @@ const Title = styled.h2`
   @media (min-width: ${DEVICES.mobileL}) {
     font-size: 1.8rem;
   }
+
+  @media (min-width: ${DEVICES.tablet}) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Underline = styled.div`
@@ -32,13 +42,6 @@ const Underline = styled.div`
   );
   border-radius: 1px;
   margin: 0 0 20px;
-`;
-
-const ProjectCard = styled.div`
-  width: 100%;
-  aspect-ratio: 3/2;
-  background-color: white;
-  border-radius: 10px;
 `;
 
 const ProjectCardWrapper = styled.div`
@@ -72,12 +75,9 @@ export default function Projects() {
       <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {PROJECTLIST.map((o, i) => (
+          <ProjectCard key={i} ProjectCardTitleText={o.name} />
+        ))}
       </ProjectCardWrapper>
     </ProjectsCont>
   );

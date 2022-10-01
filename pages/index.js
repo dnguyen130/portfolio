@@ -4,9 +4,11 @@ import styled from "styled-components";
 import NavBar from "../components/NavBar";
 import HeroText from "../components/HeroText";
 import Projects from "../components/Projects";
+import Footer from "../components/Footer";
 
 const PageContainer = styled.div`
-  max-width: 100%;
+  width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,8 +17,11 @@ const PageContainer = styled.div`
 
 const MainContainer = styled.main`
   box-sizing: border-box;
+  max-width: 100vw;
   width: 100%;
-  padding: 20px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default function Home() {
@@ -28,6 +33,7 @@ export default function Home() {
         <HeroText />
         <Projects />
       </MainContainer>
+      <Footer />
     </PageContainer>
   );
 }
