@@ -24,23 +24,6 @@ const HeroTextCont = styled.div`
   }
 `;
 
-const LogoCont = styled.div`
-  width: 30vw;
-  height: 30vw;
-  position: relative;
-  top: -10vh;
-
-  @media (min-width: ${DEVICES.laptop}) {
-    position: absolute;
-    width: 30vw;
-    height: 30vw;
-    top: 100px;
-    right: 0;
-    z-index: -999;
-    opacity: 0.3;
-  }
-`;
-
 const Logo = styled.img`
   position: relative;
   width: 100%;
@@ -81,6 +64,12 @@ const Description = styled.p`
   font-size: clamp(14px, 1.5em, 24px);
   margin: 0 0 20px 0;
   color: ${(props) => props.descriptionColor};
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 `;
 
 // const LogoCont = styled.img`
@@ -132,7 +121,6 @@ export default function HeroText() {
 
   return (
     <HeroTextCont>
-      <LogoCont src="/logo.svg" alt="Logo" />
       <FirstLine firstColor={SITE_THEME[theme].text}>Ahoy, I am</FirstLine>
       <SecondLine secondColor={SITE_THEME[theme].strong}>
         Danny Nguyen

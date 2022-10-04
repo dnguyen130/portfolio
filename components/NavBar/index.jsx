@@ -91,14 +91,30 @@ const ResumeButton = styled.button`
   border-radius: 3px;
   font-family: "Maven Pro", sans-serif;
   font-size: 1rem;
+  font-weight: 600;
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid ${(props) => props.buttonTextColor};
   color: ${(props) => props.buttonTextColor};
   display: none;
+  cursor: pointer;
+  transition: 0.2s;
 
   @media (min-width: ${DEVICES.tablet}) {
     display: block;
+
+    &:hover {
+      border-color: ${(props) => props.buttonHoverColor};
+      color: ${(props) => props.buttonHoverColor};
+    }
   }
+`;
+
+const ResumeLink = styled.a`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ContentGroup = styled.div`
@@ -142,8 +158,13 @@ export default function NavBar() {
             })}
           </NavLinkCont>
         </ContentGroup>
-        <ResumeButton buttonTextColor={SITE_THEME[theme].text}>
-          Resume
+        <ResumeButton
+          buttonTextColor={SITE_THEME[theme].text}
+          buttonHoverColor={SITE_THEME[theme].strong}
+        >
+          <ResumeLink target="_blank" href="/resume.pdf">
+            Resume
+          </ResumeLink>
         </ResumeButton>
       </ContentWrapper>
     </NavBarCont>
