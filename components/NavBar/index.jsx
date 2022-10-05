@@ -29,9 +29,28 @@ const ContentWrapper = styled.div`
   align-items: center;
 `;
 
+const LogoWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+  transform: rotate(0deg);
+`;
+
 const LogoCont = styled.img`
+  transform: rotate(45deg) scale(1);
   width: 70px;
   height: 70px;
+  transition: 0.2s;
+  pointer-events: none;
+`;
+
+const LogoLink = styled.a`
+  width: 50px;
+  height: 50px;
+  transform: rotate(-45deg);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NavLinkCont = styled.div`
@@ -135,7 +154,11 @@ export default function NavBar() {
     <NavBarCont bgColor={SITE_THEME[theme].navbar}>
       <ContentWrapper>
         <ContentGroup>
-          <LogoCont src="/logo.svg" alt="logo" />
+          <LogoWrapper>
+            <LogoLink href="/">
+              <LogoCont src="/logo.svg" alt="logo" />
+            </LogoLink>
+          </LogoWrapper>
           <IconContext.Provider
             value={{
               className: styles.hamburgerMenu,

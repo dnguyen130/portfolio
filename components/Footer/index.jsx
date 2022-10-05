@@ -5,7 +5,7 @@ import { SITE_THEME, DEVICES, LINKS } from "../../utils/variables";
 
 const FooterCont = styled.div`
   width: 100%;
-  height: 50px;
+  height: 60px;
   background-color: ${(props) => props.bgcolor};
   margin-top: 30px;
   display: flex;
@@ -18,6 +18,12 @@ const FooterText = styled.h3`
   margin: 0;
   font-size: 1em;
   font-weight: 400;
+  width: 90%;
+  text-align: center;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    font-size: 1.2em;
+  }
 `;
 
 export default function Footer() {

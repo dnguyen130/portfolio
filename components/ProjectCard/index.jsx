@@ -7,27 +7,29 @@ import { SITE_THEME } from "@/utils/variables";
 const ProjectCardCont = styled.div`
   width: 100%;
   aspect-ratio: 3/2;
-  background-color: white;
+  background: ${(props) => props.bgcolor};
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
-const ProjectCardTitle = styled.h2`
-  color: ${(props) => props.titleColor};
-  font-size: 2rem;
-  font-weight: 600;
+const ProjectCardLogo = styled.img`
+  width: 60%;
 `;
 
-export default function ProjectCard({ ProjectCardTitleText = "" }) {
+export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
   const { theme } = useTheme();
 
   return (
-    <ProjectCardCont>
-      <ProjectCardTitle titleColor={SITE_THEME[theme].background}>
-        {ProjectCardTitleText}
-      </ProjectCardTitle>
+    <ProjectCardCont bgcolor={SITE_THEME[theme].text}>
+      <ProjectCardLogo src={ProjectCardLogoSrc} />
     </ProjectCardCont>
   );
 }

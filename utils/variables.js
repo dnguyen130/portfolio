@@ -61,40 +61,34 @@ export const LINKS = [
   {
     name: "Home",
     url: "/",
+    logo: "#",
   },
   {
     name: "About",
     url: "/about",
+    logo: "#",
   },
   {
     name: "Contact",
     url: "#",
+    logo: "#",
   },
 ];
 
 export const PROJECTLIST = [
   {
-    name: "Test 1",
-    url: "Test",
+    name: "Steady",
+    url: "steady",
+    logo: "steady_logo.svg",
   },
   {
-    name: "Test 2",
-    url: "Test",
+    name: "OnMe",
+    url: "onme",
+    logo: "onme_logo.svg",
   },
   {
-    name: "Test 3",
-    url: "Test",
-  },
-  {
-    name: "Test 4",
-    url: "Test",
-  },
-  {
-    name: "Test 5",
-    url: "Test",
-  },
-  {
-    name: "Test 6",
-    url: "Test",
+    name: "Scout",
+    url: "scout",
+    logo: "scout_logo.svg",
   },
 ];

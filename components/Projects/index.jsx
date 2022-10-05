@@ -62,7 +62,7 @@ const ProjectCardWrapper = styled.div`
   }
 
   @media (min-width: ${DEVICES.desktop}) {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
     max-width: 1000px;
   }
 `;
@@ -76,7 +76,7 @@ export default function Projects() {
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
-          <ProjectCard key={i} ProjectCardTitleText={o.name} />
+          <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
         ))}
       </ProjectCardWrapper>
     </ProjectsCont>
