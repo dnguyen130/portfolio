@@ -1,10 +1,11 @@
 import Head from "next/head";
 import styled from "styled-components";
 
-import NavBar from "../components/NavBar";
-import HeroText from "../components/HeroText";
-import Projects from "../components/Projects";
-import Footer from "../components/Footer";
+import NavBar from "@/components/NavBar";
+import HeroText from "@/components/HeroText";
+import Projects from "@/components/Projects";
+import Footer from "@/components/Footer";
+import Dialog from "@/components/Dialog";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -31,7 +32,7 @@ export default function Home() {
       <NavBar />
       <MainContainer>
         <HeroText />
-        <Projects />
+        <Projects ProjectCardOnClick={console.log("Hello")} />
       </MainContainer>
       <Footer />
     </PageContainer>

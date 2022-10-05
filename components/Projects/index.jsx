@@ -67,7 +67,7 @@ const ProjectCardWrapper = styled.div`
   }
 `;
 
-export default function Projects() {
+export default function Projects({ ProjectCardOnClick = () => {} }) {
   const { theme } = useTheme();
 
   return (
@@ -76,7 +76,11 @@ export default function Projects() {
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
-          <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
+          <ProjectCard
+            key={i}
+            ProjectCardLogoSrc={o.logo}
+            onClick={ProjectCardOnClick}
+          />
         ))}
       </ProjectCardWrapper>
     </ProjectsCont>
