@@ -67,12 +67,8 @@ const ProjectCardWrapper = styled.div`
   }
 `;
 
-export default function Projects() {
+export default function Extras() {
   const { theme } = useTheme();
-
-  const OpenDialog = () => {
-    console.log("Hello");
-  };
 
   return (
     <ProjectsCont>
@@ -80,11 +76,7 @@ export default function Projects() {
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
-          <ProjectCard
-            key={i}
-            ProjectCardLogoSrc={o.logo}
-            ProjectCardOnClick={OpenDialog}
-          />
+          <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
         ))}
       </ProjectCardWrapper>
     </ProjectsCont>

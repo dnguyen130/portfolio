@@ -5,7 +5,7 @@ import NavBar from "@/components/NavBar";
 import HeroText from "@/components/HeroText";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
-import Dialog from "@/components/Dialog";
+import Extras from "@/components/Section";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -14,6 +14,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const MainContainer = styled.main`
@@ -32,7 +33,8 @@ export default function Home() {
       <NavBar />
       <MainContainer>
         <HeroText />
-        <Projects ProjectCardOnClick={console.log("Hello")} />
+        <Projects />
+        <Extras />
       </MainContainer>
       <Footer />
     </PageContainer>

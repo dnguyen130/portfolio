@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import { useTheme } from "@/utils/provider";
 
@@ -13,22 +14,23 @@ const ProjectCardCont = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: 0.2s;
-
-  &:hover {
-    transform: scale(1.03);
-  }
 `;
 
 const ProjectCardLogo = styled.img`
   width: 60%;
 `;
 
-export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
+export default function ProjectCard({
+  ProjectCardLogoSrc = "",
+  ProjectCardOnClick = () => {},
+}) {
   const { theme } = useTheme();
 
   return (
-    <ProjectCardCont bgcolor={SITE_THEME[theme].text}>
+    <ProjectCardCont
+      bgcolor={SITE_THEME[theme].text}
+      onClick={ProjectCardOnClick}
+    >
       <ProjectCardLogo src={ProjectCardLogoSrc} />
     </ProjectCardCont>
   );
