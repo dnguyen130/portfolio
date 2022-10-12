@@ -5,6 +5,9 @@ import { SITE_THEME } from "./variables";
 const initialStates = {
   theme: "dark",
   setTheme: () => {},
+
+  cardActive: "false",
+  setCardActive: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -12,10 +15,11 @@ const MyContext = createContext(initialStates);
 export default function AppProvider({ children }) {
   //children all the pages/components insider this provider
   const [theme, setTheme] = useState(initialStates.theme);
+  const [cardActive, setCardActive] = useState(initialStates.cardActive);
 
   //put in the variables you want to share
   return (
-    <MyContext.Provider value={{ theme, setTheme }}>
+    <MyContext.Provider value={{ theme, setTheme, cardActive, setCardActive }}>
       <style jsx global>
         {`
           html {
@@ -76,6 +80,11 @@ export default function AppProvider({ children }) {
 export function useTheme() {
   const { theme, setTheme } = useContext(MyContext);
   return { theme, setTheme };
+}
+
+export function useCardActive() {
+  const { cardActive, setCardActive } = useContext(MyContext);
+  return { cardActive, setCardActive };
 }
 
 // ::selection {

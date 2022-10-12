@@ -16,7 +16,7 @@ const NavBarCont = styled.header`
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
   background-color: ${(props) => props.bgColor};
   padding: 20px 20px;
-  z-index: 999;
+  z-index: 99;
   transition: 0.5s;
 `;
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { useTheme } from "../../utils/provider";
@@ -14,7 +15,7 @@ const ProjectsCont = styled.div`
 
 const Title = styled.h2`
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin: 0;
   color: ${(props) => props.titleColor};
   align-self: flex-start;
@@ -41,7 +42,7 @@ const Underline = styled.div`
     transparent
   );
   border-radius: 1px;
-  margin: 0 0 20px;
+  margin: 0 0 30px;
 `;
 
 const ProjectCardWrapper = styled.div`
@@ -70,21 +71,13 @@ const ProjectCardWrapper = styled.div`
 export default function Projects() {
   const { theme } = useTheme();
 
-  const OpenDialog = () => {
-    console.log("Hello");
-  };
-
   return (
     <ProjectsCont>
       <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
-          <ProjectCard
-            key={i}
-            ProjectCardLogoSrc={o.logo}
-            ProjectCardOnClick={OpenDialog}
-          />
+          <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
         ))}
       </ProjectCardWrapper>
     </ProjectsCont>

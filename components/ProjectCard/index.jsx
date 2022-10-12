@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-import { useTheme } from "@/utils/provider";
+import { useTheme, useCardActive } from "@/utils/provider";
 
 import { SITE_THEME } from "@/utils/variables";
 
-const ProjectCardCont = styled.div`
+const ProjectCardCont = styled(motion.div)`
   width: 100%;
   aspect-ratio: 3/2;
   background: ${(props) => props.bgcolor};
@@ -14,23 +15,78 @@ const ProjectCardCont = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
+`;
+
+const ProjectCardWrapper = styled(motion.div)`
+  /* background-color: ${(props) => props.hovercolor}; */
+  background: linear-gradient(
+    to left,
+    ${(props) => props.hovercolor1},
+    ${(props) => props.hovercolor2}
+  );
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  border-radius: 10px;
 `;
 
 const ProjectCardLogo = styled.img`
   width: 60%;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
 `;
 
-export default function ProjectCard({
-  ProjectCardLogoSrc = "",
-  ProjectCardOnClick = () => {},
-}) {
+const hiddenMask = `linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 100%, rgba(0,0,0,0) 0, rgba(0,0,0,0) 100%)`;
+const visibleMask = `linear-gradient(to left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%)`;
+
+export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
   const { theme } = useTheme();
+  const { cardActive, setCardActive } = useCardActive();
+
+  const CardClick = () => {
+    setCardActive(true);
+    setIsActive(true);
+  };
+
+  const CardVariants = {
+    inactive: {
+      opacity: 1,
+    },
+    active: {
+      opacity: 0,
+    },
+  };
+
+  // const [isActive, setIsActive] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <ProjectCardCont
       bgcolor={SITE_THEME[theme].text}
-      onClick={ProjectCardOnClick}
+      onClick={CardClick}
+      animate={cardActive && isActive ? { opacity: 0 } : { opacity: 1 }}
+      whileTap={{ scale: 0.95 }}
     >
+      <ProjectCardWrapper
+        initial={{ scale: 1.0 }}
+        whileHover={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        animate={
+          isHover
+            ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
+            : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
+        }
+        variants={CardVariants}
+        transition={{ duration: 0.2 }}
+        hovercolor1={SITE_THEME[theme].strong}
+        hovercolor2={SITE_THEME[theme].text}
+      ></ProjectCardWrapper>
       <ProjectCardLogo src={ProjectCardLogoSrc} />
     </ProjectCardCont>
   );

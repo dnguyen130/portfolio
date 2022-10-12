@@ -6,6 +6,9 @@ import HeroText from "@/components/HeroText";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import Extras from "@/components/Section";
+import { Dialog } from "@/components/Dialog";
+
+import { useCardActive } from "@/utils/provider";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -26,12 +29,30 @@ const MainContainer = styled.main`
   flex-direction: column;
 `;
 
+const Fade = styled.div`
+  background-color: black;
+  opacity: ${(props) => props.fadeOpacity};
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  transition: 0.2s;
+`;
+
 export default function Home() {
+  const { cardActive, setCardActive } = useCardActive();
+
   return (
     <PageContainer>
       <Head></Head>
+      <Fade fadeOpacity={cardActive ? 0.8 : 0} />
       <NavBar />
       <MainContainer>
+        <Dialog />
         <HeroText />
         <Projects />
         <Extras />
