@@ -51,14 +51,19 @@ export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
   const CardClick = () => {
     setCardActive(true);
     setIsActive(true);
+    setIsHover(false);
   };
 
-  const CardVariants = {
-    inactive: {
-      opacity: 1,
+  const WrapperVariants = {
+    hover: {
+      WebkitMaskImage: visibleMask,
+      maskImage: visibleMask,
+      transition: { duration: 0.2 },
     },
-    active: {
-      opacity: 0,
+    notHover: {
+      WebkitMaskImage: hiddenMask,
+      maskImage: hiddenMask,
+      transition: { duration: 0.2 },
     },
   };
 
@@ -70,20 +75,13 @@ export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
     <ProjectCardCont
       bgcolor={SITE_THEME[theme].text}
       onClick={CardClick}
-      animate={cardActive && isActive ? { opacity: 0 } : { opacity: 1 }}
       whileTap={{ scale: 0.95 }}
     >
       <ProjectCardWrapper
-        initial={{ scale: 1.0 }}
         whileHover={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        animate={
-          isHover
-            ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
-            : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
-        }
-        variants={CardVariants}
-        transition={{ duration: 0.2 }}
+        animate={isHover ? "hover" : "notHover"}
+        variants={WrapperVariants}
         hovercolor1={SITE_THEME[theme].strong}
         hovercolor2={SITE_THEME[theme].text}
       ></ProjectCardWrapper>

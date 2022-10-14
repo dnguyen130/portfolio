@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import NavBar from "@/components/NavBar";
 import HeroText from "@/components/HeroText";
@@ -29,7 +30,7 @@ const MainContainer = styled.main`
   flex-direction: column;
 `;
 
-const Fade = styled.div`
+const Fade = styled(motion.div)`
   background-color: black;
   opacity: ${(props) => props.fadeOpacity};
   width: 100%;
@@ -41,6 +42,7 @@ const Fade = styled.div`
   right: 0;
   overflow: hidden;
   transition: 0.2s;
+  display: ${(props) => props.fadeDisplay};
 `;
 
 export default function Home() {
@@ -49,7 +51,13 @@ export default function Home() {
   return (
     <PageContainer>
       <Head></Head>
-      <Fade fadeOpacity={cardActive ? 0.8 : 0} />
+      <Fade
+        fadeOpacity={cardActive ? 0.8 : 0}
+        fadeDisplay={cardActive ? "block" : "none"}
+        onClick={() => {
+          setCardActive(false);
+        }}
+      />
       <NavBar />
       <MainContainer>
         <Dialog />
