@@ -1,7 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { useTheme } from "../../utils/provider";
+import {
+  useTheme,
+  useActiveCard,
+  useActiveProject,
+} from "../../utils/provider";
 import { SITE_THEME, DEVICES, PROJECTLIST } from "../../utils/variables";
 
 import ProjectCard from "../ProjectCard";
@@ -70,6 +74,13 @@ const ProjectCardWrapper = styled.div`
 
 export default function Projects() {
   const { theme } = useTheme();
+  const { setActiveCard } = useActiveCard();
+  const { activeProject, setActiveProject } = useActiveProject();
+
+  const CardOnClick = (e) => {
+    setActiveCard(true);
+    setActiveProject(e);
+  };
 
   return (
     <ProjectsCont>
@@ -77,7 +88,12 @@ export default function Projects() {
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
-          <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
+          <ProjectCard
+            key={i}
+            ProjectCardLogoSrc={o.logo}
+            ProjectCardTitle="hi"
+            ProjectCardOnClick={() => CardOnClick(o)}
+          />
         ))}
       </ProjectCardWrapper>
     </ProjectsCont>

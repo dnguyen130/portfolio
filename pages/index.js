@@ -9,7 +9,9 @@ import Footer from "@/components/Footer";
 import Extras from "@/components/Section";
 import { Dialog } from "@/components/Dialog";
 
-import { useCardActive } from "@/utils/provider";
+import { useActiveCard, useActiveProject } from "@/utils/provider";
+
+import { PROJECTLIST } from "../utils/variables";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -28,6 +30,7 @@ const MainContainer = styled.main`
   padding: 0 20px;
   display: flex;
   flex-direction: column;
+  user-select: ${(props) => props.mainSelect};
 `;
 
 const Fade = styled(motion.div)`
@@ -45,27 +48,56 @@ const Fade = styled(motion.div)`
   display: ${(props) => props.fadeDisplay};
 `;
 
+const FadeVariants = {
+  active: {
+    display: "block",
+    opacity: 0.8,
+    transition: {
+      duration: 0.1,
+    },
+  },
+  inactive: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+    },
+    transitionEnd: {
+      display: "none",
+    },
+  },
+};
+
 export default function Home() {
-  const { cardActive, setCardActive } = useCardActive();
+  const { activeCard, setActiveCard } = useActiveCard();
+  const { activeProject } = useActiveProject();
+  const ap = activeProject;
 
   return (
     <PageContainer>
       <Head></Head>
       <Fade
-        fadeOpacity={cardActive ? 0.8 : 0}
-        fadeDisplay={cardActive ? "block" : "none"}
+        animate={activeCard ? "active" : "inactive"}
+        variants={FadeVariants}
         onClick={() => {
-          setCardActive(false);
+          setActiveCard(false);
         }}
       />
       <NavBar />
-      <MainContainer>
-        <Dialog />
+      <MainContainer mainSelect={activeCard ? "none" : "auto"}>
         <HeroText />
         <Projects />
         <Extras />
       </MainContainer>
       <Footer />
+      <Dialog
+        title={ap.name}
+        tags={ap.tags}
+        description={ap.description}
+        infoLink={ap.url}
+        liveSite={ap.live_site}
+        gitClient={ap.github_client ? ap.github_client : null}
+        gitServer={ap.github_server ? ap.github_server : null}
+      />
     </PageContainer>
   );
 }

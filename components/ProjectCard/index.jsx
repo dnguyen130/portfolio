@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { useTheme, useCardActive } from "@/utils/provider";
+import { Dialog } from "../Dialog";
 
+import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
 import { SITE_THEME } from "@/utils/variables";
 
 const ProjectCardCont = styled(motion.div)`
@@ -44,13 +45,20 @@ const ProjectCardLogo = styled.img`
 const hiddenMask = `linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 100%, rgba(0,0,0,0) 0, rgba(0,0,0,0) 100%)`;
 const visibleMask = `linear-gradient(to left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%)`;
 
-export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
+export default function ProjectCard({
+  ProjectCardLogoSrc,
+  ProjectCardTitle,
+  ProjectCardTags,
+  ProjectCardDescription,
+  ProjectCardLink,
+  ProjectCardOnClick = () => {},
+}) {
   const { theme } = useTheme();
-  const { cardActive, setCardActive } = useCardActive();
+  const { activeCard, setActiveCard } = useActiveCard();
+  const { activeProject, setActiveProject } = useActiveProject();
 
   const CardClick = () => {
-    setCardActive(true);
-    setIsActive(true);
+    setActiveCard(true);
     setIsHover(false);
   };
 
@@ -67,24 +75,22 @@ export default function ProjectCard({ ProjectCardLogoSrc = "" }) {
     },
   };
 
-  // const [isActive, setIsActive] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [isActive, setIsActive] = useState(false);
 
   return (
     <ProjectCardCont
       bgcolor={SITE_THEME[theme].text}
-      onClick={CardClick}
+      onClick={ProjectCardOnClick}
       whileTap={{ scale: 0.95 }}
     >
       <ProjectCardWrapper
-        whileHover={() => setIsHover(true)}
+        onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         animate={isHover ? "hover" : "notHover"}
         variants={WrapperVariants}
         hovercolor1={SITE_THEME[theme].strong}
         hovercolor2={SITE_THEME[theme].text}
-      ></ProjectCardWrapper>
+      />
       <ProjectCardLogo src={ProjectCardLogoSrc} />
     </ProjectCardCont>
   );

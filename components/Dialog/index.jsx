@@ -1,18 +1,19 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
 import { IconContext } from "react-icons";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-import { useTheme, useCardActive } from "@/utils/provider";
+import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
 import { SITE_THEME, DEVICES, LINKS } from "../../utils/variables";
 import styles from "./dialog.module.css";
 
 const DialogCont = styled(motion.div)`
-  width: 60%;
+  width: 70%;
   min-width: 300px;
-  max-width: 1200px;
+  max-width: 600px;
   padding: 10px;
-  aspect-ratio: 2/3;
+  aspect-ratio: 3/4;
   border-radius: 10px;
   z-index: 101;
   background-color: white;
@@ -25,6 +26,11 @@ const DialogCont = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   transition: 0.2s;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    aspect-ratio: 1/1;
+    width: 50%;
+  }
 `;
 
 const TopRow = styled.div`
@@ -47,6 +53,12 @@ const Title = styled.h2``;
 
 const Tags = styled.h4``;
 
+const TagsWrapper = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Description = styled.p``;
 
 const LinkButtons = styled.button``;
@@ -56,13 +68,13 @@ const DialogVariants = {
     display: "flex",
     opacity: 1,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
     },
   },
   inactive: {
     opacity: 0,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
     },
     transitionEnd: {
       display: "none",
@@ -70,38 +82,54 @@ const DialogVariants = {
   },
 };
 
-export function Dialog() {
+export function Dialog({
+  title = "Example Title",
+  tags = ["tag 1", "tag 2", "tag 3"],
+  description = "Example description.",
+  infoLink,
+  liveSite,
+  gitClient,
+  gitServer,
+}) {
   const { theme } = useTheme();
-  const { cardActive, setCardActive } = useCardActive();
+  const { activeCard, setActiveCard } = useActiveCard();
+  const { activeProject } = useActiveProject();
 
   return (
-    <DialogCont
-      // dialogDisplay={cardActive ? "flex" : "none"}
-      // dialogOpacity={cardActive ? "1" : "0"}
-      animate={cardActive ? "active" : "inactive"}
-      variants={DialogVariants}
-    >
-      <TopRow>
-        <CloseButton onClick={() => setCardActive(false)}>
-          <IconContext.Provider
-            value={{
-              color: SITE_THEME[theme].background,
-              className: styles.closeButton,
-              size: "100%",
-            }}
-          >
-            <CgClose />
-          </IconContext.Provider>
-        </CloseButton>
-      </TopRow>
-      <Title>Hello</Title>
-      <Tags>Next.js, React, Styled-Components</Tags>
-      <Description>
-        This is a short description about the application.
-      </Description>
-      <LinkButtons>Learn More</LinkButtons>
-      <LinkButtons>Live Site</LinkButtons>
-      <LinkButtons>GitHub</LinkButtons>
-    </DialogCont>
+    <AnimatePresence>
+      {activeCard && (
+        <DialogCont
+          initial="inactive"
+          animate="active"
+          variants={DialogVariants}
+          exit="inactive"
+        >
+          <TopRow>
+            <CloseButton onClick={() => setActiveCard(false)}>
+              <IconContext.Provider
+                value={{
+                  color: SITE_THEME[theme].background,
+                  className: styles.closeButton,
+                  size: "100%",
+                }}
+              >
+                <CgClose />
+              </IconContext.Provider>
+            </CloseButton>
+          </TopRow>
+          <Title>{title}</Title>
+          <TagsWrapper>
+            {tags.map((i) => (
+              <Tags key={i}>{i}</Tags>
+            ))}
+          </TagsWrapper>
+          <Description>{description}</Description>
+          <LinkButtons>{infoLink}</LinkButtons>
+          {liveSite && <LinkButtons>{liveSite}</LinkButtons>}
+          <LinkButtons>{gitClient}</LinkButtons>
+          {gitServer && <LinkButtons>{gitServer}</LinkButtons>}
+        </DialogCont>
+      )}
+    </AnimatePresence>
   );
 }

@@ -6,8 +6,11 @@ const initialStates = {
   theme: "dark",
   setTheme: () => {},
 
-  cardActive: "false",
-  setCardActive: () => {},
+  activeCard: false,
+  setActiveCard: () => {},
+
+  activeProject: {},
+  setActiveProject: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -15,16 +18,29 @@ const MyContext = createContext(initialStates);
 export default function AppProvider({ children }) {
   //children all the pages/components insider this provider
   const [theme, setTheme] = useState(initialStates.theme);
-  const [cardActive, setCardActive] = useState(initialStates.cardActive);
+  const [activeCard, setActiveCard] = useState(initialStates.activeCard);
+  const [activeProject, setActiveProject] = useState(
+    initialStates.activeProject
+  );
 
   //put in the variables you want to share
   return (
-    <MyContext.Provider value={{ theme, setTheme, cardActive, setCardActive }}>
+    <MyContext.Provider
+      value={{
+        theme,
+        setTheme,
+        activeCard,
+        setActiveCard,
+        activeProject,
+        setActiveProject,
+      }}
+    >
       <style jsx global>
         {`
           html {
             scrollbar-color: ${SITE_THEME[theme].weak}
               ${SITE_THEME[theme].scrollbar}; /* Gecko Browsers */
+            overflow: ${activeCard ? "hidden" : "auto"};
           }
 
           html::-webkit-scrollbar-thumb {
@@ -82,9 +98,14 @@ export function useTheme() {
   return { theme, setTheme };
 }
 
-export function useCardActive() {
-  const { cardActive, setCardActive } = useContext(MyContext);
-  return { cardActive, setCardActive };
+export function useActiveCard() {
+  const { activeCard, setActiveCard } = useContext(MyContext);
+  return { activeCard, setActiveCard };
+}
+
+export function useActiveProject() {
+  const { activeProject, setActiveProject } = useContext(MyContext);
+  return { activeProject, setActiveProject };
 }
 
 // ::selection {
