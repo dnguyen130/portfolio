@@ -20,7 +20,6 @@ const ProjectCardCont = styled(motion.div)`
 `;
 
 const ProjectCardWrapper = styled(motion.div)`
-  /* background-color: ${(props) => props.hovercolor}; */
   background: linear-gradient(
     to left,
     ${(props) => props.hovercolor1},
@@ -52,6 +51,8 @@ export default function ProjectCard({
   ProjectCardDescription,
   ProjectCardLink,
   ProjectCardOnClick = () => {},
+  ProjectCardLightColor,
+  ProjectCardDarkColor,
 }) {
   const { theme } = useTheme();
   const { activeCard, setActiveCard } = useActiveCard();
@@ -88,7 +89,7 @@ export default function ProjectCard({
         onMouseLeave={() => setIsHover(false)}
         animate={isHover ? "hover" : "notHover"}
         variants={WrapperVariants}
-        hovercolor1={SITE_THEME[theme].strong}
+        hovercolor1={ProjectCardDarkColor}
         hovercolor2={SITE_THEME[theme].text}
       />
       <ProjectCardLogo src={ProjectCardLogoSrc} />

@@ -97,6 +97,10 @@ export default function Home() {
         liveSite={ap.live_site}
         gitClient={ap.github_client ? ap.github_client : null}
         gitServer={ap.github_server ? ap.github_server : null}
+        darkColor={ap.color_dark}
+        lightColor={ap.color_light}
+        strongColor={ap.color_strong}
+        hasLogo={ap.hasLogo}
       />
     </PageContainer>
   );

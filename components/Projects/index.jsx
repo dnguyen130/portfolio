@@ -93,6 +93,7 @@ export default function Projects() {
             ProjectCardLogoSrc={o.logo}
             ProjectCardTitle="hi"
             ProjectCardOnClick={() => CardOnClick(o)}
+            ProjectCardDarkColor={o.color_dark}
           />
         ))}
       </ProjectCardWrapper>
