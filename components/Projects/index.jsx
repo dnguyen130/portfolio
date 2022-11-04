@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 import {
@@ -66,7 +65,7 @@ const ProjectCardWrapper = styled.div`
     max-width: 700px;
   }
 
-  @media (min-width: ${DEVICES.desktop}) {
+  @media (min-width: ${DEVICES.laptop}) {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1000px;
   }

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { HiMenu } from "react-icons/hi";
-import { IconContext } from "react-icons";
 
 import { useTheme } from "../../utils/provider";
 import { SITE_THEME, DEVICES, LINKS } from "../../utils/variables";
-import styles from "./navbar.module.css";
+
+import Hamburger from "../Hamburger";
 
 const NavBarCont = styled.header`
+  position: fixed;
+  top: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +19,12 @@ const NavBarCont = styled.header`
   padding: 20px 20px;
   z-index: 99;
   transition: 0.5s;
+`;
+
+const NavBarPlaceholder = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
 `;
 
 const ContentWrapper = styled.div`
@@ -151,45 +158,40 @@ export default function NavBar() {
   const { theme } = useTheme();
 
   return (
-    <NavBarCont bgColor={SITE_THEME[theme].navbar}>
-      <ContentWrapper>
-        <ContentGroup>
-          <LogoWrapper>
-            <LogoLink href="/">
-              <LogoCont src="/logo.svg" alt="logo" />
-            </LogoLink>
-          </LogoWrapper>
-          <IconContext.Provider
-            value={{
-              className: styles.hamburgerMenu,
-              color: SITE_THEME[theme].text,
-            }}
+    <NavBarPlaceholder>
+      <NavBarCont bgColor={SITE_THEME[theme].navbar}>
+        <ContentWrapper>
+          <ContentGroup>
+            <LogoWrapper>
+              <LogoLink href="/">
+                <LogoCont src="/logo.svg" alt="logo" />
+              </LogoLink>
+            </LogoWrapper>
+            <Hamburger />
+            <NavLinkCont color={SITE_THEME[theme].text}>
+              {LINKS.map((o, i) => {
+                return (
+                  <Link key={i} href={o.url} passHref>
+                    <NavCont>
+                      <NavLink hoverColor={SITE_THEME[theme].strong}>
+                        {o.name}
+                      </NavLink>
+                    </NavCont>
+                  </Link>
+                );
+              })}
+            </NavLinkCont>
+          </ContentGroup>
+          <ResumeButton
+            buttonTextColor={SITE_THEME[theme].text}
+            buttonHoverColor={SITE_THEME[theme].strong}
           >
-            <HiMenu />
-          </IconContext.Provider>
-          <NavLinkCont color={SITE_THEME[theme].text}>
-            {LINKS.map((o, i) => {
-              return (
-                <Link key={i} href={o.url} passHref>
-                  <NavCont>
-                    <NavLink hoverColor={SITE_THEME[theme].strong}>
-                      {o.name}
-                    </NavLink>
-                  </NavCont>
-                </Link>
-              );
-            })}
-          </NavLinkCont>
-        </ContentGroup>
-        <ResumeButton
-          buttonTextColor={SITE_THEME[theme].text}
-          buttonHoverColor={SITE_THEME[theme].strong}
-        >
-          <ResumeLink target="_blank" href="/resume.pdf">
-            Resume
-          </ResumeLink>
-        </ResumeButton>
-      </ContentWrapper>
-    </NavBarCont>
+            <ResumeLink target="_blank" href="/resume.pdf">
+              Resume
+            </ResumeLink>
+          </ResumeButton>
+        </ContentWrapper>
+      </NavBarCont>
+    </NavBarPlaceholder>
   );
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SiJavascript, SiReact, SiNextdotjs } from "react-icons/si";
+import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 import { IconContext } from "react-icons/lib";
 
 import { useTheme } from "../../utils/provider";
@@ -22,12 +23,6 @@ const HeroTextCont = styled.div`
     text-align: left;
     align-items: flex-start;
   }
-`;
-
-const Logo = styled.img`
-  position: relative;
-  width: 100%;
-  height: 100%;
 `;
 
 const FirstLine = styled.h2`
@@ -72,31 +67,13 @@ const Row = styled.div`
   width: 100%;
 `;
 
-// const LogoCont = styled.img`
-//   width: 150px;
-//   height: 150px;
-//   align-self: center;
-//   margin-bottom: 20px;
-
-//   @media (min-width: ${DEVICES.mobile}) {
-//     width: 200px;
-//     height: 200px;
-//   }
-
-//   @media (min-width: ${DEVICES.mobile}) {
-//     width: 250px;
-//     height: 250px;
-//   }
-
-//   @media (min-width: ${DEVICES.desktop}) {
-//     position: absolute;
-//     right: 20px;
-//     top: 120px;
-//     width: 400px;
-//     height: 400px;
-//     opacity: 0.3;
-//   }
-// `;
+const ArrowCont = styled.div`
+  width: 50px;
+  height: 50px;
+  align-self: center;
+  position: absolute;
+  bottom: 40px;
+`;
 
 const ICONS = [
   {
@@ -147,6 +124,9 @@ export default function HeroText() {
         Currently working on personal projects while looking for job
         opportunities.
       </Description>
+      <ArrowCont>
+        <HiOutlineChevronDoubleDown size="100%" color="white" />
+      </ArrowCont>
     </HeroTextCont>
   );
 }

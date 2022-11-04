@@ -12,6 +12,7 @@ const ProjectCardCont = styled(motion.div)`
   aspect-ratio: 3/2;
   background: ${(props) => props.bgcolor};
   border-radius: 10px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +32,6 @@ const ProjectCardWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   transition: 0.2s;
-  border-radius: 10px;
 `;
 
 const ProjectCardLogo = styled.img`
@@ -46,10 +46,6 @@ const visibleMask = `linear-gradient(to left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1
 
 export default function ProjectCard({
   ProjectCardLogoSrc,
-  ProjectCardTitle,
-  ProjectCardTags,
-  ProjectCardDescription,
-  ProjectCardLink,
   ProjectCardOnClick = () => {},
   ProjectCardLightColor,
   ProjectCardDarkColor,

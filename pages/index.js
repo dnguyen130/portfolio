@@ -100,6 +100,7 @@ export default function Home() {
         darkColor={ap.color_dark}
         lightColor={ap.color_light}
         strongColor={ap.color_strong}
+        hoverColor={ap.color_hover}
         hasLogo={ap.hasLogo}
       />
     </PageContainer>

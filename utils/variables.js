@@ -93,6 +93,7 @@ export const PROJECTLIST = [
     color_light: "#FFF4DD",
     color_dark: "#2C2C80",
     color_strong: "#F57C33",
+    color_hover: "#DB6318",
   },
   {
     name: "OnMe",
@@ -111,6 +112,7 @@ export const PROJECTLIST = [
     color_light: "#FFFFFF",
     color_dark: "#2F2D2D",
     color_strong: "#FE4370",
+    color_hover: "#F22756",
   },
   {
     name: "Scout",
@@ -129,5 +131,6 @@ export const PROJECTLIST = [
     color_light: "#FFFFFF",
     color_dark: "#1C2A36",
     color_strong: "#F4A259",
+    color_hover: "#DB8539",
   },
 ];

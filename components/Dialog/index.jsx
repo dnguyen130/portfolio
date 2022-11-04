@@ -21,8 +21,8 @@ const DialogCont = styled(motion.div)`
   width: 90%;
   min-width: 280px;
   max-width: 450px;
-  padding: 10px;
-  aspect-ratio: 3/5;
+  max-height: 90%;
+  padding: 15px;
   border-radius: 10px;
   z-index: 101;
   background-color: white;
@@ -40,8 +40,9 @@ const DialogCont = styled(motion.div)`
   transition: 0.2s;
 
   @media (min-width: ${DEVICES.tablet}) {
-    aspect-ratio: 3/5;
-    max-width: 500px;
+    aspect-ratio: 7/8;
+    max-width: 700px;
+    max-height: 800px;
     padding: 25px;
   }
 `;
@@ -69,6 +70,7 @@ const Logo = styled.img`
 
   @media (min-width: ${DEVICES.mobile}) {
     height: 150px;
+    max-width: 250px;
   }
 `;
 
@@ -99,10 +101,10 @@ const TagsWrapper = styled.div`
 `;
 
 const Description = styled.ul`
-  font-size: 0.8em;
-  padding-left: 10px;
+  font-size: 1em;
+  padding-left: 15px;
 
-  @media (min-width: ${DEVICES.mobile}) {
+  @media (min-width: ${DEVICES.tablet}) {
     font-size: 1.2em;
   }
 `;
@@ -116,7 +118,7 @@ const ButtonGroup = styled.div`
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr 1fr;
-  margin: 10px 0 0;
+  margin: 15px 0 0;
 
   @media (min-width: ${DEVICES.tablet}) {
     margin: 25px 0 0;
@@ -130,6 +132,7 @@ const ButtonLink = styled.a`
   height: 35px;
   grid-column: ${(props) => props.buttonSpan};
   justify-self: center;
+  position: relative;
 
   @media (min-width: ${DEVICES.tablet}) {
     width: 150px;
@@ -139,6 +142,7 @@ const ButtonLink = styled.a`
 
 const Button = styled.div`
   width: 100%;
+  height: 100%;
   background-color: ${(props) => props.bgbutton};
   display: flex;
   border-radius: 5px;
@@ -146,6 +150,7 @@ const Button = styled.div`
   align-items: center;
   font-weight: 600;
   font-size: 1em;
+  position: absolute;
   transition: 0.1s;
 
   @media (min-width: ${DEVICES.tablet}) {
@@ -154,6 +159,7 @@ const Button = styled.div`
 
   &:hover {
     box-shadow: 4px 4px 3px black;
+    background-color: ${(props) => props.hoverbutton};
   }
 `;
 
@@ -237,6 +243,7 @@ export function Dialog({
   lightColor,
   darkColor,
   strongColor,
+  hoverColor,
   hasLogo,
 }) {
   const { theme } = useTheme();
@@ -295,11 +302,15 @@ export function Dialog({
                 href={infoLink}
                 buttonSpan={liveSite ? "span 1" : "span 2"}
               >
-                <Button bgbutton={strongColor}>Learn More</Button>
+                <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                  Learn More
+                </Button>
               </ButtonLink>
               {liveSite && (
                 <ButtonLink href={liveSite}>
-                  <Button bgbutton={strongColor}>Live Site</Button>
+                  <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                    Live Site
+                  </Button>
                 </ButtonLink>
               )}
             </ButtonGroup>
@@ -308,11 +319,15 @@ export function Dialog({
                 href={gitClient}
                 buttonSpan={gitServer ? "span 1" : "span 2"}
               >
-                <Button bgbutton={strongColor}>Client Github</Button>
+                <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                  Client Github
+                </Button>
               </ButtonLink>
               {gitServer && (
                 <ButtonLink href={gitServer}>
-                  <Button bgbutton={strongColor}>Server Github</Button>
+                  <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                    Server Github
+                  </Button>
                 </ButtonLink>
               )}
             </ButtonGroup>
