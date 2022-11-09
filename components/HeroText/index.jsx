@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { SiJavascript, SiReact, SiNextdotjs } from "react-icons/si";
 import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 import { IconContext } from "react-icons/lib";
+import { motion } from "framer-motion";
 
 import { useTheme } from "../../utils/provider";
 import { SITE_THEME, DEVICES } from "../../utils/variables";
@@ -67,7 +68,7 @@ const Row = styled.div`
   width: 100%;
 `;
 
-const ArrowCont = styled.div`
+const ArrowCont = styled(motion.div)`
   width: 50px;
   height: 50px;
   align-self: center;
@@ -92,6 +93,29 @@ const ICONS = [
     class: "iconNextdotjs",
   },
 ];
+
+const ArrowVariants = {
+  initial: {
+    y: 0,
+  },
+  active: {
+    y: [-10, 10],
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 1,
+    },
+  },
+  // inactive: {
+  //   opacity: 0,
+  //   transition: {
+  //     duration: 0.1,
+  //   },
+  //   transitionEnd: {
+  //     display: "none",
+  //   },
+  // },
+};
 
 export default function HeroText() {
   const { theme } = useTheme();
@@ -124,7 +148,7 @@ export default function HeroText() {
         Currently working on personal projects while looking for job
         opportunities.
       </Description>
-      <ArrowCont>
+      <ArrowCont initial="initial" animate="active" variants={ArrowVariants}>
         <HiOutlineChevronDoubleDown size="100%" color="white" />
       </ArrowCont>
     </HeroTextCont>

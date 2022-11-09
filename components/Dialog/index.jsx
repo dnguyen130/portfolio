@@ -21,7 +21,7 @@ const DialogCont = styled(motion.div)`
   width: 90%;
   min-width: 280px;
   max-width: 450px;
-  max-height: 90%;
+  max-height: 95vh;
   padding: 15px;
   border-radius: 10px;
   z-index: 101;
@@ -40,7 +40,6 @@ const DialogCont = styled(motion.div)`
   transition: 0.2s;
 
   @media (min-width: ${DEVICES.tablet}) {
-    aspect-ratio: 7/8;
     max-width: 700px;
     max-height: 800px;
     padding: 25px;
@@ -49,9 +48,13 @@ const DialogCont = styled(motion.div)`
 
 const TopRow = styled.div`
   width: 100%;
-  height: 30px;
+  height: 40px;
   display: flex;
   justify-content: flex-end;
+
+  @media (min-width: ${DEVICES.tablet}) {
+    height: 50px;
+  }
 `;
 
 const CloseButton = styled.div`
@@ -60,6 +63,14 @@ const CloseButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  transition: 0.1s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `;
 
 const Logo = styled.img`
@@ -105,12 +116,16 @@ const Description = styled.ul`
   padding-left: 15px;
 
   @media (min-width: ${DEVICES.tablet}) {
-    font-size: 1.2em;
+    padding-left: 25px;
   }
 `;
 
 const DescriptionBullet = styled.li`
   margin: 5px 0 0;
+
+  @media (min-width: ${DEVICES.tablet}) {
+    margin: 10px 0 0;
+  }
 `;
 
 const ButtonGroup = styled.div`
@@ -122,6 +137,7 @@ const ButtonGroup = styled.div`
 
   @media (min-width: ${DEVICES.tablet}) {
     margin: 25px 0 0;
+    width: 70%;
   }
 `;
 
