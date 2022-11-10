@@ -6,7 +6,7 @@ import NavBar from "@/components/NavBar";
 import HeroText from "@/components/HeroText";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
-import Extras from "@/components/Section";
+import Extras from "@/components/Extras";
 import { Dialog } from "@/components/Dialog";
 
 import { useActiveCard, useActiveProject } from "@/utils/provider";
@@ -84,8 +84,8 @@ export default function Home() {
       />
       <NavBar />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <HeroText />
-        <Projects />
+        <HeroText arrowHref="#projects" />
+        <Projects id="projects" />
         <Extras />
       </MainContainer>
       <Footer />

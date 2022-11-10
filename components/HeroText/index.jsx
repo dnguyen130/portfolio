@@ -117,7 +117,7 @@ const ArrowVariants = {
   // },
 };
 
-export default function HeroText() {
+export default function HeroText({ arrowHref = "#" }) {
   const { theme } = useTheme();
 
   return (
@@ -149,7 +149,9 @@ export default function HeroText() {
         opportunities.
       </Description>
       <ArrowCont initial="initial" animate="active" variants={ArrowVariants}>
-        <HiOutlineChevronDoubleDown size="100%" color="white" />
+        <a href={arrowHref}>
+          <HiOutlineChevronDoubleDown size="100%" color="white" />
+        </a>
       </ArrowCont>
     </HeroTextCont>
   );

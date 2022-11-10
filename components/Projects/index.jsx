@@ -10,10 +10,18 @@ import { SITE_THEME, DEVICES, PROJECTLIST } from "../../utils/variables";
 import ProjectCard from "../ProjectCard";
 
 const ProjectsCont = styled.div`
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const Anchor = styled.div`
+  display: block;
+  position: relative;
+  top: -110px;
+  visibility: hidden;
 `;
 
 const Title = styled.h2`
@@ -71,7 +79,7 @@ const ProjectCardWrapper = styled.div`
   }
 `;
 
-export default function Projects() {
+export default function Projects({ id }) {
   const { theme } = useTheme();
   const { setActiveCard } = useActiveCard();
   const { activeProject, setActiveProject } = useActiveProject();
@@ -83,6 +91,7 @@ export default function Projects() {
 
   return (
     <ProjectsCont>
+      <Anchor id={id} />
       <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>

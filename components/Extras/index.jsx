@@ -5,7 +5,7 @@ import { SITE_THEME, DEVICES, PROJECTLIST } from "../../utils/variables";
 
 import ProjectCard from "../ProjectCard";
 
-const ProjectsCont = styled.div`
+const ExtrasCont = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -71,14 +71,16 @@ export default function Extras() {
   const { theme } = useTheme();
 
   return (
-    <ProjectsCont>
-      <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
+    <ExtrasCont>
+      <Title titleColor={SITE_THEME[theme].text}>
+        Learn More or Get in Touch!
+      </Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
           <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
         ))}
       </ProjectCardWrapper>
-    </ProjectsCont>
+    </ExtrasCont>
   );
 }
