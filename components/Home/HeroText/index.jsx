@@ -4,8 +4,8 @@ import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 import { IconContext } from "react-icons/lib";
 import { motion } from "framer-motion";
 
-import { useTheme } from "../../utils/provider";
-import { SITE_THEME, DEVICES } from "../../utils/variables";
+import { useTheme } from "../../../utils/provider";
+import { SITE_THEME, DEVICES } from "../../../utils/variables";
 import styles from "./herotext.module.css";
 
 const HeroTextCont = styled.div`

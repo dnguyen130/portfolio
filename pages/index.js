@@ -2,12 +2,12 @@ import Head from "next/head";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import NavBar from "@/components/NavBar";
-import HeroText from "@/components/HeroText";
-import Projects from "@/components/Projects";
-import Footer from "@/components/Footer";
-import Extras from "@/components/Extras";
-import { Dialog } from "@/components/Dialog";
+import NavBar from "@/components/Shared/NavBar";
+import HeroText from "@/components/Home/HeroText";
+import Projects from "@/components/Home/Projects";
+import Footer from "@/components/Shared/Footer";
+import Extras from "@/components/Home/Extras";
+import { Dialog } from "@/components/Shared/Dialog";
 
 import { useActiveCard, useActiveProject } from "@/utils/provider";
 

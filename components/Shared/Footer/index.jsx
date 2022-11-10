@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { useTheme } from "../../utils/provider";
-import { SITE_THEME, DEVICES, LINKS } from "../../utils/variables";
+import { useTheme } from "../../../utils/provider";
+import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
 
 const FooterCont = styled.div`
   width: 100%;

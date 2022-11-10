@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { Dialog } from "../Dialog";
+import { Dialog } from "../../Shared/Dialog";
 
 import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
 import { SITE_THEME } from "@/utils/variables";

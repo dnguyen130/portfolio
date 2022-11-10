@@ -14,7 +14,7 @@ import {
 } from "react-icons/si";
 
 import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
-import { SITE_THEME, DEVICES, LINKS } from "../../utils/variables";
+import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
 import styles from "./dialog.module.css";
 
 const DialogCont = styled(motion.div)`
