@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
-import { useTheme } from "../../../utils/provider";
-import { SITE_THEME, DEVICES, PROJECTLIST } from "../../../utils/variables";
+import {
+  useTheme,
+  useActiveCard,
+  useActiveProject,
+} from "../../../utils/provider";
+import { SITE_THEME, DEVICES, EXTRASLIST } from "../../../utils/variables";
 
 import ProjectCard from "../ProjectCard";
 
 const ExtrasCont = styled.div`
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -14,7 +19,7 @@ const ExtrasCont = styled.div`
 
 const Title = styled.h2`
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin: 0;
   color: ${(props) => props.titleColor};
   align-self: flex-start;
@@ -41,27 +46,26 @@ const Underline = styled.div`
     transparent
   );
   border-radius: 1px;
-  margin: 0 0 20px;
+  margin: 0 0 30px;
 `;
 
 const ProjectCardWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 30px;
   width: 100%;
   max-width: 350px;
 
   @media (min-width: ${DEVICES.mobile}) {
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 1fr);
     max-width: 600px;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
-    grid-template-columns: auto auto;
     max-width: 700px;
   }
 
-  @media (min-width: ${DEVICES.desktop}) {
+  @media (min-width: ${DEVICES.laptop}) {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1000px;
   }
@@ -69,6 +73,13 @@ const ProjectCardWrapper = styled.div`
 
 export default function Extras() {
   const { theme } = useTheme();
+  const { setActiveCard } = useActiveCard();
+  const { setActiveProject } = useActiveProject();
+
+  const CardOnClick = (e) => {
+    setActiveCard(true);
+    setActiveProject(e);
+  };
 
   return (
     <ExtrasCont>
@@ -77,8 +88,13 @@ export default function Extras() {
       </Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
       <ProjectCardWrapper>
-        {PROJECTLIST.map((o, i) => (
-          <ProjectCard key={i} ProjectCardLogoSrc={o.logo} />
+        {EXTRASLIST.map((o, i) => (
+          <ProjectCard
+            key={i}
+            ProjectCardLogoSrc={o.logo}
+            ProjectCardOnClick={() => CardOnClick(o)}
+            ProjectCardDarkColor={o.color_dark}
+          />
         ))}
       </ProjectCardWrapper>
     </ExtrasCont>

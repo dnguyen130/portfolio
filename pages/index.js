@@ -92,6 +92,7 @@ export default function Home() {
       <Dialog
         title={ap.name}
         tags={ap.tags}
+        logoSrc={ap.logo}
         description={ap.description}
         infoLink={ap.url}
         liveSite={ap.live_site}
@@ -102,6 +103,7 @@ export default function Home() {
         strongColor={ap.color_strong}
         hoverColor={ap.color_hover}
         hasLogo={ap.hasLogo}
+        buttonName={ap.button_names}
       />
     </PageContainer>
   );

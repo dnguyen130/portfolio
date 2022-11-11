@@ -94,6 +94,7 @@ export const PROJECTLIST = [
     color_dark: "#2C2C80",
     color_strong: "#F57C33",
     color_hover: "#DB6318",
+    button_names: ["Learn More", "Live Site", "Client Github", "Server Github"],
   },
   {
     name: "OnMe",
@@ -113,6 +114,7 @@ export const PROJECTLIST = [
     color_dark: "#2F2D2D",
     color_strong: "#FE4370",
     color_hover: "#F22756",
+    button_names: ["Learn More", "Live Site", "Client Github", "Server Github"],
   },
   {
     name: "Scout",
@@ -132,5 +134,32 @@ export const PROJECTLIST = [
     color_dark: "#1C2A36",
     color_strong: "#F4A259",
     color_hover: "#DB8539",
+  },
+];
+
+export const EXTRASLIST = [
+  {
+    name: "About Me",
+    url: "about",
+    hasLogo: false,
+    logo: "logo.svg",
+    description: [
+      "Hi, I'm Danny",
+      "Front-end web developer with design experience",
+    ],
+    color_dark: "#050610",
+    color_light: "#FFFFFF",
+    color_strong: "#15ade4",
+    button_names: ["Hi", "Hi2", "Hi3", "Hi4"],
+  },
+  {
+    name: "Contact",
+    url: "contact",
+    hasLogo: false,
+    logo: "email.png",
+    description: ["Contact me via email or social media"],
+    color_dark: "#1b334b",
+    color_light: "#FFFFFF",
+    color_strong: "#5f98d1",
   },
 ];

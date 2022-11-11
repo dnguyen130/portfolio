@@ -58,18 +58,17 @@ const Underline = styled.div`
 
 const ProjectCardWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 30px;
   width: 100%;
   max-width: 350px;
 
   @media (min-width: ${DEVICES.mobile}) {
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 1fr);
     max-width: 600px;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
-    grid-template-columns: auto auto;
     max-width: 700px;
   }
 
@@ -82,7 +81,7 @@ const ProjectCardWrapper = styled.div`
 export default function Projects({ id }) {
   const { theme } = useTheme();
   const { setActiveCard } = useActiveCard();
-  const { activeProject, setActiveProject } = useActiveProject();
+  const { setActiveProject } = useActiveProject();
 
   const CardOnClick = (e) => {
     setActiveCard(true);
@@ -99,7 +98,6 @@ export default function Projects({ id }) {
           <ProjectCard
             key={i}
             ProjectCardLogoSrc={o.logo}
-            ProjectCardTitle="hi"
             ProjectCardOnClick={() => CardOnClick(o)}
             ProjectCardDarkColor={o.color_dark}
           />

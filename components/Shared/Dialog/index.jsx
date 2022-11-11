@@ -253,6 +253,7 @@ export function Dialog({
   description,
   tags,
   infoLink,
+  logoSrc,
   liveSite,
   gitClient,
   gitServer,
@@ -261,6 +262,7 @@ export function Dialog({
   strongColor,
   hoverColor,
   hasLogo,
+  buttonName = ["Learn More", "Live Site", "Client Github", "Server Github"],
 }) {
   const { theme } = useTheme();
   const { activeCard, setActiveCard } = useActiveCard();
@@ -291,21 +293,23 @@ export function Dialog({
                 </IconContext.Provider>
               </CloseButton>
             </TopRow>
-            <Logo src={`/${infoLink}_logo.svg`} />
+            <Logo src={logoSrc} />
             {hasLogo && <Title titleColor={strongColor}>{title}</Title>}
-            <TagsWrapper>
-              {tags.map((o, i) => {
-                var j = 0;
-                for (i = 0; i < o.length; i++) {
-                  for (j = 0; j < ICONS.length; j++) {
-                    if (o == ICONS[j].name) {
-                      const IconMatch = ICONS[j].element;
-                      return <IconMatch key={ICONS[j].key} />;
+            {tags ? (
+              <TagsWrapper>
+                {tags.map((o, i) => {
+                  var j = 0;
+                  for (i = 0; i < o.length; i++) {
+                    for (j = 0; j < ICONS.length; j++) {
+                      if (o == ICONS[j].name) {
+                        const IconMatch = ICONS[j].element;
+                        return <IconMatch key={ICONS[j].key} />;
+                      }
                     }
                   }
-                }
-              })}
-            </TagsWrapper>
+                })}
+              </TagsWrapper>
+            ) : null}
             <Description>
               {description.map((o, i) => {
                 return <DescriptionBullet key={i}>{o}</DescriptionBullet>;
@@ -319,30 +323,32 @@ export function Dialog({
                 buttonSpan={liveSite ? "span 1" : "span 2"}
               >
                 <Button bgbutton={strongColor} hoverbutton={hoverColor}>
-                  Learn More
+                  {buttonName[0]}
                 </Button>
               </ButtonLink>
               {liveSite && (
                 <ButtonLink href={liveSite}>
                   <Button bgbutton={strongColor} hoverbutton={hoverColor}>
-                    Live Site
+                    {buttonName[1]}
                   </Button>
                 </ButtonLink>
               )}
             </ButtonGroup>
             <ButtonGroup>
-              <ButtonLink
-                href={gitClient}
-                buttonSpan={gitServer ? "span 1" : "span 2"}
-              >
-                <Button bgbutton={strongColor} hoverbutton={hoverColor}>
-                  Client Github
-                </Button>
-              </ButtonLink>
+              {gitClient && (
+                <ButtonLink
+                  href={gitClient}
+                  buttonSpan={gitServer ? "span 1" : "span 2"}
+                >
+                  <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                    {buttonName[2]}
+                  </Button>
+                </ButtonLink>
+              )}
               {gitServer && (
                 <ButtonLink href={gitServer}>
                   <Button bgbutton={strongColor} hoverbutton={hoverColor}>
-                    Server Github
+                    {buttonName[3]}
                   </Button>
                 </ButtonLink>
               )}
