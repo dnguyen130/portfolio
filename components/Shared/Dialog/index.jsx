@@ -327,7 +327,7 @@ export function Dialog({
                 </Button>
               </ButtonLink>
               {liveSite && (
-                <ButtonLink href={liveSite}>
+                <ButtonLink href={liveSite} target="_blank">
                   <Button bgbutton={strongColor} hoverbutton={hoverColor}>
                     {buttonName[1]}
                   </Button>
@@ -338,6 +338,7 @@ export function Dialog({
               {gitClient && (
                 <ButtonLink
                   href={gitClient}
+                  target="_blank"
                   buttonSpan={gitServer ? "span 1" : "span 2"}
                 >
                   <Button bgbutton={strongColor} hoverbutton={hoverColor}>
@@ -346,7 +347,7 @@ export function Dialog({
                 </ButtonLink>
               )}
               {gitServer && (
-                <ButtonLink href={gitServer}>
+                <ButtonLink href={gitServer} target="_blank">
                   <Button bgbutton={strongColor} hoverbutton={hoverColor}>
                     {buttonName[3]}
                   </Button>

@@ -58,6 +58,8 @@ const Underline = styled.div`
 
 const ProjectCardWrapper = styled.div`
   display: grid;
+  align-items: center;
+  justify-items: center;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 30px;
   width: 100%;

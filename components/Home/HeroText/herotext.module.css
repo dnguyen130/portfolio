@@ -1,42 +1,4 @@
-.iconJavascript {
+.heroIcon {
   width: clamp(30px, 9vw, 60px);
   height: clamp(30px, 9vw, 60px);
-  transition: color 0.2s;
 }
-
-.iconJavascript:hover {
-  color: #f8dc2c;
-}
-
-.iconReact {
-  width: clamp(30px, 9vw, 70px);
-  height: clamp(30px, 9vw, 70px);
-  transition: color 0.2s;
-}
-
-.iconReact:hover {
-  color: #06d7fe;
-}
-
-.iconNextdotjs {
-  width: clamp(30px, 9vw, 70px);
-  height: clamp(30px, 9vw, 70px);
-  transition: outline 0.2s;
-}
-
-/* @media (min-width: 768px) {
-  .iconJavascript {
-    width: 60px;
-    height: 60px;
-  }
-
-  .iconReact {
-    width: 60px;
-    height: 60px;
-  }
-
-  .iconNextdotjs {
-    width: 60px;
-    height: 60px;
-  }
-} */

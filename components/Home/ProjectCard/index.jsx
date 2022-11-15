@@ -9,6 +9,7 @@ import { SITE_THEME } from "@/utils/variables";
 
 const ProjectCardCont = styled(motion.div)`
   width: 100%;
+  max-width: 300px;
   aspect-ratio: 3/2;
   background: ${(props) => props.bgcolor};
   border-radius: 10px;

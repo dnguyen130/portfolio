@@ -51,6 +51,8 @@ const Underline = styled.div`
 
 const ProjectCardWrapper = styled.div`
   display: grid;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 30px;
   width: 100%;
@@ -66,8 +68,8 @@ const ProjectCardWrapper = styled.div`
   }
 
   @media (min-width: ${DEVICES.laptop}) {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1000px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 660px;
   }
 `;
 

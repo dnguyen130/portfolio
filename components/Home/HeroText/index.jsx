@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { SiJavascript, SiReact, SiNextdotjs } from "react-icons/si";
 import { HiOutlineChevronDoubleDown } from "react-icons/hi";
@@ -50,9 +51,14 @@ const IconCont = styled.div`
 
 const IconWrapper = styled.div`
   color: ${(props) => props.iconColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
   transition: color 0.25s;
   &:hover {
     color: ${(props) => props.iconHoverColor};
+    background-color: ${(props) => props.iconBgColor};
   }
 `;
 
@@ -76,21 +82,36 @@ const ArrowCont = styled(motion.div)`
   bottom: 40px;
 `;
 
+const ArrowWrapper = styled.a`
+  width: 100%;
+  height: 100%;
+  color: ${(props) => props.arrowColor};
+  transition: color 0.25s;
+
+  &:hover {
+    color: ${(props) => props.arrowHoverColor};
+  }
+`;
+
 const ICONS = [
   {
     key: "javascript",
     element: SiJavascript,
     class: "iconJavascript",
+    hoverColor: "#f8dc2c",
   },
   {
     key: "react",
     element: SiReact,
     class: "iconReact",
+    hoverColor: "#06d7fe",
   },
   {
     key: "nextdotjs",
     element: SiNextdotjs,
     class: "iconNextdotjs",
+    hoverColor: "black",
+    iconBgColor: "white",
   },
 ];
 
@@ -106,15 +127,6 @@ const ArrowVariants = {
       duration: 1,
     },
   },
-  // inactive: {
-  //   opacity: 0,
-  //   transition: {
-  //     duration: 0.1,
-  //   },
-  //   transitionEnd: {
-  //     display: "none",
-  //   },
-  // },
 };
 
 export default function HeroText({ arrowHref = "#" }) {
@@ -131,9 +143,13 @@ export default function HeroText({ arrowHref = "#" }) {
           return (
             <IconContext.Provider
               key={icon.key}
-              value={{ className: styles[icon.class] }}
+              value={{ className: styles.heroIcon }}
             >
-              <IconWrapper iconColor={SITE_THEME[theme].text}>
+              <IconWrapper
+                iconColor={SITE_THEME[theme].text}
+                iconHoverColor={icon.hoverColor}
+                iconBgColor={icon.iconBgColor}
+              >
                 <icon.element />
               </IconWrapper>
             </IconContext.Provider>
@@ -149,9 +165,13 @@ export default function HeroText({ arrowHref = "#" }) {
         opportunities.
       </Description>
       <ArrowCont initial="initial" animate="active" variants={ArrowVariants}>
-        <a href={arrowHref}>
-          <HiOutlineChevronDoubleDown size="100%" color="white" />
-        </a>
+        <ArrowWrapper
+          href={arrowHref}
+          arrowColor={SITE_THEME[theme].text}
+          arrowHoverColor={SITE_THEME[theme].strong}
+        >
+          <HiOutlineChevronDoubleDown size="100%" />
+        </ArrowWrapper>
       </ArrowCont>
     </HeroTextCont>
   );

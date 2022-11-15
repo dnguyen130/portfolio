@@ -95,7 +95,7 @@ export default function Home() {
         logoSrc={ap.logo}
         description={ap.description}
         infoLink={ap.url}
-        liveSite={ap.live_site}
+        liveSite={ap.live_site ? ap.live_site : null}
         gitClient={ap.github_client ? ap.github_client : null}
         gitServer={ap.github_server ? ap.github_server : null}
         darkColor={ap.color_dark}
