@@ -1,10 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { HiMenu } from "react-icons/hi";
 
 import { useTheme } from "../../../utils/provider";
 import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
-
-import Hamburger from "../Hamburger";
 
 const NavBarCont = styled.header`
   position: fixed;
@@ -17,8 +16,29 @@ const NavBarCont = styled.header`
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
   background-color: ${(props) => props.bgColor};
   padding: 20px 20px;
-  z-index: 99;
+  z-index: 1;
   transition: 0.5s;
+`;
+
+const HamburgerCont = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  color: ${(props) => props.hamburgerColor};
+  transition: 0.25s;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+
+  &:hover {
+    color: ${(props) => props.hamburgerHoverColor};
+  }
+
+  @media (min-width: ${DEVICES.tablet}) {
+    display: none;
+  }
 `;
 
 const NavBarPlaceholder = styled.div`
@@ -154,7 +174,7 @@ const ContentGroup = styled.div`
   }
 `;
 
-export default function NavBar() {
+export default function NavBar({ burgerOnClick = () => {} }) {
   const { theme } = useTheme();
 
   return (
@@ -167,7 +187,13 @@ export default function NavBar() {
                 <LogoCont src="/logo.svg" alt="logo" />
               </LogoLink>
             </LogoWrapper>
-            <Hamburger />
+            <HamburgerCont
+              hamburgerColor={SITE_THEME[theme].text}
+              hamburgerHoverColor={SITE_THEME[theme].strong}
+              onClick={burgerOnClick}
+            >
+              <HiMenu size="90%" />
+            </HamburgerCont>
             <NavLinkCont color={SITE_THEME[theme].text}>
               {LINKS.map((o, i) => {
                 return (

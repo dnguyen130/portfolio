@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -7,9 +8,14 @@ import HeroText from "@/components/Home/HeroText";
 import Projects from "@/components/Home/Projects";
 import Footer from "@/components/Shared/Footer";
 import Extras from "@/components/Home/Extras";
-import { Dialog } from "@/components/Shared/Dialog";
+import Dialog from "@/components/Shared/Dialog";
+import Drawer from "@/components/Shared/Drawer";
 
-import { useActiveCard, useActiveProject } from "@/utils/provider";
+import {
+  useActiveCard,
+  useActiveProject,
+  useActiveDrawer,
+} from "@/utils/provider";
 
 import { PROJECTLIST } from "../utils/variables";
 
@@ -39,7 +45,7 @@ const Fade = styled(motion.div)`
   width: 100%;
   height: 100%;
   user-select: none;
-  z-index: 100;
+  z-index: 2;
   position: fixed;
   top: 0;
   right: 0;
@@ -70,19 +76,22 @@ const FadeVariants = {
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeProject } = useActiveProject();
+  const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const ap = activeProject;
 
   return (
     <PageContainer>
       <Head></Head>
       <Fade
-        animate={activeCard ? "active" : "inactive"}
+        animate={activeCard || activeDrawer ? "active" : "inactive"}
         variants={FadeVariants}
         onClick={() => {
           setActiveCard(false);
+          setActiveDrawer(false);
         }}
       />
-      <NavBar />
+      <Drawer />
+      <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
         <HeroText arrowHref="#projects" />
         <Projects id="projects" />

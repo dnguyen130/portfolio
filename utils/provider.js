@@ -11,6 +11,9 @@ const initialStates = {
 
   activeProject: {},
   setActiveProject: () => {},
+
+  activeDrawer: false,
+  setActiveDrawer: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -22,6 +25,7 @@ export default function AppProvider({ children }) {
   const [activeProject, setActiveProject] = useState(
     initialStates.activeProject
   );
+  const [activeDrawer, setActiveDrawer] = useState(initialStates.activeDrawer);
 
   //put in the variables you want to share
   return (
@@ -33,6 +37,8 @@ export default function AppProvider({ children }) {
         setActiveCard,
         activeProject,
         setActiveProject,
+        activeDrawer,
+        setActiveDrawer,
       }}
     >
       <style jsx global>
@@ -40,7 +46,7 @@ export default function AppProvider({ children }) {
           html {
             scrollbar-color: ${SITE_THEME[theme].weak}
               ${SITE_THEME[theme].scrollbar}; /* Gecko Browsers */
-            overflow: ${activeCard ? "hidden" : "auto"};
+            overflow: ${activeCard || activeDrawer ? "hidden" : "auto"};
           }
 
           html::-webkit-scrollbar-thumb {
@@ -106,6 +112,11 @@ export function useActiveCard() {
 export function useActiveProject() {
   const { activeProject, setActiveProject } = useContext(MyContext);
   return { activeProject, setActiveProject };
+}
+
+export function useActiveDrawer() {
+  const { activeDrawer, setActiveDrawer } = useContext(MyContext);
+  return { activeDrawer, setActiveDrawer };
 }
 
 // ::selection {

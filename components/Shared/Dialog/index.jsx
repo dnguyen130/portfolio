@@ -15,7 +15,6 @@ import {
 
 import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
 import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
-import styles from "./dialog.module.css";
 
 const DialogCont = styled(motion.div)`
   width: 90%;
@@ -24,7 +23,7 @@ const DialogCont = styled(motion.div)`
   max-height: 95vh;
   padding: 15px;
   border-radius: 10px;
-  z-index: 101;
+  z-index: 3;
   background-color: white;
   position: fixed;
   top: 50%;
@@ -60,6 +59,8 @@ const TopRow = styled.div`
 const CloseButton = styled.div`
   height: 100%;
   aspect-ratio: 1/1;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,9 +68,10 @@ const CloseButton = styled.div`
   border-radius: 5px;
   transition: 0.1s;
   cursor: pointer;
+  color: ${(props) => props.closeButtonColor};
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    color: ${(props) => props.closeButtonHoverColor};
   }
 `;
 
@@ -248,7 +250,7 @@ const ICONS = [
   },
 ];
 
-export function Dialog({
+export default function Dialog({
   title = "Example Title",
   description,
   tags,
@@ -281,16 +283,12 @@ export function Dialog({
         >
           <Section>
             <TopRow>
-              <CloseButton onClick={() => setActiveCard(false)}>
-                <IconContext.Provider
-                  value={{
-                    color: SITE_THEME[theme].text,
-                    className: styles.closeButton,
-                    size: "100%",
-                  }}
-                >
-                  <CgClose />
-                </IconContext.Provider>
+              <CloseButton
+                onClick={() => setActiveCard(false)}
+                closeButtonColor={SITE_THEME[theme].text}
+                closeButtonHoverColor={strongColor}
+              >
+                <CgClose size="90%" />
               </CloseButton>
             </TopRow>
             <Logo src={logoSrc} />

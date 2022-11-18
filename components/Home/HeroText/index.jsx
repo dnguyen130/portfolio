@@ -120,7 +120,7 @@ const ArrowVariants = {
     y: 0,
   },
   active: {
-    y: [-10, 10],
+    y: [-5, 5],
     transition: {
       repeat: Infinity,
       repeatType: "mirror",
