@@ -164,7 +164,12 @@ export default function HeroText({ arrowHref = "#" }) {
         Currently working on personal projects while looking for job
         opportunities.
       </Description>
-      <ArrowCont initial="initial" animate="active" variants={ArrowVariants}>
+      <ArrowCont
+        initial="initial"
+        animate="active"
+        variants={ArrowVariants}
+        whileTap={{ scale: 0.8 }}
+      >
         <ArrowWrapper
           href={arrowHref}
           arrowColor={SITE_THEME[theme].text}

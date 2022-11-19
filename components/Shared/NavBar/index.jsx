@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 import { useTheme } from "../../../utils/provider";
 import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
@@ -20,7 +21,7 @@ const NavBarCont = styled.header`
   transition: 0.5s;
 `;
 
-const HamburgerCont = styled.div`
+const HamburgerCont = styled(motion.div)`
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -191,6 +192,7 @@ export default function NavBar({ burgerOnClick = () => {} }) {
               hamburgerColor={SITE_THEME[theme].text}
               hamburgerHoverColor={SITE_THEME[theme].strong}
               onClick={burgerOnClick}
+              whileTap={{ scale: 0.8, transition: { duration: 0.01 } }}
             >
               <HiMenu size="90%" />
             </HamburgerCont>

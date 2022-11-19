@@ -56,7 +56,7 @@ const TopRow = styled.div`
   }
 `;
 
-const CloseButton = styled.div`
+const CloseButton = styled(motion.div)`
   height: 100%;
   aspect-ratio: 1/1;
   width: 50px;
@@ -158,7 +158,7 @@ const ButtonLink = styled.a`
   }
 `;
 
-const Button = styled.div`
+const Button = styled(motion.div)`
   width: 100%;
   height: 100%;
   background-color: ${(props) => props.bgbutton};
@@ -287,6 +287,7 @@ export default function Dialog({
                 onClick={() => setActiveCard(false)}
                 closeButtonColor={SITE_THEME[theme].text}
                 closeButtonHoverColor={strongColor}
+                whileTap={{ scale: 0.8 }}
               >
                 <CgClose size="90%" />
               </CloseButton>
@@ -320,13 +321,21 @@ export default function Dialog({
                 href={infoLink}
                 buttonSpan={liveSite ? "span 1" : "span 2"}
               >
-                <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                <Button
+                  bgbutton={strongColor}
+                  hoverbutton={hoverColor}
+                  whileTap={{ scale: 0.9 }}
+                >
                   {buttonName[0]}
                 </Button>
               </ButtonLink>
               {liveSite && (
                 <ButtonLink href={liveSite} target="_blank">
-                  <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                  <Button
+                    bgbutton={strongColor}
+                    hoverbutton={hoverColor}
+                    whileTap={{ scale: 0.9 }}
+                  >
                     {buttonName[1]}
                   </Button>
                 </ButtonLink>
@@ -339,14 +348,22 @@ export default function Dialog({
                   target="_blank"
                   buttonSpan={gitServer ? "span 1" : "span 2"}
                 >
-                  <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                  <Button
+                    bgbutton={strongColor}
+                    hoverbutton={hoverColor}
+                    whileTap={{ scale: 0.9 }}
+                  >
                     {buttonName[2]}
                   </Button>
                 </ButtonLink>
               )}
               {gitServer && (
                 <ButtonLink href={gitServer} target="_blank">
-                  <Button bgbutton={strongColor} hoverbutton={hoverColor}>
+                  <Button
+                    bgbutton={strongColor}
+                    hoverbutton={hoverColor}
+                    whileTap={{ scale: 0.9 }}
+                  >
                     {buttonName[3]}
                   </Button>
                 </ButtonLink>

@@ -28,7 +28,7 @@ const TopRow = styled.div`
   align-items: center;
 `;
 
-const CloseButton = styled.div`
+const CloseButton = styled(motion.div)`
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -45,7 +45,7 @@ const CloseButton = styled.div`
   }
 `;
 
-const DrawerButton = styled.div`
+const DrawerButton = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 75px;
@@ -127,6 +127,7 @@ export default function Drawer() {
               closeColor={SITE_THEME[theme].text}
               closeHoverColor={SITE_THEME[theme].strong}
               onClick={() => setActiveDrawer(false)}
+              whileTap={{ scale: 0.8 }}
             >
               <CgClose size="90%" />
             </CloseButton>
