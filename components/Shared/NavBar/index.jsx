@@ -28,16 +28,16 @@ const HamburgerCont = styled(motion.div)`
   align-items: center;
   width: 50px;
   height: 50px;
-  color: ${(props) => props.hamburgerColor};
+  color: ${(props) => props.hamburgercolor};
   transition: 0.25s;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
 
   &:hover {
-    color: ${(props) => props.hamburgerHoverColor};
+    color: ${(props) => props.hamburgerhovercolor};
   }
 
-  @media (min-width: ${DEVICES.tablet}) {
+  @media (min-width: ${DEVICES.laptop}) {
     display: none;
   }
 `;
@@ -87,7 +87,7 @@ const NavLinkCont = styled.div`
   display: none;
   margin-left: 100px;
 
-  @media (min-width: ${DEVICES.tablet}) {
+  @media (min-width: ${DEVICES.laptop}) {
     display: flex;
   }
 `;
@@ -146,7 +146,7 @@ const ResumeButton = styled.button`
   cursor: pointer;
   transition: 0.2s;
 
-  @media (min-width: ${DEVICES.tablet}) {
+  @media (min-width: ${DEVICES.laptop}) {
     display: block;
 
     &:hover {
@@ -170,7 +170,7 @@ const ContentGroup = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  @media (min-width: ${DEVICES.tablet}) {
+  @media (min-width: ${DEVICES.laptop}) {
     justify-content: flex-start;
   }
 `;
@@ -189,8 +189,8 @@ export default function NavBar({ burgerOnClick = () => {} }) {
               </LogoLink>
             </LogoWrapper>
             <HamburgerCont
-              hamburgerColor={SITE_THEME[theme].text}
-              hamburgerHoverColor={SITE_THEME[theme].strong}
+              hamburgercolor={SITE_THEME[theme].text}
+              hamburgerhovercolor={SITE_THEME[theme].strong}
               onClick={burgerOnClick}
               whileTap={{ scale: 0.8, transition: { duration: 0.01 } }}
             >

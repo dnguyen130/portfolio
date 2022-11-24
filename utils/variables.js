@@ -61,17 +61,18 @@ export const LINKS = [
   {
     name: "Home",
     url: "/",
-    logo: "#",
   },
   {
     name: "About",
-    url: "/about",
-    logo: "#",
+    url: "/",
   },
   {
     name: "Contact",
-    url: "#",
-    logo: "#",
+    url: "/",
+  },
+  {
+    name: "Resume",
+    url: "/resume.pdf",
   },
 ];
 
