@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { CgClose } from "react-icons/cg";
 import { FaChevronDown } from "react-icons/fa";
+import Link from "next/link";
 
 import { useTheme, useActiveDrawer } from "@/utils/provider";
 
@@ -38,13 +39,13 @@ const CloseButton = styled(motion.div)`
   align-items: center;
   width: 50px;
   height: 50px;
-  color: ${(props) => props.closeColor};
+  color: ${(props) => props.closecolor};
   transition: color 0.25s;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
 
   &:hover {
-    color: ${(props) => props.closeHoverColor};
+    color: ${(props) => props.closehover};
   }
 `;
 
@@ -56,8 +57,7 @@ const DrawerButton = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  background-color: ${(props) => props.drawerBgColor};
-  color: #fff;
+  background-color: ${(props) => props.drawerbgcolor};
   transition: 0.25s;
   cursor: pointer;
   margin-bottom: 10px;
@@ -67,7 +67,8 @@ const DrawerButton = styled(motion.div)`
   z-index: 10;
 
   &:hover {
-    color: ${(props) => props.drawerFontHover};
+    color: ${(props) => props.drawerfonthover};
+    background-color: ${(props) => props.drawerbghover};
   }
 `;
 
@@ -78,8 +79,8 @@ const ProjectButton = styled(motion.div)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: ${(props) => props.drawerBgColor};
-  color: ${(props) => props.projectButtonColor};
+  background-color: ${(props) => props.drawerbgcolor};
+  color: ${(props) => props.projectbuttoncolor};
   transition: 0.25s;
   cursor: pointer;
   padding: 0 20px;
@@ -88,7 +89,8 @@ const ProjectButton = styled(motion.div)`
   z-index: 10;
 
   &:hover {
-    color: ${(props) => props.drawerFontHover};
+    color: ${(props) => props.drawerfonthover};
+    background-color: ${(props) => props.drawerbghover};
   }
 `;
 const Underline = styled.div`
@@ -119,6 +121,11 @@ const ButtonLabel = styled.h2`
   margin: 0;
   font-size: 1em;
   font-weight: 500;
+  color: ${(props) => props.buttonlabelcolor};
+
+  ${DrawerButton}:hover & {
+    color: ${(props) => props.closehovercolor};
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -157,6 +164,11 @@ const SubMenuButton = styled.div`
   justify-content: flex-end;
   align-items: center;
   padding: 0 20px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: ${(props) => props.submenubghover};
+  }
 `;
 
 const SubMenuButtonLabel = styled.h3`
@@ -204,13 +216,6 @@ export default function Drawer() {
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const [activeProjectButton, setActiveProjectButton] = useState(false);
 
-  const DrawerOnClick = (e) => {
-    e.stopPropagation();
-    if (activeProjectButton) {
-      setActiveProjectButton(false);
-    }
-  };
-
   return (
     <AnimatePresence>
       {activeDrawer && (
@@ -220,12 +225,11 @@ export default function Drawer() {
           animate="active"
           variants={DrawerVariants}
           exit="inactive"
-          onClick={(e) => DrawerOnClick(e)}
         >
           <TopRow>
             <CloseButton
-              closeColor={SITE_THEME[theme].text}
-              closeHoverColor={SITE_THEME[theme].strong}
+              closecolor={SITE_THEME[theme].text}
+              closehover={SITE_THEME[theme].strong}
               onClick={() => setActiveDrawer(false)}
               whileTap={{ scale: 0.8 }}
             >
@@ -235,29 +239,52 @@ export default function Drawer() {
           <ButtonWrapper buttonwrappercolor={SITE_THEME[theme].background}>
             {LINKS.map((o, i) => {
               return (
-                <DrawerButton
-                  drawerBgColor={SITE_THEME[theme].navbar}
-                  drawerFontHover={SITE_THEME[theme].strong}
-                  gradient={SITE_THEME[theme].strong}
-                  key={i}
-                >
-                  <MenuLink
-                    href={o.url ? o.url : null}
-                    target={o.url == "/" ? null : "_blank"} //Figure this out
+                <Link href={o.url} passHref legacyBehavior key={i}>
+                  <DrawerButton
+                    drawerbgcolor={SITE_THEME[theme].navbar}
+                    drawerbghover={SITE_THEME[theme].drawerhover}
+                    drawerfonthover={SITE_THEME[theme].strong}
+                    gradient={SITE_THEME[theme].strong}
                   >
-                    <ButtonLabel>{o.name}</ButtonLabel>
-                    <Underline gradient1={SITE_THEME[theme].strong} />
-                  </MenuLink>
-                </DrawerButton>
+                    <MenuLink>
+                      <ButtonLabel
+                        buttonlabelcolor={SITE_THEME[theme].text}
+                        closehovercolor={SITE_THEME[theme].strong}
+                      >
+                        {o.name}
+                      </ButtonLabel>
+                      <Underline gradient1={SITE_THEME[theme].strong} />
+                    </MenuLink>
+                  </DrawerButton>
+                </Link>
               );
             })}
+            <DrawerButton
+              drawerbgcolor={SITE_THEME[theme].navbar}
+              drawerbghover={SITE_THEME[theme].drawerhover}
+              drawerfonthover={SITE_THEME[theme].strong}
+              gradient={SITE_THEME[theme].strong}
+            >
+              <MenuLink href="/resume.pdf" target="_blank">
+                <ButtonLabel
+                  buttonlabelcolor={SITE_THEME[theme].text}
+                  closehovercolor={SITE_THEME[theme].strong}
+                >
+                  Resume
+                </ButtonLabel>
+              </MenuLink>
+              <Underline gradient1={SITE_THEME[theme].strong} />
+            </DrawerButton>
             <ProjectButton
-              drawerBgColor={SITE_THEME[theme].navbar}
-              drawerFontHover={SITE_THEME[theme].strong}
+              drawerbgcolor={SITE_THEME[theme].navbar}
+              drawerbghover={SITE_THEME[theme].drawerhover}
+              drawerfonthover={SITE_THEME[theme].strong}
               gradient={SITE_THEME[theme].strong}
               onClick={() => setActiveProjectButton(!activeProjectButton)}
-              projectButtonColor={
-                activeProjectButton ? SITE_THEME[theme].strong : "#fff"
+              projectbuttoncolor={
+                activeProjectButton
+                  ? SITE_THEME[theme].strong
+                  : SITE_THEME[theme].text
               }
             >
               <ArrowCont
@@ -278,21 +305,26 @@ export default function Drawer() {
               submenuz={activeProjectButton ? "1" : "-1"}
               submenuheight={activeProjectButton ? "auto" : "0"}
               submenubg={SITE_THEME[theme].background}
+              submenubghover={SITE_THEME[theme].drawerhover}
             >
               {PROJECTLIST.map((o, i) => {
                 return (
-                  <SubMenuButton
-                    submenubuttonheight={activeProjectButton ? "40px" : "0"}
-                    submenubuttoncolor={SITE_THEME[theme].navbar}
-                    key={i}
-                  >
-                    <SubMenuButtonLabel
-                      submenufontcolor="#fff"
-                      submenufonthovercolor={SITE_THEME[theme].strong}
+                  <Link href={o.url} passHref key={i} legacyBehavior>
+                    <SubMenuButton
+                      submenubuttonheight={activeProjectButton ? "40px" : "0"}
+                      submenubuttoncolor={SITE_THEME[theme].navbar}
+                      submenubghover={SITE_THEME[theme].drawerhover}
                     >
-                      {o.name}
-                    </SubMenuButtonLabel>
-                  </SubMenuButton>
+                      <MenuLink>
+                        <SubMenuButtonLabel
+                          submenufontcolor={SITE_THEME[theme].text}
+                          submenufonthovercolor={SITE_THEME[theme].strong}
+                        >
+                          {o.name}
+                        </SubMenuButtonLabel>
+                      </MenuLink>
+                    </SubMenuButton>
+                  </Link>
                 );
               })}
             </ProjectSubMenu>

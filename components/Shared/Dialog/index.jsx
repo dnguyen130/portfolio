@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
-import { IconContext } from "react-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   SiReact,
@@ -13,8 +11,8 @@ import {
   SiExpo,
 } from "react-icons/si";
 
-import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
-import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
+import { useTheme, useActiveCard } from "@/utils/provider";
+import { SITE_THEME, DEVICES } from "../../../utils/variables";
 
 const DialogCont = styled(motion.div)`
   width: 90%;
@@ -68,10 +66,10 @@ const CloseButton = styled(motion.div)`
   border-radius: 5px;
   transition: 0.1s;
   cursor: pointer;
-  color: ${(props) => props.closeButtonColor};
+  color: ${(props) => props.closebuttoncolor};
 
   &:hover {
-    color: ${(props) => props.closeButtonHoverColor};
+    color: ${(props) => props.closebuttonhovercolor};
   }
 `;
 
@@ -91,7 +89,7 @@ const Title = styled.h2`
   text-align: center;
   margin: 0 0 10px;
   font-size: 2em;
-  color: ${(props) => props.titleColor};
+  color: ${(props) => props.titlecolor};
 
   @media (min-width: ${DEVICES.mobile}) {
     font-size: 2.5em;
@@ -148,7 +146,7 @@ const ButtonLink = styled.a`
   justify-content: center;
   width: 120px;
   height: 35px;
-  grid-column: ${(props) => props.buttonSpan};
+  grid-column: ${(props) => props.buttonspan};
   justify-self: center;
   position: relative;
 
@@ -268,7 +266,6 @@ export default function Dialog({
 }) {
   const { theme } = useTheme();
   const { activeCard, setActiveCard } = useActiveCard();
-  const { activeProject } = useActiveProject();
 
   return (
     <AnimatePresence>
@@ -285,15 +282,15 @@ export default function Dialog({
             <TopRow>
               <CloseButton
                 onClick={() => setActiveCard(false)}
-                closeButtonColor={SITE_THEME[theme].text}
-                closeButtonHoverColor={strongColor}
+                closebuttoncolor={SITE_THEME[theme].text}
+                closebuttonhovercolor={strongColor}
                 whileTap={{ scale: 0.8 }}
               >
                 <CgClose size="90%" />
               </CloseButton>
             </TopRow>
             <Logo src={logoSrc} />
-            {hasLogo && <Title titleColor={strongColor}>{title}</Title>}
+            {hasLogo && <Title titlecolor={strongColor}>{title}</Title>}
             {tags ? (
               <TagsWrapper>
                 {tags.map((o, i) => {
@@ -319,7 +316,7 @@ export default function Dialog({
             <ButtonGroup>
               <ButtonLink
                 href={infoLink}
-                buttonSpan={liveSite ? "span 1" : "span 2"}
+                buttonspan={liveSite ? "span 1" : "span 2"}
               >
                 <Button
                   bgbutton={strongColor}
@@ -346,7 +343,7 @@ export default function Dialog({
                 <ButtonLink
                   href={gitClient}
                   target="_blank"
-                  buttonSpan={gitServer ? "span 1" : "span 2"}
+                  buttonspan={gitServer ? "span 1" : "span 2"}
                 >
                   <Button
                     bgbutton={strongColor}

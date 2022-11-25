@@ -5,6 +5,7 @@ const Colors = {
   Blue: "#2B388F",
   Silver: "#78797A",
   LightGray: "#C7C8CA",
+  LighterNav: "#12142b",
 
   //Scrollbar
   DarkerAlice: "#CED3DB",
@@ -47,6 +48,7 @@ export const SITE_THEME = {
     activescroll: Colors.DarkScrollBarActive,
 
     navbar: Colors.Indigo,
+    drawerhover: Colors.LighterNav,
   },
 };
 
@@ -64,15 +66,11 @@ export const LINKS = [
   },
   {
     name: "About",
-    url: "/",
+    url: "/about",
   },
   {
     name: "Contact",
-    url: "/",
-  },
-  {
-    name: "Resume",
-    url: "/resume.pdf",
+    url: "/contact",
   },
 ];
 
