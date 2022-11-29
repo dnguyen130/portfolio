@@ -184,9 +184,11 @@ export default function NavBar({ burgerOnClick = () => {} }) {
         <ContentWrapper>
           <ContentGroup>
             <LogoWrapper>
-              <LogoLink href="/">
-                <LogoCont src="/logo.svg" alt="logo" />
-              </LogoLink>
+              <Link href="/" passHref legacyBehavior>
+                <LogoLink>
+                  <LogoCont src="/logo.svg" alt="logo" />
+                </LogoLink>
+              </Link>
             </LogoWrapper>
             <HamburgerCont
               hamburgercolor={SITE_THEME[theme].text}
