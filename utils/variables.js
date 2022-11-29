@@ -1,3 +1,6 @@
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { HiOutlineMail } from "react-icons/hi";
+
 const Colors = {
   White: "#ecf9fd",
   Black: "#050610",
@@ -19,6 +22,10 @@ const Colors = {
 
   //Navigation Bar
   Indigo: "#0A0C1F",
+
+  //Logo
+  LogoLight: "#17abe2",
+  LogoDark: "#293e91",
 };
 
 export const SITE_THEME = {
@@ -49,6 +56,9 @@ export const SITE_THEME = {
 
     navbar: Colors.Indigo,
     drawerhover: Colors.LighterNav,
+
+    logolight: Colors.LogoLight,
+    logodark: Colors.LogoDark,
   },
 };
 
@@ -136,31 +146,20 @@ export const PROJECTLIST = [
   },
 ];
 
-export const EXTRASLIST = [
+export const SOCIALS = [
   {
-    name: "About Me",
-    url: "about",
-    hasLogo: false,
-    logo: "logo.svg",
-    description: [
-      "Hi, I'm Danny",
-      "Front-end web developer with design experience",
-    ],
-    color_dark: "#050610",
-    color_light: "#FFFFFF",
-    color_strong: "#15ade4",
-    button_names: ["More Info"],
+    name: "Github",
+    url: "https://github.com/dnguyen130",
+    logo: SiGithub,
   },
   {
-    name: "Contact",
-    url: "mailto:dt.ngu@95@gmail.com",
-    hasLogo: false,
-    logo: "email.png",
-    live_site: "https://www.linkedin.com/in/dnguyen130/",
-    description: ["Contact me via email or social media"],
-    color_dark: "#1b334b",
-    color_light: "#FFFFFF",
-    color_strong: "#5f98d1",
-    button_names: ["Email", "LinkedIn"],
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/dnguyen130/",
+    logo: SiLinkedin,
+  },
+  {
+    name: "Email",
+    url: "mailto:dt.ngu95@gmail.com",
+    logo: HiOutlineMail,
   },
 ];
