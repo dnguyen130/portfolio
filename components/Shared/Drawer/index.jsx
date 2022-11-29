@@ -13,8 +13,9 @@ const DrawerCont = styled(motion.div)`
   background-color: ${(props) => props.bgcolor};
   position: relative;
   height: 100vh;
-  width: 50%;
-  max-width: 300px;
+  width: clamp(250px, 50%, 300px);
+  /* width: 50%;
+  max-width: 300px; */
   align-self: flex-end;
   display: flex;
   flex-direction: column;

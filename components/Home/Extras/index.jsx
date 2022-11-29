@@ -5,7 +5,7 @@ import {
   useActiveCard,
   useActiveProject,
 } from "../../../utils/provider";
-import { SITE_THEME, DEVICES, EXTRASLIST } from "../../../utils/variables";
+import { SITE_THEME, DEVICES, SOCIALS } from "../../../utils/variables";
 
 import ProjectCard from "../ProjectCard";
 
@@ -49,28 +49,107 @@ const Underline = styled.div`
   margin: 0 0 30px;
 `;
 
-const ProjectCardWrapper = styled.div`
+const Grid = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 30px;
+  grid-template-columns: 1fr;
   width: 100%;
-  max-width: 350px;
-
-  @media (min-width: ${DEVICES.mobile}) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
-  }
 
   @media (min-width: ${DEVICES.tablet}) {
-    max-width: 700px;
+    grid-template-columns: 1fr 1fr;
   }
+`;
 
-  @media (min-width: ${DEVICES.laptop}) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 660px;
-  }
+const PortraitCont = styled.div`
+  width: 200px;
+  aspect-ratio: 1/1;
+  transform: rotate(45deg);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0 60px;
+  border-radius: 5px;
+  background: linear-gradient(
+    45deg,
+    ${(props) => props.portraitgradient1},
+    ${(props) => props.portraitgradient2},
+    ${(props) => props.portraitgradient1}
+  );
+`;
+
+const PortraitWrapper = styled.div`
+  width: 185px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 5px;
+
+  transform: rotate(-90deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+`;
+
+const BorderCont = styled.div`
+  background: radial-gradient(white 50%, black);
+  transform: rotate(-45deg);
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  z-index: 1;
+`;
+
+const Portrait = styled.img`
+  width: 185px;
+  aspect-ratio: 1/1;
+  transform: rotate(90deg);
+`;
+
+const DescriptionCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`;
+
+const Description = styled.p`
+  margin: 0 0 10px;
+  color: ${(props) => props.txtcolor};
+  text-align: center;
+`;
+
+const ButtonCont = styled.div`
+  display: grid;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+  width: 100%;
+  justify-items: center;
+`;
+
+const SocialButton = styled.div`
+  cursor: pointer;
+  width: 80%;
+  height: 50px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background: ${(props) => props.buttoncolor};
+  color: ${(props) => props.txtcolor};
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+`;
+
+const SocialIcon = styled.div`
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  margin-right: 15px;
 `;
 
 export default function Extras() {
@@ -78,27 +157,46 @@ export default function Extras() {
   const { setActiveCard } = useActiveCard();
   const { setActiveProject } = useActiveProject();
 
-  const CardOnClick = (e) => {
-    setActiveCard(true);
-    setActiveProject(e);
-  };
-
   return (
     <ExtrasCont>
-      <Title titleColor={SITE_THEME[theme].text}>
-        Learn More or Get in Touch!
-      </Title>
+      <Title titleColor={SITE_THEME[theme].text}>About Me</Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
-      <ProjectCardWrapper>
-        {EXTRASLIST.map((o, i) => (
-          <ProjectCard
-            key={i}
-            ProjectCardLogoSrc={o.logo}
-            ProjectCardOnClick={() => CardOnClick(o)}
-            ProjectCardDarkColor={o.color_dark}
-          />
-        ))}
-      </ProjectCardWrapper>
+      <Grid>
+        <PortraitCont
+          portraitgradient1={SITE_THEME[theme].logodark}
+          portraitgradient2={SITE_THEME[theme].logolight}
+        >
+          <PortraitWrapper>
+            <Portrait src="/angle2.jpg" />
+          </PortraitWrapper>
+          <BorderCont />
+        </PortraitCont>
+        <DescriptionCont>
+          <Description txtcolor={SITE_THEME[theme].text}>
+            Hey there! My name is Danny and I find designing and developing fun!
+          </Description>
+          <Description txtcolor={SITE_THEME[theme].text}>
+            You can learn more from my page, or contact me through my social
+            platforms!
+          </Description>
+          <ButtonCont>
+            {SOCIALS.map((o, i) => {
+              return (
+                <SocialButton
+                  buttoncolor={SITE_THEME[theme].text}
+                  txtcolor={SITE_THEME[theme].background}
+                  key={i}
+                >
+                  <SocialIcon>
+                    <o.logo size="100%" />
+                  </SocialIcon>
+                  {o.name}
+                </SocialButton>
+              );
+            })}
+          </ButtonCont>
+        </DescriptionCont>
+      </Grid>
     </ExtrasCont>
   );
 }
