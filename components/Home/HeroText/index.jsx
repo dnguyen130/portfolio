@@ -22,8 +22,22 @@ const HeroTextCont = styled.div`
   overflow: hidden;
 
   @media (min-width: ${DEVICES.laptop}) {
+    align-items: flex-start;
+  }
+`;
+
+const TextCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: ${DEVICES.laptop}) {
+    width: 60%;
     text-align: left;
     align-items: flex-start;
+  }
+  @media (min-width: ${DEVICES.desktop}) {
+    width: 60%;
   }
 `;
 
@@ -35,7 +49,7 @@ const FirstLine = styled.h2`
 `;
 
 const SecondLine = styled.h1`
-  font-size: clamp(40px, 3em, 100px);
+  font-size: clamp(40px, 3em, 80px);
   margin: 10px 0;
   color: ${(props) => props.secondColor};
 `;
@@ -68,12 +82,6 @@ const Description = styled.p`
   color: ${(props) => props.descriptionColor};
 `;
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-`;
-
 const ArrowCont = styled(motion.div)`
   width: 50px;
   height: 50px;
@@ -90,6 +98,68 @@ const ArrowWrapper = styled.a`
 
   &:hover {
     color: ${(props) => props.arrowHoverColor};
+  }
+`;
+
+const FloatingLogoCont = styled.div`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50%;
+  height: 500px;
+  top: 50%;
+  right: 100px;
+  transform: translate(0, -50%);
+  max-width: 400px;
+  display: none;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    display: flex;
+    width: 30%;
+    right: 50px;
+    height: 400px;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
+    height: 500px;
+  }
+`;
+
+const FloatingLogo = styled(motion.img)`
+  @media (min-width: ${DEVICES.laptop}) {
+    position: absolute;
+    width: 80%;
+    aspect-ratio: 1/1;
+    z-index: -2;
+    opacity: 0.5;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1/1;
+    z-index: -2;
+    opacity: 0.5;
+  }
+`;
+
+const LogoShadow = styled(motion.div)`
+  position: absolute;
+  bottom: 0;
+  border-radius: 200px;
+  filter: blur(10px);
+  background-color: black;
+  z-index: -3;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    width: 60%;
+    height: 5%;
+  }
+
+  @media (min-width: ${DEVICES.desktop}) {
+    width: 60%;
+    height: 10%;
   }
 `;
 
@@ -129,41 +199,86 @@ const ArrowVariants = {
   },
 };
 
+const LogoVariants = {
+  initial: {
+    y: 0,
+  },
+  active: {
+    y: [-20, 20],
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 2,
+    },
+  },
+};
+
+const ShadowVariants = {
+  initial: {
+    width: 0,
+    height: 0,
+  },
+  active: {
+    width: ["20%", "50%"],
+    height: ["2%", "6%"],
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 2,
+    },
+  },
+};
+
 export default function HeroText({ arrowHref = "#" }) {
   const { theme } = useTheme();
 
   return (
     <HeroTextCont>
-      <FirstLine firstColor={SITE_THEME[theme].text}>Ahoy, I am</FirstLine>
-      <SecondLine secondColor={SITE_THEME[theme].strong}>
-        Danny Nguyen
-      </SecondLine>
-      <IconCont>
-        {ICONS.map((icon) => {
-          return (
-            <IconContext.Provider
-              key={icon.key}
-              value={{ className: styles.heroIcon }}
-            >
-              <IconWrapper
-                iconColor={SITE_THEME[theme].text}
-                iconHoverColor={icon.hoverColor}
-                iconBgColor={icon.iconBgColor}
+      <FloatingLogoCont>
+        <FloatingLogo
+          src="/logo.svg"
+          initial="initial"
+          animate="active"
+          variants={LogoVariants}
+        />
+        <LogoShadow
+          intial="initial"
+          animate="active"
+          variants={ShadowVariants}
+        />
+      </FloatingLogoCont>
+      <TextCont>
+        <FirstLine firstColor={SITE_THEME[theme].text}>Ahoy, I am</FirstLine>
+        <SecondLine secondColor={SITE_THEME[theme].strong}>
+          Danny Nguyen
+        </SecondLine>
+        <IconCont>
+          {ICONS.map((icon) => {
+            return (
+              <IconContext.Provider
+                key={icon.key}
+                value={{ className: styles.heroIcon }}
               >
-                <icon.element />
-              </IconWrapper>
-            </IconContext.Provider>
-          );
-        })}
-      </IconCont>
-      <Description descriptionColor={SITE_THEME[theme].text}>
-        A front-end developer with a passion for bringing great designs and
-        ideas to life.
-      </Description>
-      <Description descriptionColor={SITE_THEME[theme].text}>
-        Currently working on personal projects while looking for job
-        opportunities.
-      </Description>
+                <IconWrapper
+                  iconColor={SITE_THEME[theme].text}
+                  iconHoverColor={icon.hoverColor}
+                  iconBgColor={icon.iconBgColor}
+                >
+                  <icon.element />
+                </IconWrapper>
+              </IconContext.Provider>
+            );
+          })}
+        </IconCont>
+        <Description descriptionColor={SITE_THEME[theme].text}>
+          A front-end developer with a passion for bringing great designs and
+          ideas to life.
+        </Description>
+        <Description descriptionColor={SITE_THEME[theme].text}>
+          Currently working on personal projects while looking for job
+          opportunities.
+        </Description>
+      </TextCont>
       <ArrowCont
         initial="initial"
         animate="active"

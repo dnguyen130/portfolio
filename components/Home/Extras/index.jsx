@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { BsPersonCircle } from "react-icons/bs";
 
 import {
   useTheme,
@@ -10,7 +13,6 @@ import { SITE_THEME, DEVICES, SOCIALS } from "../../../utils/variables";
 import ProjectCard from "../ProjectCard";
 
 const ExtrasCont = styled.div`
-  margin-bottom: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -115,24 +117,30 @@ const DescriptionCont = styled.div`
 `;
 
 const Description = styled.p`
-  margin: 0 0 10px;
+  margin: 0 0 20px;
   color: ${(props) => props.txtcolor};
+  font-size: 1.3em;
   text-align: center;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    font-size: 1.4em;
+  }
 `;
 
 const ButtonCont = styled.div`
   display: grid;
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
   grid-template-columns: 1fr 1fr;
   margin-top: 10px;
   width: 100%;
   justify-items: center;
 `;
 
-const SocialButton = styled.div`
+const SocialButton = styled(motion.div)`
   cursor: pointer;
-  width: 80%;
+  width: 100%;
+  max-width: 200px;
   height: 50px;
   padding: 0 10px;
   border-radius: 5px;
@@ -144,7 +152,7 @@ const SocialButton = styled.div`
 `;
 
 const SocialIcon = styled.div`
-  color: black;
+  color: ${(props) => props.iconcolor};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,10 +160,14 @@ const SocialIcon = styled.div`
   margin-right: 15px;
 `;
 
+const ButtonLink = styled.a`
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+`;
+
 export default function Extras() {
   const { theme } = useTheme();
-  const { setActiveCard } = useActiveCard();
-  const { setActiveProject } = useActiveProject();
 
   return (
     <ExtrasCont>
@@ -182,18 +194,56 @@ export default function Extras() {
           <ButtonCont>
             {SOCIALS.map((o, i) => {
               return (
-                <SocialButton
-                  buttoncolor={SITE_THEME[theme].text}
-                  txtcolor={SITE_THEME[theme].background}
-                  key={i}
-                >
-                  <SocialIcon>
-                    <o.logo size="100%" />
-                  </SocialIcon>
-                  {o.name}
-                </SocialButton>
+                <ButtonLink key={i} href={o.url} target="_blank">
+                  <SocialButton
+                    buttoncolor={SITE_THEME[theme].text}
+                    txtcolor={SITE_THEME[theme].background}
+                    whileHover={{
+                      color: SITE_THEME[theme].text,
+                      backgroundColor: SITE_THEME[theme].strong,
+                      transition: {
+                        duration: 0.1,
+                      },
+                    }}
+                    whileTap={{
+                      scale: 0.9,
+                      transition: {
+                        duration: 0.1,
+                      },
+                    }}
+                  >
+                    <SocialIcon>
+                      <o.logo size="100%" />
+                    </SocialIcon>
+                    {o.name}
+                  </SocialButton>
+                </ButtonLink>
               );
             })}
+            <Link href="/about" passHref>
+              <SocialButton
+                buttoncolor={SITE_THEME[theme].text}
+                txtcolor={SITE_THEME[theme].background}
+                whileHover={{
+                  color: SITE_THEME[theme].text,
+                  backgroundColor: SITE_THEME[theme].strong,
+                  transition: {
+                    duration: 0.1,
+                  },
+                }}
+                whileTap={{
+                  scale: 0.9,
+                  transition: {
+                    duration: 0.1,
+                  },
+                }}
+              >
+                <SocialIcon>
+                  <BsPersonCircle size="100%" />
+                </SocialIcon>
+                About Me
+              </SocialButton>
+            </Link>
           </ButtonCont>
         </DescriptionCont>
       </Grid>
