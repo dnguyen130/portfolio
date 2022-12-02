@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -16,8 +15,6 @@ import {
   useActiveProject,
   useActiveDrawer,
 } from "@/utils/provider";
-
-import { PROJECTLIST } from "../utils/variables";
 
 const PageContainer = styled.div`
   width: 100%;

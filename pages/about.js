@@ -1,31 +1,96 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-import NavBar from "../components/Shared/NavBar";
-import HeroText from "../components/Home/HeroText";
+import NavBar from "@/components/Shared/NavBar";
+import Footer from "@/components/Shared/Footer";
+import Drawer from "@/components/Shared/Drawer";
+import ProfileCard from "@/components/About/ProfileCard";
+
+import {
+  useActiveCard,
+  useActiveProject,
+  useActiveDrawer,
+} from "@/utils/provider";
 
 const PageContainer = styled.div`
-  max-width: 100%;
+  width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const MainContainer = styled.main`
   box-sizing: border-box;
+  max-width: 100vw;
   width: 100%;
-  padding: 20px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  user-select: ${(props) => props.mainSelect};
 `;
 
+const Fade = styled(motion.div)`
+  background-color: black;
+  opacity: ${(props) => props.fadeOpacity};
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  transition: 0.2s;
+  display: ${(props) => props.fadeDisplay};
+`;
+
+const FadeVariants = {
+  active: {
+    display: "block",
+    opacity: 0.8,
+    transition: {
+      duration: 0.1,
+    },
+  },
+  inactive: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+    },
+    transitionEnd: {
+      display: "none",
+    },
+  },
+};
+
 export default function Home() {
+  const { activeCard, setActiveCard } = useActiveCard();
+  const { activeProject } = useActiveProject();
+  const { activeDrawer, setActiveDrawer } = useActiveDrawer();
+  const ap = activeProject;
+
   return (
     <PageContainer>
-      <Head />
-      <NavBar />
-      <MainContainer>
-        <HeroText />
+      <Head></Head>
+      <Fade
+        animate={activeCard || activeDrawer ? "active" : "inactive"}
+        variants={FadeVariants}
+        onClick={() => {
+          setActiveCard(false);
+          setActiveDrawer(false);
+        }}
+      />
+      <Drawer />
+      <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+      <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+        <ProfileCard />
+        <ProfileCard />
       </MainContainer>
+      <Footer />
     </PageContainer>
   );
 }

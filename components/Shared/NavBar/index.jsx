@@ -201,7 +201,7 @@ export default function NavBar({ burgerOnClick = () => {} }) {
             <NavLinkCont color={SITE_THEME[theme].text}>
               {LINKS.map((o, i) => {
                 return (
-                  <Link key={i} href={o.url} passHref>
+                  <Link key={i} href={o.url} passHref legacyBehavior>
                     <NavCont>
                       <NavLink hoverColor={SITE_THEME[theme].strong}>
                         {o.name}

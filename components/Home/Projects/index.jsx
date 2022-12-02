@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import {
   useTheme,
@@ -80,6 +81,20 @@ const ProjectCardWrapper = styled.div`
   }
 `;
 
+const container = {
+  visible: {
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 1,
+      staggerChildren: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
 export default function Projects({ id }) {
   const { theme } = useTheme();
   const { setActiveCard } = useActiveCard();
@@ -93,8 +108,10 @@ export default function Projects({ id }) {
   return (
     <ProjectsCont>
       <Anchor id={id} />
+
       <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
       <Underline gradient1={SITE_THEME[theme].strong} />
+
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (
           <ProjectCard

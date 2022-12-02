@@ -38,7 +38,7 @@ const DialogCont = styled(motion.div)`
 
   @media (min-width: ${DEVICES.tablet}) {
     max-width: 700px;
-    max-height: 800px;
+    height: 800px;
     padding: 25px;
   }
 `;

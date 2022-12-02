@@ -246,6 +246,7 @@ export default function Drawer() {
                     drawerbghover={SITE_THEME[theme].drawerhover}
                     drawerfonthover={SITE_THEME[theme].strong}
                     gradient={SITE_THEME[theme].strong}
+                    onClick={() => setActiveDrawer(false)}
                   >
                     <MenuLink>
                       <ButtonLabel
