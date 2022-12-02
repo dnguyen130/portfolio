@@ -27,7 +27,6 @@ const MainContainer = styled.main`
   box-sizing: border-box;
   max-width: 100vw;
   width: 100%;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
   user-select: ${(props) => props.mainSelect};
@@ -87,7 +86,6 @@ export default function Home() {
       <Drawer />
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <ProfileCard />
         <ProfileCard />
       </MainContainer>
       <Footer />
