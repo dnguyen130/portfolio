@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 import NavBar from "@/components/Shared/NavBar";
 import HeroText from "@/components/Home/HeroText";
@@ -9,6 +10,7 @@ import Footer from "@/components/Shared/Footer";
 import Extras from "@/components/Home/Extras";
 import Dialog from "@/components/Shared/Dialog";
 import Drawer from "@/components/Shared/Drawer";
+import LogoAnim from "@/components/Shared/LogoAnim";
 
 import {
   useActiveCard,
@@ -76,41 +78,57 @@ export default function Home() {
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const ap = activeProject;
 
-  return (
-    <PageContainer>
-      <Head></Head>
-      <Fade
-        animate={activeCard || activeDrawer ? "active" : "inactive"}
-        variants={FadeVariants}
-        onClick={() => {
-          setActiveCard(false);
-          setActiveDrawer(false);
-        }}
-      />
-      <Drawer />
-      <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
-      <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <HeroText arrowHref="#projects" />
-        <Projects id="projects" />
-        <Extras />
-      </MainContainer>
-      <Footer />
-      <Dialog
-        title={ap.name}
-        tags={ap.tags}
-        logoSrc={ap.logo}
-        description={ap.description}
-        infoLink={ap.url}
-        liveSite={ap.live_site ? ap.live_site : null}
-        gitClient={ap.github_client ? ap.github_client : null}
-        gitServer={ap.github_server ? ap.github_server : null}
-        darkColor={ap.color_dark}
-        lightColor={ap.color_light}
-        strongColor={ap.color_strong}
-        hoverColor={ap.color_hover}
-        hasLogo={ap.hasLogo}
-        buttonName={ap.button_names}
-      />
-    </PageContainer>
-  );
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoaded(true), 3000);
+  });
+
+  if (loaded === false) {
+    return (
+      <PageContainer>
+        <LogoAnim />
+      </PageContainer>
+    );
+  }
+
+  if (loaded === true) {
+    return (
+      <PageContainer>
+        <Head></Head>
+        <Fade
+          animate={activeCard || activeDrawer ? "active" : "inactive"}
+          variants={FadeVariants}
+          onClick={() => {
+            setActiveCard(false);
+            setActiveDrawer(false);
+          }}
+        />
+        <Drawer />
+        <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+        <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+          <HeroText arrowHref="#projects" />
+          <Projects id="projects" />
+          <Extras />
+        </MainContainer>
+        <Footer />
+        <Dialog
+          title={ap.name}
+          tags={ap.tags}
+          logoSrc={ap.logo}
+          description={ap.description}
+          infoLink={ap.url}
+          liveSite={ap.live_site ? ap.live_site : null}
+          gitClient={ap.github_client ? ap.github_client : null}
+          gitServer={ap.github_server ? ap.github_server : null}
+          darkColor={ap.color_dark}
+          lightColor={ap.color_light}
+          strongColor={ap.color_strong}
+          hoverColor={ap.color_hover}
+          hasLogo={ap.hasLogo}
+          buttonName={ap.button_names}
+        />
+      </PageContainer>
+    );
+  }
 }
