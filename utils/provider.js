@@ -14,6 +14,9 @@ const initialStates = {
 
   activeDrawer: false,
   setActiveDrawer: () => {},
+
+  initialLoad: false,
+  setInitialLoad: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -26,6 +29,7 @@ export default function AppProvider({ children }) {
     initialStates.activeProject
   );
   const [activeDrawer, setActiveDrawer] = useState(initialStates.activeDrawer);
+  const [initialLoad, setInitialLoad] = useState(initialStates.initialLoad);
 
   //put in the variables you want to share
   return (
@@ -39,6 +43,8 @@ export default function AppProvider({ children }) {
         setActiveProject,
         activeDrawer,
         setActiveDrawer,
+        initialLoad,
+        setInitialLoad,
       }}
     >
       <style jsx global>
@@ -117,6 +123,11 @@ export function useActiveProject() {
 export function useActiveDrawer() {
   const { activeDrawer, setActiveDrawer } = useContext(MyContext);
   return { activeDrawer, setActiveDrawer };
+}
+
+export function useInitialLoad() {
+  const { initialLoad, setInitialLoad } = useContext(MyContext);
+  return { initialLoad, setInitialLoad };
 }
 
 // ::selection {

@@ -81,20 +81,6 @@ const ProjectCardWrapper = styled.div`
   }
 `;
 
-const container = {
-  visible: {
-    opacity: 1,
-    transition: {
-      ease: "easeOut",
-      duration: 1,
-      staggerChildren: 0.5,
-    },
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
-
 export default function Projects({ id }) {
   const { theme } = useTheme();
   const { setActiveCard } = useActiveCard();

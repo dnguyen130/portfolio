@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 import NavBar from "@/components/Shared/NavBar";
 import Footer from "@/components/Shared/Footer";
@@ -11,7 +12,11 @@ import {
   useActiveCard,
   useActiveProject,
   useActiveDrawer,
+  useInitialLoad,
+  useTheme,
 } from "@/utils/provider";
+
+import { SITE_THEME } from "@/utils/variables";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -47,6 +52,17 @@ const Fade = styled(motion.div)`
   display: ${(props) => props.fadeDisplay};
 `;
 
+const Underline = styled.div`
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    270deg,
+    ${(props) => props.gradient1},
+    70%,
+    transparent
+  );
+`;
+
 const FadeVariants = {
   active: {
     display: "block",
@@ -70,7 +86,14 @@ export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeProject } = useActiveProject();
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
-  const ap = activeProject;
+  const { initialLoad, setInitialLoad } = useInitialLoad();
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (initialLoad == false) {
+      setInitialLoad(true);
+    }
+  });
 
   return (
     <PageContainer>
@@ -86,7 +109,9 @@ export default function Home() {
       <Drawer />
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+        <Underline gradient1={SITE_THEME[theme].strong} />
         <ProfileCard />
+        <Underline gradient1={SITE_THEME[theme].strong} />
       </MainContainer>
       <Footer />
     </PageContainer>

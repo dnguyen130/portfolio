@@ -5,7 +5,7 @@ import { useTheme } from "@/utils/provider";
 
 const ProfileCardCont = styled.div`
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 110px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,9 +15,26 @@ const ProfileCardCont = styled.div`
 const ProfileHero = styled.div`
   width: 100%;
   height: 100%;
+  border-right: 5px solid ${(props) => props.bordercolor};
+`;
+
+const HeroWrapper = styled.div`
   background-size: cover;
   background-position: center center;
   background-image: url("/test.JPEG");
+  z-index: -2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const ProfileTitle = styled.h2`
+  margin: 0;
+  color: ${(props) => props.color};
+  font-size: 100px;
+  z-index: 2;
 `;
 
 const GradientTransparency = styled.div`
@@ -30,6 +47,7 @@ const GradientTransparency = styled.div`
   );
   width: 100%;
   height: 100%;
+  z-index: -1;
 `;
 
 export default function ProfileCard() {
@@ -37,7 +55,10 @@ export default function ProfileCard() {
 
   return (
     <ProfileCardCont>
-      <ProfileHero />
+      <ProfileHero bordercolor={SITE_THEME[theme].strong}>
+        <ProfileTitle color={SITE_THEME[theme].text}>Hello</ProfileTitle>
+      </ProfileHero>
+      <HeroWrapper />
       <GradientTransparency gradientbg={SITE_THEME[theme].background} />
     </ProfileCardCont>
   );

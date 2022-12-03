@@ -16,6 +16,7 @@ import {
   useActiveCard,
   useActiveProject,
   useActiveDrawer,
+  useInitialLoad,
 } from "@/utils/provider";
 
 const PageContainer = styled.div`
@@ -75,16 +76,17 @@ const FadeVariants = {
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeProject } = useActiveProject();
-  const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const ap = activeProject;
-
-  const [loaded, setLoaded] = useState(false);
+  const { activeDrawer, setActiveDrawer } = useActiveDrawer();
+  const { initialLoad, setInitialLoad } = useInitialLoad();
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 3000);
+    if (initialLoad == false) {
+      setTimeout(() => setInitialLoad(true), 3000);
+    }
   });
 
-  if (loaded === false) {
+  if (initialLoad === false) {
     return (
       <PageContainer>
         <LogoAnim />
@@ -92,7 +94,7 @@ export default function Home() {
     );
   }
 
-  if (loaded === true) {
+  if (initialLoad === true) {
     return (
       <PageContainer>
         <Head></Head>
