@@ -1,10 +1,22 @@
+import { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
-import { motion } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { useTheme } from "../../../utils/provider";
-import { SITE_THEME, DEVICES, LINKS } from "../../../utils/variables";
+import {
+  useTheme,
+  useActiveTab,
+  useActiveDrawer,
+  useActiveCard,
+} from "../../../utils/provider";
+import {
+  SITE_THEME,
+  DEVICES,
+  LINKS,
+  PROJECTLIST,
+} from "../../../utils/variables";
 
 const NavBarCont = styled.header`
   position: fixed;
@@ -17,7 +29,7 @@ const NavBarCont = styled.header`
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
   background-color: ${(props) => props.bgColor};
   padding: 20px 20px;
-  z-index: 1;
+  z-index: ${(props) => props.zindex};
   transition: 0.5s;
 `;
 
@@ -95,8 +107,10 @@ const NavLinkCont = styled.div`
 const NavLink = styled.a`
   margin: 0 30px;
   transition: color 0.25s;
+  cursor: pointer;
+
   &:hover {
-    color: ${(props) => props.hoverColor};
+    color: ${(props) => props.hovercolor};
   }
 
   &:after {
@@ -129,7 +143,7 @@ const NavLink = styled.a`
 const NavCont = styled.div`
   position: relative;
   margin: 0 30px;
-  cursor: pointer;
+  display: flex;
 `;
 
 const ResumeButton = styled.button`
@@ -140,8 +154,8 @@ const ResumeButton = styled.button`
   font-size: 1rem;
   font-weight: 600;
   background-color: transparent;
-  border: 1px solid ${(props) => props.buttonTextColor};
-  color: ${(props) => props.buttonTextColor};
+  border: 1px solid ${(props) => props.buttontextcolor};
+  color: ${(props) => props.buttontextcolor};
   display: none;
   cursor: pointer;
   transition: 0.2s;
@@ -150,8 +164,8 @@ const ResumeButton = styled.button`
     display: block;
 
     &:hover {
-      border-color: ${(props) => props.buttonHoverColor};
-      color: ${(props) => props.buttonHoverColor};
+      border-color: ${(props) => props.buttonhovercolor};
+      color: ${(props) => props.buttonhovercolor};
     }
   }
 `;
@@ -175,12 +189,127 @@ const ContentGroup = styled.div`
   }
 `;
 
+const ProjectButton = styled.div`
+  display: flex;
+  transition: color 0.25s;
+  cursor: pointer;
+  color: ${(props) => props.color};
+
+  &:hover {
+    color: ${(props) => props.hovercolor};
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
+const Dropdown = styled(motion.div)`
+  width: 150px;
+  background-color: white;
+  position: absolute;
+  top: 40px;
+  border: 1px solid ${(props) => props.bordercolor};
+  border-radius: 5px;
+  z-index: 5;
+  background-color: ${(props) => props.bgcolor};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+`;
+
+const DropdownItem = styled.div`
+  width: 90%;
+  height: ${(props) => props.height};
+  background-color: ${(props) => props.bgcolor};
+  color: ${(props) => props.color};
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 0.8em;
+  transition: 0.2s;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.hovercolor};
+    background-color: ${(props) => props.hoverbgcolor};
+  }
+
+  &:first-child {
+    margin-top: 10px;
+  }
+`;
+
+const ArrowCont = styled.div`
+  position: relative;
+  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+  top: ${(props) => props.arrowtop};
+  transform: ${(props) => props.arrowrotate};
+  transition: 0.2s;
+`;
+
+const DropdownVariants = {
+  inactive: {
+    height: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  active: {
+    display: "flex",
+    height: "auto",
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  transitionEnd: {
+    display: "none",
+  },
+};
+
 export default function NavBar({ burgerOnClick = () => {} }) {
   const { theme } = useTheme();
+  const { activeTab, setActiveTab } = useActiveTab();
+  const { activeDrawer } = useActiveDrawer();
+  const { activeCard } = useActiveCard();
 
   return (
     <NavBarPlaceholder>
-      <NavBarCont bgColor={SITE_THEME[theme].navbar}>
+      <NavBarCont
+        bgColor={SITE_THEME[theme].navbar}
+        zindex={activeDrawer || activeCard ? 1 : 2}
+        onClick={() => setActiveTab(false)}
+      >
         <ContentWrapper>
           <ContentGroup>
             <LogoWrapper>
@@ -203,18 +332,69 @@ export default function NavBar({ burgerOnClick = () => {} }) {
                 return (
                   <Link key={i} href={o.url} passHref legacyBehavior>
                     <NavCont>
-                      <NavLink hoverColor={SITE_THEME[theme].strong}>
+                      <NavLink hovercolor={SITE_THEME[theme].strong}>
                         {o.name}
                       </NavLink>
                     </NavCont>
                   </Link>
                 );
               })}
+              <NavCont>
+                <ProjectButton
+                  color={
+                    activeTab
+                      ? SITE_THEME[theme].strong
+                      : SITE_THEME[theme].text
+                  }
+                  hovercolor={SITE_THEME[theme].strong}
+                  onClick={(e) => (
+                    e.stopPropagation(), setActiveTab(!activeTab)
+                  )}
+                >
+                  Projects
+                  <ArrowCont
+                    arrowtop={
+                      activeTab ? "calc(50% - 6px)" : "calc(50% - 12px)"
+                    }
+                    arrowrotate={activeTab ? "rotate(180deg)" : "rotate(0deg)"}
+                  >
+                    <FaChevronDown size="100%" />
+                  </ArrowCont>
+                </ProjectButton>
+                <AnimatePresence>
+                  {activeTab && (
+                    <Dropdown
+                      initial="inactive"
+                      animate="active"
+                      variants={DropdownVariants}
+                      exit="inactive"
+                      bordercolor={SITE_THEME[theme].strong}
+                      bgcolor={SITE_THEME[theme].background}
+                    >
+                      {PROJECTLIST.map((o, i) => {
+                        return (
+                          <Link href={o.url} passHref key={i} legacyBehavior>
+                            <DropdownItem
+                              bgcolor={SITE_THEME[theme].navbar}
+                              color={SITE_THEME[theme].text}
+                              height={activeTab ? "40px" : 0}
+                              hoverbgcolor={SITE_THEME[theme].drawerhover}
+                              hovercolor={SITE_THEME[theme].strong}
+                            >
+                              {o.name}
+                            </DropdownItem>
+                          </Link>
+                        );
+                      })}
+                    </Dropdown>
+                  )}
+                </AnimatePresence>
+              </NavCont>
             </NavLinkCont>
           </ContentGroup>
           <ResumeButton
-            buttonTextColor={SITE_THEME[theme].text}
-            buttonHoverColor={SITE_THEME[theme].strong}
+            buttontextcolor={SITE_THEME[theme].text}
+            buttonhovercolor={SITE_THEME[theme].strong}
           >
             <ResumeLink target="_blank" href="/resume.pdf">
               Resume
