@@ -20,7 +20,7 @@ const DrawerCont = styled(motion.div)`
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 3;
+  z-index: 4;
   top: 0;
 `;
 

@@ -43,24 +43,13 @@ const Fade = styled(motion.div)`
   width: 100%;
   height: 100%;
   user-select: none;
-  z-index: 2;
+  z-index: 4;
   position: fixed;
   top: 0;
   right: 0;
   overflow: hidden;
   transition: 0.2s;
   display: ${(props) => props.fadeDisplay};
-`;
-
-const Underline = styled.div`
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(
-    270deg,
-    ${(props) => props.gradient1},
-    70%,
-    transparent
-  );
 `;
 
 const FadeVariants = {
@@ -109,9 +98,7 @@ export default function Home() {
       <Drawer />
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <Underline gradient1={SITE_THEME[theme].strong} />
         <ProfileCard />
-        <Underline gradient1={SITE_THEME[theme].strong} />
       </MainContainer>
       <Footer />
     </PageContainer>
