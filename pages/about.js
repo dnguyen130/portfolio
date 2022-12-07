@@ -14,6 +14,7 @@ import {
   useActiveDrawer,
   useInitialLoad,
   useTheme,
+  useActiveTab,
 } from "@/utils/provider";
 
 import { SITE_THEME } from "@/utils/variables";
@@ -77,6 +78,7 @@ export default function Home() {
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const { initialLoad, setInitialLoad } = useInitialLoad();
   const { theme } = useTheme();
+  const { activeTab, setActiveTab } = useActiveTab();
 
   useEffect(() => {
     if (initialLoad == false) {
@@ -88,11 +90,14 @@ export default function Home() {
     <PageContainer>
       <Head></Head>
       <Fade
-        animate={activeCard || activeDrawer ? "active" : "inactive"}
+        animate={
+          activeCard || activeDrawer || activeTab ? "active" : "inactive"
+        }
         variants={FadeVariants}
         onClick={() => {
           setActiveCard(false);
           setActiveDrawer(false);
+          setActiveTab(false);
         }}
       />
       <Drawer />

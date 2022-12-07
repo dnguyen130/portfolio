@@ -17,6 +17,9 @@ const initialStates = {
 
   initialLoad: false,
   setInitialLoad: () => {},
+
+  activeTab: false,
+  setActiveTab: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -30,6 +33,7 @@ export default function AppProvider({ children }) {
   );
   const [activeDrawer, setActiveDrawer] = useState(initialStates.activeDrawer);
   const [initialLoad, setInitialLoad] = useState(initialStates.initialLoad);
+  const [activeTab, setActiveTab] = useState(initialStates.activeTab);
 
   //put in the variables you want to share
   return (
@@ -45,6 +49,8 @@ export default function AppProvider({ children }) {
         setActiveDrawer,
         initialLoad,
         setInitialLoad,
+        activeTab,
+        setActiveTab,
       }}
     >
       <style jsx global>
@@ -128,6 +134,11 @@ export function useActiveDrawer() {
 export function useInitialLoad() {
   const { initialLoad, setInitialLoad } = useContext(MyContext);
   return { initialLoad, setInitialLoad };
+}
+
+export function useActiveTab() {
+  const { activeTab, setActiveTab } = useContext(MyContext);
+  return { activeTab, setActiveTab };
 }
 
 // ::selection {

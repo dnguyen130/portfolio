@@ -14,8 +14,6 @@ const DrawerCont = styled(motion.div)`
   position: relative;
   height: 100vh;
   width: clamp(250px, 50%, 300px);
-  /* width: 50%;
-  max-width: 300px; */
   align-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -137,8 +135,8 @@ const ButtonWrapper = styled.div`
 const ArrowCont = styled.div`
   position: absolute;
   left: 20px;
-  top: ${(props) => props.arrowTop};
-  transform: ${(props) => props.arrowRotate};
+  top: ${(props) => props.arrowtop};
+  transform: ${(props) => props.arrowrotate};
   transition: 0.2s;
 `;
 
@@ -290,10 +288,10 @@ export default function Drawer() {
               }
             >
               <ArrowCont
-                arrowTop={
+                arrowtop={
                   activeProjectButton ? "calc(50% - 15px)" : "calc(50% - 10px)"
                 }
-                arrowRotate={
+                arrowrotate={
                   activeProjectButton ? "rotate(180deg)" : "rotate(0deg)"
                 }
               >

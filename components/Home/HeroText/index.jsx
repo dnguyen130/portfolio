@@ -89,12 +89,12 @@ const ArrowCont = styled(motion.div)`
   align-self: center;
   position: absolute;
   bottom: 40px;
-  color: ${(props) => props.arrowColor};
+  color: ${(props) => props.arrowcolor};
   transition: color 0.25s;
   cursor: pointer;
 
   &:hover {
-    color: ${(props) => props.arrowHoverColor};
+    color: ${(props) => props.arrowhovercolor};
   }
 `;
 
@@ -243,7 +243,7 @@ const MotionItem = styled(motion.div)`
   }
 `;
 
-export default function HeroText({ arrowHref = "#" }) {
+export default function HeroText() {
   const { theme } = useTheme();
 
   const container = {
@@ -339,11 +339,13 @@ export default function HeroText({ arrowHref = "#" }) {
           animate="active"
           variants={ArrowVariants}
           whileTap={{ scale: 0.8 }}
-          arrowColor={SITE_THEME[theme].text}
-          arrowHoverColor={SITE_THEME[theme].strong}
+          arrowcolor={SITE_THEME[theme].text}
+          arrowhovercolor={SITE_THEME[theme].strong}
         >
           <Link href="#projects" passHref>
-            <HiOutlineChevronDoubleDown size="100%" />
+            <a>
+              <HiOutlineChevronDoubleDown size="100%" />
+            </a>
           </Link>
         </ArrowCont>
       </MotionContainer>
