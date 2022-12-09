@@ -3,14 +3,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsPersonCircle } from "react-icons/bs";
 
-import {
-  useTheme,
-  useActiveCard,
-  useActiveProject,
-} from "../../../utils/provider";
+import { useTheme } from "../../../utils/provider";
 import { SITE_THEME, DEVICES, SOCIALS } from "../../../utils/variables";
 
-import ProjectCard from "../ProjectCard";
+import Underline from "@/components/Shared/Underline";
 
 const ExtrasCont = styled.div`
   width: 100%;
@@ -37,18 +33,6 @@ const Title = styled.h2`
   @media (min-width: ${DEVICES.desktop}) {
     font-size: 2.5rem;
   }
-`;
-
-const Underline = styled.div`
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    ${(props) => props.gradient1},
-    transparent
-  );
-  border-radius: 1px;
-  margin: 0 0 30px;
 `;
 
 const Grid = styled.div`
@@ -172,7 +156,13 @@ export default function Extras() {
   return (
     <ExtrasCont>
       <Title titleColor={SITE_THEME[theme].text}>About Me</Title>
-      <Underline gradient1={SITE_THEME[theme].strong} />
+      <Underline
+        height="1px"
+        gradient1={SITE_THEME[theme].strong}
+        gradientangle="90deg"
+        borderradius="1px"
+        marginbottom="30px"
+      />
       <Grid>
         <PortraitCont
           portraitgradient1={SITE_THEME[theme].logodark}

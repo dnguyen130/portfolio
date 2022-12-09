@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { DEVICES, SITE_THEME } from "@/utils/variables";
 import { useTheme } from "@/utils/provider";
 
+import Underline from "@/components/Shared/Underline";
+
 const ProfileCardCont = styled.div`
   width: 100%;
-  height: auto;
+  min-height: calc(50vh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,26 +16,13 @@ const ProfileCardCont = styled.div`
 
 const ProfileHero = styled.div`
   width: 100%;
-  min-height: calc(100vh - 100px);
+  min-height: calc(50vh - 100px);
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0 10px;
+  justify-content: center;
+  padding: 0 15px;
   position: relative;
-`;
-
-const Row = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: calc((100vh - 100px) / 2);
-
-  &:first-child {
-    margin-bottom: 30px;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-  }
 `;
 
 const HeroWrapper = styled.div`
@@ -45,9 +34,10 @@ const HeroWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 50%;
-  max-height: 50%;
+  min-height: 100%;
+  max-height: 100%;
   border: 5px solid ${(props) => props.bordercolor};
+  border-left: 0px;
   border-right: 0px;
   display: flex;
   flex-direction: column;
@@ -93,17 +83,6 @@ const GradientTransparency = styled.div`
   z-index: -1;
 `;
 
-const Underline = styled.div`
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(
-    270deg,
-    ${(props) => props.gradient1},
-    70%,
-    transparent
-  );
-`;
-
 const Titles = [
   {
     src: "/test.JPEG",
@@ -117,28 +96,7 @@ export default function ProfileCard() {
   return (
     <ProfileCardCont>
       <ProfileHero bordercolor={SITE_THEME[theme].strong}>
-        <Row>
-          <ProfileTitle color={SITE_THEME[theme].text}>I am a</ProfileTitle>
-          <ProfileTitle color={SITE_THEME[theme].strong}>
-            Developer
-          </ProfileTitle>
-        </Row>
-        <Row>
-          <ProfileDescription color={SITE_THEME[theme].text}>
-            Hey there! <br />
-            <br />
-            My first experience with the web was back in 2003 when I created my
-            first email account to play Neopets, a virtual pet website. Since
-            then, my whole life, like many others, has revolved around using the
-            web to communicate and learn from others. <br />
-            <br />
-            At the British Columbia Institute of Technology, I was able to
-            experience a fast-paced, cooperative school environment. I developed
-            technical and social skills working in teams of designers and
-            developers to produce web and mobile applications through their
-            Digital Design and Development Program.
-          </ProfileDescription>
-        </Row>
+        <ProfileTitle color={SITE_THEME[theme].strong}>About Me</ProfileTitle>
       </ProfileHero>
       <HeroWrapper bordercolor={SITE_THEME[theme].strong} />
       <GradientTransparency gradientbg={SITE_THEME[theme].background} />

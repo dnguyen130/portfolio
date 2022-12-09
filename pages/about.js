@@ -7,6 +7,8 @@ import NavBar from "@/components/Shared/NavBar";
 import Footer from "@/components/Shared/Footer";
 import Drawer from "@/components/Shared/Drawer";
 import ProfileCard from "@/components/About/ProfileCard";
+import Toolkit from "@/components/About/Toolkit";
+import Underline from "@/components/Shared/Underline";
 
 import {
   useActiveCard,
@@ -17,7 +19,7 @@ import {
   useActiveTab,
 } from "@/utils/provider";
 
-import { SITE_THEME } from "@/utils/variables";
+import { SITE_THEME, DEVICES } from "@/utils/variables";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -26,7 +28,6 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 `;
 
 const MainContainer = styled.main`
@@ -51,6 +52,18 @@ const Fade = styled(motion.div)`
   overflow: hidden;
   transition: 0.2s;
   display: ${(props) => props.fadeDisplay};
+`;
+
+const Description = styled.p`
+  margin: 0 0 15px;
+  font-size: 1em;
+  line-height: 1.3em;
+  color: ${(props) => props.color};
+`;
+
+const Padded = styled.div`
+  padding: 15px;
+  width: 100%;
 `;
 
 const FadeVariants = {
@@ -100,10 +113,28 @@ export default function Home() {
           setActiveTab(false);
         }}
       />
-      <Drawer />
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+      <Drawer />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
         <ProfileCard />
+        <Padded>
+          <Description color={SITE_THEME[theme].text}>
+            Why hello! Thank you for taking the time to learn more about me and
+            my experience in web development. <br />
+            <br />
+            My first experience with the web was back in 2003 when I created my
+            first email account to play Neopets, a virtual pet website. Since
+            then, my whole life, like many others, has revolved around using the
+            web to communicate and learn from others. <br />
+            <br />
+            At the British Columbia Institute of Technology, I was able to
+            experience a fast-paced, cooperative school environment. I developed
+            technical and social skills working in teams of designers and
+            developers to produce web and mobile applications through their
+            Digital Design and Development Program.
+          </Description>
+          <Toolkit />
+        </Padded>
       </MainContainer>
       <Footer />
     </PageContainer>

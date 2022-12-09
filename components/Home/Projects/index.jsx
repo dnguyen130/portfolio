@@ -9,6 +9,7 @@ import {
 import { SITE_THEME, DEVICES, PROJECTLIST } from "../../../utils/variables";
 
 import ProjectCard from "../ProjectCard";
+import Underline from "@/components/Shared/Underline";
 
 const ProjectsCont = styled.div`
   margin-bottom: 20px;
@@ -29,7 +30,7 @@ const Title = styled.h2`
   font-weight: 500;
   font-size: 1.5rem;
   margin: 0;
-  color: ${(props) => props.titleColor};
+  color: ${(props) => props.titlecolor};
   align-self: flex-start;
 
   @media (min-width: ${DEVICES.mobile}) {
@@ -43,18 +44,6 @@ const Title = styled.h2`
   @media (min-width: ${DEVICES.desktop}) {
     font-size: 2.5rem;
   }
-`;
-
-const Underline = styled.div`
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    ${(props) => props.gradient1},
-    transparent
-  );
-  border-radius: 1px;
-  margin: 0 0 30px;
 `;
 
 const ProjectCardWrapper = styled.div`
@@ -94,9 +83,15 @@ export default function Projects({ id }) {
   return (
     <ProjectsCont>
       <Anchor id={id} />
-
-      <Title titleColor={SITE_THEME[theme].text}>Check out my projects!</Title>
-      <Underline gradient1={SITE_THEME[theme].strong} />
+      <Title titlecolor={SITE_THEME[theme].text}>Check out my projects!</Title>
+      <Underline
+        height="1px"
+        gradientangle="90deg"
+        gradient1={SITE_THEME[theme].strong}
+        f
+        borderradius="1px"
+        marginbottom="30px"
+      />
 
       <ProjectCardWrapper>
         {PROJECTLIST.map((o, i) => (

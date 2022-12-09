@@ -304,7 +304,8 @@ export default function NavBar({ burgerOnClick = () => {} }) {
   const { activeCard } = useActiveCard();
 
   return (
-    <NavBarPlaceholder>
+    <>
+      <NavBarPlaceholder />
       <NavBarCont
         bgColor={SITE_THEME[theme].navbar}
         zindex={activeDrawer || activeCard ? 1 : 2}
@@ -402,6 +403,6 @@ export default function NavBar({ burgerOnClick = () => {} }) {
           </ResumeButton>
         </ContentWrapper>
       </NavBarCont>
-    </NavBarPlaceholder>
+    </>
   );
 }
