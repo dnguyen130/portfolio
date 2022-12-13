@@ -36,6 +36,7 @@ const MainContainer = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   user-select: ${(props) => props.mainSelect};
 `;
 
@@ -59,11 +60,18 @@ const Description = styled.p`
   font-size: 1em;
   line-height: 1.3em;
   color: ${(props) => props.color};
+
+  @media (min-width: ${DEVICES.laptop}) {
+    width: 80%;
+  }
 `;
 
 const Padded = styled.div`
   padding: 15px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const FadeVariants = {

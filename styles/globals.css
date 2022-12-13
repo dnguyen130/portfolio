@@ -23,3 +23,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.slick-slider {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
