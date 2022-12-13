@@ -1,4 +1,20 @@
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import {
+  SiGithub,
+  SiLinkedin,
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiStyledcomponents,
+  SiSass,
+  SiNodedotjs,
+  SiNextdotjs,
+  SiExpress,
+  SiMongodb,
+  SiFirebase,
+  SiAdobecreativecloud,
+  SiFigma,
+} from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
 
 const Colors = {
@@ -163,3 +179,65 @@ export const SOCIALS = [
     logo: HiOutlineMail,
   },
 ];
+
+export const ToolkitIcons = {
+  Basic: [
+    {
+      logo: SiHtml5,
+      color: "#f25320",
+    },
+    {
+      logo: SiCss3,
+      color: "#2299f8",
+    },
+    {
+      logo: SiJavascript,
+      color: "#f0db4f",
+    },
+  ],
+  Frontend: [
+    {
+      logo: SiReact,
+      color: "#5ccfee",
+    },
+    {
+      src: "/logos/styled.svg",
+    },
+    {
+      logo: SiSass,
+      color: "#c36192",
+    },
+    {
+      logo: SiNodedotjs,
+      color: "#4f9640",
+    },
+    {
+      logo: SiNextdotjs,
+      color: "#000",
+    },
+  ],
+  Backend: [
+    {
+      logo: SiExpress,
+      color: "#46545e",
+    },
+    {
+      src: "/logos/mongodb.svg",
+      color: "",
+    },
+    {
+      src: "/logos/firebase.svg",
+      color: "",
+    },
+  ],
+  Design: [
+    {
+      src: "/logos/acc.svg",
+      color: "",
+    },
+    {
+      src: "/logos/figma.svg",
+      color: "",
+    },
+  ],
+};

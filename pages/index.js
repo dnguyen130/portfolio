@@ -46,7 +46,7 @@ const Fade = styled(motion.div)`
   width: 100%;
   height: 100%;
   user-select: none;
-  z-index: 4;
+  z-index: ${(props) => props.zindex};
   position: fixed;
   top: 0;
   right: 0;
@@ -104,6 +104,7 @@ export default function Home() {
           animate={
             activeCard || activeDrawer || activeTab ? "active" : "inactive"
           }
+          zindex={activeDrawer || activeCard ? 4 : 2}
           variants={FadeVariants}
           onClick={() => {
             setActiveCard(false);

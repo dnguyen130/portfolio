@@ -21,7 +21,7 @@ const DialogCont = styled(motion.div)`
   max-height: 95vh;
   padding: 15px;
   border-radius: 10px;
-  z-index: 3;
+  z-index: 5;
   background-color: white;
   position: fixed;
   top: 50%;

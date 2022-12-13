@@ -1,23 +1,29 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 import { useTheme } from "@/utils/provider";
 import { SITE_THEME, DEVICES } from "@/utils/variables";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { SiHtml5, SiCss3, SiJavascript } from "react-icons/si";
 
 import Underline from "@/components/Shared/Underline";
 import Image from "next/image";
+import { ToolkitIcons } from "@/utils/variables";
 
 const ToolkitCont = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Title = styled.h2`
   font-weight: 500;
   font-size: 1.5rem;
   margin: 0;
+  width: 100%;
+  text-align: left;
   color: ${(props) => props.titlecolor};
 
   @media (min-width: ${DEVICES.mobile}) {
@@ -37,31 +43,40 @@ const ToolkitGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  row-gap: 30px;
+  row-gap: 50px;
+  column-gap: 50px;
+  max-width: 800px;
+  width: 100%;
 
   @media (min-width: ${DEVICES.mobile}) {
     grid-template-columns: 1fr 1fr;
   }
-
-  @media (min-width: ${DEVICES.laptop}) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 `;
 
 const ToolkitAccordion = styled.div`
-  width: 250px;
+  width: ${(props) => props.width};
   aspect-ratio: 1/1;
   border-radius: 5px;
   background-color: white;
 `;
 
 const ToolkitAccordionItem = styled.div`
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
+  color: ${(props) => props.color};
+`;
+
+const ToolkitAccordionSVG = styled.img`
+  width: 125px !important;
+  height: 125px;
 `;
 
 export default function Toolkit() {
   const { theme } = useTheme();
+
+  const [activeToolkit, setActiveToolkit] = useState(true);
+
+  const ToolkitOnClick = () => {};
 
   const UnderlineProps = {
     height: "1px",
@@ -74,14 +89,16 @@ export default function Toolkit() {
   const SliderSettings = {
     dots: false,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 1.5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 0,
-    speed: 4000,
+    speed: 3000,
     arrows: false,
     cssEase: "linear",
-    adaptiveHeight: "true",
+    adaptiveHeight: true,
+    draggable: false,
+    pauseOnHover: false,
   };
 
   return (
@@ -89,21 +106,23 @@ export default function Toolkit() {
       <Title titlecolor={SITE_THEME[theme].text}>Notable Skills</Title>
       <Underline {...UnderlineProps} />
       <ToolkitGrid>
-        <ToolkitAccordion>
-          <Slider {...SliderSettings}>
-            <ToolkitAccordionItem>
-              <SiHtml5 size="100%" />
-            </ToolkitAccordionItem>
-            <ToolkitAccordionItem>
-              <SiCss3 size="100%" />
-            </ToolkitAccordionItem>
-            <ToolkitAccordionItem>
-              <SiJavascript size="100%" />
-            </ToolkitAccordionItem>
-          </Slider>
-        </ToolkitAccordion>
-        <ToolkitAccordion />
-        <ToolkitAccordion />
+        {Object.values(ToolkitIcons).map((o, i) => {
+          return (
+            <ToolkitAccordion key={i} width={activeToolkit ? "250px" : "0"}>
+              <Slider {...SliderSettings}>
+                {o.map((o, i) => {
+                  return o.src ? (
+                    <ToolkitAccordionSVG src={o.src} />
+                  ) : (
+                    <ToolkitAccordionItem color={o.color}>
+                      <o.logo size="100%" />
+                    </ToolkitAccordionItem>
+                  );
+                })}
+              </Slider>
+            </ToolkitAccordion>
+          );
+        })}
       </ToolkitGrid>
     </ToolkitCont>
   );
