@@ -55,7 +55,7 @@ const Fade = styled(motion.div)`
 `;
 
 const Description = styled.p`
-  margin: 0 0 15px;
+  width: 80%;
   font-size: 1em;
   line-height: 1.3em;
   color: ${(props) => props.color};
@@ -64,6 +64,9 @@ const Description = styled.p`
 const Padded = styled.div`
   padding: 15px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const FadeVariants = {
