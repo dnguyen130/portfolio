@@ -78,36 +78,17 @@ const IconWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: clamp(14px, 1.5em, 24px);
+  font-size: clamp(14px, 1.5em, 20px);
   margin: 0 0 20px 0;
   color: ${(props) => props.descriptionColor};
-`;
-
-const ArrowCont = styled(motion.div)`
-  width: 50px;
-  height: 50px;
-  align-self: center;
-  position: absolute;
-  bottom: 40px;
-  color: ${(props) => props.arrowcolor};
-  transition: color 0.25s;
-  cursor: pointer;
-
-  &:hover {
-    color: ${(props) => props.arrowhovercolor};
-  }
 `;
 
 const FloatingLogoCont = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  max-width: 300px;
   display: none;
-  width: 30%;
+  width: 40%;
   right: 75px;
   height: 400px;
 
@@ -121,34 +102,18 @@ const FloatingLogoCont = styled.div`
 `;
 
 const FloatingLogo = styled(motion.img)`
-  position: absolute;
-  width: 80%;
+  width: 300px;
   aspect-ratio: 1/1;
   z-index: -2;
   opacity: 0.5;
-
-  @media (min-width: ${DEVICES.desktop}) {
-    width: 100%;
-  }
 `;
 
 const LogoShadow = styled(motion.div)`
-  position: absolute;
-  bottom: 0;
-  border-radius: 200px;
+  margin-top: 50px;
+  border-radius: 100px;
   filter: blur(10px);
   background-color: black;
   z-index: -3;
-
-  @media (min-width: ${DEVICES.laptop}) {
-    width: 60%;
-    height: 5%;
-  }
-
-  @media (min-width: ${DEVICES.desktop}) {
-    width: 60%;
-    height: 10%;
-  }
 `;
 
 const ICONS = [
@@ -173,20 +138,6 @@ const ICONS = [
   },
 ];
 
-const ArrowVariants = {
-  initial: {
-    y: 0,
-  },
-  active: {
-    y: [-5, 5],
-    transition: {
-      repeat: Infinity,
-      repeatType: "mirror",
-      duration: 1,
-    },
-  },
-};
-
 const LogoVariants = {
   initial: {
     y: 0,
@@ -207,8 +158,8 @@ const ShadowVariants = {
     height: 0,
   },
   active: {
-    width: ["20%", "50%"],
-    height: ["2%", "6%"],
+    width: ["0%", "25%"],
+    height: ["0%", "3%"],
     transition: {
       repeat: Infinity,
       repeatType: "mirror",
@@ -220,16 +171,10 @@ const ShadowVariants = {
 const MotionContainer = styled(motion.div)`
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: center;
   align-items: center;
   overflow: hidden;
   height: 100%;
-
-  @media (min-width: ${DEVICES.laptop}) {
-    align-items: flex-start;
-  }
 `;
 
 const MotionItem = styled(motion.div)`
@@ -279,19 +224,6 @@ export default function HeroText() {
         viewport={{ once: true }}
         style={{ width: "100%" }}
       >
-        <FloatingLogoCont>
-          <FloatingLogo
-            src="/logo.svg"
-            initial="initial"
-            animate="active"
-            variants={LogoVariants}
-          />
-          <LogoShadow
-            intial="initial"
-            animate="active"
-            variants={ShadowVariants}
-          />
-        </FloatingLogoCont>
         <TextCont>
           <MotionItem variants={item}>
             <FirstLine firstColor={SITE_THEME[theme].text}>
@@ -334,20 +266,19 @@ export default function HeroText() {
             </Description>
           </MotionItem>
         </TextCont>
-        <ArrowCont
-          initial="initial"
-          animate="active"
-          variants={ArrowVariants}
-          whileTap={{ scale: 0.8 }}
-          arrowcolor={SITE_THEME[theme].text}
-          arrowhovercolor={SITE_THEME[theme].strong}
-        >
-          <Link href="#projects" passHref>
-            <a>
-              <HiOutlineChevronDoubleDown size="100%" />
-            </a>
-          </Link>
-        </ArrowCont>
+        <FloatingLogoCont>
+          <FloatingLogo
+            src="/logo.svg"
+            initial="initial"
+            animate="active"
+            variants={LogoVariants}
+          />
+          <LogoShadow
+            intial="initial"
+            animate="active"
+            variants={ShadowVariants}
+          />
+        </FloatingLogoCont>
       </MotionContainer>
     </HeroTextCont>
   );

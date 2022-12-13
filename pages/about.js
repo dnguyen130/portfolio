@@ -56,7 +56,7 @@ const Fade = styled(motion.div)`
 `;
 
 const Description = styled.p`
-  margin: 0 0 15px;
+  width: 80%;
   font-size: 1em;
   line-height: 1.3em;
   color: ${(props) => props.color};

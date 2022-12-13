@@ -2,6 +2,8 @@ import Head from "next/head";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 
 import NavBar from "@/components/Shared/NavBar";
 import HeroText from "@/components/Home/HeroText";
@@ -18,7 +20,10 @@ import {
   useActiveDrawer,
   useInitialLoad,
   useActiveTab,
+  useTheme,
 } from "@/utils/provider";
+
+import { SITE_THEME } from "@/utils/variables";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -32,7 +37,7 @@ const PageContainer = styled.div`
 
 const MainContainer = styled.main`
   box-sizing: border-box;
-  max-width: 100vw;
+  max-width: 1920px;
   width: 100%;
   padding: 0 20px;
   display: flex;
@@ -55,6 +60,21 @@ const Fade = styled(motion.div)`
   display: ${(props) => props.fadeDisplay};
 `;
 
+const Arrow = styled(motion.div)`
+  width: 50px;
+  height: 50px;
+  align-self: center;
+  position: absolute;
+  bottom: 20px;
+  color: ${(props) => props.arrowcolor};
+  transition: color 0.25s;
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.arrowhovercolor};
+  }
+`;
+
 const FadeVariants = {
   active: {
     display: "block",
@@ -74,9 +94,24 @@ const FadeVariants = {
   },
 };
 
+const ArrowVariants = {
+  initial: {
+    y: 0,
+  },
+  active: {
+    y: [-5, 5],
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 1,
+    },
+  },
+};
+
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeProject } = useActiveProject();
+  const { theme } = useTheme();
   const ap = activeProject;
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const { initialLoad, setInitialLoad } = useInitialLoad();
@@ -111,11 +146,26 @@ export default function Home() {
             setActiveDrawer(false);
             setActiveTab(false);
           }}
+          zindex={activeDrawer || activeCard ? 3 : 2}
         />
         <Drawer />
         <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
         <MainContainer mainSelect={activeCard ? "none" : "auto"}>
           <HeroText arrowhref="#projects" />
+          <Arrow
+            initial="initial"
+            animate="active"
+            variants={ArrowVariants}
+            whileTap={{ scale: 0.8 }}
+            arrowcolor={SITE_THEME[theme].text}
+            arrowhovercolor={SITE_THEME[theme].strong}
+          >
+            <Link href="#projects" passHref>
+              <a>
+                <HiOutlineChevronDoubleDown size="100%" />
+              </a>
+            </Link>
+          </Arrow>
           <Projects id="projects" />
           <Extras />
         </MainContainer>
