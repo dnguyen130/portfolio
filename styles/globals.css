@@ -28,4 +28,5 @@ a {
   height: 100% !important;
   display: flex !important;
   align-items: center !important;
+  pointer-events: none !important;
 }

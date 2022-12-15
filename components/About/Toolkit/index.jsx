@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import { useTheme } from "@/utils/provider";
 import { SITE_THEME, DEVICES } from "@/utils/variables";
@@ -53,11 +54,20 @@ const ToolkitGrid = styled.div`
   }
 `;
 
-const ToolkitAccordion = styled.div`
+const ToolkitAccordion = styled(motion.div)`
   width: ${(props) => props.width};
   aspect-ratio: 1/1;
   border-radius: 5px;
-  background-color: white;
+  background-color: ${(props) => props.bgcolor};
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: 0.1s;
+
+  &:hover {
+    background-color: ${(props) => props.bghover};
+  }
 `;
 
 const ToolkitAccordionItem = styled.div`
@@ -69,6 +79,15 @@ const ToolkitAccordionItem = styled.div`
 const ToolkitAccordionSVG = styled.img`
   width: 125px !important;
   height: 125px;
+`;
+
+const ToolkitLabel = styled.h3`
+  width: 100%;
+  text-align: center;
+  margin: 5px 0;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: ${(props) => props.color};
 `;
 
 export default function Toolkit() {
@@ -106,15 +125,24 @@ export default function Toolkit() {
       <Title titlecolor={SITE_THEME[theme].text}>Notable Skills</Title>
       <Underline {...UnderlineProps} />
       <ToolkitGrid>
-        {Object.values(ToolkitIcons).map((o, i) => {
+        {Object.entries(ToolkitIcons).map((o, i) => {
           return (
-            <ToolkitAccordion key={i} width={activeToolkit ? "250px" : "0"}>
+            <ToolkitAccordion
+              key={i}
+              width={activeToolkit ? "250px" : "0"}
+              whileTap={{ scale: 0.95 }}
+              bgcolor={SITE_THEME[theme].text}
+              bghover={SITE_THEME[theme].cardhover}
+            >
+              <ToolkitLabel color={SITE_THEME[theme].background}>
+                {o[0]}
+              </ToolkitLabel>
               <Slider {...SliderSettings}>
-                {o.map((o, i) => {
+                {o[1].map((o, i) => {
                   return o.src ? (
-                    <ToolkitAccordionSVG src={o.src} />
+                    <ToolkitAccordionSVG key={i} src={o.src} />
                   ) : (
-                    <ToolkitAccordionItem color={o.color}>
+                    <ToolkitAccordionItem color={o.color} key={i}>
                       <o.logo size="100%" />
                     </ToolkitAccordionItem>
                   );

@@ -42,6 +42,9 @@ const Colors = {
   //Logo
   LogoLight: "#17abe2",
   LogoDark: "#293e91",
+
+  //CardHover
+  LightSky: "#9dd0e3",
 };
 
 export const SITE_THEME = {
@@ -75,6 +78,8 @@ export const SITE_THEME = {
 
     logolight: Colors.LogoLight,
     logodark: Colors.LogoDark,
+
+    cardhover: Colors.LightSky,
   },
 };
 
@@ -181,7 +186,7 @@ export const SOCIALS = [
 ];
 
 export const ToolkitIcons = {
-  Basic: [
+  Foundation: [
     {
       logo: SiHtml5,
       color: "#f25320",
