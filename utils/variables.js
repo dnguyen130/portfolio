@@ -187,62 +187,85 @@ export const SOCIALS = [
 
 export const ToolkitIcons = {
   Foundation: [
+    [
+      {
+        logo: SiHtml5,
+        color: "#f25320",
+        title: "HTML",
+      },
+      {
+        logo: SiCss3,
+        color: "#2299f8",
+        title: "CSS",
+      },
+      {
+        logo: SiJavascript,
+        color: "#f0db4f",
+        title: "JavaScript",
+      },
+    ],
     {
-      logo: SiHtml5,
-      color: "#f25320",
-    },
-    {
-      logo: SiCss3,
-      color: "#2299f8",
-    },
-    {
-      logo: SiJavascript,
-      color: "#f0db4f",
+      description: "hello",
     },
   ],
   Frontend: [
-    {
-      logo: SiReact,
-      color: "#5ccfee",
-    },
-    {
-      src: "/logos/styled.svg",
-    },
-    {
-      logo: SiSass,
-      color: "#c36192",
-    },
-    {
-      logo: SiNodedotjs,
-      color: "#4f9640",
-    },
-    {
-      logo: SiNextdotjs,
-      color: "#000",
-    },
+    [
+      {
+        logo: SiReact,
+        color: "#5ccfee",
+        title: "React",
+      },
+      {
+        src: "/logos/styled.svg",
+        title: "Styled-Components",
+      },
+      {
+        logo: SiSass,
+        color: "#c36192",
+        title: "Sass",
+      },
+      {
+        logo: SiNodedotjs,
+        color: "#4f9640",
+        title: "Node.js",
+      },
+      {
+        logo: SiNextdotjs,
+        color: "#000",
+        title: "Next.js",
+      },
+    ],
+    { description: "Hello" },
   ],
   Backend: [
-    {
-      logo: SiExpress,
-      color: "#46545e",
-    },
-    {
-      src: "/logos/mongodb.svg",
-      color: "",
-    },
-    {
-      src: "/logos/firebase.svg",
-      color: "",
-    },
+    [
+      {
+        logo: SiExpress,
+        color: "#46545e",
+        title: "Express.js",
+      },
+      {
+        src: "/logos/mongodb.svg",
+        title: "MongoDB",
+      },
+      {
+        src: "/logos/firebase.svg",
+        title: "Firebase",
+      },
+    ],
+    { description: "hello" },
   ],
   Design: [
-    {
-      src: "/logos/acc.svg",
-      color: "",
-    },
-    {
-      src: "/logos/figma.svg",
-      color: "",
-    },
+    [
+      {
+        src: "/logos/acc.svg",
+        title: "Adobe Creative Cloud",
+      },
+      {
+        src: "/logos/figma.svg",
+        title: "Figma",
+      },
+    ],
+    { description: "hello" },
   ],
 };

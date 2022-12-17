@@ -15,7 +15,7 @@ import { useTheme, useActiveCard } from "@/utils/provider";
 import { SITE_THEME, DEVICES } from "../../../utils/variables";
 
 const DialogCont = styled(motion.div)`
-  width: 90%;
+  width: 95%;
   min-width: 280px;
   max-width: 450px;
   max-height: 95vh;
@@ -37,6 +37,7 @@ const DialogCont = styled(motion.div)`
   transition: 0.2s;
 
   @media (min-width: ${DEVICES.tablet}) {
+    width: 90%;
     max-width: 700px;
     height: 800px;
     padding: 25px;
@@ -64,7 +65,7 @@ const CloseButton = styled(motion.div)`
   align-items: center;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 5px;
-  transition: 0.1s;
+  transition: 0.2s;
   cursor: pointer;
   color: ${(props) => props.closebuttoncolor};
 

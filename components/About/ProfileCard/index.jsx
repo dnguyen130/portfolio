@@ -7,7 +7,7 @@ import Underline from "@/components/Shared/Underline";
 
 const ProfileCardCont = styled.div`
   width: 100%;
-  min-height: calc(50vh - 100px);
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,21 +52,6 @@ const ProfileTitle = styled.h2`
 
   @media (min-width: ${DEVICES.tablet}) {
     font-size: 4rem;
-  }
-`;
-
-const ProfileDescription = styled.p`
-  margin: 0;
-  color: ${(props) => props.color};
-  font-size: 0.9em;
-  line-height: 1.3em;
-
-  @media (min-width: ${DEVICES.tablet}) {
-    font-size: 1em;
-  }
-
-  @media (min-width: ${DEVICES.laptop}) {
-    font-size: 1.2em;
   }
 `;
 

@@ -146,7 +146,6 @@ export default function Home() {
             setActiveDrawer(false);
             setActiveTab(false);
           }}
-          zindex={activeDrawer || activeCard ? 3 : 2}
         />
         <Drawer />
         <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />

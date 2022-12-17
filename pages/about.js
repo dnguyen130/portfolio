@@ -8,7 +8,8 @@ import Footer from "@/components/Shared/Footer";
 import Drawer from "@/components/Shared/Drawer";
 import ProfileCard from "@/components/About/ProfileCard";
 import Toolkit from "@/components/About/Toolkit";
-import Underline from "@/components/Shared/Underline";
+import ToolkitDialog from "@/components/About/Toolkit/ToolkitDialog";
+import Other from "@/components/About/Other";
 
 import {
   useActiveCard,
@@ -56,7 +57,9 @@ const Fade = styled(motion.div)`
 `;
 
 const Description = styled.p`
-  width: 80%;
+  margin: 15px 0;
+  width: 90%;
+  min-height: 30vh;
   font-size: 1em;
   line-height: 1.3em;
   color: ${(props) => props.color};
@@ -96,6 +99,7 @@ const FadeVariants = {
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeProject } = useActiveProject();
+  const ap = activeProject;
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const { initialLoad, setInitialLoad } = useInitialLoad();
   const { theme } = useTheme();
@@ -110,6 +114,10 @@ export default function Home() {
   return (
     <PageContainer>
       <Head></Head>
+      <ToolkitDialog
+        title={ap[0] ? ap[0] : null}
+        iconArray={ap[1] ? ap[1][0] : null}
+      />
       <Fade
         animate={
           activeCard || activeDrawer || activeTab ? "active" : "inactive"
@@ -143,6 +151,7 @@ export default function Home() {
             Digital Design and Development Program.
           </Description>
           <Toolkit />
+          <Other />
         </Padded>
       </MainContainer>
       <Footer />

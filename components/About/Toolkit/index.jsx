@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { motion } from "framer-motion";
 
 import { useTheme } from "@/utils/provider";
 import { SITE_THEME, DEVICES } from "@/utils/variables";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Underline from "@/components/Shared/Underline";
-import Image from "next/image";
+import ToolkitCard from "./ToolkitCard";
 import { ToolkitIcons } from "@/utils/variables";
 
 const ToolkitCont = styled.div`
@@ -17,6 +14,7 @@ const ToolkitCont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 15px;
 `;
 
 const Title = styled.h2`
@@ -54,48 +52,8 @@ const ToolkitGrid = styled.div`
   }
 `;
 
-const ToolkitAccordion = styled(motion.div)`
-  width: ${(props) => props.width};
-  aspect-ratio: 1/1;
-  border-radius: 5px;
-  background-color: ${(props) => props.bgcolor};
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  transition: 0.1s;
-
-  &:hover {
-    background-color: ${(props) => props.bghover};
-  }
-`;
-
-const ToolkitAccordionItem = styled.div`
-  width: 125px;
-  height: 125px;
-  color: ${(props) => props.color};
-`;
-
-const ToolkitAccordionSVG = styled.img`
-  width: 125px !important;
-  height: 125px;
-`;
-
-const ToolkitLabel = styled.h3`
-  width: 100%;
-  text-align: center;
-  margin: 5px 0;
-  font-size: 1.5em;
-  font-weight: 500;
-  color: ${(props) => props.color};
-`;
-
 export default function Toolkit() {
   const { theme } = useTheme();
-
-  const [activeToolkit, setActiveToolkit] = useState(true);
-
-  const ToolkitOnClick = () => {};
 
   const UnderlineProps = {
     height: "1px",
@@ -105,21 +63,6 @@ export default function Toolkit() {
     marginbottom: "30px",
   };
 
-  const SliderSettings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1.5,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    speed: 3000,
-    arrows: false,
-    cssEase: "linear",
-    adaptiveHeight: true,
-    draggable: false,
-    pauseOnHover: false,
-  };
-
   return (
     <ToolkitCont>
       <Title titlecolor={SITE_THEME[theme].text}>Notable Skills</Title>
@@ -127,28 +70,12 @@ export default function Toolkit() {
       <ToolkitGrid>
         {Object.entries(ToolkitIcons).map((o, i) => {
           return (
-            <ToolkitAccordion
+            <ToolkitCard
               key={i}
-              width={activeToolkit ? "250px" : "0"}
-              whileTap={{ scale: 0.95 }}
-              bgcolor={SITE_THEME[theme].text}
-              bghover={SITE_THEME[theme].cardhover}
-            >
-              <ToolkitLabel color={SITE_THEME[theme].background}>
-                {o[0]}
-              </ToolkitLabel>
-              <Slider {...SliderSettings}>
-                {o[1].map((o, i) => {
-                  return o.src ? (
-                    <ToolkitAccordionSVG key={i} src={o.src} />
-                  ) : (
-                    <ToolkitAccordionItem color={o.color} key={i}>
-                      <o.logo size="100%" />
-                    </ToolkitAccordionItem>
-                  );
-                })}
-              </Slider>
-            </ToolkitAccordion>
+              ToolkitCardTitle={o[0]}
+              ToolkitCardArray={o[1][0]}
+              ToolkitCategory={o}
+            />
           );
         })}
       </ToolkitGrid>

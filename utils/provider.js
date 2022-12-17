@@ -140,7 +140,6 @@ export function useActiveTab() {
   const { activeTab, setActiveTab } = useContext(MyContext);
   return { activeTab, setActiveTab };
 }
-
 // ::selection {
 //   background: ${SITE_THEME[theme].weak}; /* WebKit/Blink Browsers */
 // }
