@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
 import { FaChevronDown } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 import {
   useTheme,
@@ -300,8 +301,9 @@ const DropdownVariants = {
 export default function NavBar({ burgerOnClick = () => {} }) {
   const { theme } = useTheme();
   const { activeTab, setActiveTab } = useActiveTab();
-  const { activeDrawer } = useActiveDrawer();
+  const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const { activeCard } = useActiveCard();
+  const router = useRouter();
 
   return (
     <>
@@ -381,6 +383,7 @@ export default function NavBar({ burgerOnClick = () => {} }) {
                               height={activeTab ? "40px" : 0}
                               hoverbgcolor={SITE_THEME[theme].drawerhover}
                               hovercolor={SITE_THEME[theme].strong}
+                              onClick={() => setActiveDrawer(false)}
                             >
                               {o.name}
                             </DropdownItem>

@@ -33,6 +33,19 @@ const Title = styled.h2`
   }
 `;
 
+const Description = styled.p`
+  margin: 15px 0;
+  width: 90%;
+  min-height: 30vh;
+  font-size: 1em;
+  line-height: 1.3em;
+  color: ${(props) => props.color};
+
+  @media (min-width: ${DEVICES.laptop}) {
+    width: 80%;
+  }
+`;
+
 export default function Other() {
   const { theme } = useTheme();
 
@@ -48,6 +61,11 @@ export default function Other() {
     <OtherCont>
       <Title titlecolor={SITE_THEME[theme].text}>Other Projects</Title>
       <Underline {...UnderlineProps} />
+      <Description color={SITE_THEME[theme].text}>
+        While my strengths lie in web development, I was also given the
+        opportunity to hone my skills in design and UI/UX. Here are some other
+        projects I&apos;ve worked on.
+      </Description>
     </OtherCont>
   );
 }

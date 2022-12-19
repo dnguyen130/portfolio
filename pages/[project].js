@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import NavBar from "@/components/Shared/NavBar";
 import Footer from "@/components/Shared/Footer";
@@ -18,9 +19,11 @@ import {
   useInitialLoad,
   useTheme,
   useActiveTab,
+  useSelectedProject,
 } from "@/utils/provider";
 
-import { SITE_THEME, DEVICES } from "@/utils/variables";
+import { SITE_THEME, DEVICES, PROJECTLIST } from "@/utils/variables";
+import Image from "next/image";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -112,12 +115,27 @@ export default function Home() {
   const { initialLoad, setInitialLoad } = useInitialLoad();
   const { theme } = useTheme();
   const { activeTab, setActiveTab } = useActiveTab();
+  const { selectedProject, setSelectedProject } = useSelectedProject();
+  const router = useRouter();
 
   useEffect(() => {
     if (initialLoad == false) {
       setInitialLoad(true);
     }
   });
+
+  if (
+    //Initial Project Load
+    Object.keys(selectedProject).length == 0 ||
+    //If project changes
+    router.query.project != selectedProject.url
+  ) {
+    for (var i = 0; i < PROJECTLIST.length; i++) {
+      if (router.query.project == PROJECTLIST[i].url) {
+        setSelectedProject(PROJECTLIST[i]);
+      }
+    }
+  }
 
   return (
     <PageContainer>
@@ -141,30 +159,13 @@ export default function Home() {
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <Drawer />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <ProfileCard />
-        <Padded>
-          <DescriptionCont>
-            <Description color={SITE_THEME[theme].text}>
-              Why hello! Thank you for taking the time to learn more about me
-              and my experience in web development.
-            </Description>
-            <Description color={SITE_THEME[theme].text}>
-              My first experience with the web was back in 2003 when I created
-              my first email account to play Neopets, a virtual pet website.
-              Since then, my whole life, like many others, has revolved around
-              using the web to communicate and learn from others.
-            </Description>
-            <Description color={SITE_THEME[theme].text}>
-              At the British Columbia Institute of Technology, I was able to
-              experience a fast-paced, cooperative school environment. I
-              developed technical and social skills working in teams of
-              designers and developers to produce web and mobile applications
-              through their Digital Design and Development Program.
-            </Description>
-          </DescriptionCont>
-          <Toolkit />
-          <Other />
-        </Padded>
+        <p>{selectedProject.name}</p>
+        <Image
+          width="100px"
+          height="100px"
+          alt="ss"
+          src={`/screenshots/${selectedProject.name}_Dashboard.png`}
+        />
       </MainContainer>
       <Footer />
     </PageContainer>

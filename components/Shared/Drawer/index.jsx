@@ -314,6 +314,7 @@ export default function Drawer() {
                       submenubuttonheight={activeProjectButton ? "40px" : "0"}
                       submenubuttoncolor={SITE_THEME[theme].navbar}
                       submenubghover={SITE_THEME[theme].drawerhover}
+                      onClick={() => setActiveDrawer(false)}
                     >
                       <MenuLink>
                         <SubMenuButtonLabel

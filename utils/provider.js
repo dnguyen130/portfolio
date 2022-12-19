@@ -20,6 +20,9 @@ const initialStates = {
 
   activeTab: false,
   setActiveTab: () => {},
+
+  selectedProject: {},
+  setSelectedProject: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -34,6 +37,9 @@ export default function AppProvider({ children }) {
   const [activeDrawer, setActiveDrawer] = useState(initialStates.activeDrawer);
   const [initialLoad, setInitialLoad] = useState(initialStates.initialLoad);
   const [activeTab, setActiveTab] = useState(initialStates.activeTab);
+  const [selectedProject, setSelectedProject] = useState(
+    initialStates.selectedProject
+  );
 
   //put in the variables you want to share
   return (
@@ -51,6 +57,8 @@ export default function AppProvider({ children }) {
         setInitialLoad,
         activeTab,
         setActiveTab,
+        selectedProject,
+        setSelectedProject,
       }}
     >
       <style jsx global>
@@ -139,6 +147,11 @@ export function useInitialLoad() {
 export function useActiveTab() {
   const { activeTab, setActiveTab } = useContext(MyContext);
   return { activeTab, setActiveTab };
+}
+
+export function useSelectedProject() {
+  const { selectedProject, setSelectedProject } = useContext(MyContext);
+  return { selectedProject, setSelectedProject };
 }
 // ::selection {
 //   background: ${SITE_THEME[theme].weak}; /* WebKit/Blink Browsers */
