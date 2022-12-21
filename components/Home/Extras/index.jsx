@@ -41,6 +41,7 @@ const Grid = styled.div`
   align-items: center;
   grid-template-columns: 1fr;
   width: 100%;
+  max-width: 1100px;
 
   @media (min-width: ${DEVICES.tablet}) {
     grid-template-columns: 1fr 1fr;
