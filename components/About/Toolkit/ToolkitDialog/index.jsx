@@ -9,9 +9,9 @@ const ToolkitDialogCont = styled(motion.div)`
   width: 90%;
   min-width: 280px;
   max-width: 500px;
-  min-height: 400px;
+  min-height: 450px;
   max-height: 95vh;
-  padding: 15px 15px 45px;
+  padding: 15px;
   border-radius: 10px;
   z-index: 5;
   background-color: white;
@@ -143,7 +143,7 @@ const ToolkitDialogDescription = styled.p`
   font-size: 1em;
   line-height: 1.3em;
   color: ${(props) => props.color};
-  margin: 0;
+  margin: 10px 0;
 `;
 
 const DialogVariants = {
@@ -165,7 +165,12 @@ const DialogVariants = {
   },
 };
 
-export default function ToolkitDialog({ title = "", iconArray = [] }) {
+export default function ToolkitDialog({
+  title = "",
+  iconArray = [],
+  description = "",
+  description2 = "",
+}) {
   const { theme } = useTheme();
   const { activeCard, setActiveCard } = useActiveCard();
 
@@ -196,8 +201,8 @@ export default function ToolkitDialog({ title = "", iconArray = [] }) {
               {iconArray
                 ? iconArray.map((o, i) => {
                     return o.src ? (
-                      <ToolkitCardColumn>
-                        <ToolkitCardItem key={i}>
+                      <ToolkitCardColumn key={i}>
+                        <ToolkitCardItem>
                           <ToolkitCardSVG src={o.src} />
                         </ToolkitCardItem>
                         <ToolkitTitle color={SITE_THEME[theme].background}>
@@ -205,8 +210,8 @@ export default function ToolkitDialog({ title = "", iconArray = [] }) {
                         </ToolkitTitle>
                       </ToolkitCardColumn>
                     ) : (
-                      <ToolkitCardColumn>
-                        <ToolkitCardItem color={o.color} key={i}>
+                      <ToolkitCardColumn key={i}>
+                        <ToolkitCardItem color={o.color}>
                           <o.logo size="100%" />
                         </ToolkitCardItem>
                         <ToolkitTitle color={SITE_THEME[theme].background}>
@@ -219,7 +224,8 @@ export default function ToolkitDialog({ title = "", iconArray = [] }) {
             </IconCont>
           </Section>
           <Section>
-            <ToolkitDialogDescription>Hello</ToolkitDialogDescription>
+            <ToolkitDialogDescription>{description}</ToolkitDialogDescription>
+            <ToolkitDialogDescription>{description2}</ToolkitDialogDescription>
           </Section>
         </ToolkitDialogCont>
       )}

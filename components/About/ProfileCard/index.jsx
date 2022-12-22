@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 import { DEVICES, SITE_THEME } from "@/utils/variables";
 import { useTheme } from "@/utils/provider";
@@ -28,7 +29,6 @@ const ProfileHero = styled.div`
 const HeroWrapper = styled.div`
   background-size: cover;
   background-position: 55% center;
-  background-image: url("/test.JPEG");
   z-index: -2;
   position: absolute;
   top: 0;
@@ -42,6 +42,12 @@ const HeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+`;
+
+const HeroWrapperImage = styled(Image)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `;
 
 const ProfileTitle = styled.h2`
@@ -83,7 +89,14 @@ export default function ProfileCard() {
       <ProfileHero bordercolor={SITE_THEME[theme].strong}>
         <ProfileTitle color={SITE_THEME[theme].strong}>About Me</ProfileTitle>
       </ProfileHero>
-      <HeroWrapper bordercolor={SITE_THEME[theme].strong} />
+      <HeroWrapper bordercolor={SITE_THEME[theme].strong}>
+        <HeroWrapperImage
+          src="/test.jpeg"
+          layout="fill"
+          alt="cover"
+          objectFit="cover"
+        />
+      </HeroWrapper>
       <GradientTransparency gradientbg={SITE_THEME[theme].background} />
     </ProfileCardCont>
   );

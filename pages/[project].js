@@ -88,6 +88,24 @@ const Padded = styled.div`
   align-items: center;
 `;
 
+const LogoCont = styled.div`
+  margin: 20px 0;
+  width: 200px;
+  height: 200px;
+  position: relative;
+`;
+
+const LogoTitle = styled.h2`
+  color: ${(props) => props.color};
+  font-family: ${(props) => props.fontfamily};
+  font-size: 3em;
+  margin-top: 0;
+`;
+
+const LogoQuote = styled.q`
+  color: ${(props) => props.color};
+`;
+
 const FadeVariants = {
   active: {
     display: "block",
@@ -116,6 +134,7 @@ export default function Home() {
   const { theme } = useTheme();
   const { activeTab, setActiveTab } = useActiveTab();
   const { selectedProject, setSelectedProject } = useSelectedProject();
+  const sp = selectedProject;
   const router = useRouter();
 
   useEffect(() => {
@@ -126,9 +145,9 @@ export default function Home() {
 
   if (
     //Initial Project Load
-    Object.keys(selectedProject).length == 0 ||
+    Object.keys(sp).length == 0 ||
     //If project changes
-    router.query.project != selectedProject.url
+    router.query.project != sp.url
   ) {
     for (var i = 0; i < PROJECTLIST.length; i++) {
       if (router.query.project == PROJECTLIST[i].url) {
@@ -159,13 +178,15 @@ export default function Home() {
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <Drawer />
       <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <p>{selectedProject.name}</p>
-        <Image
-          width="100px"
-          height="100px"
-          alt="ss"
-          src={`/screenshots/${selectedProject.name}_Dashboard.png`}
-        />
+        <LogoCont>
+          <Image layout="fill" alt="ss" src={`/${sp.name}_logo.svg`} />
+        </LogoCont>
+        {sp.hasLogo && (
+          <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
+            {sp.name}
+          </LogoTitle>
+        )}
+        <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
       </MainContainer>
       <Footer />
     </PageContainer>

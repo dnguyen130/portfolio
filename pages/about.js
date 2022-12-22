@@ -59,7 +59,7 @@ const Fade = styled(motion.div)`
 const DescriptionCont = styled.div`
   width: 100%;
   height: calc(50vh - 100px);
-  margin: 0 15px 0;
+  margin: 0 15px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,12 +128,16 @@ export default function Home() {
     }
   });
 
+  console.log(ap);
+
   return (
     <PageContainer>
       <Head></Head>
       <ToolkitDialog
         title={ap[0] ? ap[0] : null}
         iconArray={ap[1] ? ap[1][0] : null}
+        description={ap[1] ? ap[1][1].description : null}
+        description2={ap[1] ? ap[1][1].description2 : null}
       />
       <Fade
         animate={

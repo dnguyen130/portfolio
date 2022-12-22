@@ -54,7 +54,7 @@ export default function Other() {
     gradientangle: "90deg",
     gradient1: SITE_THEME[theme].strong,
     borderradius: "1px",
-    marginbottom: "30px",
+    marginbottom: "15px",
   };
 
   return (

@@ -125,6 +125,8 @@ export const PROJECTLIST = [
     color_strong: "#F57C33",
     color_hover: "#DB6318",
     button_names: ["Learn More", "Live Site", "Client Github", "Server Github"],
+    title_font: "Ranchers",
+    quote: "Get back on track to a happy life.",
   },
   {
     name: "OnMe",
@@ -145,6 +147,8 @@ export const PROJECTLIST = [
     color_strong: "#FE4370",
     color_hover: "#F22756",
     button_names: ["Learn More", "Live Site", "Client Github", "Server Github"],
+    title_font: "Poppins",
+    quote: "Create a connection with a little liquid courage.",
   },
   {
     name: "Scout",
@@ -164,6 +168,8 @@ export const PROJECTLIST = [
     color_dark: "#1C2A36",
     color_strong: "#F4A259",
     color_hover: "#DB8539",
+    title_font: "Poppins",
+    quote: "Share and discover new anime",
   },
 ];
 
@@ -205,7 +211,10 @@ export const ToolkitIcons = {
       },
     ],
     {
-      description: "hello",
+      description:
+        "A solid foundation is required to write stable, working code.",
+      description2:
+        "After becoming comfortable with creating websites with these tools alone, utilizing frameworks, such as React, becomes much a much easier and streamlined process.",
     },
   ],
   Frontend: [
@@ -235,7 +244,12 @@ export const ToolkitIcons = {
         title: "Next.js",
       },
     ],
-    { description: "Hello" },
+    {
+      description:
+        "Experience with front-end frameworks is a must in this modern day of web development.",
+      description2:
+        "With the majority of my experience in React, I am able to quickly adapt to most workplaces, with the ability to quickly learn other technology stacks as needed.",
+    },
   ],
   Backend: [
     [
@@ -253,7 +267,12 @@ export const ToolkitIcons = {
         title: "Firebase",
       },
     ],
-    { description: "hello" },
+    {
+      description:
+        "Working on backend databases has also been important, even as a front-end focused developer.",
+      description2:
+        "With some experience in MongoDB and SQL, I am knowledgeable enough to work with APIs and understand how data is transferred to the front-end.",
+    },
   ],
   Design: [
     [
@@ -266,6 +285,11 @@ export const ToolkitIcons = {
         title: "Figma",
       },
     ],
-    { description: "hello" },
+    {
+      description:
+        "Along with my experience with web development, I have learned UI/UX and design tools to supplement my education.",
+      description2:
+        "Figma is the design/prototyping software of choice. Photoshop, Illustrator, Premiere Pro, and After Effects are other tools I have experience with as well.",
+    },
   ],
 };
