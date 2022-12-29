@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { HiOutlineChevronDoubleDown } from "react-icons/hi";
@@ -13,6 +13,7 @@ import Extras from "@/components/Home/Extras";
 import Dialog from "@/components/Shared/Dialog";
 import Drawer from "@/components/Shared/Drawer";
 import LogoAnim from "@/components/Shared/LogoAnim";
+import Layout from "@/components/Shared/Layout";
 
 import {
   useActiveCard,
@@ -25,7 +26,7 @@ import {
 
 import { SITE_THEME } from "@/utils/variables";
 
-const PageContainer = styled.div`
+const PageContainer = styled(motion.div)`
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
@@ -63,9 +64,6 @@ const Fade = styled(motion.div)`
 const Arrow = styled(motion.div)`
   width: 50px;
   height: 50px;
-  align-self: center;
-  position: absolute;
-  bottom: 20px;
   color: ${(props) => props.arrowcolor};
   transition: color 0.25s;
   cursor: pointer;
@@ -73,6 +71,17 @@ const Arrow = styled(motion.div)`
   &:hover {
     color: ${(props) => props.arrowhovercolor};
   }
+`;
+
+const ArrowCont = styled(motion.div)`
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  align-self: center;
+  bottom: 20px;
 `;
 
 const FadeVariants = {
@@ -96,14 +105,27 @@ const FadeVariants = {
 
 const ArrowVariants = {
   initial: {
-    y: 0,
+    y: -5,
   },
   active: {
-    y: [-5, 5],
+    y: 5,
     transition: {
       repeat: Infinity,
       repeatType: "mirror",
       duration: 1,
+    },
+  },
+};
+
+const ArrowContVariants = {
+  initial: {
+    opacity: 0,
+  },
+  active: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 2,
     },
   },
 };
@@ -117,6 +139,15 @@ export default function Home() {
   const { initialLoad, setInitialLoad } = useInitialLoad();
   const { activeTab, setActiveTab } = useActiveTab();
 
+  const smoothScrollTo = (e) => {
+    e.preventDefault();
+    const element = document.getElementById("projects");
+    element.scrollIntoView({
+      block: "start",
+      behavior: "smooth", // smooth scroll
+    });
+  };
+
   useEffect(() => {
     if (initialLoad == false) {
       setTimeout(() => setInitialLoad(true), 3000);
@@ -125,67 +156,75 @@ export default function Home() {
 
   if (initialLoad === false) {
     return (
-      <PageContainer>
-        <LogoAnim />
-      </PageContainer>
+      <Layout>
+        <PageContainer>
+          <LogoAnim />
+        </PageContainer>
+      </Layout>
     );
   }
 
   if (initialLoad === true) {
     return (
-      <PageContainer>
-        <Head></Head>
-        <Fade
-          animate={
-            activeCard || activeDrawer || activeTab ? "active" : "inactive"
-          }
-          zindex={activeDrawer || activeCard ? 4 : 2}
-          variants={FadeVariants}
-          onClick={() => {
-            setActiveCard(false);
-            setActiveDrawer(false);
-            setActiveTab(false);
-          }}
-        />
-        <Drawer />
-        <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
-        <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-          <HeroText arrowhref="#projects" />
-          <Arrow
-            initial="initial"
-            animate="active"
-            variants={ArrowVariants}
-            whileTap={{ scale: 0.8 }}
-            arrowcolor={SITE_THEME[theme].text}
-            arrowhovercolor={SITE_THEME[theme].strong}
-          >
-            <Link href="#projects" passHref>
-              <a>
+      <Layout>
+        <PageContainer>
+          <Head></Head>
+          <Fade
+            animate={
+              activeCard || activeDrawer || activeTab ? "active" : "inactive"
+            }
+            zindex={activeDrawer || activeCard ? 4 : 2}
+            variants={FadeVariants}
+            onClick={() => {
+              setActiveCard(false);
+              setActiveDrawer(false);
+              setActiveTab(false);
+            }}
+          />
+          <Drawer />
+          <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+          <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+            <HeroText />
+            <ArrowCont
+              initial="initial"
+              animate="active"
+              variants={ArrowContVariants}
+            >
+              <Arrow
+                initial="initial"
+                animate="active"
+                variants={ArrowVariants}
+                whileTap={{ scale: 0.8 }}
+                arrowcolor={SITE_THEME[theme].text}
+                arrowhovercolor={SITE_THEME[theme].strong}
+                onClick={smoothScrollTo}
+              >
                 <HiOutlineChevronDoubleDown size="100%" />
-              </a>
-            </Link>
-          </Arrow>
-          <Projects id="projects" />
-          <Extras />
-        </MainContainer>
-        <Footer />
-        <Dialog
-          title={ap.name}
-          tags={ap.tags}
-          logoSrc={ap.logo}
-          description={ap.description}
-          infoLink={ap.url}
-          liveSite={ap.live_site ? ap.live_site : null}
-          gitClient={ap.github_client ? ap.github_client : null}
-          gitServer={ap.github_server ? ap.github_server : null}
-          darkColor={ap.color_dark}
-          lightColor={ap.color_light}
-          strongColor={ap.color_strong}
-          hoverColor={ap.color_hover}
-          hasLogo={ap.hasLogo}
-          buttonName={ap.button_names}
-        />
-      </PageContainer>
+              </Arrow>
+            </ArrowCont>
+            <Projects id="projects" />
+            <Extras />
+          </MainContainer>
+
+          <Footer />
+          <Dialog
+            title={ap.name}
+            tags={ap.tags}
+            logoSrc={ap.logo}
+            description={ap.description}
+            infoLink={ap.url}
+            liveSite={ap.live_site ? ap.live_site : null}
+            gitClient={ap.github_client ? ap.github_client : null}
+            gitServer={ap.github_server ? ap.github_server : null}
+            darkColor={ap.color_dark}
+            lightColor={ap.color_light}
+            strongColor={ap.color_strong}
+            hoverColor={ap.color_hover}
+            hasLogo={ap.hasLogo}
+            buttonName={ap.button_names}
+          />
+        </PageContainer>
+      </Layout>
     );
   }
 }

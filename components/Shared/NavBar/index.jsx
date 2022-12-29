@@ -316,7 +316,7 @@ export default function NavBar({ burgerOnClick = () => {} }) {
         <ContentWrapper>
           <ContentGroup>
             <LogoWrapper>
-              <Link href="/" passHref legacyBehavior>
+              <Link href="/" scroll={false} passHref legacyBehavior>
                 <LogoLink>
                   <LogoCont src="/logo.svg" alt="logo" />
                 </LogoLink>
@@ -333,7 +333,13 @@ export default function NavBar({ burgerOnClick = () => {} }) {
             <NavLinkCont color={SITE_THEME[theme].text}>
               {LINKS.map((o, i) => {
                 return (
-                  <Link key={i} href={o.url} passHref legacyBehavior>
+                  <Link
+                    scroll={false}
+                    key={i}
+                    href={o.url}
+                    passHref
+                    legacyBehavior
+                  >
                     <NavCont>
                       <NavLink hovercolor={SITE_THEME[theme].strong}>
                         {o.name}
@@ -376,7 +382,13 @@ export default function NavBar({ burgerOnClick = () => {} }) {
                     >
                       {PROJECTLIST.map((o, i) => {
                         return (
-                          <Link href={o.url} passHref key={i} legacyBehavior>
+                          <Link
+                            scroll={false}
+                            href={o.url}
+                            passHref
+                            key={i}
+                            legacyBehavior
+                          >
                             <DropdownItem
                               bgcolor={SITE_THEME[theme].navbar}
                               color={SITE_THEME[theme].text}

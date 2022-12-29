@@ -5,8 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { AnimatePresence } from "framer-motion";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   function useNormalScrollRoutes() {
     const router = useRouter();
 
@@ -24,7 +25,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AppProvider>
-      <Component {...pageProps} />
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+        <Component {...pageProps} key={router.asPath} />
+      </AnimatePresence>
     </AppProvider>
   );
 }

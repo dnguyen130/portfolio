@@ -54,19 +54,23 @@ const ProjectCardWrapper = styled.div`
   grid-gap: 30px;
   width: 100%;
   max-width: 350px;
+  min-height: 660px;
 
   @media (min-width: ${DEVICES.mobile}) {
     grid-template-columns: repeat(2, 1fr);
     max-width: 600px;
+    min-height: 410px;
   }
 
   @media (min-width: ${DEVICES.tablet}) {
     max-width: 700px;
+    min-height: 430px;
   }
 
   @media (min-width: ${DEVICES.laptop}) {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1000px;
+    min-height: 200px;
   }
 `;
 

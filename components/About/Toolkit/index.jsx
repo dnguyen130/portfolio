@@ -20,7 +20,7 @@ const ToolkitCont = styled.div`
 const Title = styled.h2`
   font-weight: 500;
   font-size: 1.5rem;
-  margin: 0;
+  margin: 20px 0 0;
   width: 100%;
   text-align: left;
   color: ${(props) => props.titlecolor};
@@ -46,9 +46,11 @@ const ToolkitGrid = styled.div`
   column-gap: 50px;
   max-width: 800px;
   width: 100%;
+  height: 1150px;
 
   @media (min-width: ${DEVICES.mobile}) {
     grid-template-columns: 1fr 1fr;
+    height: 550px;
   }
 `;
 

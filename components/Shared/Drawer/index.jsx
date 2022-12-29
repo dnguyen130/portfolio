@@ -238,7 +238,13 @@ export default function Drawer() {
           <ButtonWrapper buttonwrappercolor={SITE_THEME[theme].background}>
             {LINKS.map((o, i) => {
               return (
-                <Link href={o.url} passHref legacyBehavior key={i}>
+                <Link
+                  href={o.url}
+                  scroll={false}
+                  passHref
+                  legacyBehavior
+                  key={i}
+                >
                   <DrawerButton
                     drawerbgcolor={SITE_THEME[theme].navbar}
                     drawerbghover={SITE_THEME[theme].drawerhover}
@@ -309,7 +315,13 @@ export default function Drawer() {
             >
               {PROJECTLIST.map((o, i) => {
                 return (
-                  <Link href={o.url} passHref key={i} legacyBehavior>
+                  <Link
+                    href={o.url}
+                    scroll={false}
+                    passHref
+                    key={i}
+                    legacyBehavior
+                  >
                     <SubMenuButton
                       submenubuttonheight={activeProjectButton ? "40px" : "0"}
                       submenubuttoncolor={SITE_THEME[theme].navbar}

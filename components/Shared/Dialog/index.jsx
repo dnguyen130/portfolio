@@ -135,10 +135,12 @@ const ButtonGroup = styled.div`
   justify-items: center;
   grid-template-columns: 1fr 1fr;
   margin: 15px 0 0;
+  min-height: 35px;
 
   @media (min-width: ${DEVICES.tablet}) {
     margin: 25px 0 0;
     width: 70%;
+    min-height: 50px;
   }
 `;
 

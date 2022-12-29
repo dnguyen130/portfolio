@@ -10,6 +10,7 @@ import ProfileCard from "@/components/About/ProfileCard";
 import Toolkit from "@/components/About/Toolkit";
 import ToolkitDialog from "@/components/About/Toolkit/ToolkitDialog";
 import Other from "@/components/About/Other";
+import Layout from "@/components/Shared/Layout";
 
 import {
   useActiveCard,
@@ -59,19 +60,21 @@ const Fade = styled(motion.div)`
 const DescriptionCont = styled.div`
   width: 100%;
   height: calc(50vh - 100px);
-  margin: 0 15px 15px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 const Description = styled.p`
   width: 100%;
+  height: 100%;
   font-size: 1em;
   line-height: 1.3em;
   color: ${(props) => props.color};
-  margin: 0 0 5px;
+  margin: 0 0 15px;
 
   @media (min-width: ${DEVICES.tablet}) {
     width: 90%;
@@ -113,6 +116,49 @@ const FadeVariants = {
   },
 };
 
+const MotionContainer = styled(motion.div)`
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+`;
+
+const MotionItem = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const container = {
+  visible: {
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.5,
+      staggerChildren: 0.7,
+      delayChildren: 1.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { ease: "easeOut", duration: 0.7 },
+  },
+};
+
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeProject } = useActiveProject();
@@ -128,58 +174,70 @@ export default function Home() {
     }
   });
 
-  console.log(ap);
-
   return (
-    <PageContainer>
-      <Head></Head>
-      <ToolkitDialog
-        title={ap[0] ? ap[0] : null}
-        iconArray={ap[1] ? ap[1][0] : null}
-        description={ap[1] ? ap[1][1].description : null}
-        description2={ap[1] ? ap[1][1].description2 : null}
-      />
-      <Fade
-        animate={
-          activeCard || activeDrawer || activeTab ? "active" : "inactive"
-        }
-        zindex={activeDrawer || activeCard ? 4 : 2}
-        variants={FadeVariants}
-        onClick={() => {
-          setActiveCard(false);
-          setActiveDrawer(false);
-          setActiveTab(false);
-        }}
-      />
-      <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
-      <Drawer />
-      <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <ProfileCard />
-        <Padded>
-          <DescriptionCont>
-            <Description color={SITE_THEME[theme].text}>
-              Why hello! Thank you for taking the time to learn more about me
-              and my experience in web development.{" "}
-            </Description>
-            <Description color={SITE_THEME[theme].text}>
-              My first experience with the web was back in 2003 when I created
-              my first email account to play Neopets, a virtual pet website.
-              Since then, my whole life, like many others, has revolved around
-              using the web to communicate and learn from others.{" "}
-            </Description>
-            <Description color={SITE_THEME[theme].text}>
-              At the British Columbia Institute of Technology, I was able to
-              experience a fast-paced, cooperative school environment. I
-              developed technical and social skills working in teams of
-              designers and developers to produce web and mobile applications
-              through their Digital Design and Development Program.
-            </Description>
-          </DescriptionCont>
-          <Toolkit />
-          <Other />
-        </Padded>
-      </MainContainer>
-      <Footer />
-    </PageContainer>
+    <Layout>
+      <PageContainer>
+        <Head></Head>
+        <ToolkitDialog
+          title={ap[0] ? ap[0] : null}
+          iconArray={ap[1] ? ap[1][0] : null}
+          description={ap[1] ? ap[1][1].description : null}
+          description2={ap[1] ? ap[1][1].description2 : null}
+        />
+        <Fade
+          animate={
+            activeCard || activeDrawer || activeTab ? "active" : "inactive"
+          }
+          zindex={activeDrawer || activeCard ? 4 : 2}
+          variants={FadeVariants}
+          onClick={() => {
+            setActiveCard(false);
+            setActiveDrawer(false);
+            setActiveTab(false);
+          }}
+        />
+        <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+        <Drawer />
+        <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+          <ProfileCard />
+          <Padded>
+            <MotionContainer
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ width: "100%" }}
+            >
+              <DescriptionCont>
+                <MotionItem variants={item}>
+                  <Description color={SITE_THEME[theme].text}>
+                    Why hello! Thank you for taking the time to learn more about
+                    me and my experience in web development.{" "}
+                  </Description>
+                  <Description color={SITE_THEME[theme].text}>
+                    My first experience with the web was back in 2003 when I
+                    created my first email account to play Neopets, a virtual
+                    pet website. Since then, my whole life, like many others,
+                    has revolved around using the web to communicate and learn
+                    from others.
+                  </Description>
+                  <Description color={SITE_THEME[theme].text}>
+                    At the British Columbia Institute of Technology, I was able
+                    to experience a fast-paced, cooperative school environment.
+                    I developed technical and social skills working in teams of
+                    designers and developers to produce web and mobile
+                    applications through their Digital Design and Development
+                    Program.
+                  </Description>
+                </MotionItem>
+              </DescriptionCont>
+              <Toolkit />
+              <Other />
+            </MotionContainer>
+          </Padded>
+        </MainContainer>
+        <Footer />
+      </PageContainer>
+    </Layout>
   );
 }

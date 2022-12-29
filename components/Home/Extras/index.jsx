@@ -42,9 +42,11 @@ const Grid = styled.div`
   grid-template-columns: 1fr;
   width: 100%;
   max-width: 1100px;
+  min-height: 542px;
 
   @media (min-width: ${DEVICES.tablet}) {
     grid-template-columns: 1fr 1fr;
+    min-height: 300px;
   }
 `;
 
@@ -104,7 +106,7 @@ const DescriptionCont = styled.div`
 const Description = styled.p`
   margin: 0 0 20px;
   color: ${(props) => props.txtcolor};
-  font-size: 1.3em;
+  font-size: 1.1em;
   text-align: center;
 
   @media (min-width: ${DEVICES.laptop}) {
@@ -120,6 +122,7 @@ const ButtonCont = styled.div`
   margin-top: 10px;
   width: 100%;
   justify-items: center;
+  height: 120px;
 `;
 
 const SocialButton = styled(motion.div)`
@@ -176,11 +179,11 @@ export default function Extras() {
         </PortraitCont>
         <DescriptionCont>
           <Description txtcolor={SITE_THEME[theme].text}>
-            Hey there! My name is Danny and I find designing and developing fun!
+            My name is Danny and I find designing and developing fun.
           </Description>
           <Description txtcolor={SITE_THEME[theme].text}>
             You can learn more from my page, or contact me through my social
-            platforms!
+            platforms.
           </Description>
           <ButtonCont>
             {SOCIALS.map((o, i) => {
@@ -211,7 +214,7 @@ export default function Extras() {
                 </ButtonLink>
               );
             })}
-            <Link href="/about" passHref>
+            <Link href="/about" scroll={false} passHref>
               <SocialButton
                 buttoncolor={SITE_THEME[theme].text}
                 txtcolor={SITE_THEME[theme].background}

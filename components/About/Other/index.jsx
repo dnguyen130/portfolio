@@ -15,7 +15,7 @@ const OtherCont = styled.div`
 const Title = styled.h2`
   font-weight: 500;
   font-size: 1.5rem;
-  margin: 0;
+  margin: 20px 0 0;
   width: 100%;
   text-align: left;
   color: ${(props) => props.titlecolor};
