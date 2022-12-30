@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
+import { NavBarStatic } from "@/components/Shared/NavBar";
+import { useInitialLoad } from "../utils/provider";
 
 function MyApp({ Component, pageProps, router }) {
   function useNormalScrollRoutes() {
@@ -25,7 +27,11 @@ function MyApp({ Component, pageProps, router }) {
 
   return (
     <AppProvider>
-      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      <AnimatePresence
+        mode="wait"
+        onExitComplete={() => window.scrollTo(0, 0)}
+        exitBeforeEnter
+      >
         <Component {...pageProps} key={router.asPath} />
       </AnimatePresence>
     </AppProvider>

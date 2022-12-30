@@ -14,7 +14,7 @@ const ToolkitDialogCont = styled(motion.div)`
   padding: 15px;
   border-radius: 10px;
   z-index: 5;
-  background-color: white;
+  background-color: ${(props) => props.bgcolor};
   position: fixed;
   top: 50%;
   left: 50%;

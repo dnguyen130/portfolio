@@ -11,6 +11,7 @@ import ProfileCard from "@/components/About/ProfileCard";
 import Toolkit from "@/components/About/Toolkit";
 import ToolkitDialog from "@/components/About/Toolkit/ToolkitDialog";
 import Other from "@/components/About/Other";
+import Layout from "@/components/Shared/Layout";
 
 import {
   useActiveCard,
@@ -125,10 +126,51 @@ const FadeVariants = {
   },
 };
 
+const MotionContainer = styled(motion.div)`
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+`;
+
+const MotionItem = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+`;
+
+const container = {
+  visible: {
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.5,
+      staggerChildren: 0.5,
+      delayChildren: 0.5,
+    },
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { ease: "easeOut", duration: 0.5 },
+  },
+};
+
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
-  const { activeProject } = useActiveProject();
-  const ap = activeProject;
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
   const { initialLoad, setInitialLoad } = useInitialLoad();
   const { theme } = useTheme();
@@ -136,6 +178,8 @@ export default function Home() {
   const { selectedProject, setSelectedProject } = useSelectedProject();
   const sp = selectedProject;
   const router = useRouter();
+
+  console.log(sp);
 
   useEffect(() => {
     if (initialLoad == false) {
@@ -145,50 +189,74 @@ export default function Home() {
 
   if (
     //Initial Project Load
-    Object.keys(sp).length == 0 ||
+    sp == undefined ||
+    Object.keys(sp).length == 0
+
     //If project changes
-    router.query.project != sp.url
   ) {
     for (var i = 0; i < PROJECTLIST.length; i++) {
       if (router.query.project == PROJECTLIST[i].url) {
         setSelectedProject(PROJECTLIST[i]);
+        console.log("shit", PROJECTLIST[i]);
+      }
+    }
+  }
+
+  if (sp && router.query.project != sp.url) {
+    for (var i = 0; i < PROJECTLIST.length; i++) {
+      if (router.query.project == PROJECTLIST[i].url) {
+        console.log("fuck", PROJECTLIST[i]);
+        setTimeout(() => {
+          setSelectedProject(PROJECTLIST[i]);
+        }, 2000);
       }
     }
   }
 
   return (
-    <PageContainer>
-      <Head></Head>
-      <ToolkitDialog
-        title={ap[0] ? ap[0] : null}
-        iconArray={ap[1] ? ap[1][0] : null}
-      />
-      <Fade
-        animate={
-          activeCard || activeDrawer || activeTab ? "active" : "inactive"
-        }
-        zindex={activeDrawer || activeCard ? 4 : 2}
-        variants={FadeVariants}
-        onClick={() => {
-          setActiveCard(false);
-          setActiveDrawer(false);
-          setActiveTab(false);
-        }}
-      />
-      <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
-      <Drawer />
-      <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-        <LogoCont>
-          <Image layout="fill" alt="ss" src={`/${sp.name}_logo.svg`} />
-        </LogoCont>
-        {sp.hasLogo && (
-          <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
-            {sp.name}
-          </LogoTitle>
-        )}
-        <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
-      </MainContainer>
-      <Footer />
-    </PageContainer>
+    <Layout>
+      <PageContainer>
+        <Head></Head>
+
+        <Fade
+          animate={
+            activeCard || activeDrawer || activeTab ? "active" : "inactive"
+          }
+          zindex={activeDrawer || activeCard ? 4 : 2}
+          variants={FadeVariants}
+          onClick={() => {
+            setActiveCard(false);
+            setActiveDrawer(false);
+            setActiveTab(false);
+          }}
+        />
+        <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+        <Drawer />
+        <MotionContainer
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ width: "100%" }}
+        >
+          <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+            <LogoCont>
+              <MotionItem variants={item}>
+                <Image layout="fill" alt="ss" src={`/${sp.name}_logo.svg`} />
+              </MotionItem>
+            </LogoCont>
+            {sp.hasLogo && (
+              <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
+                <MotionItem variants={item}>{sp.name}</MotionItem>
+              </LogoTitle>
+            )}
+            <MotionItem variants={item}>
+              <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
+            </MotionItem>
+          </MainContainer>
+        </MotionContainer>
+        <Footer />
+      </PageContainer>
+    </Layout>
   );
 }

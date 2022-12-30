@@ -59,13 +59,18 @@ const Fade = styled(motion.div)`
 
 const DescriptionCont = styled.div`
   width: 100%;
-  height: calc(50vh - 100px);
+  min-height: calc(50vh - 100px);
   margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    width: 90%;
+    max-width: 1200px;
+  }
 `;
 
 const Description = styled.p`

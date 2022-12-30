@@ -7,7 +7,7 @@ const Layout = ({ children }) => (
     exit={{ opacity: 0 }}
     transition={{
       type: "linear",
-      duration: 1,
+      duration: 0.5,
     }}
   >
     {children}
