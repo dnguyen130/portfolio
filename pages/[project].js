@@ -179,13 +179,36 @@ export default function Home() {
   const sp = selectedProject;
   const router = useRouter();
 
-  console.log(sp);
+  const ChangeProjectPage = (i) => {
+    setTimeout(() => {
+      console.log(PROJECTLIST[i]);
+      setSelectedProject(PROJECTLIST[i]);
+    }, 300);
+  };
 
   useEffect(() => {
     if (initialLoad == false) {
       setInitialLoad(true);
     }
   });
+
+  useEffect(() => {
+    if (sp && router.query.project != sp.url) {
+      for (let j = 0; j < PROJECTLIST.length; j++) {
+        console.log(sp.url, router.query.project, j);
+        if (router.query.project == PROJECTLIST[j].url) {
+          ChangeProjectPage(j);
+        }
+        // if (router.query.project == PROJECTLIST[j].url) {
+        //   setTimeout(() => {
+        //     console.log(router.query.project, PROJECTLIST[j].url);
+
+        //     setSelectedProject(PROJECTLIST[j]);
+        //   }, 2000);
+        // }
+      }
+    }
+  }, [sp]);
 
   if (
     //Initial Project Load
@@ -198,17 +221,6 @@ export default function Home() {
       if (router.query.project == PROJECTLIST[i].url) {
         setSelectedProject(PROJECTLIST[i]);
         console.log("shit", PROJECTLIST[i]);
-      }
-    }
-  }
-
-  if (sp && router.query.project != sp.url) {
-    for (var i = 0; i < PROJECTLIST.length; i++) {
-      if (router.query.project == PROJECTLIST[i].url) {
-        console.log("fuck", PROJECTLIST[i]);
-        setTimeout(() => {
-          setSelectedProject(PROJECTLIST[i]);
-        }, 2000);
       }
     }
   }
@@ -245,11 +257,9 @@ export default function Home() {
                 <Image layout="fill" alt="ss" src={`/${sp.name}_logo.svg`} />
               </MotionItem>
             </LogoCont>
-            {sp.hasLogo && (
-              <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
-                <MotionItem variants={item}>{sp.name}</MotionItem>
-              </LogoTitle>
-            )}
+            <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
+              <MotionItem variants={item}>{sp.name}</MotionItem>
+            </LogoTitle>
             <MotionItem variants={item}>
               <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
             </MotionItem>
