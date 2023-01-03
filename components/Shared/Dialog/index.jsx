@@ -81,7 +81,7 @@ const Logo = styled.img`
   margin: 10px;
 
   @media (min-width: ${DEVICES.mobile}) {
-    height: 150px;
+    height: 120px;
     max-width: 250px;
   }
 `;
@@ -108,15 +108,17 @@ const TagsWrapper = styled.div`
   font-size: 2.5em;
 
   @media (min-width: ${DEVICES.mobile}) {
-    font-size: 3.5em;
+    width: 90%;
+    font-size: 3em;
   }
 `;
 
 const Description = styled.ul`
-  font-size: 1em;
+  font-size: 0.8em;
   padding-left: 15px;
 
   @media (min-width: ${DEVICES.tablet}) {
+    font-size: 1em;
     padding-left: 25px;
   }
 `;
@@ -138,9 +140,7 @@ const ButtonGroup = styled.div`
   min-height: 35px;
 
   @media (min-width: ${DEVICES.tablet}) {
-    margin: 25px 0 0;
     width: 70%;
-    min-height: 50px;
   }
 `;
 
@@ -155,7 +155,7 @@ const ButtonLink = styled.a`
 
   @media (min-width: ${DEVICES.tablet}) {
     width: 150px;
-    height: 50px;
+    height: 40px;
   }
 `;
 
@@ -187,6 +187,14 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const Row = styled.div`
+  margin-bottom: 10px;
+  @media (min-width: ${DEVICES.tablet}) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const DialogVariants = {
@@ -292,8 +300,10 @@ export default function Dialog({
                 <CgClose size="90%" />
               </CloseButton>
             </TopRow>
-            <Logo src={logoSrc} />
-            {hasLogo && <Title titlecolor={strongColor}>{title}</Title>}
+            <Row>
+              <Logo src={logoSrc} />
+              {hasLogo && <Title titlecolor={strongColor}>{title}</Title>}
+            </Row>
             {tags ? (
               <TagsWrapper>
                 {tags.map((o, i) => {

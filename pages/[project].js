@@ -12,6 +12,7 @@ import Toolkit from "@/components/About/Toolkit";
 import ToolkitDialog from "@/components/About/Toolkit/ToolkitDialog";
 import Other from "@/components/About/Other";
 import Layout from "@/components/Shared/Layout";
+import Carousel from "@/components/Project/carousel";
 
 import {
   useActiveCard,
@@ -39,6 +40,7 @@ const MainContainer = styled.main`
   box-sizing: border-box;
   max-width: 100vw;
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,20 +93,22 @@ const Padded = styled.div`
 
 const LogoCont = styled.div`
   margin: 20px 0;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   position: relative;
 `;
 
 const LogoTitle = styled.h2`
   color: ${(props) => props.color};
   font-family: ${(props) => props.fontfamily};
-  font-size: 3em;
+  font-size: 2em;
   margin-top: 0;
 `;
 
 const LogoQuote = styled.q`
   color: ${(props) => props.color};
+  margin-bottom: 10px;
+  font-size: 1em;
 `;
 
 const FadeVariants = {
@@ -179,13 +183,6 @@ export default function Home() {
   const sp = selectedProject;
   const router = useRouter();
 
-  const ChangeProjectPage = (i) => {
-    setTimeout(() => {
-      console.log(PROJECTLIST[i]);
-      setSelectedProject(PROJECTLIST[i]);
-    }, 300);
-  };
-
   useEffect(() => {
     if (initialLoad == false) {
       setInitialLoad(true);
@@ -193,80 +190,76 @@ export default function Home() {
   });
 
   useEffect(() => {
-    if (sp && router.query.project != sp.url) {
+    const ChangeProjectPage = (i) => {
+      setSelectedProject(PROJECTLIST[i]);
+    };
+
+    if (
+      Object.values(sp).length != 0 &&
+      router &&
+      router.query.project != sp.url
+    ) {
       for (let j = 0; j < PROJECTLIST.length; j++) {
-        console.log(sp.url, router.query.project, j);
         if (router.query.project == PROJECTLIST[j].url) {
           ChangeProjectPage(j);
         }
-        // if (router.query.project == PROJECTLIST[j].url) {
-        //   setTimeout(() => {
-        //     console.log(router.query.project, PROJECTLIST[j].url);
-
-        //     setSelectedProject(PROJECTLIST[j]);
-        //   }, 2000);
-        // }
       }
     }
-  }, [sp]);
 
-  if (
-    //Initial Project Load
-    sp == undefined ||
-    Object.keys(sp).length == 0
-
-    //If project changes
-  ) {
-    for (var i = 0; i < PROJECTLIST.length; i++) {
-      if (router.query.project == PROJECTLIST[i].url) {
-        setSelectedProject(PROJECTLIST[i]);
-        console.log("shit", PROJECTLIST[i]);
+    if (
+      //Initial Project Load
+      Object.keys(sp).length == 0
+    ) {
+      for (var i = 0; i < PROJECTLIST.length; i++) {
+        if (router.query.project == PROJECTLIST[i].url) {
+          setSelectedProject(PROJECTLIST[i]);
+        }
       }
     }
-  }
+  }, [router]);
 
   return (
-    <Layout>
-      <PageContainer>
-        <Head></Head>
-
-        <Fade
-          animate={
-            activeCard || activeDrawer || activeTab ? "active" : "inactive"
-          }
-          zindex={activeDrawer || activeCard ? 4 : 2}
-          variants={FadeVariants}
-          onClick={() => {
-            setActiveCard(false);
-            setActiveDrawer(false);
-            setActiveTab(false);
-          }}
-        />
-        <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
-        <Drawer />
-        <MotionContainer
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{ width: "100%" }}
-        >
-          <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-            <LogoCont>
-              <MotionItem variants={item}>
-                <Image layout="fill" alt="ss" src={`/${sp.name}_logo.svg`} />
-              </MotionItem>
-            </LogoCont>
+    <PageContainer>
+      <Head></Head>
+      <Fade
+        animate={
+          activeCard || activeDrawer || activeTab ? "active" : "inactive"
+        }
+        zindex={activeDrawer || activeCard ? 4 : 2}
+        variants={FadeVariants}
+        onClick={() => {
+          setActiveCard(false);
+          setActiveDrawer(false);
+          setActiveTab(false);
+        }}
+      />
+      <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
+      <Drawer />
+      <MotionContainer
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        style={{ width: "100%" }}
+      >
+        <MainContainer mainSelect={activeCard ? "none" : "auto"}>
+          <LogoCont>
+            <MotionItem variants={item}>
+              <Image layout="fill" alt="ss" src={`/${sp.url}_logo.svg`} />
+            </MotionItem>
+          </LogoCont>
+          {sp.hasLogo && (
             <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
               <MotionItem variants={item}>{sp.name}</MotionItem>
             </LogoTitle>
-            <MotionItem variants={item}>
-              <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
-            </MotionItem>
-          </MainContainer>
-        </MotionContainer>
-        <Footer />
-      </PageContainer>
-    </Layout>
+          )}
+          <MotionItem variants={item}>
+            <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
+          </MotionItem>
+          <Carousel />
+        </MainContainer>
+      </MotionContainer>
+      <Footer />
+    </PageContainer>
   );
 }
