@@ -1,27 +1,28 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
+import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Underline from "@/components/Shared/Underline";
 
-import { useTheme } from "@/utils/provider";
+import { useTheme, useSelectedProject } from "@/utils/provider";
 
-import { SITE_THEME, DEVICES } from "@/utils/variables";
+import { SITE_THEME, DEVICES, PROJECTSLIDES } from "@/utils/variables";
 
 const CarouselCont = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   min-height: 400px;
-  border: 1px solid red;
   font-size: 1.5em;
-  background-color: gray;
 `;
 
 const CarouselSlide = styled.div`
-  background-color: red;
   width: 100%;
-  height: 100%;
+  height: 70vh;
+  min-height: 400px;
+  padding: 10px;
 `;
 
 const Container = styled.div`
@@ -37,7 +38,23 @@ const Container = styled.div`
 `;
 
 const Column = styled.div`
-  width: 50%;
+  position: relative;
+  width: 90%;
+  height: auto;
+  @media (min-width: ${DEVICES.laptop}) {
+    width: 50%;
+  }
+`;
+
+const ImageColumn = styled.div`
+  position: relative;
+  max-width: 90%;
+  min-width: 50%;
+  height: 30vh;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    height: 40vh;
+  }
 `;
 
 const Title = styled.h3`
@@ -47,6 +64,8 @@ const Title = styled.h3`
 
 const Description = styled.p`
   color: ${(props) => props.color};
+  font-size: 0.6em;
+  text-align: left;
 `;
 
 const SliderSettings = {
@@ -57,11 +76,14 @@ const SliderSettings = {
   slidesToScroll: 1,
   adaptiveHeight: true,
 
-  speed: 3000,
+  speed: 300,
 };
 
 export default function Carousel() {
   const { theme } = useTheme();
+  const { selectedProject } = useSelectedProject();
+  const sp = selectedProject;
+  const [slides, setSlides] = useState({});
 
   const UnderlineProps = {
     height: "1px",
@@ -74,15 +96,56 @@ export default function Carousel() {
   return (
     <CarouselCont>
       <Slider {...SliderSettings}>
-        <CarouselSlide>
+        {PROJECTSLIDES.map((o, i) => {
+          if (o.name == sp.url) {
+            Object.entries(o).map((o, i) => {
+              console.log(o);
+              return (
+                <CarouselSlide>
+                  <Title color={SITE_THEME[theme].text}></Title>
+                  <Underline {...UnderlineProps} />
+                  <Container>
+                    <ImageColumn>
+                      <Image
+                        quality={100}
+                        layout="fill"
+                        src="/test.JPEG"
+                        objectFit="contain"
+                      />
+                    </ImageColumn>
+                    <Column>
+                      <Description color={SITE_THEME[theme].text}>
+                        ?
+                      </Description>
+                    </Column>
+                  </Container>
+                </CarouselSlide>
+              );
+            });
+          }
+        })}
+
+        {/* <CarouselSlide>
           <Title color={SITE_THEME[theme].text}>Title</Title>
           <Underline {...UnderlineProps} />
           <Container>
+            
+            <ImageColumn>
+              <Image
+                quality={100}
+                layout="fill"
+                src="/screenshots/Steady_Meals_Crop.png"
+                objectFit="contain"
+              />
+            </ImageColumn>
             <Column>
-              <Description>Hihihihihih</Description>
-            </Column>
-            <Column>
-              <Description>Hihihihihihi</Description>
+              <Description color={SITE_THEME[theme].text}>
+                As with any application, the project begins with a simple idea.
+                My team was tasked to help solve a social problem in today's
+                society. As with any application, the project begins with a
+                simple idea. My team was tasked to help solve a social problem
+                in today's society.
+              </Description>
             </Column>
           </Container>
         </CarouselSlide>
@@ -93,7 +156,7 @@ export default function Carousel() {
         <CarouselSlide>
           <Title color={SITE_THEME[theme].text}>Title</Title>
           <Underline {...UnderlineProps} />
-        </CarouselSlide>
+        </CarouselSlide> */}
       </Slider>
     </CarouselCont>
   );

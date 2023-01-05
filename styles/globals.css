@@ -34,3 +34,20 @@ a {
 .slick-dots {
   bottom: 10px !important;
 }
+
+.slick-dots li.slick-active button::before {
+  color: white !important;
+}
+
+.slick-dots li button::before {
+  color: white !important;
+}
+
+.slider {
+  height: 100% !important;
+}
+
+.slider .item {
+  width: 100% !important;
+  height: 100% !important;
+}
