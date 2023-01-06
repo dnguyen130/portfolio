@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -22,6 +22,7 @@ import {
   useTheme,
   useActiveTab,
   useSelectedProject,
+  useProjectImage,
 } from "@/utils/provider";
 
 import { SITE_THEME, DEVICES, PROJECTLIST } from "@/utils/variables";
@@ -148,6 +149,16 @@ const MotionItem = styled(motion.div)`
   position: relative;
 `;
 
+const SelectedProjectImage = styled(motion.div)`
+  width: 50%;
+  height: 90vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+`;
+
 const container = {
   visible: {
     opacity: 1,
@@ -173,6 +184,25 @@ const item = {
   },
 };
 
+const ImageVariants = {
+  active: {
+    display: "flex",
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  inactive: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+    },
+    transitionEnd: {
+      display: "none",
+    },
+  },
+};
+
 export default function Home() {
   const { activeCard, setActiveCard } = useActiveCard();
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
@@ -182,6 +212,7 @@ export default function Home() {
   const { selectedProject, setSelectedProject } = useSelectedProject();
   const sp = selectedProject;
   const router = useRouter();
+  const { projectImage, setProjectImage } = useProjectImage();
 
   useEffect(() => {
     if (initialLoad == false) {
@@ -233,6 +264,23 @@ export default function Home() {
           setActiveTab(false);
         }}
       />
+      <AnimatePresence>
+        {projectImage && activeCard && (
+          <SelectedProjectImage
+            variants={ImageVariants}
+            initial="inactive"
+            animate="active"
+            exit="inactive"
+          >
+            <Image
+              quality={100}
+              layout="fill"
+              src={projectImage}
+              objectFit="contain"
+            />
+          </SelectedProjectImage>
+        )}
+      </AnimatePresence>
       <NavBar burgerOnClick={() => setActiveDrawer(!activeDrawer)} />
       <Drawer />
       <MotionContainer

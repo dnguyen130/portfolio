@@ -229,7 +229,10 @@ export default function Drawer() {
             <CloseButton
               closecolor={SITE_THEME[theme].text}
               closehover={SITE_THEME[theme].strong}
-              onClick={() => setActiveDrawer(false)}
+              onClick={() => {
+                setActiveDrawer(false);
+                setActiveProjectButton(false);
+              }}
               whileTap={{ scale: 0.8 }}
             >
               <CgClose size="90%" />

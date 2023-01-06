@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -7,9 +7,15 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Underline from "@/components/Shared/Underline";
 
-import { useTheme, useSelectedProject } from "@/utils/provider";
+import {
+  useTheme,
+  useSelectedProject,
+  useProjectSlides,
+  useActiveCard,
+  useProjectImage,
+} from "@/utils/provider";
 
-import { SITE_THEME, DEVICES, PROJECTSLIDES } from "@/utils/variables";
+import { SITE_THEME, DEVICES, PROJECTINFO } from "@/utils/variables";
 
 const CarouselCont = styled.div`
   width: 100%;
@@ -23,6 +29,10 @@ const CarouselSlide = styled.div`
   height: 70vh;
   min-height: 400px;
   padding: 10px;
+
+  @media (min-width: ${DEVICES.tablet}) {
+    padding: 10px 30px;
+  }
 `;
 
 const Container = styled.div`
@@ -32,7 +42,7 @@ const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  @media (min-width: ${DEVICES.laptop}) {
+  @media (min-width: ${DEVICES.tablet}) {
     flex-direction: row;
   }
 `;
@@ -41,20 +51,32 @@ const Column = styled.div`
   position: relative;
   width: 90%;
   height: auto;
-  @media (min-width: ${DEVICES.laptop}) {
+  @media (min-width: ${DEVICES.tablet}) {
     width: 50%;
   }
 `;
 
 const ImageColumn = styled.div`
   position: relative;
-  max-width: 90%;
-  min-width: 50%;
-  height: 30vh;
+  height: 35vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
-  @media (min-width: ${DEVICES.laptop}) {
-    height: 40vh;
+  @media (min-width: ${DEVICES.tablet}) {
+    height: 50vh;
+    width: 50%;
   }
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  height: 35vh;
+  aspect-ratio: ${(props) => props.aspect};
+  cursor: pointer;
+  @media (min-width: ${DEVICES.tablet}) {
+    height: 50vh;
+  } ;
 `;
 
 const Title = styled.h3`
@@ -82,8 +104,25 @@ const SliderSettings = {
 export default function Carousel() {
   const { theme } = useTheme();
   const { selectedProject } = useSelectedProject();
+  const { projectSlides, setProjectSlides } = useProjectSlides();
+  const { activeCard, setActiveCard } = useActiveCard();
+  const { projectImage, setProjectImage } = useProjectImage();
   const sp = selectedProject;
-  const [slides, setSlides] = useState({});
+  const [checked, setChecked] = useState(false);
+
+  const SLIDESARRAY = Object.entries(PROJECTINFO);
+
+  useEffect(() => {
+    for (var i = 0; i < SLIDESARRAY.length; i++) {
+      if (
+        Object.entries(projectSlides).length == 0 ||
+        (SLIDESARRAY[i][0] == sp.url && !checked)
+      ) {
+        setProjectSlides(SLIDESARRAY[i]);
+        setChecked(true);
+      }
+    }
+  }, [sp.url, checked]);
 
   const UnderlineProps = {
     height: "1px",
@@ -96,35 +135,40 @@ export default function Carousel() {
   return (
     <CarouselCont>
       <Slider {...SliderSettings}>
-        {PROJECTSLIDES.map((o, i) => {
-          if (o.name == sp.url) {
-            Object.entries(o).map((o, i) => {
-              console.log(o);
-              return (
-                <CarouselSlide>
-                  <Title color={SITE_THEME[theme].text}></Title>
-                  <Underline {...UnderlineProps} />
-                  <Container>
-                    <ImageColumn>
+        {Object.entries(projectSlides).length != 0 &&
+          projectSlides[1].map((o, i) => {
+            return (
+              <CarouselSlide key={i}>
+                <Title color={SITE_THEME[theme].text}>{o.title}</Title>
+                <Underline {...UnderlineProps} />
+                <Container>
+                  <ImageColumn>
+                    <ImageWrapper
+                      aspect={o.aspectratio}
+                      onClick={(e) => {
+                        setActiveCard(true);
+                        setProjectImage(
+                          e.nativeEvent.explicitOriginalTarget.src
+                        );
+                      }}
+                    >
                       <Image
                         quality={100}
                         layout="fill"
-                        src="/test.JPEG"
+                        src={o.src}
                         objectFit="contain"
                       />
-                    </ImageColumn>
-                    <Column>
-                      <Description color={SITE_THEME[theme].text}>
-                        ?
-                      </Description>
-                    </Column>
-                  </Container>
-                </CarouselSlide>
-              );
-            });
-          }
-        })}
-
+                    </ImageWrapper>
+                  </ImageColumn>
+                  <Column>
+                    <Description color={SITE_THEME[theme].text}>
+                      {o.description}
+                    </Description>
+                  </Column>
+                </Container>
+              </CarouselSlide>
+            );
+          })}
         {/* <CarouselSlide>
           <Title color={SITE_THEME[theme].text}>Title</Title>
           <Underline {...UnderlineProps} />

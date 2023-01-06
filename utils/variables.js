@@ -294,74 +294,72 @@ export const ToolkitIcons = {
   ],
 };
 
-export const PROJECTSLIDES = [
-    steady: [
-    0: {
-      slide_src: "/screenshots/Steady_Welcome_Crop.png",
-      slide_description: `Tasked with the problem to help solve a social issue we've experienced, 
+export const PROJECTINFO = {
+  steady: [
+    {
+      title: "Ideation",
+      src: "/screenshots/Steady_Welcome_Crop.png",
+      aspectratio: "7/10",
+      description: `Tasked with the problem to help solve a social issue we've experienced, 
       we decided to create a an application to help tackle depression.
        Similar to cognitive behavioural therapy, 
        we wanted to give the user the ability to self-diagnose problems in their life and 
        give them solutions that they can implement in their everyday life.`,
     },
-    1: {
-      slide_src: "screenshots/Steady_Menu_Crop.png",
-      slide_description: `This application was developed with Next.js, using Styled-Components as our styling engine
+    {
+      title: "Technology",
+      src: "/screenshots/Steady_Menu_Crop.png",
+      aspectratio: "7/10",
+
+      description: `This application was developed with Next.js, using Styled-Components as our styling engine
       and local storage as our means of storing persistent for use across several pages. As our first major project,
       we used our limited toolset to its maximum capabilities and created an application with the ability to give the user
       solutions to some of their problems in their life.`,
     },
-    2: {
-      slide_src: "screenshots/Steady_Results_Crop.png",
-      slide_description: `In the end, we created an application that met our expectations with many improvements
-      that were possible by learning more about storing data and better practices. However, we learned plenty
-      the foundation of web development that I would be able to apply to future projects.`,
-    },
-    ],
-  onme: [
-    0: {
-      slide_src: "/screenshots/Steady_Welcome_Crop.png",
-      slide_description: `Tasked with the problem to help solve a social issue we've experienced, 
-      we decided to create a an application to help tackle depression.
-       Similar to cognitive behavioural therapy, 
-       we wanted to give the user the ability to self-diagnose problems in their life and 
-       give them solutions that they can implement in their everyday life.`,
-    },
-    1: {
-      slide_src: "screenshots/Steady_Menu_Crop.png",
-      slide_description: `This application was developed with Next.js, using Styled-Components as our styling engine
-      and local storage as our means of storing persistent for use across several pages. As our first major project,
-      we used our limited toolset to its maximum capabilities and created an application with the ability to give the user
-      solutions to some of their problems in their life.`,
-    },
-    2: {
-      slide_src: "screenshots/Steady_Results_Crop.png",
-      slide_description: `In the end, we created an application that met our expectations with many improvements
+    {
+      title: "Retrospective",
+      src: "/screenshots/Steady_Results_Crop.png",
+      aspectratio: "7/10",
+      description: `In the end, we created an application that met our expectations with many improvements
       that were possible by learning more about storing data and better practices. However, we learned plenty
       the foundation of web development that I would be able to apply to future projects.`,
     },
   ],
-  scout: {
-    0: {
-      slide_src: "/screenshots/Steady_Welcome_Crop.png",
-      slide_description: `Tasked with the problem to help solve a social issue we've experienced, 
-      we decided to create a an application to help tackle depression.
-       Similar to cognitive behavioural therapy, 
-       we wanted to give the user the ability to self-diagnose problems in their life and 
-       give them solutions that they can implement in their everyday life.`,
+  onme: [
+    {
+      title: "Ideation",
+      src: "/screenshots/OnMe_Dashboard.png",
+      aspectratio: "5/10",
+      description: `onmeonmeonmeonmeonme`,
     },
-    1: {
-      slide_src: "screenshots/Steady_Menu_Crop.png",
-      slide_description: `This application was developed with Next.js, using Styled-Components as our styling engine
-      and local storage as our means of storing persistent for use across several pages. As our first major project,
-      we used our limited toolset to its maximum capabilities and created an application with the ability to give the user
-      solutions to some of their problems in their life.`,
+    {
+      title: "Technology",
+      src: "/screenshots/OnMe_RestaurantSelection.png",
+      aspectratio: "5/10",
+      description: `onmeonmeonmeonmeonme`,
     },
-    2: {
-      slide_src: "screenshots/Steady_Results_Crop.png",
-      slide_description: `In the end, we created an application that met our expectations with many improvements
-      that were possible by learning more about storing data and better practices. However, we learned plenty
-      the foundation of web development that I would be able to apply to future projects.`,
+    {
+      title: "Retrospective",
+      src: "/screenshots/OnMe_OrderSummary.png",
+      aspectratio: "5/10",
+      description: `onmeonmeonmeonmeonme`,
     },
-  },
-];
+  ],
+  scout: [
+    {
+      title: "Ideation",
+      src: "/screenshots/Steady_Welcome_Crop.png",
+      description: `scoutscoutscoutscout`,
+    },
+    {
+      title: "Technology",
+      src: "/screenshots/Steady_Menu_Crop.png",
+      description: `scoutscoutscoutscout`,
+    },
+    {
+      title: "Retrospective",
+      src: "/screenshots/Steady_Results_Crop.png",
+      description: `scoutscoutscoutscout`,
+    },
+  ],
+};

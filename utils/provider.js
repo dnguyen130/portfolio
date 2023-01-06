@@ -23,6 +23,12 @@ const initialStates = {
 
   selectedProject: {},
   setSelectedProject: () => {},
+
+  projectSlides: {},
+  setProjectSlides: () => {},
+
+  projectImage: "",
+  setProjectImage: () => {},
 };
 
 const MyContext = createContext(initialStates);
@@ -40,6 +46,10 @@ export default function AppProvider({ children }) {
   const [selectedProject, setSelectedProject] = useState(
     initialStates.selectedProject
   );
+  const [projectSlides, setProjectSlides] = useState(
+    initialStates.projectSlides
+  );
+  const [projectImage, setProjectImage] = useState(initialStates.projectImage);
 
   //put in the variables you want to share
   return (
@@ -59,6 +69,10 @@ export default function AppProvider({ children }) {
         setActiveTab,
         selectedProject,
         setSelectedProject,
+        projectSlides,
+        setProjectSlides,
+        projectImage,
+        setProjectImage,
       }}
     >
       <style jsx global>
@@ -152,6 +166,16 @@ export function useActiveTab() {
 export function useSelectedProject() {
   const { selectedProject, setSelectedProject } = useContext(MyContext);
   return { selectedProject, setSelectedProject };
+}
+
+export function useProjectSlides() {
+  const { projectSlides, setProjectSlides } = useContext(MyContext);
+  return { projectSlides, setProjectSlides };
+}
+
+export function useProjectImage() {
+  const { projectImage, setProjectImage } = useContext(MyContext);
+  return { projectImage, setProjectImage };
 }
 // ::selection {
 //   background: ${SITE_THEME[theme].weak}; /* WebKit/Blink Browsers */
