@@ -113,16 +113,19 @@ export default function Carousel() {
   const SLIDESARRAY = Object.entries(PROJECTINFO);
 
   useEffect(() => {
+    console.log("go");
     for (var i = 0; i < SLIDESARRAY.length; i++) {
       if (
-        Object.entries(projectSlides).length == 0 ||
-        (SLIDESARRAY[i][0] == sp.url && !checked)
+        (Object.entries(projectSlides).length == 0 ||
+          SLIDESARRAY[i][0] == sp.url) &&
+        !checked
       ) {
-        setProjectSlides(SLIDESARRAY[i]);
         setChecked(true);
+        setProjectSlides(SLIDESARRAY[i]);
+        return;
       }
     }
-  }, [sp.url, checked]);
+  }, [checked]);
 
   const UnderlineProps = {
     height: "1px",
@@ -135,7 +138,7 @@ export default function Carousel() {
   return (
     <CarouselCont>
       <Slider {...SliderSettings}>
-        {Object.entries(projectSlides).length != 0 &&
+        {Object.entries(projectSlides).length != 0 ? (
           projectSlides[1].map((o, i) => {
             return (
               <CarouselSlide key={i}>
@@ -168,7 +171,10 @@ export default function Carousel() {
                 </Container>
               </CarouselSlide>
             );
-          })}
+          })
+        ) : (
+          <div style={{ color: "white" }}>Loading</div>
+        )}
         {/* <CarouselSlide>
           <Title color={SITE_THEME[theme].text}>Title</Title>
           <Underline {...UnderlineProps} />
