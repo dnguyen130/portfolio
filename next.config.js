@@ -3,7 +3,7 @@ module.exports = {
   reactStrictMode: true,
 
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "dev.dannynguyen.ca", "dannynguyen.ca"],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {

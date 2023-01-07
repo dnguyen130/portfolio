@@ -348,17 +348,21 @@ export const PROJECTINFO = {
   scout: [
     {
       title: "Ideation",
-      src: "/screenshots/Steady_Welcome_Crop.png",
+      src: "/screenshots/scout_explore.png",
+      aspectratio: "19/10",
+
       description: `scoutscoutscoutscout`,
     },
     {
       title: "Technology",
-      src: "/screenshots/Steady_Menu_Crop.png",
+      src: "/screenshots/scout_filter.png",
+      aspectratio: "19/10",
       description: `scoutscoutscoutscout`,
     },
     {
       title: "Retrospective",
-      src: "/screenshots/Steady_Results_Crop.png",
+      src: "/screenshots/scout_light.png",
+      aspectratio: "19/10",
       description: `scoutscoutscoutscout`,
     },
   ],

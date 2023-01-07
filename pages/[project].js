@@ -23,9 +23,15 @@ import {
   useActiveTab,
   useSelectedProject,
   useProjectImage,
+  useProjectSlides,
 } from "@/utils/provider";
 
-import { SITE_THEME, DEVICES, PROJECTLIST } from "@/utils/variables";
+import {
+  SITE_THEME,
+  DEVICES,
+  PROJECTLIST,
+  PROJECTINFO,
+} from "@/utils/variables";
 import Image from "next/image";
 
 const PageContainer = styled.div`
@@ -150,8 +156,11 @@ const MotionItem = styled(motion.div)`
 `;
 
 const SelectedProjectImage = styled(motion.div)`
-  width: 50%;
-  height: 90vh;
+  min-width: 50vw;
+  max-width: 80vw;
+  min-height: 50vh;
+  max-height: 90vh;
+  aspect-ratio: ${(props) => props.aspect};
   position: fixed;
   top: 50%;
   left: 50%;
@@ -213,6 +222,7 @@ export default function Home() {
   const sp = selectedProject;
   const router = useRouter();
   const { projectImage, setProjectImage } = useProjectImage();
+  const { projectSlides } = useProjectSlides();
 
   useEffect(() => {
     if (initialLoad == false) {
@@ -271,11 +281,12 @@ export default function Home() {
             initial="inactive"
             animate="active"
             exit="inactive"
+            aspect={projectImage.aspectratio}
           >
             <Image
               quality={100}
               layout="fill"
-              src={projectImage}
+              src={projectImage.src}
               objectFit="contain"
             />
           </SelectedProjectImage>

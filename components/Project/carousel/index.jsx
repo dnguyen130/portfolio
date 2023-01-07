@@ -28,11 +28,6 @@ const CarouselSlide = styled.div`
   width: 100%;
   height: 70vh;
   min-height: 400px;
-  padding: 10px;
-
-  @media (min-width: ${DEVICES.tablet}) {
-    padding: 10px 30px;
-  }
 `;
 
 const Container = styled.div`
@@ -41,9 +36,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 80%;
+  padding: 10px;
 
   @media (min-width: ${DEVICES.tablet}) {
     flex-direction: row;
+    padding: 10px 30px;
   }
 `;
 
@@ -51,31 +49,34 @@ const Column = styled.div`
   position: relative;
   width: 90%;
   height: auto;
-  @media (min-width: ${DEVICES.tablet}) {
-    width: 50%;
+  margin: 0 20px;
+  @media (min-width: ${DEVICES.laptop}) {
+    max-width: 50%;
   }
 `;
 
 const ImageColumn = styled.div`
   position: relative;
-  height: 35vh;
+  aspect-ratio: ${(props) => props.aspect};
+  max-height: 40vh;
+
   width: 100%;
   display: flex;
   justify-content: center;
 
   @media (min-width: ${DEVICES.tablet}) {
-    height: 50vh;
-    width: 50%;
+    max-width: 50%;
   }
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
-  height: 35vh;
   aspect-ratio: ${(props) => props.aspect};
   cursor: pointer;
+  max-height: 40vh;
+
   @media (min-width: ${DEVICES.tablet}) {
-    height: 50vh;
+    max-width: 100%;
   } ;
 `;
 
@@ -97,8 +98,9 @@ const SliderSettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   adaptiveHeight: true,
-
-  speed: 300,
+  arrows: false,
+  speed: 600,
+  easing: "ease-in",
 };
 
 export default function Carousel() {
@@ -114,45 +116,48 @@ export default function Carousel() {
 
   useEffect(() => {
     console.log("go");
+    console.log(sp.url);
     for (var i = 0; i < SLIDESARRAY.length; i++) {
       if (
-        (Object.entries(projectSlides).length == 0 ||
-          SLIDESARRAY[i][0] == sp.url) &&
+        SLIDESARRAY[i][0] == sp.url &&
+        // Object.entries(projectSlides).length == 0 &&
         !checked
       ) {
         setChecked(true);
         setProjectSlides(SLIDESARRAY[i]);
+        console.log(SLIDESARRAY[i]);
         return;
       }
     }
-  }, [checked]);
+  });
 
   const UnderlineProps = {
     height: "1px",
     gradientangle: "90deg",
     gradient1: SITE_THEME[theme].strong,
     borderradius: "1px",
-    marginbottom: "30px",
+    marginbottom: "20px",
   };
 
   return (
     <CarouselCont>
-      <Slider {...SliderSettings}>
-        {Object.entries(projectSlides).length != 0 ? (
-          projectSlides[1].map((o, i) => {
+      {Object.entries(projectSlides).length != 0 ? (
+        <Slider {...SliderSettings}>
+          {projectSlides[1].map((o, i) => {
             return (
               <CarouselSlide key={i}>
                 <Title color={SITE_THEME[theme].text}>{o.title}</Title>
                 <Underline {...UnderlineProps} />
                 <Container>
-                  <ImageColumn>
+                  <ImageColumn aspect={o.aspectratio}>
                     <ImageWrapper
                       aspect={o.aspectratio}
                       onClick={(e) => {
                         setActiveCard(true);
-                        setProjectImage(
-                          e.nativeEvent.explicitOriginalTarget.src
-                        );
+                        setProjectImage({
+                          src: e.nativeEvent.explicitOriginalTarget.src,
+                          aspectratio: o.aspectratio,
+                        });
                       }}
                     >
                       <Image
@@ -171,43 +176,11 @@ export default function Carousel() {
                 </Container>
               </CarouselSlide>
             );
-          })
-        ) : (
-          <div style={{ color: "white" }}>Loading</div>
-        )}
-        {/* <CarouselSlide>
-          <Title color={SITE_THEME[theme].text}>Title</Title>
-          <Underline {...UnderlineProps} />
-          <Container>
-            
-            <ImageColumn>
-              <Image
-                quality={100}
-                layout="fill"
-                src="/screenshots/Steady_Meals_Crop.png"
-                objectFit="contain"
-              />
-            </ImageColumn>
-            <Column>
-              <Description color={SITE_THEME[theme].text}>
-                As with any application, the project begins with a simple idea.
-                My team was tasked to help solve a social problem in today's
-                society. As with any application, the project begins with a
-                simple idea. My team was tasked to help solve a social problem
-                in today's society.
-              </Description>
-            </Column>
-          </Container>
-        </CarouselSlide>
-        <CarouselSlide>
-          <Title color={SITE_THEME[theme].text}>Title</Title>
-          <Underline {...UnderlineProps} />
-        </CarouselSlide>
-        <CarouselSlide>
-          <Title color={SITE_THEME[theme].text}>Title</Title>
-          <Underline {...UnderlineProps} />
-        </CarouselSlide> */}
-      </Slider>
+          })}
+        </Slider>
+      ) : (
+        <div>Loading</div>
+      )}
     </CarouselCont>
   );
 }
