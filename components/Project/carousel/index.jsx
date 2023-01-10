@@ -40,7 +40,7 @@ const Container = styled.div`
   padding: 10px;
 
   @media (min-width: ${DEVICES.tablet}) {
-    flex-direction: row;
+    flex-direction: ${(props) => props.flexdirection};
     padding: 10px 30px;
   }
 `;
@@ -51,21 +51,20 @@ const Column = styled.div`
   height: auto;
   margin: 0 20px;
   @media (min-width: ${DEVICES.laptop}) {
-    max-width: 50%;
+    max-width: ${(props) => props.maxwidth};
   }
 `;
 
 const ImageColumn = styled.div`
-  position: relative;
-  aspect-ratio: ${(props) => props.aspect};
-  max-height: 40vh;
-
+  max-height: 45vh;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 
   @media (min-width: ${DEVICES.tablet}) {
-    max-width: 50%;
+    max-width: ${(props) => props.maxwidth};
+    height: ${(props) => props.height};
   }
 `;
 
@@ -73,11 +72,8 @@ const ImageWrapper = styled.div`
   position: relative;
   aspect-ratio: ${(props) => props.aspect};
   cursor: pointer;
-  max-height: 40vh;
-
-  @media (min-width: ${DEVICES.tablet}) {
-    max-width: 100%;
-  } ;
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
 const Title = styled.h3`
@@ -89,6 +85,9 @@ const Description = styled.p`
   color: ${(props) => props.color};
   font-size: 0.6em;
   text-align: left;
+  display: flex;
+  align-items: center
+  height: auto;
 `;
 
 const SliderSettings = {
@@ -148,27 +147,32 @@ export default function Carousel() {
               <CarouselSlide key={i}>
                 <Title color={SITE_THEME[theme].text}>{o.title}</Title>
                 <Underline {...UnderlineProps} />
-                <Container>
-                  <ImageColumn aspect={o.aspectratio}>
+                <Container
+                  flexdirection={
+                    o.orientation == "landscape" ? "column" : "row"
+                  }
+                >
+                  <ImageColumn
+                    maxwidth={o.orientation == "landscape" ? "90%" : "50%"}
+                    height={o.orientation == "landscape" ? "60%" : "100%"}
+                  >
                     <ImageWrapper
-                      aspect={o.aspectratio}
-                      onClick={(e) => {
+                      aspect={o.aspect}
+                      onClick={() => {
                         setActiveCard(true);
                         setProjectImage({
-                          src: e.nativeEvent.explicitOriginalTarget.src,
-                          aspectratio: o.aspectratio,
+                          src: o.src,
+                          aspect: o.aspect,
+                          orientation: o.orientation,
                         });
                       }}
                     >
-                      <Image
-                        quality={100}
-                        layout="fill"
-                        src={o.src}
-                        objectFit="contain"
-                      />
+                      <Image layout="fill" src={o.src} objectFit="contain" />
                     </ImageWrapper>
                   </ImageColumn>
-                  <Column>
+                  <Column
+                    maxwidth={o.orientation == "landscape" ? "80%" : "50%"}
+                  >
                     <Description color={SITE_THEME[theme].text}>
                       {o.description}
                     </Description>

@@ -156,16 +156,25 @@ const MotionItem = styled(motion.div)`
 `;
 
 const SelectedProjectImage = styled(motion.div)`
-  min-width: 50vw;
-  max-width: 80vw;
-  min-height: 50vh;
+  min-width: 80vw;
+  max-width: 90vw;
+  min-height: 20vh;
   max-height: 90vh;
-  aspect-ratio: ${(props) => props.aspect};
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
+  aspect-ratio: ${(props) => props.aspect};
+  border-radius: 5px;
+  overflow: hidden;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    min-width: ${(props) => props.minwidth};
+    max-width: 90vw;
+    min-height: 35vh;
+    max-height: 90vh;
+  }
 `;
 
 const container = {
@@ -281,7 +290,8 @@ export default function Home() {
             initial="inactive"
             animate="active"
             exit="inactive"
-            aspect={projectImage.aspectratio}
+            aspect={projectImage.aspect}
+            minwidth={projectImage.orientation == "landscape" ? null : "30vw"}
           >
             <Image
               quality={100}

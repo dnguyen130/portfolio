@@ -299,18 +299,19 @@ export const PROJECTINFO = {
     {
       title: "Ideation",
       src: "/screenshots/Steady_Welcome_Crop.png",
-      aspectratio: "7/10",
+      aspect: "595/927",
+      orientation: "portrait",
       description: `Tasked with the problem to help solve a social issue we've experienced, 
       we decided to create a an application to help tackle depression.
-       Similar to cognitive behavioural therapy, 
-       we wanted to give the user the ability to self-diagnose problems in their life and 
-       give them solutions that they can implement in their everyday life.`,
+      Similar to cognitive behavioural therapy, 
+      we wanted to give the user the ability to self-diagnose problems in their life and 
+      give them solutions that they can implement in their everyday life.`,
     },
     {
       title: "Technology",
       src: "/screenshots/Steady_Menu_Crop.png",
-      aspectratio: "7/10",
-
+      aspect: "595/927",
+      orientation: "portrait",
       description: `This application was developed with Next.js, using Styled-Components as our styling engine
       and local storage as our means of storing persistent for use across several pages. As our first major project,
       we used our limited toolset to its maximum capabilities and created an application with the ability to give the user
@@ -319,7 +320,8 @@ export const PROJECTINFO = {
     {
       title: "Retrospective",
       src: "/screenshots/Steady_Results_Crop.png",
-      aspectratio: "7/10",
+      aspect: "595/927",
+      orientation: "portrait",
       description: `In the end, we created an application that met our expectations with many improvements
       that were possible by learning more about storing data and better practices. However, we learned plenty
       the foundation of web development that I would be able to apply to future projects.`,
@@ -329,19 +331,22 @@ export const PROJECTINFO = {
     {
       title: "Ideation",
       src: "/screenshots/OnMe_Dashboard.png",
-      aspectratio: "5/10",
+      aspect: "864/1886",
+      orientation: "portrait",
       description: `onmeonmeonmeonmeonme`,
     },
     {
       title: "Technology",
       src: "/screenshots/OnMe_RestaurantSelection.png",
-      aspectratio: "5/10",
+      aspect: "864/1886",
+      orientation: "portrait",
       description: `onmeonmeonmeonmeonme`,
     },
     {
       title: "Retrospective",
       src: "/screenshots/OnMe_OrderSummary.png",
-      aspectratio: "5/10",
+      aspect: "864/1886",
+      orientation: "portrait",
       description: `onmeonmeonmeonmeonme`,
     },
   ],
@@ -349,20 +354,22 @@ export const PROJECTINFO = {
     {
       title: "Ideation",
       src: "/screenshots/scout_explore.png",
-      aspectratio: "19/10",
-
+      aspect: "1920/997",
+      orientation: "landscape",
       description: `scoutscoutscoutscout`,
     },
     {
       title: "Technology",
       src: "/screenshots/scout_filter.png",
-      aspectratio: "19/10",
+      aspect: "1920/997",
+      orientation: "landscape",
       description: `scoutscoutscoutscout`,
     },
     {
       title: "Retrospective",
       src: "/screenshots/scout_light.png",
-      aspectratio: "19/10",
+      aspect: "1920/997",
+      orientation: "landscape",
       description: `scoutscoutscoutscout`,
     },
   ],
