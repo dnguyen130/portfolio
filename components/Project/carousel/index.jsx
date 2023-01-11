@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import loading from "@/public/loading.gif";
 
 import Underline from "@/components/Shared/Underline";
 
@@ -18,7 +19,8 @@ import {
 import { SITE_THEME, DEVICES, PROJECTINFO } from "@/utils/variables";
 
 const CarouselCont = styled.div`
-  width: 100%;
+  width: 90%;
+  max-width: 1000px;
   height: 70vh;
   min-height: 400px;
   font-size: 1.5em;
@@ -47,9 +49,7 @@ const Container = styled.div`
 
 const Column = styled.div`
   position: relative;
-  width: 90%;
   height: auto;
-  margin: 0 20px;
   @media (min-width: ${DEVICES.laptop}) {
     max-width: ${(props) => props.maxwidth};
   }
@@ -58,7 +58,7 @@ const Column = styled.div`
 const ImageColumn = styled.div`
   max-height: 45vh;
   width: 100%;
-  height: 100%;
+  height: ${(props) => props.mobileheight};
   display: flex;
   justify-content: center;
 
@@ -86,8 +86,13 @@ const Description = styled.p`
   font-size: 0.6em;
   text-align: left;
   display: flex;
-  align-items: center
+  align-items: center;
   height: auto;
+  line-height: 1.3em;
+
+  @media (min-width: ${DEVICES.laptop}) {
+    font-size: 0.8em;
+  }
 `;
 
 const SliderSettings = {
@@ -97,7 +102,7 @@ const SliderSettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   adaptiveHeight: true,
-  arrows: false,
+  // arrows: false,
   speed: 600,
   easing: "ease-in",
 };
@@ -114,8 +119,6 @@ export default function Carousel() {
   const SLIDESARRAY = Object.entries(PROJECTINFO);
 
   useEffect(() => {
-    console.log("go");
-    console.log(sp.url);
     for (var i = 0; i < SLIDESARRAY.length; i++) {
       if (
         SLIDESARRAY[i][0] == sp.url &&
@@ -124,7 +127,6 @@ export default function Carousel() {
       ) {
         setChecked(true);
         setProjectSlides(SLIDESARRAY[i]);
-        console.log(SLIDESARRAY[i]);
         return;
       }
     }
@@ -155,6 +157,9 @@ export default function Carousel() {
                   <ImageColumn
                     maxwidth={o.orientation == "landscape" ? "90%" : "50%"}
                     height={o.orientation == "landscape" ? "60%" : "100%"}
+                    mobileheight={
+                      o.orientation == "landscape" ? "165px" : "100%"
+                    }
                   >
                     <ImageWrapper
                       aspect={o.aspect}
@@ -167,7 +172,12 @@ export default function Carousel() {
                         });
                       }}
                     >
-                      <Image layout="fill" src={o.src} objectFit="contain" />
+                      <Image
+                        layout="fill"
+                        src={o.src}
+                        objectFit="contain"
+                        placeholder
+                      />
                     </ImageWrapper>
                   </ImageColumn>
                   <Column

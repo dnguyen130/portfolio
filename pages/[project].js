@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { CgClose } from "react-icons/cg";
 
 import NavBar from "@/components/Shared/NavBar";
 import Footer from "@/components/Shared/Footer";
@@ -33,6 +34,7 @@ import {
   PROJECTINFO,
 } from "@/utils/variables";
 import Image from "next/image";
+import loading from "@/public/loading.gif";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -52,6 +54,7 @@ const MainContainer = styled.main`
   flex-direction: column;
   align-items: center;
   user-select: ${(props) => props.mainSelect};
+  padding: 0 10px;
 `;
 
 const Fade = styled(motion.div)`
@@ -69,37 +72,8 @@ const Fade = styled(motion.div)`
   display: ${(props) => props.fadeDisplay};
 `;
 
-const DescriptionCont = styled.div`
-  width: 90%;
-  min-height: 30vh;
-  margin: 15px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Description = styled.p`
-  width: 100%;
-  font-size: 1em;
-  line-height: 1.3em;
-  color: ${(props) => props.color};
-
-  @media (min-width: ${DEVICES.laptop}) {
-    width: 80%;
-  }
-`;
-
-const Padded = styled.div`
-  padding: 15px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const LogoCont = styled.div`
-  margin: 20px 0;
+  margin: 30px 0;
   width: 100px;
   height: 100px;
   position: relative;
@@ -116,6 +90,7 @@ const LogoQuote = styled.q`
   color: ${(props) => props.color};
   margin-bottom: 10px;
   font-size: 1em;
+  text-align: center;
 `;
 
 const FadeVariants = {
@@ -156,7 +131,7 @@ const MotionItem = styled(motion.div)`
 `;
 
 const SelectedProjectImage = styled(motion.div)`
-  min-width: 80vw;
+  min-width: 70vw;
   max-width: 90vw;
   min-height: 20vh;
   max-height: 90vh;
@@ -172,8 +147,30 @@ const SelectedProjectImage = styled(motion.div)`
   @media (min-width: ${DEVICES.mobile}) {
     min-width: ${(props) => props.minwidth};
     max-width: 90vw;
-    min-height: 35vh;
+    min-height: ${(props) => props.minheight};
     max-height: 90vh;
+  }
+`;
+
+const CloseButton = styled(motion.div)`
+  height: 100%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  aspect-ratio: 1/1;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  transition: 0.2s;
+  cursor: pointer;
+  color: ${(props) => props.closebuttoncolor};
+
+  &:hover {
+    color: ${(props) => props.closebuttonhovercolor};
   }
 `;
 
@@ -291,14 +288,26 @@ export default function Home() {
             animate="active"
             exit="inactive"
             aspect={projectImage.aspect}
-            minwidth={projectImage.orientation == "landscape" ? null : "30vw"}
+            minwidth={projectImage.orientation == "landscape" ? null : "400px"}
+            minheight={
+              projectImage.orientation == "landscape" ? "300px" : "450px"
+            }
           >
             <Image
               quality={100}
               layout="fill"
               src={projectImage.src}
               objectFit="contain"
+              placeholder
             />
+            <CloseButton
+              onClick={() => setActiveCard(false)}
+              closebuttoncolor={SITE_THEME[theme].background}
+              closebuttonhovercolor={SITE_THEME[theme].strong}
+              whileTap={{ scale: 0.8 }}
+            >
+              <CgClose size="90%" />
+            </CloseButton>
           </SelectedProjectImage>
         )}
       </AnimatePresence>
@@ -314,7 +323,12 @@ export default function Home() {
         <MainContainer mainSelect={activeCard ? "none" : "auto"}>
           <LogoCont>
             <MotionItem variants={item}>
-              <Image layout="fill" alt="ss" src={`/${sp.url}_logo.svg`} />
+              <Image
+                layout="fill"
+                alt="ss"
+                src={`/${sp.url}_logo.svg`}
+                placeholder
+              />
             </MotionItem>
           </LogoCont>
           {sp.hasLogo && (
@@ -325,7 +339,9 @@ export default function Home() {
           <MotionItem variants={item}>
             <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
           </MotionItem>
-          <Carousel />
+          <MotionItem variants={item}>
+            <Carousel />
+          </MotionItem>
         </MainContainer>
       </MotionContainer>
       <Footer />

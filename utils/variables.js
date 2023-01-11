@@ -297,7 +297,7 @@ export const ToolkitIcons = {
 export const PROJECTINFO = {
   steady: [
     {
-      title: "Ideation",
+      title: "1. Ideation",
       src: "/screenshots/Steady_Welcome_Crop.png",
       aspect: "595/927",
       orientation: "portrait",
@@ -308,7 +308,7 @@ export const PROJECTINFO = {
       give them solutions that they can implement in their everyday life.`,
     },
     {
-      title: "Technology",
+      title: "2. Technology",
       src: "/screenshots/Steady_Menu_Crop.png",
       aspect: "595/927",
       orientation: "portrait",
@@ -318,7 +318,7 @@ export const PROJECTINFO = {
       solutions to some of their problems in their life.`,
     },
     {
-      title: "Retrospective",
+      title: "3. Retrospective",
       src: "/screenshots/Steady_Results_Crop.png",
       aspect: "595/927",
       orientation: "portrait",
@@ -329,48 +329,60 @@ export const PROJECTINFO = {
   ],
   onme: [
     {
-      title: "Ideation",
+      title: "1. Ideation",
       src: "/screenshots/OnMe_Dashboard.png",
       aspect: "864/1886",
       orientation: "portrait",
-      description: `onmeonmeonmeonmeonme`,
+      description: `OnMe is a mobile application pitched as a solution for social disconnection in Vancouver. With
+      Vancouver being ranked as a lonely city, our team wanted to create a way for strangers to start interactions with face
+      to face communication. Through the app, order someone you see a drink with a custom message and see how they respond!`,
     },
     {
-      title: "Technology",
+      title: "2. Technology",
       src: "/screenshots/OnMe_RestaurantSelection.png",
       aspect: "864/1886",
       orientation: "portrait",
-      description: `onmeonmeonmeonmeonme`,
+      description: `Created with React-Native and Expo, OnMe is a mobile application capable of running on both
+      iOS and Android devices. It uses an SQL database with a custom API created with PHP. It also uses Firebase
+      to store users created either with their email or Google authentication.`,
     },
     {
-      title: "Retrospective",
+      title: "3. Retrospective",
       src: "/screenshots/OnMe_OrderSummary.png",
       aspect: "864/1886",
       orientation: "portrait",
-      description: `onmeonmeonmeonmeonme`,
+      description: `This project was a lesson in not only mobile application development, but time management and 
+      team cooperation. Working with designers to ensure assets were created on time to integrate with application,
+      as well as adjusting to any unforeseen circumstances were all soft skills we learned during this semester long project.`,
     },
   ],
   scout: [
     {
-      title: "Ideation",
+      title: "1. Ideation",
       src: "/screenshots/scout_explore.png",
       aspect: "1920/997",
       orientation: "landscape",
-      description: `scoutscoutscoutscout`,
+      description: `Furthering our experience in development, we were tasked with creating an application
+      that would use a database hosted on MongoDB and a custom API created with Express.js. We decided to 
+      use a database of Japanese anime titles with categories such as title, release year, and ratings.`,
     },
     {
-      title: "Technology",
+      title: "2. Technology",
       src: "/screenshots/scout_filter.png",
       aspect: "1920/997",
       orientation: "landscape",
-      description: `scoutscoutscoutscout`,
+      description: `Using Next.js and its integrated API functionality, we created an application with the
+      ability to create a user, search through, and favourite anime. We used an API and a custom back-end
+      to communicate commands and do certain things based on the response.`,
     },
     {
-      title: "Retrospective",
+      title: "3. Retrospective",
       src: "/screenshots/scout_light.png",
       aspect: "1920/997",
       orientation: "landscape",
-      description: `scoutscoutscoutscout`,
+      description: `This project was more practice on state management and back-end functionality. Being
+      a front-end developer still requires an understanding of managing data and this was a great project
+      to practice previous concepts while learning other important parts of web development.`,
     },
   ],
 };

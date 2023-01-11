@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, useActiveCard, useActiveProject } from "@/utils/provider";
 import { SITE_THEME, DEVICES } from "../../../../utils/variables";
 
+import Image from "next/image";
+
 const ToolkitDialogCont = styled(motion.div)`
   width: 90%;
   min-width: 280px;
