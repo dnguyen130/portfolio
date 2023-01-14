@@ -17,6 +17,7 @@ import {
   DEVICES,
   LINKS,
   PROJECTLIST,
+  SOCIALS,
 } from "../../../utils/variables";
 
 const NavBarCont = styled.header`
@@ -277,6 +278,14 @@ const ArrowCont = styled.div`
   transition: 0.2s;
 `;
 
+const SocialLink = styled.a`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const DropdownVariants = {
   inactive: {
     height: 0,
@@ -351,27 +360,96 @@ export default function NavBar({ burgerOnClick = () => {} }) {
               <NavCont>
                 <ProjectButton
                   color={
-                    activeTab
+                    activeTab == "Contact"
                       ? SITE_THEME[theme].strong
                       : SITE_THEME[theme].text
                   }
                   hovercolor={SITE_THEME[theme].strong}
                   onClick={(e) => (
-                    e.stopPropagation(), setActiveTab(!activeTab)
+                    e.stopPropagation(),
+                    setActiveTab(activeTab == "Contact" ? false : "Contact")
                   )}
                 >
-                  Projects
+                  Contact
                   <ArrowCont
                     arrowtop={
-                      activeTab ? "calc(50% - 6px)" : "calc(50% - 12px)"
+                      activeTab == "Contact"
+                        ? "calc(50% - 6px)"
+                        : "calc(50% - 12px)"
                     }
-                    arrowrotate={activeTab ? "rotate(180deg)" : "rotate(0deg)"}
+                    arrowrotate={
+                      activeTab == "Contact" ? "rotate(180deg)" : "rotate(0deg)"
+                    }
                   >
                     <FaChevronDown size="100%" />
                   </ArrowCont>
                 </ProjectButton>
                 <AnimatePresence>
-                  {activeTab && (
+                  {activeTab == "Contact" && (
+                    <Dropdown
+                      initial="inactive"
+                      animate="active"
+                      variants={DropdownVariants}
+                      exit="inactive"
+                      bordercolor={SITE_THEME[theme].strong}
+                      bgcolor={SITE_THEME[theme].background}
+                    >
+                      {SOCIALS.map((o, i) => {
+                        return (
+                          <SocialLink
+                            target="_blank"
+                            href={o.url}
+                            passHref
+                            key={i}
+                          >
+                            <DropdownItem
+                              bgcolor={SITE_THEME[theme].navbar}
+                              color={SITE_THEME[theme].text}
+                              height={activeTab == "Contact" ? "40px" : 0}
+                              hoverbgcolor={SITE_THEME[theme].drawerhover}
+                              hovercolor={SITE_THEME[theme].strong}
+                              onClick={() => setActiveDrawer(false)}
+                            >
+                              {o.name}
+                            </DropdownItem>
+                          </SocialLink>
+                        );
+                      })}
+                    </Dropdown>
+                  )}
+                </AnimatePresence>
+              </NavCont>
+              <NavCont>
+                <ProjectButton
+                  color={
+                    activeTab == "Projects"
+                      ? SITE_THEME[theme].strong
+                      : SITE_THEME[theme].text
+                  }
+                  hovercolor={SITE_THEME[theme].strong}
+                  onClick={(e) => (
+                    e.stopPropagation(),
+                    setActiveTab(activeTab == "Projects" ? false : "Projects")
+                  )}
+                >
+                  Projects
+                  <ArrowCont
+                    arrowtop={
+                      activeTab == "Projects"
+                        ? "calc(50% - 6px)"
+                        : "calc(50% - 12px)"
+                    }
+                    arrowrotate={
+                      activeTab == "Projects"
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)"
+                    }
+                  >
+                    <FaChevronDown size="100%" />
+                  </ArrowCont>
+                </ProjectButton>
+                <AnimatePresence>
+                  {activeTab == "Projects" && (
                     <Dropdown
                       initial="inactive"
                       animate="active"
@@ -392,7 +470,7 @@ export default function NavBar({ burgerOnClick = () => {} }) {
                             <DropdownItem
                               bgcolor={SITE_THEME[theme].navbar}
                               color={SITE_THEME[theme].text}
-                              height={activeTab ? "40px" : 0}
+                              height={activeTab == "Projects" ? "40px" : 0}
                               hoverbgcolor={SITE_THEME[theme].drawerhover}
                               hovercolor={SITE_THEME[theme].strong}
                               onClick={() => setActiveDrawer(false)}

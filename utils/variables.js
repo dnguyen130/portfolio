@@ -99,10 +99,6 @@ export const LINKS = [
     name: "About",
     url: "/about",
   },
-  {
-    name: "Contact",
-    url: "/contact",
-  },
 ];
 
 export const PROJECTLIST = [
