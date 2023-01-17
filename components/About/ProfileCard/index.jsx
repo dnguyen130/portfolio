@@ -150,7 +150,7 @@ export default function ProfileCard() {
           <GradientTransparency gradientbg={SITE_THEME[theme].background} />
           <HeroWrapper bordercolor={SITE_THEME[theme].strong}>
             <HeroWrapperImage
-              src="/test.JPEG"
+              src="/test2.JPEG"
               layout="fill"
               alt="cover"
               objectFit="cover"

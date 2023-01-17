@@ -173,7 +173,7 @@ const Button = styled(motion.div)`
   transition: 0.1s;
 
   @media (min-width: ${DEVICES.tablet}) {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   &:hover {
