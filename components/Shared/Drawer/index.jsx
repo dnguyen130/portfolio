@@ -7,7 +7,12 @@ import Link from "next/link";
 
 import { useTheme, useActiveDrawer } from "@/utils/provider";
 
-import { SITE_THEME, LINKS, PROJECTLIST } from "../../../utils/variables";
+import {
+  SITE_THEME,
+  LINKS,
+  PROJECTLIST,
+  SOCIALS,
+} from "../../../utils/variables";
 
 const DrawerCont = styled(motion.div)`
   background-color: ${(props) => props.bgcolor};
@@ -189,6 +194,14 @@ const MenuLink = styled.a`
   align-items: center;
 `;
 
+const SocialsLink = styled.a`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 const DrawerVariants = {
   inactive: {
     x: 300,
@@ -213,7 +226,7 @@ const DrawerVariants = {
 export default function Drawer() {
   const { theme } = useTheme();
   const { activeDrawer, setActiveDrawer } = useActiveDrawer();
-  const [activeProjectButton, setActiveProjectButton] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(false);
 
   return (
     <AnimatePresence>
@@ -231,7 +244,7 @@ export default function Drawer() {
               closehover={SITE_THEME[theme].strong}
               onClick={() => {
                 setActiveDrawer(false);
-                setActiveProjectButton(false);
+                setActiveSubmenu(false);
               }}
               whileTap={{ scale: 0.8 }}
             >
@@ -289,19 +302,87 @@ export default function Drawer() {
               drawerbghover={SITE_THEME[theme].drawerhover}
               drawerfonthover={SITE_THEME[theme].strong}
               gradient={SITE_THEME[theme].strong}
-              onClick={() => setActiveProjectButton(!activeProjectButton)}
+              onClick={() =>
+                setActiveSubmenu(activeSubmenu == "contact" ? false : "contact")
+              }
               projectbuttoncolor={
-                activeProjectButton
+                activeSubmenu == "contact"
                   ? SITE_THEME[theme].strong
                   : SITE_THEME[theme].text
               }
             >
               <ArrowCont
                 arrowtop={
-                  activeProjectButton ? "calc(50% - 15px)" : "calc(50% - 10px)"
+                  activeSubmenu == "contact"
+                    ? "calc(50% - 15px)"
+                    : "calc(50% - 10px)"
                 }
                 arrowrotate={
-                  activeProjectButton ? "rotate(180deg)" : "rotate(0deg)"
+                  activeSubmenu == "contact" ? "rotate(180deg)" : "rotate(0deg)"
+                }
+              >
+                <FaChevronDown size="1em" />
+              </ArrowCont>
+              <ButtonLabel>Contact</ButtonLabel>
+              <Underline gradient1={SITE_THEME[theme].strong} />
+            </ProjectButton>
+            <ProjectSubMenu
+              submenuopacity={activeSubmenu == "contact" ? "1" : "0"}
+              submenuz={activeSubmenu == "contact" ? "1" : "-1"}
+              submenuheight={activeSubmenu == "contact" ? "auto" : "0"}
+              submenubg={SITE_THEME[theme].background}
+              submenubghover={SITE_THEME[theme].drawerhover}
+            >
+              {SOCIALS.map((o, i) => {
+                return (
+                  <SocialsLink href={o.url} key={i} target="_blank">
+                    <SubMenuButton
+                      submenubuttonheight={
+                        activeSubmenu == "contact" ? "40px" : "0"
+                      }
+                      submenubuttoncolor={SITE_THEME[theme].navbar}
+                      submenubghover={SITE_THEME[theme].drawerhover}
+                      onClick={() => setActiveDrawer(false)}
+                    >
+                      <MenuLink>
+                        <SubMenuButtonLabel
+                          submenufontcolor={SITE_THEME[theme].text}
+                          submenufonthovercolor={SITE_THEME[theme].strong}
+                        >
+                          {o.name}
+                        </SubMenuButtonLabel>
+                      </MenuLink>
+                    </SubMenuButton>
+                  </SocialsLink>
+                );
+              })}
+            </ProjectSubMenu>
+            <ProjectButton
+              drawerbgcolor={SITE_THEME[theme].navbar}
+              drawerbghover={SITE_THEME[theme].drawerhover}
+              drawerfonthover={SITE_THEME[theme].strong}
+              gradient={SITE_THEME[theme].strong}
+              onClick={() =>
+                setActiveSubmenu(
+                  activeSubmenu == "projects" ? false : "projects"
+                )
+              }
+              projectbuttoncolor={
+                activeSubmenu == "projects"
+                  ? SITE_THEME[theme].strong
+                  : SITE_THEME[theme].text
+              }
+            >
+              <ArrowCont
+                arrowtop={
+                  activeSubmenu == "projects"
+                    ? "calc(50% - 15px)"
+                    : "calc(50% - 10px)"
+                }
+                arrowrotate={
+                  activeSubmenu == "projects"
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)"
                 }
               >
                 <FaChevronDown size="1em" />
@@ -310,9 +391,9 @@ export default function Drawer() {
               <Underline gradient1={SITE_THEME[theme].strong} />
             </ProjectButton>
             <ProjectSubMenu
-              submenuopacity={activeProjectButton ? "1" : "0"}
-              submenuz={activeProjectButton ? "1" : "-1"}
-              submenuheight={activeProjectButton ? "auto" : "0"}
+              submenuopacity={activeSubmenu == "projects" ? "1" : "0"}
+              submenuz={activeSubmenu == "projects" ? "1" : "-1"}
+              submenuheight={activeSubmenu == "projects" ? "auto" : "0"}
               submenubg={SITE_THEME[theme].background}
               submenubghover={SITE_THEME[theme].drawerhover}
             >
@@ -326,7 +407,9 @@ export default function Drawer() {
                     legacyBehavior
                   >
                     <SubMenuButton
-                      submenubuttonheight={activeProjectButton ? "40px" : "0"}
+                      submenubuttonheight={
+                        activeSubmenu == "projects" ? "40px" : "0"
+                      }
                       submenubuttoncolor={SITE_THEME[theme].navbar}
                       submenubghover={SITE_THEME[theme].drawerhover}
                       onClick={() => setActiveDrawer(false)}

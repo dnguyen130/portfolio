@@ -50,6 +50,11 @@ const Container = styled.div`
 const Column = styled.div`
   position: relative;
   height: auto;
+
+  @media (min-width: ${DEVICES.tablet}) {
+    padding-left: 20px;
+  }
+
   @media (min-width: ${DEVICES.laptop}) {
     max-width: ${(props) => props.maxwidth};
   }

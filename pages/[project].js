@@ -77,6 +77,11 @@ const LogoCont = styled.div`
   width: 100px;
   height: 100px;
   position: relative;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+  }
 `;
 
 const LogoTitle = styled.h2`
@@ -84,6 +89,10 @@ const LogoTitle = styled.h2`
   font-family: ${(props) => props.fontfamily};
   font-size: 2em;
   margin-top: 0;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    font-size: 3em;
+  }
 `;
 
 const LogoQuote = styled.q`
@@ -91,6 +100,27 @@ const LogoQuote = styled.q`
   margin-bottom: 10px;
   font-size: 1em;
   text-align: center;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    font-size: 1.5em;
+  }
+`;
+
+const HeaderCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 250px;
+  position: relative;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    flex-direction: ${(props) => props.flexDirection};
+    width: 75%;
+    min-width: 500px;
+    height: 300px;
+  }
 `;
 
 const FadeVariants = {
@@ -127,7 +157,20 @@ const MotionItem = styled(motion.div)`
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
+`;
+
+const QuoteCont = styled.div`
+  width: 80vw;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: ${DEVICES.mobile}) {
+    height: 100px;
+  }
 `;
 
 const SelectedProjectImage = styled(motion.div)`
@@ -321,24 +364,31 @@ export default function Home() {
         style={{ width: "100%" }}
       >
         <MainContainer mainSelect={activeCard ? "none" : "auto"}>
-          <LogoCont>
+          <HeaderCont flexDirection={sp.hasLogo ? "row" : "column"}>
             <MotionItem variants={item}>
-              <Image
-                layout="fill"
-                alt="ss"
-                src={`/${sp.url}_logo.svg`}
-                placeholder
-              />
+              <LogoCont
+                width={sp.hasLogo ? "200px" : "250px"}
+                height={sp.hasLogo ? "200px" : "100px"}
+              >
+                <Image
+                  layout="fill"
+                  alt="ss"
+                  src={`/${sp.url}_logo.svg`}
+                  placeholder
+                />
+              </LogoCont>
             </MotionItem>
-          </LogoCont>
-          {sp.hasLogo && (
-            <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
-              <MotionItem variants={item}>{sp.name}</MotionItem>
-            </LogoTitle>
-          )}
-          <MotionItem variants={item}>
-            <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
-          </MotionItem>
+            <QuoteCont>
+              {sp.hasLogo && (
+                <LogoTitle color={sp.color_strong} fontfamily={sp.title_font}>
+                  <MotionItem variants={item}>{sp.name}</MotionItem>
+                </LogoTitle>
+              )}
+              <MotionItem variants={item}>
+                <LogoQuote color={sp.color_strong}>{sp.quote}</LogoQuote>
+              </MotionItem>
+            </QuoteCont>
+          </HeaderCont>
           <MotionItem variants={item}>
             <Carousel />
           </MotionItem>

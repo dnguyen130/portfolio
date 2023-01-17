@@ -237,7 +237,7 @@ export default function Home() {
                 </MotionItem>
               </DescriptionCont>
               <Toolkit />
-              <Other />
+              {/* <Other /> */}
             </MotionContainer>
           </Padded>
         </MainContainer>
