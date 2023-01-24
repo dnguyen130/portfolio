@@ -158,6 +158,72 @@ export default function Home() {
     return (
       <Layout>
         <PageContainer>
+          <Head>
+            {/* Primary Meta Tags, generated at Metatags.io */}
+            <title>Danny Nguyen</title>
+            <meta name="title" content="Danny Nguyen | Front-end Developer" />
+            <meta
+              name="description"
+              content="A front-end developer with a passion for bringing great designs and ideas to life."
+            />
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+            <meta charSet="UTF-8" />
+            <link rel="canonical" href="https://dannynguyen.ca/" />
+            {/* Favicon Tags, generated at realfavicongenerator.net */}
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href="/apple-touch-icon.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/favicon-16x16.png"
+            />
+            <link rel="manifest" href="/site.webmanifest" />
+            <link
+              rel="mask-icon"
+              href="/safari-pinned-tab.svg"
+              color="#15ade4"
+            />
+            <meta name="msapplication-TileColor" content="#050610" />
+            <meta name="theme-color" content="#ffffff" />
+            {/* Open Graph / Facebook */}
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://dannynguyen.ca/" />
+            <meta
+              property="og:title"
+              content="Danny Nguyen | Front-end Developer"
+            />
+            <meta
+              property="og:description"
+              content="A front-end developer with a passion for bringing great designs and ideas to life."
+            />
+            <meta property="og:image" content="/cover.png" />
+
+            {/* Twitter */}
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content="https://dannynguyen.ca/" />
+            <meta
+              property="twitter:title"
+              content="Danny Nguyen | Front-end Developer"
+            />
+            <meta
+              property="twitter:description"
+              content="A front-end developer with a passion for bringing great designs and ideas to life."
+            />
+            <meta property="twitter:image" content="/cover.png" />
+          </Head>
           <LogoAnim />
         </PageContainer>
       </Layout>
@@ -168,7 +234,72 @@ export default function Home() {
     return (
       <Layout>
         <PageContainer>
-          <Head></Head>
+          <Head>
+            {/* Primary Meta Tags, generated at Metatags.io */}
+            <title>Home</title>
+            <meta name="title" content="Danny Nguyen | Front-end Developer" />
+            <meta
+              name="description"
+              content="A front-end developer with a passion for bringing great designs and ideas to life."
+            />
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+            <meta charSet="UTF-8" />
+            <link rel="canonical" href="https://dannynguyen.ca/" />
+            {/* Favicon Tags, generated at realfavicongenerator.net */}
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href="/apple-touch-icon.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/favicon-16x16.png"
+            />
+            <link rel="manifest" href="/site.webmanifest" />
+            <link
+              rel="mask-icon"
+              href="/safari-pinned-tab.svg"
+              color="#15ade4"
+            />
+            <meta name="msapplication-TileColor" content="#050610" />
+            <meta name="theme-color" content="#ffffff" />
+            {/* Open Graph / Facebook */}
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://dannynguyen.ca/" />
+            <meta
+              property="og:title"
+              content="Danny Nguyen | Front-end Developer"
+            />
+            <meta
+              property="og:description"
+              content="A front-end developer with a passion for bringing great designs and ideas to life."
+            />
+            <meta property="og:image" content="/cover.png" />
+
+            {/* Twitter */}
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content="https://dannynguyen.ca/" />
+            <meta
+              property="twitter:title"
+              content="Danny Nguyen | Front-end Developer"
+            />
+            <meta
+              property="twitter:description"
+              content="A front-end developer with a passion for bringing great designs and ideas to life."
+            />
+            <meta property="twitter:image" content="/cover.png" />
+          </Head>
           <Fade
             animate={
               activeCard || activeDrawer || activeTab ? "active" : "inactive"
