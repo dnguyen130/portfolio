@@ -172,6 +172,7 @@ const MotionContainer = styled(motion.div)`
   box-sizing: border-box;
   display: flex;
   text-align: center;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
   height: 100%;
