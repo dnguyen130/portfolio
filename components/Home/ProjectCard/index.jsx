@@ -36,7 +36,8 @@ const ProjectCardWrapper = styled(motion.div)`
 `;
 
 const ProjectCardLogo = styled.img`
-  width: 60%;
+  width: 80%;
+  max-height: 180px;
   position: absolute;
   pointer-events: none;
   user-select: none;

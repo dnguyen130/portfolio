@@ -306,7 +306,7 @@ export default function Home() {
         }
       }
     }
-  }, [router]);
+  }, [router, setSelectedProject, sp]);
 
   return (
     <PageContainer>
@@ -392,6 +392,7 @@ export default function Home() {
             }
           >
             <Image
+              alt="project image"
               quality={100}
               layout="fill"
               src={projectImage.src}

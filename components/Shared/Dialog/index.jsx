@@ -9,6 +9,9 @@ import {
   SiPhp,
   SiMysql,
   SiExpo,
+  SiVite,
+  SiSass,
+  SiFirebase,
 } from "react-icons/si";
 
 import { useTheme, useActiveCard } from "@/utils/provider";
@@ -38,8 +41,8 @@ const DialogCont = styled(motion.div)`
 
   @media (min-width: ${DEVICES.tablet}) {
     width: 90%;
-    max-width: 700px;
-    height: 800px;
+    max-width: 650px;
+    height: 650px;
     padding: 25px;
   }
 `;
@@ -256,6 +259,21 @@ const ICONS = [
     key: "expo",
     name: "Expo",
     element: SiExpo,
+  },
+  {
+    key: "vite",
+    name: "Vite",
+    element: SiVite,
+  },
+  {
+    key: "sass",
+    name: "Sass",
+    element: SiSass,
+  },
+  {
+    key: "firebase",
+    name: "Firebase",
+    element: SiFirebase,
   },
 ];
 
