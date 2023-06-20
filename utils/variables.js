@@ -170,7 +170,7 @@ export const PROJECTLIST = [
   {
     name: "Step Ahead",
     url: "stepahead",
-    hasLogo: false,
+    hasLogo: true,
     logo: "stepahead_logo.svg",
     live_site: "https://stepahead.vercel.app/",
     github_client: "https://github.com/dnguyen130/stepahead",
@@ -181,9 +181,9 @@ export const PROJECTLIST = [
       "Secure database and authentication with Firebase.",
     ],
     color_light: "#fef4d4",
-    color_dark: "#2f6eb8",
+    color_dark: "#1a3d65",
     color_strong: "#ffbf1a",
-    color_hover: "#1a3d65",
+    color_hover: "#dea916",
     title_font: "Caveat",
     quote: "Let's get ahead.",
   },
@@ -399,6 +399,37 @@ export const PROJECTINFO = {
       description: `This project was more practice on state management and back-end functionality. Being
       a front-end developer still requires an understanding of managing data and this was a great project
       to practice previous concepts while learning other important parts of web development.`,
+    },
+  ],
+  stepahead: [
+    {
+      title: "1. Ideation",
+      src: "/screenshots/stepahead1.png",
+      aspect: "1920/1000",
+      orientation: "landscape",
+      description: `As my first solo project, I wanted to create an application with a simple idea that
+      let me apply concepts important to web development. I decided to create a single-page application
+      with responsiveness and smooth transitions in mind. It also involves managing states and applying CRUD functions
+      with Firebase as a backend.`,
+    },
+    {
+      title: "2. Technology",
+      src: "/screenshots/stepahead2.png",
+      aspect: "1920/1000",
+      orientation: "landscape",
+      description: `I also wanted to try different technologies in this wide space of front-end development.
+      Using Vite as a framework as an alternative to Next, as well as using Sass instead of styled-components,
+      were conscious choices I made to ensure that I would always be learning, even when creating an application
+      using existing concepts I had learned in the past.`,
+    },
+    {
+      title: "3. Retrospective",
+      src: "/screenshots/stepahead3.png",
+      aspect: "1920/1000",
+      orientation: "landscape",
+      description: `This project was great in keeping myself fresh in web development while out of school.
+      The frontend was satisfactory to me with its transitions between tabs and responsiveness from mobile
+      to desktop.`,
     },
   ],
 };
