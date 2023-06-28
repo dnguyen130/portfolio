@@ -22,12 +22,12 @@
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT LOGO -->
 <br />
+
 <div align="center">
-  <!--<a href="https://github.com/dnguyen130/portfolio">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>!-->
+  <a href="https://github.com/dnguyen130/portfolio">
+    <img src="/logo.svg" alt="Logo" width="80" height="80">
+  </a>
 
 <h3 align="center">Portfolio Website</h3>
 

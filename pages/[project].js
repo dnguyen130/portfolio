@@ -312,7 +312,7 @@ export default function Home() {
     <PageContainer>
       <Head>
         {/* Primary Meta Tags, generated at Metatags.io */}
-        <title>{sp.name}</title>
+        <title>Danny Nguyen | Front-end Developer</title>
         <meta name="title" content="Danny Nguyen | Front-end Developer" />
         <meta name="description" content="Learn more about my projects." />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

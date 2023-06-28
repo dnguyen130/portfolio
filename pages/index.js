@@ -160,7 +160,7 @@ export default function Home() {
         <PageContainer>
           <Head>
             {/* Primary Meta Tags, generated at Metatags.io */}
-            <title>Danny Nguyen</title>
+            <title>Danny Nguyen | Front-end Developer</title>
             <meta name="title" content="Danny Nguyen | Front-end Developer" />
             <meta
               name="description"
