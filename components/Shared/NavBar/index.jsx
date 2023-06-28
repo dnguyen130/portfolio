@@ -327,7 +327,10 @@ export default function NavBar({ burgerOnClick = () => {} }) {
             <LogoWrapper>
               <Link href="/" scroll={false} passHref legacyBehavior>
                 <LogoLink>
-                  <LogoCont src="/logo.svg" alt="logo" />
+                  <LogoCont
+                    src="/logo.svg"
+                    alt="Danny Nguyen | Front-end Developer"
+                  />
                 </LogoLink>
               </Link>
             </LogoWrapper>
