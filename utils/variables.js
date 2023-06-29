@@ -197,12 +197,12 @@ export const SOCIALS = [
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/dnguyen130/",
+    url: "https://www.linkedin.com/in/dannytnguyendev/",
     logo: SiLinkedin,
   },
   {
     name: "Email",
-    url: "mailto:dt.ngu95@gmail.com",
+    url: "mailto:dannytnguyen.dev@gmail.com",
     logo: HiOutlineMail,
   },
 ];

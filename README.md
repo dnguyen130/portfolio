@@ -132,7 +132,7 @@ project page and page transitions, it reflects my ability to create a website th
 
 ## Contact
 
-Danny Nguyen - [LinkedIn](https://www.linkedin.com/in/dannytnguyen130/) - dt.ngu95@gmail.com
+Danny Nguyen - [LinkedIn](https://www.linkedin.com/in/dannytnguyendev/) - dannytnguyen.dev@gmail.com
 
 Project Link: [https://github.com/dnguyen130/portfolio](https://github.com/dnguyen130/portfolio)
 
@@ -152,5 +152,5 @@ Project Link: [https://github.com/dnguyen130/portfolio](https://github.com/dnguy
 [license-shield]: https://img.shields.io/github/license/dnguyen130/portfolio
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/dannytnguyen130/
+[linkedin-url]: https://www.linkedin.com/in/dannytnguyendev/
 [product-screenshot]: images/screenshot.png
