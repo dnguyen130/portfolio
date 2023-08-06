@@ -15,7 +15,7 @@ const initialStates = {
   activeDrawer: false,
   setActiveDrawer: () => {},
 
-  initialLoad: false,
+  initialLoad: true,
   setInitialLoad: () => {},
 
   activeTab: false,

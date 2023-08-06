@@ -423,13 +423,13 @@ export default function Home() {
           <HeaderCont flexDirection={sp.hasLogo ? "row" : "column"}>
             <MotionItem variants={item}>
               <LogoCont
-                width={sp.hasLogo ? "200px" : "250px"}
-                height={sp.hasLogo ? "200px" : "100px"}
+                width={sp.hasLogo ? "70%" : "250px"}
+                height={sp.hasLogo ? "70%" : "100px"}
               >
                 <Image
                   layout="fill"
                   alt="ss"
-                  src={`/${sp.url}_logo.svg`}
+                  src={sp.logo ? sp.logo : "/"}
                   placeholder
                 />
               </LogoCont>

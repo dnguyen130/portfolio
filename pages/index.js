@@ -353,6 +353,7 @@ export default function Home() {
             hoverColor={ap.color_hover}
             hasLogo={ap.hasLogo}
             buttonName={ap.button_names}
+            buttonTextColor={ap.color_button}
           />
         </PageContainer>
       </Layout>

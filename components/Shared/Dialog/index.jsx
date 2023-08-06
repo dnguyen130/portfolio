@@ -166,6 +166,7 @@ const Button = styled(motion.div)`
   width: 100%;
   height: 100%;
   background-color: ${(props) => props.bgbutton};
+  color: ${(props) => props.clrbutton};
   display: flex;
   border-radius: 5px;
   justify-content: center;
@@ -290,6 +291,7 @@ export default function Dialog({
   darkColor,
   strongColor,
   hoverColor,
+  buttonTextColor,
   hasLogo,
   buttonName = ["Learn More", "Live Site", "Client Github", "Server Github"],
 }) {
@@ -352,6 +354,7 @@ export default function Dialog({
                 <Button
                   bgbutton={strongColor}
                   hoverbutton={hoverColor}
+                  clrbutton={buttonTextColor}
                   whileTap={{ scale: 0.9 }}
                 >
                   {buttonName[0]}
@@ -361,6 +364,7 @@ export default function Dialog({
                 <ButtonLink href={liveSite} target="_blank">
                   <Button
                     bgbutton={strongColor}
+                    clrbutton={buttonTextColor}
                     hoverbutton={hoverColor}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -378,6 +382,7 @@ export default function Dialog({
                 >
                   <Button
                     bgbutton={strongColor}
+                    clrbutton={buttonTextColor}
                     hoverbutton={hoverColor}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -389,6 +394,7 @@ export default function Dialog({
                 <ButtonLink href={gitServer} target="_blank">
                   <Button
                     bgbutton={strongColor}
+                    clrbutton={buttonTextColor}
                     hoverbutton={hoverColor}
                     whileTap={{ scale: 0.9 }}
                   >

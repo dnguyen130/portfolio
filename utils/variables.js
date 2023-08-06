@@ -106,7 +106,7 @@ export const PROJECTLIST = [
     name: "Steady",
     url: "steady",
     hasLogo: true,
-    logo: "steady_logo.svg",
+    logo: "/steady_logo.svg",
     live_site: "https://steadyofficial.vercel.app/",
     github_client: "https://github.com/wilyyy/Steady",
     tags: ["React", "Next.js", "styled-components"],
@@ -128,7 +128,7 @@ export const PROJECTLIST = [
     name: "OnMe",
     url: "onme",
     hasLogo: true,
-    logo: "onme_logo.svg",
+    logo: "/onme_logo.svg",
     github_client: "https://github.com/dnguyen130/onme",
     github_server: "https://github.com/dnguyen130/OnMe-Serverside",
     tags: ["React Native", "Expo", "styled-components", "PHP", "MySQL"],
@@ -150,7 +150,7 @@ export const PROJECTLIST = [
     name: "Scout",
     url: "scout",
     hasLogo: false,
-    logo: "scout_logo.svg",
+    logo: "/scout_logo.svg",
     live_site: "https://scout-delta.vercel.app/",
     github_client: "https://github.com/wilyyy/Scout",
     github_server: "https://github.com/wilyyy/scout-serverside",
@@ -164,6 +164,7 @@ export const PROJECTLIST = [
     color_dark: "#1C2A36",
     color_strong: "#F4A259",
     color_hover: "#DB8539",
+    color_button: "black",
     title_font: "Poppins",
     quote: "Share and discover new anime",
   },
@@ -171,7 +172,7 @@ export const PROJECTLIST = [
     name: "Step Ahead",
     url: "stepahead",
     hasLogo: true,
-    logo: "stepahead_logo.svg",
+    logo: "/stepahead_logo.svg",
     live_site: "https://stepahead.vercel.app/",
     github_client: "https://github.com/dnguyen130/stepahead",
     tags: ["React", "Vite", "Sass", "Firebase"],
@@ -184,8 +185,30 @@ export const PROJECTLIST = [
     color_dark: "#1a3d65",
     color_strong: "#ffbf1a",
     color_hover: "#dea916",
+    color_button: "black",
     title_font: "Caveat",
     quote: "Let's get ahead.",
+  },
+  {
+    name: "Best Buy Clone",
+    url: "bestbuyclone",
+    hasLogo: true,
+    logo: "/bestbuylogo.png",
+    live_site: "https://best-buy-clone-2d1056.netlify.app/",
+    github_client: "https://github.com/dnguyen130/bestbuy-clone",
+    tags: ["React", "Vite", "TypeScript", "Firebase"],
+    description: [
+      "Mock-up of Best Buy's home page",
+      "Fully responsive with working carousels and dropdown menus",
+      "Created to refine and improve on creating interactive and responsive UIs",
+    ],
+    color_light: "white",
+    color_dark: "#0046be",
+    color_strong: "#ffef00",
+    color_hover: "#c9bd00",
+    color_button: "black",
+    title_font: "Jost",
+    quote: "Let's talk about what's possible",
   },
 ];
 
@@ -430,6 +453,34 @@ export const PROJECTINFO = {
       description: `This project was great in keeping myself fresh in web development while out of school.
       The frontend was satisfactory to me with its transitions between tabs and responsiveness from mobile
       to desktop.`,
+    },
+  ],
+  bestbuyclone: [
+    {
+      title: "1. Ideation",
+      src: "/screenshots/bestbuy1.png",
+      aspect: "1920/900",
+      orientation: "landscape",
+      description: `In order to continue to refine and improve my abilities in developing UIs, I chose to recreate 
+      a familiar UI using technologies I was familiar with. Best Buy uses important UI elements, such as carousels and interactive
+      drop down menus to learn how to create, using frameworks or my own techniques.`,
+    },
+    {
+      title: "2. Technology",
+      src: "/screenshots/bestbuy2.png",
+      aspect: "1920/900",
+      orientation: "landscape",
+      description: `Swiper was a great resource to learn, allowing me to quickly create product sliders that matched Best Buy's sliders. The
+      rest of the website was created with ample use of CSS grid to line up elements at any size. Framer is a great framework to control animations,
+      such as the drop down menu, and mobile footer links.`,
+    },
+    {
+      title: "3. Retrospective",
+      src: "/screenshots/bestbuy3.png",
+      aspect: "550/900",
+      orientation: "portrait",
+      description: `Having reference material when recreating a website made this project easy and fun, while also continuing to hone my
+      web development skills on the path of becomeing a better developer.`,
     },
   ],
 };
